@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070a1c">
+<title>AlphaFlux — Find the signal. Convert the demand.</title>
+<style>
+  /* ---------------- base ---------------- */
+  * { box-sizing: border-box; }
+  html { margin: 0; padding: 0; }
+  body { margin: 0; padding: 0; background: #070a1c; overflow-x: hidden; }
+  body {
+    font-family: "Canva Sans", "Segoe UI", Arial, Helvetica, sans-serif;
+    color: #cfe8ff;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: #28e3ff; color: #03060f; }
+
+  /* the pinned viewport that holds the journey (GSAP pin-spacer reserves its height) */
+  #stage { position: relative; top: 0; left: 0; width: 100vw; height: 100vh; overflow: hidden; z-index: 1; }
+  /* worlds are overlay-stacked; the journey slides each one with a soft fade (no seam) */
+  .world {
+    position: absolute; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    opacity: 0; will-change: transform, opacity;
+  }
+  .world svg.scene {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+  }
+  .wx { position: absolute; will-change: transform; }
+
+  /* ---------------- chrome ---------------- */
+  #brand {
+    position: fixed; top: 24px; left: 30px; z-index: 50;
+    display: flex; align-items: center; gap: 12px;
+    letter-spacing: .22em; font-size: 13px; font-weight: 600;
+    color: #aef3ff; text-shadow: 0 2px 12px rgba(0,0,0,.6);
+  }
+  #brand .dot { width: 10px; height: 10px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #bff4ff, #28e3ff 55%, #0b6fa8);
+    box-shadow: 0 0 14px #28e3ff; }
+  #brand span { opacity: .92; }
+
+  #pager {
+    position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+    z-index: 60; display: flex; gap: 18px; align-items: center;
+  }
+  .pager-dot { width: 12px; height: 12px; border-radius: 50%;
+    border: 1px solid rgba(174,243,255,.7); background: transparent;
+    cursor: pointer; transition: transform .3s, background .3s, box-shadow .3s; }
+  .pager-dot:hover { transform: scale(1.25); }
+  .pager-dot.on { background: #28e3ff; box-shadow: 0 0 16px #28e3ff; transform: scale(1.25); }
+
+  #hint {
+    position: fixed; bottom: 26px; right: 30px; z-index: 50;
+    font-size: 11px; letter-spacing: .18em; color: rgba(174,243,255,.65);
+    text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,.6);
+    display: flex; align-items: center; gap: 8px;
+  }
+  #hint .arr { font-size: 14px; animation: nudge 1.6s ease-in-out infinite; }
+  @keyframes nudge { 0%,100%{transform:translateY(-2px)} 50%{transform:translateY(2px)} }
+
+  .copy { position: absolute; z-index: 20; max-width: 560px; will-change: transform, opacity; }
+  .copy .tag { font-size: 12px; letter-spacing: .32em; text-transform: uppercase;
+    color: #28e3ff; margin-bottom: 14px; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+  .copy h1 { font-size: clamp(40px, 7.2vw, 104px); line-height: .95; margin: 0 0 18px;
+    font-weight: 700; color: #f0fbff; text-shadow: 0 6px 30px rgba(0,0,0,.55); }
+  .copy h1 em { font-style: normal; color: #7fe8ff; }
+  .copy p { font-size: clamp(15px, 1.7vw, 20px); line-height: 1.6; margin: 0 0 26px;
+    color: rgba(207,232,255,.92); text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+  .copy .cta { display: inline-block; padding: 14px 26px; border-radius: 999px;
+    font-size: 14px; letter-spacing: .06em; font-weight: 600; cursor: pointer;
+    color: #06121f; background: linear-gradient(90deg,#7fe8ff,#28e3ff);
+    box-shadow: 0 8px 30px rgba(40,227,255,.45); text-decoration: none; }
+  .copy .cta:hover { box-shadow: 0 10px 40px rgba(40,227,255,.65); transform: translateY(-1px); }
+
+  .num { position: absolute; z-index: 20; font-size: clamp(52px,10vw,150px); font-weight: 800;
+    line-height: 1; color: transparent; -webkit-text-stroke: 2px rgba(174,243,255,.22); opacity: .8; top: 16vh; }
+
+  /* intro world (centered full-h brand card) */
+  .copy.intro { max-width: 860px; }
+  .copy.intro .tag { font-size: 13px; letter-spacing: .42em; margin-bottom: 18px; }
+  .copy.intro h1 { font-size: clamp(46px, 8.6vw, 128px); line-height: 1.02; margin-bottom: 22px; }
+  .copy.intro p { font-size: clamp(16px, 1.9vw, 22px); max-width: 620px; margin: 0 auto 28px; }
+  .pills { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+  .pills span { padding: 10px 20px; border-radius: 999px; font-size: 13px; letter-spacing: .12em;
+    text-transform: uppercase; color: #bff4ff; border: 1px solid rgba(174,243,255,.4);
+    background: rgba(12,26,52,.35); backdrop-filter: blur(4px); }
+</style>
+</head>
+<body>
+
+<div id="brand"><span class="dot"></span><span>ALPHAFLUX</span></div>
+
+<div id="stage">
+</div>
+
+<div id="pager"></div>
+<div id="hint"><span class="arr">▾</span><span>scroll</span></div>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script>
+  (() => {
+  "use strict";
+  const stage = document.getElementById('stage');
+  const pagerEl = document.getElementById('pager');
+
+  /* ---------- seeded rng for reproducible low-poly ---------- */
+  function mulberry(seed) {
+    return function () {
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  /* ---------- midpoint-displacement ridgeline for low-poly mountains ---------- */
+  function ridge(rng, width, height, baseY, roughness) {
+    let pts = [[0, baseY + (rng() - .5) * height], [width, baseY + (rng() - .5) * height]];
+    let step = roughness;               // 0 (smooth) .. 1 (jagged)
+    let cur = height;
+    while (step > 0.02) {
+      const next = [];
+      for (let i = 0; i < pts.length - 1; i++) {
+        const [x0, y0] = pts[i], [x1, y1] = pts[i + 1];
+        next.push([x0, y0]);
+        const mx = (x0 + x1) / 2, my = (y0 + y1) / 2;
+        next.push([mx, my + (rng() - .5) * cur]);
+      }
+      next.push(pts[pts.length - 1]);
+      pts = next;
+      cur *= step; step *= 0.72;
+    }
+    return pts;
+  }
+
+  function path(pts, height, closed) {
+    let d = `M${pts[0][0].toFixed(1)},${pts[0][1].toFixed(1)}`;
+    for (let i = 1; i < pts.length; i++) d += ` L${pts[i][0].toFixed(1)},${pts[i][1].toFixed(1)}`;
+    if (closed) d += ` L${pts[pts.length - 1][0].toFixed(1)},${height} L${pts[0][0].toFixed(1)},${height} Z`;
+    return d;
+  }
+
+  // lighten/darken a hex color by amt (-1..1) for multi-tone low-poly facets
+  function shade(hex, amt) {
+    const n = parseInt(hex.slice(1), 16);
+    let r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+    const t = amt < 0 ? 0 : 255, p = Math.abs(amt);
+    r = Math.round((t - r) * p + r); g = Math.round((t - g) * p + g); b = Math.round((t - b) * p + b);
+    return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+  }
+
+  /* ---------- palette per world (blue/cyan space family) ---------- */
+  const WORLDS = [
+    { id: 'intro', type: 'intro',
+      tag: 'The AI-native marketing engine', name: 'AlphaFlux',
+      h1: 'Find the <em>signal</em>.<br>Convert the <em>demand</em>.',
+      body: 'One platform to locate, score, convert, and deliver the demand your business is missing. Scroll to begin the journey.',
+      sky: ['#070a1c', '#0f1e44'], planet: ['#bfe9ff', '#28a7e6', '#0b2a4e'], accentHue: 196,
+      pills: ['Locate', 'Score', 'Convert', 'Deliver'] },
+    { id: 'locate', num: '01', name: 'Locate',  tag: 'Find the signal',
+      h1: 'Locate the <em>signal</em>',
+      body: 'AlphaFlux sweeps every channel your customers live on and surfaces the demand that’s already there — the calls, chats, and searches your competitors are missing.',
+      sky: ['#0a1230', '#0d2a52'], planet: ['#7fe8ff', '#1b9bd8', '#0b3a5e'], accentHue: 192, water: true },
+    { id: 'score',  num: '02', name: 'Score',   tag: 'Rank the demand',
+      h1: 'Score the <em>demand</em>',
+      body: 'Each signal is scored and de-duplicated by intent, value, and urgency, so your team works the few leads that actually convert — not the noisy long tail.',
+      sky: ['#081027', '#0b3a40'], planet: ['#3fe0d0', '#0f7d8a', '#063d3f'], accentHue: 174, chips: true },
+    { id: 'convert', num: '03', name: 'Convert', tag: 'Turn interest into action',
+      h1: 'Convert in <em>one flow</em>',
+      body: 'Automated outreach, instant scheduling, and AI-assisted messaging convert scored demand into booked jobs and revenue — without a human on every click.',
+      sky: ['#0a0f2e', '#1a1a4e'], planet: ['#a08bff', '#4b2f9e', '#241b58'], accentHue: 264, gate: true },
+    { id: 'deliver', num: '04', name: 'Deliver', tag: 'Run it to the finish',
+      h1: 'Deliver the <em>result</em>',
+      body: 'One platform runs the work end to end — dispatch, scheduling, and execution — so the demand you captured becomes a satisfied customer you can prove.',
+      sky: ['#05070f', '#0d1a44'], planet: ['#bfd9ff', '#3b6bd8', '#14224a'], accentHue: 214, route: true },
+  ];
+
+  /* ---------- build one world's scene ------------- */
+  function buildWorld(w, idx) {
+    const el = document.createElement('div');
+    el.className = 'world';
+    el.dataset.i = idx;
+    const VW = 1440, VH = 900;                 // scene coordinate space (stretched via preserveAspectRatio)
+    const rng = mulberry(1000 + idx * 977);
+    const W = VW, H = VH;
+    const horizon = H * 0.62;
+
+    // layered mountains, back (far) -> front (near) — richer 5-layer set
+    const layerDefs = [
+      { y: horizon + 20,  h: H * 0.17, r: 0.45, depth: 0.22, base: '#2e2c5e' },
+      { y: horizon + 60,  h: H * 0.21, r: 0.60, depth: 0.38, base: '#2a2656' },
+      { y: horizon + 105, h: H * 0.24, r: 0.72, depth: 0.55, base: '#241f4b' },
+      { y: horizon + 155, h: H * 0.25, r: 0.82, depth: 0.78, base: '#1d173c' },
+      { y: horizon + 200, h: H * 0.23, r: 0.90, depth: 1.00, base: '#150f2c' },
+    ];
+    const p0 = w.sky[0], p1 = w.sky[1];
+
+    let svg = `<svg class="scene" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs>`;
+
+    // sky
+    svg += `<linearGradient id="sky${idx}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${p0}"/><stop offset="1" stop-color="${p1}"/></linearGradient>`;
+
+    // planet
+    svg += `<radialGradient id="pl${idx}" cx="0.34" cy="0.32" r="0.92">
+      <stop offset="0" stop-color="${w.planet[0]}"/><stop offset="0.55" stop-color="${w.planet[1]}"/><stop offset="1" stop-color="${w.planet[2]}"/></radialGradient>`;
+
+    // atmospheric fog band where sky meets terrain
+    svg += `<linearGradient id="fog${idx}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${p1}" stop-opacity="0"/><stop offset="1" stop-color="${p1}" stop-opacity="0.85"/></linearGradient>`;
+    svg += `</defs>`;
+
+    svg += `<rect width="${W}" height="${H}" fill="url(#sky${idx})"/>`;
+
+    // stars (denser, twinkling, a few larger glows)
+    const starN = 90;
+    for (let i = 0; i < starN; i++) {
+      const sx = rng() * W, sy = rng() * horizon * 0.7, sr = (rng() * 1.4 + .4);
+      const op = (rng() * .5 + .25).toFixed(2);
+      const big = rng() > 0.9;
+      if (big) {
+        svg += `<circle class="wx star" cx="${sx.toFixed(0)}" cy="${sy.toFixed(0)}" r="${(sr*2.4).toFixed(1)}"
+          fill="#fff" opacity="${(op*0.5).toFixed(2)}" style="animation-delay:${(rng()*2.4).toFixed(2)}s"/>`;
+      }
+      svg += `<circle class="wx star" cx="${sx.toFixed(0)}" cy="${sy.toFixed(0)}" r="${sr.toFixed(1)}"
+        fill="#dff4ff" opacity="${op}" style="animation-delay:${(rng()*2.4).toFixed(2)}s"/>`;
+    }
+
+    // planet group: halo, disc, limb shading, ring
+    const pcx = W * 0.5, pcy = horizon * 0.36, pr = H * 0.24;
+    svg += `<g class="wx planetg" style="will-change:transform">
+      <circle class="wx" cx="${pcx}" cy="${pcy}" r="${(pr*1.16).toFixed(0)}"
+        fill="hsla(${w.accentHue},90%,70%,.16)"/>
+      <circle class="wx" cx="${pcx}" cy="${pcy}" r="${pr}" fill="url(#pl${idx})"/>
+      <path class="wx" d="M ${pcx - pr},${pcy} A ${pr} ${pr} 0 0 1 ${pcx + pr},${pcy} Z"
+        fill="rgba(0,0,0,.22)"/>`;
+    if (w.accentHue !== 264) {
+      svg += `<ellipse class="wx" cx="${pcx}" cy="${(pcy + pr*0.38).toFixed(0)}" rx="${(pr*1.55).toFixed(0)}" ry="${(pr*0.30).toFixed(0)}"
+        fill="none" stroke="hsla(${w.accentHue},80%,75%,.30)" stroke-width="2.5"/>`;
+    }
+    // a small companion moon
+    svg += `<circle class="wx" cx="${(pcx - pr*1.7).toFixed(0)}" cy="${(pcy - pr*1.0).toFixed(0)}" r="${(pr*0.16).toFixed(0)}"
+      fill="#cfe8ff" opacity=".8"/>`;
+    svg += `</g>`;
+
+    // layered low-poly mountains with 3-tone facet shading + atmospheric fog
+    svg += `<g class="wx mts" style="will-change:transform">`;
+    layerDefs.forEach((L, li) => {
+      const pts = ridge(rng, W, L.h, L.y, L.r);
+      const tone = shade(L.base, -.28);                 // darkest (silhouette base)
+      svg += `<path d="${path(pts, H, true)}" fill="${tone}" opacity="0.98"/>`;
+      // facets: two-tone triangles under each ridge span for the faceted low-poly read
+      for (let i = 0; i < pts.length - 1; i++) {
+        const [x0, y0] = pts[i], [x1, y1] = pts[i + 1];
+        const apex = Math.max(y0, y1);                  // lower point of the pair
+        const c = (i % 2 === 0)
+          ? shade(L.base, .14 + (rng() * .10))          // lit face
+          : shade(L.base, -.06);                        // shadow face
+        const alpha = (i % 2 === 0) ? .20 : .14;
+        svg += `<path d="M${x0.toFixed(1)},${y0.toFixed(1)} L${x1.toFixed(1)},${y1.toFixed(1)}
+          L${((x0 + x1) / 2).toFixed(1)},${(apex + L.h * 0.22).toFixed(1)} Z" fill="${c}" opacity="${alpha}"/>`;
+      }
+    });
+    svg += `</g>`;
+
+    // atmospheric fog wash over the horizon
+    svg += `<rect class="wx" x="0" y="${(horizon - H * 0.20).toFixed(0)}" width="${W}" height="${(H * 0.38).toFixed(0)}" fill="url(#fog${idx})"/>`;
+
+    // foreground detail objects (trees / rocks / terrain per world)
+    svg += buildForeground(w, idx, W, H, horizon, rng);
+
+    // signature object per world
+    svg += buildSignature(w, idx, W, H, horizon, rng);
+
+    svg += `</svg>`;
+
+    // copy block (intro is centered full-h; others are side-anchored with a number)
+    const isIntro = w.id === 'intro';
+    const left = !isIntro && (w.id === 'convert' || w.id === 'deliver');
+    let copy;
+    if (isIntro) {
+      copy = `<div class="copy intro" style="left:50%;top:60%;transform:translate(-50%,-50%);text-align:center">
+         <div class="tag">${w.tag}</div>
+         <h1>${w.h1}</h1>
+         <p>${w.body}</p>
+         <div class="pills">${w.pills.map(p => `<span>${p}</span>`).join('')}</div>
+         <a class="cta" href="https://dash.alphaflux.net">Enter AlphaFlux →</a>
+       </div>`;
+    } else {
+      copy = `<div class="copy ${left ? 'cright' : ''}" style="${left ? 'right:6vw;text-align:left' : 'left:6vw'}">
+         <div class="tag">${w.tag}</div>
+         <h1>${w.h1}</h1>
+         <p>${w.body}</p>
+         <a class="cta" href="https://dash.alphaflux.net">Explore AlphaFlux →</a>
+       </div>
+       <div class="num" style="${left ? 'right:6vw' : 'left:6vw'}">${w.num}</div>`;
+    }
+
+    el.innerHTML = svg + copy;
+
+    stage.appendChild(el);
+    return el;
+  }
+
+  /* foreground detail objects — always present for depth, richer for non-intro worlds */
+  function buildForeground(w, idx, W, H, horizon, rng) {
+    const hue = w.accentHue || 200;
+    const base = (op) => `<g class="wx fg" style="will-change:transform">`;
+    let s = '';
+    const nTrees = w.type === 'intro' ? 0 : 7 + Math.floor(rng() * 4);
+    for (let i = 0; i < nTrees; i++) {
+      const tx = rng() * W, ty = horizon + 60 + rng() * (H - horizon - 90), th = 30 + rng() * 70, tw = th * 0.34;
+      const tone = shade('#0d0a20', .12 - rng() * .18);
+      // trunk + stacked cone canopy (low-poly pine)
+      s += `<rect x="${(tx - tw*0.06).toFixed(1)}" y="${(ty - th).toFixed(1)}" width="${(tw*0.12).toFixed(1)}" height="${(th*0.35).toFixed(1)}" fill="${tone}"/>`;
+      for (let l = 0; l < 3; l++) {
+        const cy = ty - th * (0.55 + l * 0.26), cw = tw * (1 - l * 0.26), ch = th * 0.42;
+        s += `<polygon points="${(tx - cw).toFixed(1)},${cy.toFixed(1)} ${(tx + cw).toFixed(1)},${cy.toFixed(1)} ${tx.toFixed(1)},${(cy - ch).toFixed(1)}"
+          fill="${shade(tone, .08 - l * .14)}"/>`;
+      }
+    }
+    // a scattering of low-poly boulders on the front ground
+    for (let i = 0; i < 8; i++) {
+      const bx = rng() * W, by = horizon + 120 + rng() * (H - horizon - 150), br = 8 + rng() * 22;
+      s += `<polygon points="${(bx-br).toFixed(1)},${by.toFixed(1)} ${bx.toFixed(1)},${(by-br*1.2).toFixed(1)} ${(bx+br).toFixed(1)},${by.toFixed(1)} ${(bx+br*0.5).toFixed(1)},${(by+br*0.5).toFixed(1)} ${(bx-br*0.4).toFixed(1)},${(by+br*0.5).toFixed(1)}"
+        fill="hsla(${hue},40%,24%,${(.5 + rng()*.3).toFixed(2)})"/>`;
+    }
+    // a glowing horizon line/water hint when the world is water-themed
+    if (w.water) {
+      for (let i = 0; i < 10; i++) {
+        const wx = (i / 10) * W + rng() * 40, wy = horizon + 8 + rng() * 6;
+        s += `<rect x="${wx.toFixed(0)}" y="${wy.toFixed(0)}" width="${(50 + rng()*70).toFixed(0)}" height="2.2"
+          fill="hsla(${hue},90%,70%,.35)"/>`;
+      }
+    }
+    return base() + s + `</g>`;
+  }
+
+  function buildSignature(w, idx, W, H, horizon, rng) {
+    const g = `<g class="wx sig" style="will-change:transform">`;
+    const cx = W * 0.5, cy = horizon * 0.42;
+    let s = ''; const hue = w.accentHue;
+    if (w.id === 'intro') { return g + s + `</g>`; }   // intro stays clean
+    if (w.id === 'locate') {
+      // radar: concentric rings + sweep wedge at planet base
+      ringLoop(3, cx, cy, 90).forEach(r => s += `<circle class="wx" cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="hsla(${hue},90%,70%,.35)" stroke-width="1.4"/>`);
+      s += `<circle class="wx" cx="${cx}" cy="${cy}" r="90" fill="none" stroke="#7fe8ff" stroke-width="2" opacity=".9"/>`;
+      s += `<path class="wx" d="M${cx},${cy} L${cx+80},${cy-90} A120,120 0 0 1 ${cx+120},${cy} Z" fill="hsla(${hue},100%,70%,.16)"/>`;
+    } else if (w.id === 'score') {
+      // floating polygonal data bars (score bars) rising from mid-ground
+      for (let i = 0; i < 7; i++) {
+        const bx = 180 + i * 180, bh = 60 + rng() * 150;
+        s += `<polygon class="wx" points="${bx},${horizon+30} ${bx+70},${horizon+30-bh} ${bx+140},${horizon+30}"
+          fill="hsla(${hue},80%,62%,${(.25 + rng()*.25).toFixed(2)})"/>`;
+      }
+    } else if (w.id === 'convert') {
+      // a portal / gateway: nested concentric ellipses gliding toward viewer
+      for (let i = 0; i < 4; i++) {
+        s += `<ellipse class="wx" cx="${cx}" cy="${cy}" rx="${(50 + i*46)}" ry="${(46 + i*40)}"
+          fill="none" stroke="hsla(${hue},90%,70%,.5)" stroke-width="2" opacity="${(.85 - i*.12).toFixed(2)}"/>`;
+      }
+      s += `<circle class="wx" cx="${cx}" cy="${cy}" r="20" fill="hsla(${hue},95%,75%,.9)"/>`;
+    } else {
+      // constellation / network of delivered nodes + connecting lines (field delivery)
+      const nodes = 12; const pts = [];
+      for (let i = 0; i < nodes; i++) {
+        const nx = 120 + rng() * (W - 240), ny = horizon - 40 + rng() * (horizon - 100);
+        pts.push([nx, ny]);
+        s += `<circle class="wx" cx="${nx}" cy="${ny}" r="${(2 + rng()*3).toFixed(1)}" fill="#bfe0ff" opacity="${(.5 + rng()*.4).toFixed(2)}"/>`;
+      }
+      for (let i = 0; i < pts.length; i++) {
+        const a = pts[i], b = pts[(i + 1) % pts.length];
+        s += `<line class="wx" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="hsla(${hue},85%,70%,.30)" stroke-width="1"/>`;
+      }
+    }
+    return g + s + `</g>`;
+  }
+
+  function ringLoop(n, cx, cy, base) {
+    const out = []; for (let i = 1; i <= n; i++) out.push(base * i); return out;
+  }
+
+  /* ---------- build all worlds ---------- */
+  const worlds = WORLDS.map((w, i) => buildWorld(w, i));
+
+  /* pager */
+  const dots = WORLDS.map((w, i) => {
+    const d = document.createElement('button');
+    d.className = 'pager-dot'; d.setAttribute('aria-label', w.name);
+    d.addEventListener('click', () => goTo(i));
+    pagerEl.appendChild(d);
+    return d;
+  });
+
+  /* ---------- motion ---------- */
+  const proxy = { v: 0 };
+  const stageH = () => window.innerHeight;
+  const travel = () => stageH() * (worlds.length - 1);
+  function goTo(i) {
+    const target = i * travel() / (worlds.length - 1);
+    gsap.to(proxy, { v: target, duration: 1.1, ease: 'power2.inOut',
+      onUpdate: () => window.scrollTo(0, proxy.v) });
+  }
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#stage', start: 'top top', end: () => '+=' + travel(),
+      pin: true, scrub: 1, anticipatePin: 1, invalidateOnRefresh: true,
+      onUpdate: self => layout(self.progress),
+      onRefresh: self => layout(self.progress),
+    }
+  });
+  tl.to(proxy, { v: 1, duration: 1 });   // dummy so the timeline exists
+
+  const copyEls = worlds.map(el => el.querySelector('.copy'));
+  const numEls = worlds.map(el => el.querySelector('.num'));
+
+  function layout(progress) {
+    const n = worlds.length;
+    const pos = progress * (n - 1);            // 0 .. 3
+    const active = Math.max(0, Math.min(n - 1, Math.round(pos)));
+    const vw = window.innerWidth;
+
+    worlds.forEach((el, i) => {
+      const d = pos - i;                        // +: world approaches; -: world passed
+      const abs = Math.abs(d);
+      const vis = Math.max(0, 1 - abs);         // 1 centered .. 0 far
+      const ease = vis * vis * (3 - 2 * vis);   // smoothstep
+
+      // world crossfade + a short directional slide so worlds overlap (no hard seam)
+      el.style.opacity = ease.toFixed(3);
+      el.style.transform = `translateX(${(-d * vw * 0.12).toFixed(1)}px)`;
+
+      // per-layer parallax + subtle vertical depth (the defeatboco "up and down")
+      el.querySelectorAll('.planetg').forEach(g => {
+        g.style.transform = `translateX(${(-d * 70).toFixed(1)}px) translateY(${(ease * 22).toFixed(1)}px)`;
+      });
+      el.querySelectorAll('.mts').forEach(g => {
+        g.style.transform = `translateX(${(-d * 26).toFixed(1)}px) translateY(${(ease * 10).toFixed(1)}px)`;
+      });
+      el.querySelectorAll('.sig').forEach(g => {
+        g.style.transform = `translateY(${(ease * 14).toFixed(1)}px)`;
+      });
+      el.querySelectorAll('.fg').forEach(g => {
+        g.style.transform = `translateX(${(-d * 120).toFixed(1)}px) translateY(${(ease * 6).toFixed(1)}px)`;
+      });
+      // stars drift against the slide for depth
+      el.querySelectorAll('.star').forEach((st, k) => {
+        st.style.transform = `translateX(${(-d * (20 + (k % 3) * 18)).toFixed(1)}px)`;
+      });
+
+      // copy + number: fade in when centered, lift away as it passes
+      const c = copyEls[i], num = numEls[i];
+      const lift = 26 * (1 - ease);
+      // intro copy is centered via translate(-50%,-50%); preserve that
+      c.style.transform = (el.dataset.i === '0')
+        ? `translate(-50%, calc(-50% + ${lift.toFixed(1)}px))`
+        : `translateY(${lift.toFixed(1)}px)`;
+      c.style.opacity = ease.toFixed(3);
+      if (num) { num.style.transform = `translateY(${(lift * 0.6).toFixed(1)}px)`; num.style.opacity = (0.9 * ease).toFixed(3); }
+    });
+
+    dots.forEach((d, i) => d.classList.toggle('on', i === active));
+  }
+
+  requestAnimationFrame(() => { layout(0); });
+  window.addEventListener('resize', () => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
