@@ -1,0 +1,70 @@
+{
+  "slug": "sitemap",
+  "nav": "Site map",
+  "group": "Company",
+  "crumb": "Site map",
+  "title": "Site map",
+  "desc": "Every page on alphaflux.net, grouped the same way as the navigation rail. Plus the machine readable sitemap and the file written for answer engines.",
+  "h1": "Every page on this site",
+  "standfirst": "Grouped the same way the navigation rail groups them, so the map and the interface agree.",
+  "sections": [
+    {
+      "kind": "sitemap",
+      "title": "The whole site",
+      "lede": "If you are looking for something specific, it is on this page."
+    },
+    {
+      "kind": "list",
+      "title": "For machines",
+      "lede": "This site is built to be read by software as well as by people. These are the files published for that purpose.",
+      "items": [
+        {
+          "title": "sitemap.xml",
+          "text": "The standard sitemap, listing every page with its last modified date and a priority. Linked from robots.txt.",
+          "note": "https://alphaflux.net/sitemap.xml"
+        },
+        {
+          "title": "robots.txt",
+          "text": "Crawl rules. Everything on this site is public product documentation, and answer engines and AI crawlers are explicitly welcome across all of it rather than tolerated.",
+          "note": "https://alphaflux.net/robots.txt"
+        },
+        {
+          "title": "llms.txt",
+          "text": "A short index written for language models: what the platform is, what each module does, the pricing structure and how the discount programs work.",
+          "note": "https://alphaflux.net/llms.txt"
+        },
+        {
+          "title": "llms-full.txt",
+          "text": "The full text of every page in one file, so an answer engine can read the whole site without fetching each page separately.",
+          "note": "https://alphaflux.net/llms-full.txt"
+        },
+        {
+          "title": "Structured data",
+          "text": "Every page publishes structured data describing the organisation, the breadcrumb trail, and where relevant the product, the plans and the questions answered on the page. The markup and the visible content match, because structured data describing something the page does not say is a lie told to a machine.",
+          "note": "application/ld+json on every page"
+        },
+        {
+          "title": "The API specification",
+          "text": "A machine readable description of the platform's own interface, for developers and for agents. Issued with an API key.",
+          "note": "https://alphaflux.net/api/openapi.json"
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "title": "Still not found what you were looking for",
+    "text": "Start on the free plan and see the platform from the inside, or read how the modules fit together before deciding.",
+    "primary": { "title": "Create a free account", "href": "/login" },
+    "second": { "title": "Read about the modules", "href": "/modules" }
+  },
+  "faq": [
+    {
+      "q": "Why publish a file just for language models?",
+      "a": "Because a growing share of people find software by asking a question rather than by searching. A file that states plainly what the platform does, what it costs and what the limits are gives an answer engine something accurate to read. Publishing it is a way of being described correctly rather than being guessed at."
+    },
+    {
+      "q": "Can I crawl this site?",
+      "a": "Yes. Everything here is public product documentation, the crawl rules permit the whole site, and no part of it requires JavaScript to read. Structured data is published on every page describing the same content a person sees."
+    }
+  ]
+}

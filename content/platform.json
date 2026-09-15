@@ -1,0 +1,126 @@
+{
+  "slug": "platform",
+  "nav": "How it works",
+  "group": "Platform",
+  "crumb": "How it works",
+  "title": "How AlphaFlux is put together",
+  "desc": "Modules you switch on per company, one shared customer record, three ways to drive it, and data isolation you can explain to an auditor.",
+  "h1": "One platform, eleven modules, one customer record",
+  "standfirst": "AlphaFlux is not eleven products bolted together. It is one system with a registry of modules, a single data model underneath, and three interchangeable ways to drive it.",
+  "chips": ["Modular", "Multi-location", "Agent-manageable"],
+  "sections": [
+    {
+      "kind": "split",
+      "title": "Modules are switched on per company, not per installation",
+      "lede": "Every feature area ships as a module with a stable identity. A company sees the modules it has and nothing else.",
+      "body": [
+        "That matters for two reasons. First, a company that answers the phone, books the work and invoices it does not have to look at fleet telematics or chemical registers it will never use. Second, turning a module on later never means a migration, because the module was always reading the same records the rest of the platform already keeps.",
+        "Modules are grouped into bundles so pricing stays legible, and any single module can be added to any plan as an add on. The catalogue, the bundles and the limits are all data, which is what makes white labelling possible: the whole catalogue can be repackaged under another brand."
+      ],
+      "items": [
+        { "icon": "i-layers", "title": "A registry, not a menu", "text": "Each module declares its own identity, the limits it enforces and the permissions it needs. The screen is generated from that registry rather than hard coded." },
+        { "icon": "i-grid", "title": "No cross-module coupling", "text": "Modules work on shared records through defined interfaces, so one can be replaced without touching the others." },
+        { "icon": "i-tag", "title": "Bundles and add ons", "text": "A plan is a set of modules plus limits on customers, locations, users, volume and storage." },
+        { "icon": "i-trend", "title": "Limits that announce themselves", "text": "Approaching a limit is visible before it is hit, and hitting one never destroys data. It stops the next thing from being created." }
+      ]
+    },
+    {
+      "kind": "list",
+      "title": "How your data is kept separate from everyone else's",
+      "lede": "Multi-tenant software earns trust by being specific about what separates one company's records from another's. Here is exactly what does.",
+      "items": [
+        {
+          "title": "Tenant scope on every record",
+          "text": "Every domain row carries the company it belongs to, and every query is scoped to the company of the account making the request. There is no code path that returns a record outside your scope."
+        },
+        {
+          "title": "Scoped credentials, hashed at rest",
+          "text": "API keys are stored only as a hash and shown once at creation. Provider credentials, such as a phone carrier token, are write only and are stripped out of every response, including the ones that echo them back."
+        },
+        {
+          "title": "Roles and departments",
+          "text": "A role is a named set of permissions. A department is a slice of the company, such as a district or a line of service. A role can be scoped to a department, so a dispatcher in one office cannot see another office's work.",
+          "items": [
+            "Owner, administrator, office manager, dispatcher, technician, billing, marketing, support, and read only auditor",
+            "Permissions are explicit per capability rather than implied by a job title",
+            "Restricted actions are refused by the server and the reason is named in the response"
+          ]
+        },
+        {
+          "title": "Isolation you can upgrade",
+          "text": "Records are currently separated by tenant scope inside one store, which keeps operations simple and cost low. A dedicated store per company is a configuration change rather than a rewrite, because every data access goes through one internal interface."
+        },
+        {
+          "title": "Where it physically runs",
+          "text": "Self-hosted on a machine the operator controls, behind a TLS terminator with automatic certificates. Backups are encrypted before they leave the host."
+        }
+      ]
+    },
+    {
+      "kind": "split",
+      "flip": true,
+      "title": "Three ways to drive the same platform",
+      "lede": "The screen, the API and an agent are three clients of one thing. Nothing is available in one and missing from another.",
+      "body": [
+        "This is the design decision that separates AlphaFlux from software that bolted a chat box onto an existing interface. Every capability is an interface first, which is why an agent can do real work here rather than summarising a dashboard.",
+        "It also means you are not locked into a single way of working. A manager uses the board. An ops lead scripts a nightly report. An agent answers the phone at nine at night. The same records change either way."
+      ],
+      "items": [
+        { "icon": "i-grid", "title": "The screen", "text": "A console for the office and a mobile view for the field, both generated from the module registry and the permissions of the person signed in." },
+        { "icon": "i-code", "title": "The API", "text": "A documented REST interface with a machine readable specification, so an integration can be written against it without a conversation." },
+        { "icon": "i-terminal", "title": "The command line", "text": "A single binary that talks to the same API and prints JSON, for scripts, cron jobs and pipelines." },
+        { "icon": "i-plug", "title": "Agent access", "text": "A protocol server that presents the platform to an AI client as a set of callable tools, authenticated with a scoped key." }
+      ],
+      "more": { "title": "Details for developers", "href": "/developers" }
+    },
+    {
+      "kind": "features",
+      "title": "The engineering choices a buyer should care about",
+      "lede": "None of this is visible on screen, and all of it decides whether the platform is still fast and correct in year three.",
+      "items": [
+        { "icon": "i-bolt", "title": "Fast by construction", "text": "A small compiled service per component, no framework layered on top, and no third party script running in your browser. Pages and lists stay quick as the data grows." },
+        { "icon": "i-database", "title": "Money in whole cents", "text": "Prices, payments, splits and recurring revenue are stored as whole cents and basis points. There is no floating point arithmetic anywhere near an invoice." },
+        { "icon": "i-shield", "title": "Callbacks verified when they arrive", "text": "Inbound carrier webhooks and provider callbacks are checked before they are acted on, so a forged request cannot create a job or move money." },
+        { "icon": "i-note", "title": "An audit entry on every change", "text": "Who acted, under what role, on which company, doing what, at what time. Readable by the owner, filterable by an agent." },
+        { "icon": "i-repeat", "title": "Idempotent where it counts", "text": "Recurring visit generation, campaign sends and imports are safe to run twice. A retry never bills a customer twice." },
+        { "icon": "i-clock", "title": "Built to be left alone", "text": "Scheduled work, retrying jobs and health checks run without supervision, and a person is alerted when something needs one." }
+      ]
+    },
+    {
+      "kind": "statement",
+      "text": "If the platform is doing its job, nobody should be copying and pasting between two tabs."
+    },
+    {
+      "kind": "steps",
+      "title": "What happens when a module goes live",
+      "items": [
+        { "title": "The catalogue changes, not the data", "text": "Enabling a module registers its screens, its permissions and its endpoints. The records it needs already exist because the customer record is shared." },
+        { "title": "Limits attach to the company", "text": "The plan sets what the module is allowed to grow to. The module enforces those limits itself rather than trusting the interface." },
+        { "title": "Permissions appear for the roles you choose", "text": "Enabling a module adds new available permissions. Nothing is granted automatically, so nobody gains access because a feature was switched on." },
+        { "title": "History starts now, and it is complete", "text": "From the first day a module is on, its actions appear in the account timeline and the audit trail alongside everything else." }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can I run more than one company on one installation?",
+      "a": "Yes. One installation serves many companies, each with its own records, users, modules, limits and branding. That is the same mechanism white labelling uses, so an operator can run their own business and their customers' businesses side by side."
+    },
+    {
+      "q": "What happens when I reach a limit on my plan?",
+      "a": "The platform stops the next record from being created and tells you which limit you reached and what plan lifts it. Nothing is deleted, nothing is hidden, and nothing you have already entered becomes read only. Raising the plan takes effect immediately."
+    },
+    {
+      "q": "Can I use just one module?",
+      "a": "Yes. Some companies start with the phone module and nothing else, because that is the part that is losing them money. Modules can be added one at a time as the need appears."
+    },
+    {
+      "q": "Is there a mobile app?",
+      "a": "The field views install to a phone home screen and work offline, which covers the technician case without an app store. Camera capture, signatures and location reporting all work from the browser, and status changes made without signal are queued and applied when the connection returns."
+    },
+    {
+      "q": "Do I need a server?",
+      "a": "No. AlphaFlux runs on infrastructure the platform provider hosts and maintains. Self-hosting on your own hardware is available for organisations that require it, and it uses the same components."
+    }
+  ]
+}

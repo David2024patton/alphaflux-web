@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API, command line and agent access</title>
+<meta name="description" content="A documented REST API with a machine readable specification, a command line that prints JSON, an agent protocol server, and webhooks for everything the platform does.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="canonical" href="https://alphaflux.net/developers">
+<meta property="og:site_name" content="AlphaFlux">
+<meta property="og:type" content="website">
+<meta property="og:title" content="API, command line and agent access">
+<meta property="og:description" content="A documented REST API with a machine readable specification, a command line that prints JSON, an agent protocol server, and webhooks for everything the platform does.">
+<meta property="og:url" content="https://alphaflux.net/developers">
+<meta property="og:image" content="https://alphaflux.net/assets/og/developers.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a1220" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plexmono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+(function(){try{var s=localStorage.getItem("af-theme");var d=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.setAttribute("data-theme",s||d);}catch(e){}})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://alphaflux.net/#org",
+      "@type": "Organization",
+      "description": "A self-hosted, modular operations platform for service businesses, driver accessible by AI agents.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://alphaflux.net/assets/apple-touch-icon.png"
+      },
+      "name": "AlphaFlux",
+      "url": "https://alphaflux.net/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/",
+          "name": "Overview",
+          "position": 1
+        },
+        {
+          "@type": "ListItem",
+          "name": "Company",
+          "position": 2
+        },
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/developers",
+          "name": "Developers",
+          "position": 3
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A test company can be created alongside the real one with its own records and its own keys, so an integration can be built and broken without touching live data."
+          },
+          "name": "Is there a sandbox?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Requests are rate limited per key to protect the platform, and the limit is generous enough that a normal integration never meets it. The response headers tell you where you are against the limit rather than leaving you to discover it by being refused."
+          },
+          "name": "Are there rate limits?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Everything it did is attributed to its key and visible in the audit trail, and the key can be disabled immediately. Financial records are voided rather than deleted and merges are reversible, so a bad batch can be walked back."
+          },
+          "name": "What happens if an integration breaks something?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The agent server speaks a standard protocol, so any compatible client can use it. There is nothing proprietary about the connection, and the key is the only thing that decides what the agent can reach."
+          },
+          "name": "Can I use an agent client that is not yours?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That is what white label is for. It gives you the platform under your own brand with resale rights, and the same interfaces to build against."
+          },
+          "name": "Can I build my own product on top of this?"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="shell">
+<aside class="rail" aria-label="Site sections">
+<div class="rail-inner">
+<a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a>
+<nav class="rail-nav" aria-label="All sections">
+<div class="rail-group">
+<h2 class="rail-group-title">Platform</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
+<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
+<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
+<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
+</ul>
+</div>
+<div class="rail-group">
+<h2 class="rail-group-title">Modules</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/phone-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
+<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
+<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
+<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
+<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
+<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
+<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
+<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
+<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
+<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
+<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
+</ul>
+</div>
+<div class="rail-group">
+<h2 class="rail-group-title">Company</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
+<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
+<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
+<li><a class="rail-link" href="/developers" aria-current="page"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
+<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
+</ul>
+</div>
+</nav>
+<div class="rail-foot">
+<a class="btn btn-primary" href="/login">Sign in</a>
+<a class="btn btn-secondary" href="/pricing">Start free</a>
+</div>
+</div>
+</aside>
+<div class="main">
+<header class="topbar">
+<button class="nav-toggle" type="button" data-drawer-open aria-expanded="false" aria-label="Open menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-menu"></use></svg></button>
+<a class="topbar-brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg></a>
+<nav class="crumbs" aria-label="Breadcrumb"><ol>
+<li><a href="/">Overview</a></li>
+<li><span class="sep" aria-hidden="true">/</span><span>Company</span></li>
+<li><span class="sep" aria-hidden="true">/</span><span aria-current="page">Developers</span></li>
+</ol></nav>
+<span class="topbar-spacer"></span>
+<div class="topbar-actions">
+<button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch colour theme"><svg class="i-sun" aria-hidden="true"><use href="/assets/icons.svg#i-sun"></use></svg><svg class="i-moon" aria-hidden="true"><use href="/assets/icons.svg#i-moon"></use></svg></button>
+<a class="btn btn-ghost btn-sm" href="/login">Sign in</a>
+<a class="btn btn-primary btn-sm" href="/pricing">Start free</a>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<header class="page-head">
+<div class="eyebrow-line">
+<span class="chip"><span class="chip-dot"></span>REST with OpenAPI</span>
+<span class="chip"><span class="chip-dot"></span>CLI with JSON out</span>
+<span class="chip"><span class="chip-dot"></span>Agent protocol server</span>
+</div>
+<h1>Every capability is an interface first, and a screen second</h1>
+<p class="standfirst">There is nothing you can do in the console that you cannot do over the API. That is a design rule rather than an aspiration, and it is what allows an agent to run real work here instead of describing it.</p>
+</header>
+</div>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>The four ways in</h2>
+<p class="lede">Pick the one that fits, or use all of them. They reach the same records under the same permissions.</p>
+</div>
+<dl class="spec-list">
+<li><dt>The REST API</dt><dd>Every module exposes its operations over HTTP with JSON in and JSON out. A machine readable specification is published, so a client can be generated rather than hand written, and an agent can discover the available operations without being told about them.<ul><li>Bearer authentication with scoped keys</li><li>A published specification describing every operation and its rules</li><li>Consistent conventions for filtering, pagination and errors</li><li>Credentials are never returned, including in responses that would otherwise echo them</li></ul></dd></li>
+<li><dt>The command line</dt><dd>One binary that talks to the same API and prints JSON, which means it pipes into another tool or straight into a script. It includes generic call and post commands, so a new endpoint is usable before a typed wrapper exists.<ul><li>Around forty commands covering the whole platform</li><li>Every command outputs JSON</li><li>A generic call and post for anything not yet wrapped</li><li>Configured with two environment variables</li></ul></dd></li>
+<li><dt>The agent protocol server</dt><dd>A server that presents the platform to an agent client as a set of callable tools over a standard protocol. It runs as a local process the client launches, holds no state of its own, and authenticates with the same scoped key.<ul><li>Point any compatible agent client at it with two settings</li><li>Each tool maps to an API operation with typed arguments and a description</li><li>Permissions come from the key, so the tool list is the permission list</li></ul></dd></li>
+<li><dt>Webhooks and callbacks</dt><dd>The platform receives events from carriers and providers, verifies them, and acts on them. Outbound notification for your own integrations follows the same model, so an external system can be told when work changes rather than polling for it.</dd></li>
+</dl>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>A request, and what comes back</h2>
+<p class="lede">Authenticate with a scoped key and ask for identity. Everything else follows the same shape.</p>
+</div>
+<pre class="code" id="code-api"><code>curl -H &quot;Authorization: Bearer $ALPHAFLUX_API_KEY&quot; \
+  https://alphaflux.net/api/me
+
+{
+  &quot;email&quot;: &quot;you@example.com&quot;,
+  &quot;roles&quot;: [&quot;owner&quot;],
+  &quot;tenants&quot;: [
+    {
+      &quot;name&quot;: &quot;Northside Services&quot;,
+      &quot;role&quot;: &quot;owner&quot;,
+      &quot;plan&quot;: &quot;growth&quot;,
+      &quot;modules&quot;: [&quot;phone&quot;, &quot;field&quot;, &quot;crm&quot;, &quot;inventory&quot;, &quot;billing&quot;, &quot;email&quot;]
+    }
+  ]
+}</code></pre>
+<div style="margin-block-start:var(--space-4)"><button class="btn btn-secondary btn-sm" type="button" data-copy="code-api">Copy</button> <a class="link-more" href="/modules">See the module list<svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-arrow"></use></svg></a></div>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>The same thing from the command line</h2>
+<p class="lede">JSON out, so it composes. The last two commands reach any endpoint, including ones that do not have a typed command yet.</p>
+</div>
+<pre class="code" id="code-cli"><code>export ALPHAFLUX_API_KEY=afx_...
+export ALPHAFLUX_BASE=https://alphaflux.net
+
+alphaflux me
+alphaflux field jobs add --customer &quot;Acme LLC&quot; --service &quot;Treatment&quot; --date 2026-10-02
+alphaflux field status --id fs_job:abc123 --status done
+alphaflux phone text --to +15095551234 --body &quot;On the way&quot;
+alphaflux billing run
+alphaflux key create --label dispatch-agent --scopes &quot;field:write,phone:read&quot;
+
+alphaflux call api/dashboard
+alphaflux post api/notes --json &#39;{&quot;account&quot;:&quot;fieldroutes:10000&quot;,&quot;body&quot;:&quot;Called back, no answer&quot;}&#39;</code></pre>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>How keys and scopes work</h2>
+<p class="lede">An integration is a credential with a job to do. Nothing about the design assumes a human holds it.</p>
+</div>
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg></span>
+<h3>Scoped read and write</h3>
+<p>Access is granted per module, so an integration that books work does not need the billing module and does not get it.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-lock"></use></svg></span>
+<h3>Hashed and shown once</h3>
+<p>A key is displayed at the moment it is created and stored only as a hash. Losing one means issuing a new one, not recovering the old one.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg></span>
+<h3>Inherits its owner</h3>
+<p>A key carries exactly the permissions and companies of the account that created it, and cannot reach past them.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-plug"></use></svg></span>
+<h3>Revocable immediately</h3>
+<p>Disable a key and every request using it stops. Nothing else on the account is disturbed.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clock"></use></svg></span>
+<h3>Optional expiry</h3>
+<p>A key can be issued with an expiry date for temporary or contractor access.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-note"></use></svg></span>
+<h3>Every use is recorded</h3>
+<p>Actions are written to the audit trail against the account that owns the key, so a key is never anonymous.</p>
+</li>
+</ul>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>Why the platform was built this way</h2>
+</div>
+<div class="prose stack-lg">
+<p>Most business software treats its API as a concession. It exists, it lags the interface, and some things are simply not exposed. That is no longer a defensible position now that a meaningful share of work is done by software talking to software.</p>
+<p>The rule here is the opposite. A capability is designed as an interface first and then wrapped in a screen. The screen is a client. The command line is a client. An agent is a client. If something is missing from one of them, it is a bug rather than a decision.</p>
+<p>It also future proofs the work. When an operation is available over a documented interface with a machine readable specification, the next tool that needs it does not require anyone&#39;s permission or a new integration project. It reads the specification and does the work.</p>
+<p>And it means the audit trail is complete. An agent, a script, a scheduled job and a person all arrive through the same door, so every change is attributable to something identifiable rather than to root.</p>
+</div>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>What each plan includes</h2>
+</div>
+<div class="table-scroll" role="region" aria-label="What each plan includes, scrolls horizontally" tabindex="0"><table class="data">
+<caption></caption>
+<thead><tr><th scope="col"></th><th scope="col">Free and Starter</th><th scope="col">Growth</th><th scope="col">Scale and above</th><th scope="col">White label</th></tr></thead>
+<tbody>
+<tr><th scope="row">Console access</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">REST API</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Published API specification</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Command line</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Agent protocol server</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Scoped API keys</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Webhooks</th><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Your own API surface for your customers</th><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td></tr>
+</tbody></table></div>
+</div></section>
+<section class="section" id="faq">
+<div class="wrap"><div class="split">
+<div><h2>Questions people ask before signing up</h2></div>
+<div class="faq">
+<details><summary>Is there a sandbox?</summary><div class="answer"><p>Yes. A test company can be created alongside the real one with its own records and its own keys, so an integration can be built and broken without touching live data.</p></div></details>
+<details><summary>Are there rate limits?</summary><div class="answer"><p>Requests are rate limited per key to protect the platform, and the limit is generous enough that a normal integration never meets it. The response headers tell you where you are against the limit rather than leaving you to discover it by being refused.</p></div></details>
+<details><summary>What happens if an integration breaks something?</summary><div class="answer"><p>Everything it did is attributed to its key and visible in the audit trail, and the key can be disabled immediately. Financial records are voided rather than deleted and merges are reversible, so a bad batch can be walked back.</p></div></details>
+<details><summary>Can I use an agent client that is not yours?</summary><div class="answer"><p>Yes. The agent server speaks a standard protocol, so any compatible client can use it. There is nothing proprietary about the connection, and the key is the only thing that decides what the agent can reach.</p></div></details>
+<details><summary>Can I build my own product on top of this?</summary><div class="answer"><p>That is what white label is for. It gives you the platform under your own brand with resale rights, and the same interfaces to build against.</p></div></details>
+</div>
+</div></div></section>
+</main>
+<section class="band"><div class="wrap"><div class="split">
+<div class="stack-lg">
+<h2>Start on the free plan</h2>
+<p>Twenty customers, one location, every core module, free permanently. Move up when the work outgrows it.</p>
+</div>
+<div class="btn-row" style="align-self:center">
+<a class="btn btn-primary btn-lg" href="/login">Create a free account</a>
+<a class="btn btn-secondary btn-lg" href="/pricing">See what each plan includes</a>
+</div>
+</div></div></section>
+<footer class="footer"><div class="wrap">
+<div class="footer-cols">
+<div><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><p class="small muted" style="margin-block-start:var(--space-4);max-inline-size:34ch">One platform for the phone, the field, the money and the marketing, driven by you or by your agents.</p></div>
+<div><h2>Platform</h2><ul>
+<li><a href="/">Overview</a></li>
+<li><a href="/platform">How it works</a></li>
+<li><a href="/ai-agents">AI agents</a></li>
+<li><a href="/modules">All modules</a></li>
+<li><a href="/security">Security</a></li>
+<li><a href="/white-label">White label</a></li>
+</ul></div>
+<div><h2>Modules</h2><ul>
+<li><a href="/phone-and-messaging">Phone and messaging</a></li>
+<li><a href="/field-operations">Field operations</a></li>
+<li><a href="/fleet">Fleet and dispatch</a></li>
+<li><a href="/scheduling">Scheduling and agreements</a></li>
+<li><a href="/crm">CRM and sales</a></li>
+<li><a href="/inventory">Inventory and assets</a></li>
+<li><a href="/billing">Billing and payments</a></li>
+<li><a href="/email-marketing">Email marketing</a></li>
+<li><a href="/marketing">Marketing and growth</a></li>
+<li><a href="/team">Team and collaboration</a></li>
+<li><a href="/analytics">Reports and analytics</a></li>
+</ul></div>
+<div><h2>Company</h2><ul>
+<li><a href="/pricing">Pricing</a></li>
+<li><a href="/industries">Industries</a></li>
+<li><a href="/programs">Community programs</a></li>
+<li><a href="/developers">Developers</a></li>
+<li><a href="/sitemap">Site map</a></li>
+</ul></div>
+</div>
+<div class="footer-note">
+<span>AlphaFlux. Built and hosted by the companies that use it.</span>
+<span><a href="/sitemap">Site map</a> and <a href="/llms.txt">llms.txt</a> for machines.</span>
+</div>
+</div></footer>
+</div>
+</div>
+<div class="drawer" data-drawer data-open="false" aria-hidden="true" role="dialog" aria-label="Site sections">
+<div class="drawer-scrim" data-drawer-scrim></div>
+<div class="drawer-panel">
+<div class="drawer-head"><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><button class="nav-toggle" type="button" data-drawer-close aria-label="Close menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-close"></use></svg></button></div>
+<div class="rail-group"><h2 class="rail-group-title">Platform</h2><ul class="rail-list">
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
+<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
+<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
+<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
+</ul></div>
+<div class="rail-group"><h2 class="rail-group-title">Modules</h2><ul class="rail-list">
+<li><a class="rail-link" href="/phone-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
+<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
+<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
+<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
+<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
+<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
+<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
+<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
+<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
+<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
+<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
+</ul></div>
+<div class="rail-group"><h2 class="rail-group-title">Company</h2><ul class="rail-list">
+<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
+<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
+<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
+<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
+<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
+</ul></div>
+</div>
+</div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

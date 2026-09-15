@@ -1,0 +1,183 @@
+{
+  "slug": "industries",
+  "nav": "Industries",
+  "group": "Company",
+  "crumb": "Industries",
+  "title": "Industries AlphaFlux is built for",
+  "desc": "Pest control, plumbing, HVAC, roofing, cleaning, landscaping, security patrol, solar and mobile units, logistics, construction, manufacturing and nonprofits.",
+  "h1": "Built for anyone whose work happens at somebody else's address",
+  "standfirst": "If a truck, a van or a technician goes somewhere, does the work and needs to prove it happened, this platform fits. The same records serve a one van pest control route and a fleet of mobile units scattered across three states.",
+  "chips": ["Field service", "Fleet and logistics", "Industrial and nonprofit"],
+  "sections": [
+    {
+      "kind": "list",
+      "title": "Where it fits, and what the fit looks like",
+      "lede": "These are not industry templates with different colours. They are the same modules, arranged around the way each business actually runs.",
+      "items": [
+        {
+          "title": "Pest control",
+          "text": "Recurring treatment agreements with a genuine frequency model, service areas and territory rules, chemical usage recorded against the property, technician stock on the truck, and an AI receptionist that can tell an emergency sting call from a routine quote request.",
+          "items": [
+            "Quarterly, monthly and seasonal agreements that generate their own visits",
+            "Chemical sign in and sign out with per property application records",
+            "Do not service lists, territory rules and re-service tracking",
+            "State and federal reporting on applications, available on demand"
+          ]
+        },
+        {
+          "title": "Plumbing, HVAC and electrical",
+          "text": "Emergency work arriving at unpredictable hours, capacity that is genuinely limited by the number of vans, and invoices that need parts, labour and a signature on them before the van leaves.",
+          "items": [
+            "After hours call handling that routes an emergency to a person immediately",
+            "Capacity rules that stop a day being oversold by a dispatcher in a hurry",
+            "Parts drawn from the technician's own stock as the job closes",
+            "Proof of work captured before the technician drives away"
+          ]
+        },
+        {
+          "title": "Roofing, solar and exterior trades",
+          "text": "Long jobs, permits and inspections, and the same customer coming back after a storm. Work that has to survive a weather delay without losing its history.",
+          "items": [
+            "Jobs that span days with their own history and status flow",
+            "Photo evidence at each stage, attached to the job rather than texted to an office phone",
+            "Storm and weather data on the map for planning and for documentation",
+            "Maintenance and warranty tracking on installed equipment"
+          ]
+        },
+        {
+          "title": "Mobile and self contained units",
+          "text": "Operations built around units that move: mobile workshops, solar powered field units, trailers, containers and remote stations deployed wherever the work is. The unit and its contents move together and both need a position and a custodian.",
+          "items": [
+            "A unit tracked as both an asset and a location, with its own stock position",
+            "Custody of whatever is inside it and who is responsible for it",
+            "Maintenance schedules and service history by unit",
+            "A consolidated view across every unit, whichever site it is sitting on"
+          ]
+        },
+        {
+          "title": "Cleaning and janitorial",
+          "text": "Recurring contracts, multi site accounts, crews rather than individual technicians, and a client who wants proof that the work happened at each site.",
+          "items": [
+            "Multi site accounts with checklists and photo proof per site",
+            "Crew based scheduling rather than one technician per job",
+            "Client facing completion reports generated from the work itself",
+            "Consumable stock tracked across every site and every vehicle"
+          ]
+        },
+        {
+          "title": "Security patrol",
+          "text": "Rounds that have to be provable, checkpoints that can be scanned, and a client who wants the log rather than a summary of it.",
+          "items": [
+            "Checkpoint scanning from a phone with a location and a time on each scan",
+            "Rounds logs per site, per officer and per shift",
+            "Incident reporting that attaches to the site and the shift",
+            "Client access to the record without a report being assembled by hand"
+          ]
+        },
+        {
+          "title": "Landscaping and grounds",
+          "text": "Route dense work where the drive between sites is the cost. Density and sequencing are the whole margin.",
+          "items": [
+            "Dense route sequencing across many short stops",
+            "Seasonal agreements and service intervals",
+            "Distance and utilisation reporting per crew and per day",
+            "Equipment and consumable tracking across vehicles"
+          ]
+        },
+        {
+          "title": "Logistics, delivery and haulage",
+          "text": "Orders rather than jobs, a board rather than a list, and customers who want to watch a vehicle approach.",
+          "items": [
+            "Order board with custom stages per order type",
+            "Live map of orders, vehicles and drivers with arrival estimates",
+            "Multi stop manifests for a single run",
+            "Customer tracking links that show one order and nothing else"
+          ]
+        },
+        {
+          "title": "Construction and general contracting",
+          "text": "Projects, change orders, subcontractors and a schedule that has to survive a supplier being late. The same customer, many jobs, and money that has to be tracked per job rather than per month.",
+          "items": [
+            "Job costing with line items, change orders and retention",
+            "Subcontractor and supplier records with their own paperwork",
+            "Progress photos and sign offs per stage",
+            "Inventory across sites, yards and lock ups"
+          ]
+        },
+        {
+          "title": "Industrial, additive and aerospace",
+          "text": "Some of the same problems at a different scale: assets with service lives and certifications, tooling and materials that must be traceable, and documentation that has to survive an audit years later.",
+          "items": [
+            "Asset registers with service intervals, calibration and warranty",
+            "Material and component traceability through sign in and sign out",
+            "Work orders and maintenance history on every machine",
+            "An audit trail on every record change, readable and exportable"
+          ]
+        },
+        {
+          "title": "Nonprofits, faith organizations and community groups",
+          "text": "Volunteers rather than employees, service users rather than customers, and a budget that has to be spent on the mission. The free organization plan is built for exactly this.",
+          "items": [
+            "A free plan available to any registered nonprofit or faith organization",
+            "Volunteer scheduling and shift coverage",
+            "Service logs, check ins and follow ups on the people served",
+            "Grant and programme reporting from the records the work produced"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "split",
+      "title": "Why one platform fits all of these",
+      "lede": "The industries look different from the outside and are almost identical from the inside. Somebody needs something done at a place, by a person, on a date, for a price, and then needs to prove it and get paid.",
+      "body": [
+        "That is the same record in every case. A pest control visit, a plumbing call out, a delivery, a patrol round and a cleaning job are all a customer, a place, a person, a time, a price, an outcome and a proof. Once that is one object, the industry differences become configuration rather than different software.",
+        "Which is why the same platform can run a two person operation on the free plan and a fleet of mobile units with several hundred sites. What changes is the number of locations, the modules switched on, and the stages the work passes through, all of which are settings.",
+        "It also means a company that grows into a different line of work does not have to buy a second system. The second line of business is another module and another order type, sharing the same customers."
+      ],
+      "items": [
+        { "icon": "i-layers", "title": "Order types", "text": "Define your own job or order types with their own stages, required fields and proof rules." },
+        { "icon": "i-users", "title": "One customer, many services", "text": "A customer who buys recurring treatment and a one off repair is one account with two kinds of work." },
+        { "icon": "i-box", "title": "Inventory that fits the trade", "text": "Consumables for cleaning, chemicals and regulated stock for pest control, parts and materials for trade work, tools and tooling everywhere." },
+        { "icon": "i-receipt", "title": "Billing that matches the trade", "text": "Recurring agreements for contract work, job costing for projects, per stop pricing for route work, all in the same ledger." }
+      ],
+      "more": { "title": "See the modules", "href": "/modules" }
+    },
+    {
+      "kind": "statement",
+      "text": "The industry is not the differentiator. Whether the truck was where it said it was is."
+    },
+    {
+      "kind": "features",
+      "title": "What every one of them gets",
+      "items": [
+        { "icon": "i-box", "title": "Free inventory, always", "text": "Stock and custody on every plan including the free one, because a one van operation needs to know what is in the van as much as a depot does." },
+        { "icon": "i-phone", "title": "A phone that answers", "text": "Missed call text back on every plan, and an AI receptionist that books real work once the business is big enough to need one." },
+        { "icon": "i-spark", "title": "Agents that can act", "text": "Scoped access so software can book, chase, report and update records without a password being shared." },
+        { "icon": "i-shield", "title": "A record that holds up", "text": "Every change attributed, every financial record preserved, every proof attached to the job it belongs to." }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do you have a template for my industry?",
+      "a": "There are starting configurations for the common trades that set sensible order types, stages and required fields, so a new account does not begin with a blank slate. Beyond that, the configuration is yours to change."
+    },
+    {
+      "q": "My business does not fit any of these.",
+      "a": "Then test it against the underlying shape: does somebody need something done at a place, by a person, on a date, for a price, and then need to prove it and get paid. If that describes the work, the platform fits, whatever the trade is called."
+    },
+    {
+      "q": "Can I run two different businesses on one account?",
+      "a": "Yes, as two companies under one operator, each with its own records and its own modules, or as one company with two order types. Which is better depends on whether the two businesses share customers and money."
+    },
+    {
+      "q": "Does it work outside the United States?",
+      "a": "Addressing, currency, time zone and phone handling are configurable per company, so it works in other English speaking markets and in any market where the carrier side is available."
+    },
+    {
+      "q": "Is there an industry the platform genuinely does not suit?",
+      "a": "Businesses where the work has no location and no scheduled appointment, such as pure software or retail over a counter. Those are better served by something else, and it is better to say so than to sell around it."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "slug": "modules",
+  "nav": "All modules",
+  "group": "Platform",
+  "crumb": "All modules",
+  "title": "Every AlphaFlux module and what it does",
+  "desc": "The full module registry: phone, field operations, fleet, scheduling, CRM, inventory, billing, email marketing, marketing, team and analytics, with the plan that carries each.",
+  "h1": "Every module in the registry",
+  "standfirst": "Eleven modules, one customer record, one login. Switch on what a company needs, leave the rest off. Nothing here requires a migration to adopt later.",
+  "chips": ["Toggleable per company", "Add one at a time", "No migration to add one"],
+  "sections": [
+    {
+      "kind": "modules",
+      "title": "The modules",
+      "lede": "Each one works on its own and gets better when the others are on, because they all read and write the same records."
+    },
+    {
+      "kind": "table",
+      "title": "Which plan carries which module",
+      "lede": "Bundles set the floor. Any module can also be added to any plan on its own.",
+      "cols": ["Module", "Free", "Starter", "Growth", "Scale and above"],
+      "rows": [
+        ["Phone and messaging", "1 number, 1 user", "2 numbers, 3 users", "5 numbers, 10 users", "25 numbers, 25 users"],
+        ["Field operations", "Basic jobs", "Jobs and scheduling", "Dispatch, routing and proof", "Full operations, multi district"],
+        ["Fleet and dispatch", "no", "no", "Board and tracking links", "Live map, geofences, ETAs"],
+        ["Scheduling and agreements", "no", "yes", "yes", "yes"],
+        ["CRM and sales", "yes", "yes", "yes", "yes"],
+        ["Inventory and assets", "yes", "yes", "yes", "yes"],
+        ["Billing and payments", "Invoices only", "yes", "yes", "yes"],
+        ["Email marketing", "100 per month", "2,000 per month", "10,000 per month", "50,000 per month"],
+        ["Marketing and growth", "no", "Basic", "yes", "yes"],
+        ["Team and collaboration", "Single user", "3 users", "10 users", "25 users"],
+        ["Reports and analytics", "Basic", "yes", "yes", "yes"],
+        ["API, CLI and agent access", "no", "no", "yes", "yes"]
+      ],
+      "note": "White label carries every module with no limits and no AlphaFlux branding."
+    },
+    {
+      "kind": "split",
+      "title": "Turning a module on is a configuration change",
+      "lede": "There is no separate database per feature and no import step between them. A module is a view onto records the platform was already keeping.",
+      "body": [
+        "That is why a company can start with the phone and the schedule, add dispatch three months later, and add fleet after buying its first truck, without any of it being a project.",
+        "It is also why reports stay honest as modules appear. The numbers were always being recorded, so history does not start over when a new module is switched on."
+      ],
+      "items": [
+        { "icon": "i-layers", "title": "Registry driven", "text": "Screens, permissions and limits all come from the module registry, so the interface matches what a company actually has." },
+        { "icon": "i-lock", "title": "Permissions do not grant themselves", "text": "Turning on a module makes new permissions available. Someone still has to assign them, so nobody gains access by accident." },
+        { "icon": "i-database", "title": "History is continuous", "text": "A module that starts today reads work that was recorded before it existed. Nothing has to be backfilled." },
+        { "icon": "i-tag", "title": "Repackageable", "text": "Because the catalogue is data, an operator running the platform under their own brand can define their own bundles and pricing." }
+      ],
+      "more": { "title": "See the platform architecture", "href": "/platform" }
+    },
+    {
+      "kind": "features",
+      "title": "Modules that pair well",
+      "lede": "Some combinations are the reason the platform exists. These are the ones companies turn on first.",
+      "items": [
+        { "icon": "i-phone", "title": "Phone plus scheduling", "text": "The agent answers, checks real capacity and books, so the schedule fills itself instead of waiting for office hours." },
+        { "icon": "i-clipboard", "title": "Field operations plus inventory", "text": "A job draws down the technician's stock, and a low part is visible before the next job needs it rather than after." },
+        { "icon": "i-truck", "title": "Fleet plus reports", "text": "Distance, on time percentage and jobs per technician come out of the same records the dispatcher is already using." },
+        { "icon": "i-receipt", "title": "Billing plus agreements", "text": "Recurring visits and recurring revenue are one object, so the invoiced amount and the booked work cannot drift apart." },
+        { "icon": "i-mail", "title": "Email plus CRM", "text": "A campaign targets a real pipeline stage, and a reply lands on the account timeline rather than in a separate list." },
+        { "icon": "i-spark", "title": "Anything plus agent access", "text": "Hand an agent a scoped key and it can work across modules under one set of permissions and one audit trail." }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can I buy a module without the bundle around it?",
+      "a": "Yes. Any module can be added to any plan as an add on, priced on its own. That is usually how a company moves up: it adds the one thing that is currently costing it money rather than changing plan."
+    },
+    {
+      "q": "What happens if I switch a module off?",
+      "a": "It stops appearing and its operations stop being available. The records it produced are not deleted, and switching it back on restores access to all of it."
+    },
+    {
+      "q": "Is there a module for something you have not built yet?",
+      "a": "The registry is open. New modules follow the same contract as the existing ones, so adding one does not disturb the others, and the interface picks it up without a redesign."
+    },
+    {
+      "q": "Do the modules share one database?",
+      "a": "They share one data model, which is the point. Records are scoped to the company that owns them rather than to the module that created them, so the customer your phone module logged is the customer the dispatch board routes to."
+    }
+  ]
+}

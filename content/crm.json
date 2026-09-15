@@ -1,0 +1,110 @@
+{
+  "slug": "crm",
+  "nav": "CRM and sales",
+  "group": "Modules",
+  "crumb": "CRM and sales",
+  "title": "CRM built around the service business",
+  "desc": "Every contact, every stage, one timeline per account, account teams and territories, and sales attribution with commission splits that add up exactly.",
+  "h1": "The customer record the phone system and the truck both point at",
+  "standfirst": "A CRM that is not a separate list of people. It is the same account the call came into, the job was booked against, the invoice was raised for and the campaign was sent to.",
+  "chips": ["One record", "Teams and territories", "Commission to the cent"],
+  "sections": [
+    {
+      "kind": "features",
+      "title": "What the customer record holds",
+      "lede": "Everything about one account in one place, because the alternative is four places that disagree.",
+      "items": [
+        { "icon": "i-users", "title": "Contacts and accounts", "text": "People and the companies or properties they belong to, with multiple sites under one account where that is how the relationship works." },
+        { "icon": "i-layers", "title": "A pipeline that reflects your sales", "text": "Lead, contacted, quoted, won or lost, with the stages and values that make sense for how you actually sell." },
+        { "icon": "i-note", "title": "One timeline per account", "text": "Calls, texts, emails, notes, jobs, invoices, payments and changes in a single chronological feed." },
+        { "icon": "i-chat", "title": "Notes with mentions", "text": "Write a note on an account and mention a colleague or another account. The mention becomes a notification, not a message that gets lost." },
+        { "icon": "i-tag", "title": "Tags that are a system", "text": "A shared tag vocabulary with colour and category, applied in bulk, so accounts can be filtered the same way by everyone." },
+        { "icon": "i-search", "title": "Duplicates found and merged", "text": "The platform proposes merges when a phone number, an email or a name matches, shows the evidence that linked them, and merges only when a person approves." }
+      ]
+    },
+    {
+      "kind": "list",
+      "title": "Teams, territories and who can see what",
+      "lede": "Selling and servicing a large account is rarely one person's job. The record supports the whole team without everyone seeing everything.",
+      "items": [
+        {
+          "title": "Account teams",
+          "text": "Attach the people who work on an account with a role on that account: who sells it, who services it, who handles the billing, who is the escalation point. Each one is named on the record rather than inferred from who happened to touch it last."
+        },
+        {
+          "title": "Territories and assignment",
+          "text": "Define territories by area, postcode or service line and let an account be assigned automatically when it arrives, so a new lead lands with the right person without a manual sorting step."
+        },
+        {
+          "title": "Roles that scope access",
+          "text": "A role is a set of permissions. Scoped to a territory or a district, it means a salesperson sees their own patch and a manager sees all of it, and neither has to be maintained by hand."
+        },
+        {
+          "title": "Sharing on the account",
+          "text": "An account can be shared with specific people or a whole team, so covering for someone on leave does not mean sharing a login."
+        },
+        {
+          "title": "Activity that is attributable",
+          "text": "Every call, note, job and message records who did it, whether that was a person, an agent or an import, and when."
+        }
+      ]
+    },
+    {
+      "kind": "split",
+      "title": "Who sold it, and who gets paid for it",
+      "lede": "Three different people can be responsible for one sale, and collapsing them into a single owner column is how commission disputes start.",
+      "body": [
+        "AlphaFlux records three separate roles on an account. Who sold it, which is the person owed commission. Who services it, which is the technician or team who keeps it. And who booked it, which distinguishes a lead that came from a person from one that came from an agent or an import.",
+        "Splits are recorded in basis points and must total exactly one hundred percent before they can be saved. A split that does not add up is not a rounding problem to be tolerated, it is a commission error waiting to be discovered at the worst moment.",
+        "Attribution history is append-only. When ownership changes, the previous entry is superseded rather than overwritten, so a payout made in March can still be explained in September, and revenue an agent generated stays separable from revenue a person generated."
+      ],
+      "items": [
+        { "icon": "i-check", "title": "Splits that must total", "text": "The platform refuses a split that does not add to one hundred percent, in basis points, before it is stored." },
+        { "icon": "i-clock", "title": "History that is not overwritten", "text": "Ownership changes supersede the prior entry. Nothing is erased, so an old payout is always explicable." },
+        { "icon": "i-spark", "title": "Agent revenue, separated", "text": "Revenue booked by an agent is a distinct category, which is how you find out whether the automation is actually paying for itself." },
+        { "icon": "i-chart", "title": "Reports by source and by person", "text": "Who sold what, over what period, at what commission rate, from which lead source." }
+      ]
+    },
+    {
+      "kind": "statement",
+      "text": "If two systems know a customer, one of them is wrong and you will find out at the worst possible time."
+    },
+    {
+      "kind": "table",
+      "title": "CRM by plan",
+      "cols": ["", "Free", "Starter", "Growth", "Scale and above"],
+      "rows": [
+        ["Contacts and accounts", "20", "250", "1,000", "5,000 and above"],
+        ["Pipeline and stages", "yes", "yes", "yes", "yes"],
+        ["Account timeline", "yes", "yes", "yes", "yes"],
+        ["Tags", "Basic", "yes", "yes", "yes"],
+        ["Notes and mentions", "yes", "yes", "yes", "yes"],
+        ["Duplicate detection and merge", "no", "yes", "yes", "yes"],
+        ["Sales attribution and splits", "no", "yes", "yes", "yes"],
+        ["Teams and territories", "no", "no", "yes", "yes"]
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do I have to move my contacts in from somewhere else?",
+      "a": "You can import from a spreadsheet, or connect an existing field service account and read it live while you decide what to move. Many companies run both for a period, which is a deliberate option rather than a leap of faith."
+    },
+    {
+      "q": "What happens if two people create the same customer?",
+      "a": "The platform notices and proposes a merge, showing which signal linked the two records, whether that was a shared phone number, a shared email or the same name and address. Nothing merges automatically, and a merge can be reversed if it turns out to be wrong."
+    },
+    {
+      "q": "Can I see an account's whole history in one place?",
+      "a": "Yes. The account timeline mixes calls, texts, emails, notes, jobs, payments and agent activity in one chronological feed, with filtering so a support question can be answered without reading a year of unrelated activity."
+    },
+    {
+      "q": "How does commission work for a team sale?",
+      "a": "Splits are recorded per person in basis points and must total one hundred percent. Payouts are computed from those splits and snapshotted, so a rate change in the future does not silently rewrite what someone was owed in the past."
+    },
+    {
+      "q": "Does the CRM know about field work?",
+      "a": "It is the same record. A job booked by a technician or an agent appears on the account timeline, and a customer's job history is visible from the account without switching modules."
+    }
+  ]
+}

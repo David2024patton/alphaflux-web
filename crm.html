@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CRM built around the service business</title>
+<meta name="description" content="Every contact, every stage, one timeline per account, account teams and territories, and sales attribution with commission splits that add up exactly.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="canonical" href="https://alphaflux.net/crm">
+<meta property="og:site_name" content="AlphaFlux">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CRM built around the service business">
+<meta property="og:description" content="Every contact, every stage, one timeline per account, account teams and territories, and sales attribution with commission splits that add up exactly.">
+<meta property="og:url" content="https://alphaflux.net/crm">
+<meta property="og:image" content="https://alphaflux.net/assets/og/crm.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a1220" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plexmono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+(function(){try{var s=localStorage.getItem("af-theme");var d=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.setAttribute("data-theme",s||d);}catch(e){}})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://alphaflux.net/#org",
+      "@type": "Organization",
+      "description": "A self-hosted, modular operations platform for service businesses, driver accessible by AI agents.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://alphaflux.net/assets/apple-touch-icon.png"
+      },
+      "name": "AlphaFlux",
+      "url": "https://alphaflux.net/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/",
+          "name": "Overview",
+          "position": 1
+        },
+        {
+          "@type": "ListItem",
+          "name": "Modules",
+          "position": 2
+        },
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/crm",
+          "name": "CRM and sales",
+          "position": 3
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can import from a spreadsheet, or connect an existing field service account and read it live while you decide what to move. Many companies run both for a period, which is a deliberate option rather than a leap of faith."
+          },
+          "name": "Do I have to move my contacts in from somewhere else?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The platform notices and proposes a merge, showing which signal linked the two records, whether that was a shared phone number, a shared email or the same name and address. Nothing merges automatically, and a merge can be reversed if it turns out to be wrong."
+          },
+          "name": "What happens if two people create the same customer?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The account timeline mixes calls, texts, emails, notes, jobs, payments and agent activity in one chronological feed, with filtering so a support question can be answered without reading a year of unrelated activity."
+          },
+          "name": "Can I see an account's whole history in one place?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Splits are recorded per person in basis points and must total one hundred percent. Payouts are computed from those splits and snapshotted, so a rate change in the future does not silently rewrite what someone was owed in the past."
+          },
+          "name": "How does commission work for a team sale?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the same record. A job booked by a technician or an agent appears on the account timeline, and a customer's job history is visible from the account without switching modules."
+          },
+          "name": "Does the CRM know about field work?"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="shell">
+<aside class="rail" aria-label="Site sections">
+<div class="rail-inner">
+<a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a>
+<nav class="rail-nav" aria-label="All sections">
+<div class="rail-group">
+<h2 class="rail-group-title">Platform</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
+<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
+<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
+<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
+</ul>
+</div>
+<div class="rail-group">
+<h2 class="rail-group-title">Modules</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/phone-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
+<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
+<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
+<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
+<li><a class="rail-link" href="/crm" aria-current="page"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
+<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
+<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
+<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
+<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
+<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
+<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
+</ul>
+</div>
+<div class="rail-group">
+<h2 class="rail-group-title">Company</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
+<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
+<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
+<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
+<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
+</ul>
+</div>
+</nav>
+<div class="rail-foot">
+<a class="btn btn-primary" href="/login">Sign in</a>
+<a class="btn btn-secondary" href="/pricing">Start free</a>
+</div>
+</div>
+</aside>
+<div class="main">
+<header class="topbar">
+<button class="nav-toggle" type="button" data-drawer-open aria-expanded="false" aria-label="Open menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-menu"></use></svg></button>
+<a class="topbar-brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg></a>
+<nav class="crumbs" aria-label="Breadcrumb"><ol>
+<li><a href="/">Overview</a></li>
+<li><span class="sep" aria-hidden="true">/</span><span>Modules</span></li>
+<li><span class="sep" aria-hidden="true">/</span><span aria-current="page">CRM and sales</span></li>
+</ol></nav>
+<span class="topbar-spacer"></span>
+<div class="topbar-actions">
+<button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch colour theme"><svg class="i-sun" aria-hidden="true"><use href="/assets/icons.svg#i-sun"></use></svg><svg class="i-moon" aria-hidden="true"><use href="/assets/icons.svg#i-moon"></use></svg></button>
+<a class="btn btn-ghost btn-sm" href="/login">Sign in</a>
+<a class="btn btn-primary btn-sm" href="/pricing">Start free</a>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<header class="page-head">
+<div class="eyebrow-line">
+<span class="chip"><span class="chip-dot"></span>One record</span>
+<span class="chip"><span class="chip-dot"></span>Teams and territories</span>
+<span class="chip"><span class="chip-dot"></span>Commission to the cent</span>
+</div>
+<h1>The customer record the phone system and the truck both point at</h1>
+<p class="standfirst">A CRM that is not a separate list of people. It is the same account the call came into, the job was booked against, the invoice was raised for and the campaign was sent to.</p>
+</header>
+</div>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>What the customer record holds</h2>
+<p class="lede">Everything about one account in one place, because the alternative is four places that disagree.</p>
+</div>
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg></span>
+<h3>Contacts and accounts</h3>
+<p>People and the companies or properties they belong to, with multiple sites under one account where that is how the relationship works.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg></span>
+<h3>A pipeline that reflects your sales</h3>
+<p>Lead, contacted, quoted, won or lost, with the stages and values that make sense for how you actually sell.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-note"></use></svg></span>
+<h3>One timeline per account</h3>
+<p>Calls, texts, emails, notes, jobs, invoices, payments and changes in a single chronological feed.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg></span>
+<h3>Notes with mentions</h3>
+<p>Write a note on an account and mention a colleague or another account. The mention becomes a notification, not a message that gets lost.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg></span>
+<h3>Tags that are a system</h3>
+<p>A shared tag vocabulary with colour and category, applied in bulk, so accounts can be filtered the same way by everyone.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-search"></use></svg></span>
+<h3>Duplicates found and merged</h3>
+<p>The platform proposes merges when a phone number, an email or a name matches, shows the evidence that linked them, and merges only when a person approves.</p>
+</li>
+</ul>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>Teams, territories and who can see what</h2>
+<p class="lede">Selling and servicing a large account is rarely one person&#39;s job. The record supports the whole team without everyone seeing everything.</p>
+</div>
+<dl class="spec-list">
+<li><dt>Account teams</dt><dd>Attach the people who work on an account with a role on that account: who sells it, who services it, who handles the billing, who is the escalation point. Each one is named on the record rather than inferred from who happened to touch it last.</dd></li>
+<li><dt>Territories and assignment</dt><dd>Define territories by area, postcode or service line and let an account be assigned automatically when it arrives, so a new lead lands with the right person without a manual sorting step.</dd></li>
+<li><dt>Roles that scope access</dt><dd>A role is a set of permissions. Scoped to a territory or a district, it means a salesperson sees their own patch and a manager sees all of it, and neither has to be maintained by hand.</dd></li>
+<li><dt>Sharing on the account</dt><dd>An account can be shared with specific people or a whole team, so covering for someone on leave does not mean sharing a login.</dd></li>
+<li><dt>Activity that is attributable</dt><dd>Every call, note, job and message records who did it, whether that was a person, an agent or an import, and when.</dd></li>
+</dl>
+</div></section>
+<section class="section"><div class="wrap"><div class="split">
+<div class="stack-lg">
+<h2>Who sold it, and who gets paid for it</h2>
+<p class="standfirst">Three different people can be responsible for one sale, and collapsing them into a single owner column is how commission disputes start.</p>
+<div class="prose">
+<p>AlphaFlux records three separate roles on an account. Who sold it, which is the person owed commission. Who services it, which is the technician or team who keeps it. And who booked it, which distinguishes a lead that came from a person from one that came from an agent or an import.</p>
+<p>Splits are recorded in basis points and must total exactly one hundred percent before they can be saved. A split that does not add up is not a rounding problem to be tolerated, it is a commission error waiting to be discovered at the worst moment.</p>
+<p>Attribution history is append-only. When ownership changes, the previous entry is superseded rather than overwritten, so a payout made in March can still be explained in September, and revenue an agent generated stays separable from revenue a person generated.</p>
+</div>
+</div>
+<div class="stack-lg">
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-check"></use></svg></span>
+<h3>Splits that must total</h3>
+<p>The platform refuses a split that does not add to one hundred percent, in basis points, before it is stored.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clock"></use></svg></span>
+<h3>History that is not overwritten</h3>
+<p>Ownership changes supersede the prior entry. Nothing is erased, so an old payout is always explicable.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg></span>
+<h3>Agent revenue, separated</h3>
+<p>Revenue booked by an agent is a distinct category, which is how you find out whether the automation is actually paying for itself.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg></span>
+<h3>Reports by source and by person</h3>
+<p>Who sold what, over what period, at what commission rate, from which lead source.</p>
+</li>
+</ul>
+</div>
+</div></div></section>
+<section class="section"><div class="wrap">
+<div class="statement"><p>If two systems know a customer, one of them is wrong and you will find out at the worst possible time.</p></div>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>CRM by plan</h2>
+</div>
+<div class="table-scroll" role="region" aria-label="CRM by plan, scrolls horizontally" tabindex="0"><table class="data">
+<caption></caption>
+<thead><tr><th scope="col"></th><th scope="col">Free</th><th scope="col">Starter</th><th scope="col">Growth</th><th scope="col">Scale and above</th></tr></thead>
+<tbody>
+<tr><th scope="row">Contacts and accounts</th><td>20</td><td>250</td><td>1,000</td><td>5,000 and above</td></tr>
+<tr><th scope="row">Pipeline and stages</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Account timeline</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Tags</th><td>Basic</td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Notes and mentions</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Duplicate detection and merge</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Sales attribution and splits</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Teams and territories</th><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+</tbody></table></div>
+</div></section>
+<section class="section" id="faq">
+<div class="wrap"><div class="split">
+<div><h2>Questions people ask before signing up</h2></div>
+<div class="faq">
+<details><summary>Do I have to move my contacts in from somewhere else?</summary><div class="answer"><p>You can import from a spreadsheet, or connect an existing field service account and read it live while you decide what to move. Many companies run both for a period, which is a deliberate option rather than a leap of faith.</p></div></details>
+<details><summary>What happens if two people create the same customer?</summary><div class="answer"><p>The platform notices and proposes a merge, showing which signal linked the two records, whether that was a shared phone number, a shared email or the same name and address. Nothing merges automatically, and a merge can be reversed if it turns out to be wrong.</p></div></details>
+<details><summary>Can I see an account&#39;s whole history in one place?</summary><div class="answer"><p>Yes. The account timeline mixes calls, texts, emails, notes, jobs, payments and agent activity in one chronological feed, with filtering so a support question can be answered without reading a year of unrelated activity.</p></div></details>
+<details><summary>How does commission work for a team sale?</summary><div class="answer"><p>Splits are recorded per person in basis points and must total one hundred percent. Payouts are computed from those splits and snapshotted, so a rate change in the future does not silently rewrite what someone was owed in the past.</p></div></details>
+<details><summary>Does the CRM know about field work?</summary><div class="answer"><p>It is the same record. A job booked by a technician or an agent appears on the account timeline, and a customer&#39;s job history is visible from the account without switching modules.</p></div></details>
+</div>
+</div></div></section>
+</main>
+<section class="band"><div class="wrap"><div class="split">
+<div class="stack-lg">
+<h2>Start on the free plan</h2>
+<p>Twenty customers, one location, every core module, free permanently. Move up when the work outgrows it.</p>
+</div>
+<div class="btn-row" style="align-self:center">
+<a class="btn btn-primary btn-lg" href="/login">Create a free account</a>
+<a class="btn btn-secondary btn-lg" href="/pricing">See what each plan includes</a>
+</div>
+</div></div></section>
+<footer class="footer"><div class="wrap">
+<div class="footer-cols">
+<div><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><p class="small muted" style="margin-block-start:var(--space-4);max-inline-size:34ch">One platform for the phone, the field, the money and the marketing, driven by you or by your agents.</p></div>
+<div><h2>Platform</h2><ul>
+<li><a href="/">Overview</a></li>
+<li><a href="/platform">How it works</a></li>
+<li><a href="/ai-agents">AI agents</a></li>
+<li><a href="/modules">All modules</a></li>
+<li><a href="/security">Security</a></li>
+<li><a href="/white-label">White label</a></li>
+</ul></div>
+<div><h2>Modules</h2><ul>
+<li><a href="/phone-and-messaging">Phone and messaging</a></li>
+<li><a href="/field-operations">Field operations</a></li>
+<li><a href="/fleet">Fleet and dispatch</a></li>
+<li><a href="/scheduling">Scheduling and agreements</a></li>
+<li><a href="/crm">CRM and sales</a></li>
+<li><a href="/inventory">Inventory and assets</a></li>
+<li><a href="/billing">Billing and payments</a></li>
+<li><a href="/email-marketing">Email marketing</a></li>
+<li><a href="/marketing">Marketing and growth</a></li>
+<li><a href="/team">Team and collaboration</a></li>
+<li><a href="/analytics">Reports and analytics</a></li>
+</ul></div>
+<div><h2>Company</h2><ul>
+<li><a href="/pricing">Pricing</a></li>
+<li><a href="/industries">Industries</a></li>
+<li><a href="/programs">Community programs</a></li>
+<li><a href="/developers">Developers</a></li>
+<li><a href="/sitemap">Site map</a></li>
+</ul></div>
+</div>
+<div class="footer-note">
+<span>AlphaFlux. Built and hosted by the companies that use it.</span>
+<span><a href="/sitemap">Site map</a> and <a href="/llms.txt">llms.txt</a> for machines.</span>
+</div>
+</div></footer>
+</div>
+</div>
+<div class="drawer" data-drawer data-open="false" aria-hidden="true" role="dialog" aria-label="Site sections">
+<div class="drawer-scrim" data-drawer-scrim></div>
+<div class="drawer-panel">
+<div class="drawer-head"><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><button class="nav-toggle" type="button" data-drawer-close aria-label="Close menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-close"></use></svg></button></div>
+<div class="rail-group"><h2 class="rail-group-title">Platform</h2><ul class="rail-list">
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
+<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
+<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
+<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
+</ul></div>
+<div class="rail-group"><h2 class="rail-group-title">Modules</h2><ul class="rail-list">
+<li><a class="rail-link" href="/phone-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
+<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
+<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
+<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
+<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
+<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
+<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
+<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
+<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
+<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
+<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
+</ul></div>
+<div class="rail-group"><h2 class="rail-group-title">Company</h2><ul class="rail-list">
+<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
+<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
+<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
+<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
+<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
+</ul></div>
+</div>
+</div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

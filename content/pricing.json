@@ -1,0 +1,269 @@
+{
+  "slug": "pricing",
+  "nav": "Pricing",
+  "group": "Company",
+  "crumb": "Pricing",
+  "title": "Pricing: free forever, and what lifts it",
+  "desc": "Start free and permanently. Twenty customers, one location and every core module at no cost. Paid plans lift the limits, and white label hands you the whole platform.",
+  "h1": "Free to start, and free to stay",
+  "standfirst": "The free plan is a real plan with no expiry and no card. It is built for one person running a business out of a truck, and it stops being enough at roughly the moment the business starts working.",
+  "chips": ["No card for free", "Limits published", "Move up without migrating"],
+  "plans": [
+    {
+      "name": "Free",
+      "badge": "Free forever",
+      "price": "$0",
+      "per": " forever",
+      "for": "A solo operator finding their first customers.",
+      "limits": [
+        { "key": "Customers", "val": "20" },
+        { "key": "Locations", "val": "1" },
+        { "key": "Users", "val": "1" },
+        { "key": "Marketing emails", "val": "100 / month" },
+        { "key": "Phone numbers", "val": "1" }
+      ],
+      "features": [
+        "CRM, contacts and the account timeline",
+        "Inventory, stock movements and sign in and out",
+        "Job booking and the mobile technician view",
+        "Invoicing, payments and overdue tracking",
+        "Voicemail with transcript and missed call text back",
+        "One time code sign in with no password",
+        "Free inventory and free email allowance"
+      ],
+      "cta": "Create a free account",
+      "href": "/login"
+    },
+    {
+      "name": "Starter",
+      "price": "$49",
+      "per": " per month",
+      "for": "A small crew that has outgrown doing everything on one phone.",
+      "limits": [
+        { "key": "Customers", "val": "250" },
+        { "key": "Locations", "val": "2" },
+        { "key": "Users", "val": "3" },
+        { "key": "Marketing emails", "val": "2,000 / month" },
+        { "key": "Phone numbers", "val": "2" }
+      ],
+      "features": [
+        "Everything on Free",
+        "Recurring agreements that generate their own visits",
+        "Capacity rules so a day cannot be oversold",
+        "Invoice raised from the completed job",
+        "Duplicate detection and safe merging",
+        "Email marketing from your own domain",
+        "Commission and sales attribution"
+      ],
+      "cta": "Start with Starter",
+      "href": "/login"
+    },
+    {
+      "name": "Growth",
+      "badge": "Most companies start here",
+      "featured": true,
+      "price": "$149",
+      "per": " per month",
+      "for": "A growing business running several crews and a real schedule.",
+      "limits": [
+        { "key": "Customers", "val": "1,000" },
+        { "key": "Locations", "val": "5" },
+        { "key": "Users", "val": "10" },
+        { "key": "Marketing emails", "val": "10,000 / month" },
+        { "key": "Phone numbers", "val": "5" }
+      ],
+      "features": [
+        "Everything on Starter",
+        "The AI receptionist answering the phone",
+        "Dispatch board, day route sequencing and proof of work",
+        "Automated sequences and review requests",
+        "Territory planning with demographic data",
+        "The advisor, grounded in your live figures",
+        "API, CLI and agent access with scoped keys",
+        "Departments, custom roles and the audit trail"
+      ],
+      "cta": "Start with Growth",
+      "href": "/login"
+    },
+    {
+      "name": "Scale",
+      "price": "$399",
+      "per": " per month",
+      "for": "A multi district operation with trucks, depots and a board that never stops.",
+      "limits": [
+        { "key": "Customers", "val": "5,000" },
+        { "key": "Locations", "val": "15" },
+        { "key": "Users", "val": "25" },
+        { "key": "Marketing emails", "val": "50,000 / month" },
+        { "key": "Phone numbers", "val": "25" }
+      ],
+      "features": [
+        "Everything on Growth",
+        "The live fleet map with geofences and arrival estimates",
+        "Vehicles, trailers and maintenance schedules",
+        "Telematics connections",
+        "Customer tracking links",
+        "Consolidated reporting across every location",
+        "Asset service schedules and equipment history"
+      ],
+      "cta": "Start with Scale",
+      "href": "/login"
+    },
+    {
+      "name": "Enterprise",
+      "price": "Custom",
+      "for": "A large operation with its own requirements.",
+      "limits": [
+        { "key": "Customers", "val": "Unlimited" },
+        { "key": "Locations", "val": "Unlimited" },
+        { "key": "Users", "val": "Unlimited" },
+        { "key": "Storage", "val": "Agreed" },
+        { "key": "Support", "val": "Named contact" }
+      ],
+      "features": [
+        "Everything on Scale",
+        "Every module, with no limits",
+        "Single sign on against your own directory",
+        "Dedicated storage or dedicated hosting",
+        "A service level agreement",
+        "Custom modules built to your process",
+        "Onboarding and data migration assistance"
+      ],
+      "cta": "Talk to us",
+      "href": "/login"
+    },
+    {
+      "name": "White label",
+      "badge": "The whole platform, your name on it",
+      "price": "$5,000",
+      "per": " per month",
+      "for": "An operator, franchise or agency that wants to sell this as their own.",
+      "limits": [
+        { "key": "Everything", "val": "Unlimited" },
+        { "key": "Your branding", "val": "Yes" },
+        { "key": "Your customers", "val": "Unlimited" },
+        { "key": "Resale rights", "val": "Yes" },
+        { "key": "Support", "val": "Named contact" }
+      ],
+      "features": [
+        "Every module, every limit lifted",
+        "Your brand, your logo, your colour system",
+        "Your own domain on the dashboards your customers see",
+        "Email sent under your sending identity, not ours",
+        "Your own bundles and pricing, defined by you",
+        "No AlphaFlux branding anywhere a customer looks",
+        "Onboarding for your team and your first customers"
+      ],
+      "cta": "Talk to us",
+      "href": "/login"
+    }
+  ],
+  "plansNote": "Prices are per company, billed monthly, and every plan includes the inventory module and one time code sign in. Transactional messages such as receipts and appointment reminders are not counted against the marketing email allowance.",
+  "sections": [
+    {
+      "kind": "table",
+      "title": "The full comparison",
+      "lede": "Every limit, so the decision can be made from the page rather than from a call.",
+      "cols": ["", "Free", "Starter", "Growth", "Scale", "White label"],
+      "rows": [
+        ["Price per month", "!Free", "$49", "$149", "$399", "$5,000"],
+        ["Customers", "20", "250", "1,000", "5,000", "Unlimited"],
+        ["Locations", "1", "2", "5", "15", "Unlimited"],
+        ["Users", "1", "3", "10", "25", "Unlimited"],
+        ["Marketing emails", "100", "2,000", "10,000", "50,000", "Unlimited"],
+        ["Phone numbers", "1", "2", "5", "25", "Unlimited"],
+        ["Inventory", "yes", "yes", "yes", "yes", "yes"],
+        ["CRM and account timeline", "yes", "yes", "yes", "yes", "yes"],
+        ["Job booking", "yes", "yes", "yes", "yes", "yes"],
+        ["Invoicing and payments", "yes", "yes", "yes", "yes", "yes"],
+        ["Recurring agreements", "no", "yes", "yes", "yes", "yes"],
+        ["Capacity rules", "no", "yes", "yes", "yes", "yes"],
+        ["Duplicate detection and merge", "no", "yes", "yes", "yes", "yes"],
+        ["Email marketing from your domain", "no", "yes", "yes", "yes", "yes"],
+        ["AI receptionist", "no", "no", "yes", "yes", "yes"],
+        ["Dispatch board and routing", "no", "no", "yes", "yes", "yes"],
+        ["Proof of work", "no", "no", "yes", "yes", "yes"],
+        ["The advisor", "no", "no", "yes", "yes", "yes"],
+        ["API, CLI and agent access", "no", "no", "yes", "yes", "yes"],
+        ["Departments and custom roles", "no", "no", "yes", "yes", "yes"],
+        ["Live fleet map and geofences", "no", "no", "no", "yes", "yes"],
+        ["Customer tracking links", "no", "no", "no", "yes", "yes"],
+        ["Telematics", "no", "no", "no", "yes", "yes"],
+        ["Your own branding", "no", "no", "no", "no", "!Yes"],
+        ["Resale to your own customers", "no", "no", "no", "no", "!Yes"]
+      ]
+    },
+    {
+      "kind": "features",
+      "title": "Every plan shows the same small badge until you white label",
+      "lede": "That is a deliberate design decision rather than a limitation, and it is worth explaining because it is unusual.",
+      "items": [
+        { "icon": "i-tag", "title": "Why the badge is there", "text": "A customer facing page carries a small line stating that the platform is provided by AlphaFlux. It is how a company we host can be discovered, and it is how a free plan costs nothing." },
+        { "icon": "i-reply", "title": "What it looks like", "text": "A single unobtrusive line in the footer of the pages your customers see. It is not on your internal dashboards and it never appears in your emails, your invoices or your branding." },
+        { "icon": "i-tag", "title": "How to remove it", "text": "White label removes it entirely, along with every other trace of AlphaFlux, and gives you the platform under your own name with resale rights." }
+      ]
+    },
+    {
+      "kind": "split",
+      "title": "Moving up never means migrating",
+      "lede": "The most common reason a small business avoids software is the fear that starting cheap means starting over later.",
+      "body": [
+        "Every plan runs the same platform on the same records. Moving from one to the next lifts a limit and unlocks modules. Nothing is exported, nothing is re-imported, and nothing that was entered under a smaller plan is withheld until it is paid for.",
+        "Limits are visible before they are reached, so an upgrade is a decision rather than an emergency. And if a limit is hit at an inconvenient moment, the platform stops the next record rather than locking the ones you already have.",
+        "A company can also add a single module to any plan without changing plan at all, which is usually how it goes: one thing is currently costing money, so that one thing gets added."
+      ],
+      "items": [
+        { "icon": "i-check", "title": "Same records", "text": "No export, no import, no reconciliation. The account you built on Free is the account you have on Scale." },
+        { "icon": "i-gauge", "title": "Limits announced early", "text": "Approaching a limit is visible on the dashboard so the decision is never made under pressure." },
+        { "icon": "i-layers", "title": "Single modules available", "text": "Add one module to any plan rather than changing the whole thing." },
+        { "icon": "i-clock", "title": "Change when you want", "text": "Move up, move down or add a module at any time, effective immediately, with no notice period." }
+      ]
+    },
+    {
+      "kind": "statement",
+      "text": "A free plan that expires was never a free plan. It was a countdown."
+    },
+    {
+      "kind": "features",
+      "title": "Programs that take money off",
+      "lede": "These apply on top of any plan, including the paid ones, and they stack with nothing else.",
+      "items": [
+        { "icon": "i-heart", "title": "Nonprofits and faith organizations", "text": "A registered nonprofit, church or faith based organization receives the Growth plan at no cost, verified once and kept for as long as the organization qualifies." },
+        { "icon": "i-shield", "title": "Military and veterans", "text": "Thirty percent off any paid plan, for active service members and veterans, verified once." },
+        { "icon": "i-bolt", "title": "First responders", "text": "Thirty percent off any paid plan for firefighters, police officers, emergency medical staff and dispatchers." },
+        { "icon": "i-check", "title": "Nurses and healthcare staff", "text": "Thirty percent off any paid plan for registered nurses and clinical staff." }
+      ],
+      "more": { "title": "How the programs work", "href": "/programs" }
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the free plan really free forever?",
+      "a": "Yes. There is no expiry, no card on file and no automatic conversion to a paid plan. It covers twenty customers, one location, one user, one phone number, a hundred marketing emails a month, and the inventory module. Companies move up when their own workload outgrows those limits, not because a timer ran out."
+    },
+    {
+      "q": "What counts as a location?",
+      "a": "A base you operate from: a town, an office, a depot or a service area. A company working out of one place is one location. A company with crews in three states needs three, because each one has its own schedule, staff and capacity."
+    },
+    {
+      "q": "Why is white label five thousand a month?",
+      "a": "Because it is not a plan, it is a platform. Whoever buys it gets every module with no limits, their own branding and domain, email under their own sending identity, their own bundles and pricing, and the right to resell it to their own customers. That is an operator's cost, and it is priced as one."
+    },
+    {
+      "q": "Do I have to pay for a year up front?",
+      "a": "No. Plans are monthly and can be changed at any time. Annual billing is available and carries a discount for companies that prefer it."
+    },
+    {
+      "q": "What happens if I stop paying?",
+      "a": "The plan reverts to the free tier rather than the account being closed. If your usage exceeds what the free plan covers, you keep read access to everything and can export it in full. Nothing is held hostage and nothing is deleted on a payment lapse."
+    },
+    {
+      "q": "Can I get a discount for a nonprofit?",
+      "a": "Yes, registered nonprofits and faith based organizations receive the Growth plan at no cost. Military, veterans, nurses, firefighters, police and emergency medical staff receive thirty percent off any paid plan. Both are verified once and are described in full on the community programs page."
+    },
+    {
+      "q": "Is there a setup fee or a contract?",
+      "a": "Neither on the standard plans. There is no implementation fee, no onboarding charge and no minimum term. White label and enterprise arrangements are agreed individually because they involve work beyond turning features on."
+    }
+  ]
+}

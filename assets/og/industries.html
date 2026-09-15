@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Industries AlphaFlux is built for</title>
+<style>
+@font-face{font-family:"Archivo";font-weight:100 900;font-display:block;src:url("../fonts/archivo-latin.woff2") format("woff2");}
+@font-face{font-family:"Plex";font-weight:400;font-display:block;src:url("../fonts/plexmono-400-latin.woff2") format("woff2");}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{background:#0a1220;color:#e9eef6;font-family:"Archivo",system-ui,sans-serif;position:relative;
+  display:flex;flex-direction:column;justify-content:space-between;padding:64px 72px}
+.grain{position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(rgba(121,176,246,.055) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(121,176,246,.055) 1px,transparent 1px);
+  background-size:48px 48px}
+.glow{position:absolute;width:760px;height:760px;right:-300px;top:-360px;border-radius:50%;
+  background:radial-gradient(circle,rgba(47,208,240,.17),rgba(47,208,240,0) 62%)}
+.top,.bottom{position:relative;display:flex;align-items:center;justify-content:space-between}
+.mark{display:flex;align-items:center;gap:14px}
+.mark svg{width:40px;height:40px}
+.word{font-size:30px;font-weight:600;letter-spacing:-.012em}
+.group{font-family:"Plex",monospace;font-size:19px;color:#8798b4;letter-spacing:.01em}
+h1{position:relative;font-size:66px;line-height:1.07;letter-spacing:-.024em;font-weight:600;max-width:20ch}
+h1.small{font-size:54px}
+.bottom{border-top:1px solid #1e2b44;padding-top:26px;align-items:baseline}
+.url{font-family:"Plex",monospace;font-size:21px;color:#79b0f6}
+.note{font-size:21px;color:#8798b4;max-width:56ch}
+.stop{width:14px;height:14px;border-radius:50%;background:#2fd0f0;box-shadow:0 0 0 7px rgba(47,208,240,.16)}
+</style>
+</head>
+<body>
+<div class="grain"></div><div class="glow"></div>
+<div class="top">
+  <div class="mark"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="word">AlphaFlux</span></div>
+  <div class="group">Company</div>
+</div>
+<h1 class="small">Built for anyone whose work happens at somebody else&#39;s address</h1>
+<div class="bottom">
+  <span class="url">alphaflux.net</span>
+  <span class="note">One platform for the phone, the field, the money and the marketing</span>
+  <span class="stop"></span>
+</div>
+</body>
+</html>

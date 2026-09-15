@@ -1,0 +1,142 @@
+{
+  "slug": "fleet",
+  "nav": "Fleet and dispatch",
+  "group": "Modules",
+  "crumb": "Fleet and dispatch",
+  "title": "Live map, dispatch board and order tracking",
+  "desc": "Track every order, vehicle and technician on a live map. Run the day on a board where a drag is a real status change. Geofences, arrival detection and customer tracking links.",
+  "h1": "Watch the work move on a map, run it on a board",
+  "standfirst": "A dispatcher's screen that shows the truth at a glance: every order, every vehicle, every technician, the route each one is on and the customer watching their own technician arrive.",
+  "chips": ["Live positions", "Drag to dispatch", "Customer tracking links"],
+  "sections": [
+    {
+      "kind": "features",
+      "title": "The dispatcher's screen",
+      "lede": "Dispatch is two questions asked all day: what is happening right now, and who should take the next one. Both should be answerable without opening four things.",
+      "items": [
+        { "icon": "i-map", "title": "A live fleet map", "text": "Orders, technicians, vehicles, routes, service areas and geofences on one map, updating as the day moves rather than when someone refreshes." },
+        { "icon": "i-grid", "title": "An order board", "text": "Every order as a card, every stage as a column. Drag a card to move it and the record moves with it." },
+        { "icon": "i-pin", "title": "Geofences that notice", "text": "Draw an arrival zone and the platform marks the order on site when the technician crosses it, so nobody has to tap a button in a driveway." },
+        { "icon": "i-clock", "title": "Arrival estimates", "text": "Remaining distance and the technician's recent pace produce a window, labelled as an estimate and updated as the day changes." },
+        { "icon": "i-truck", "title": "Vehicles and fleets", "text": "Track trucks and trailers as assets with their own status, capacity, assigned driver and service history, not just as a name in a spreadsheet." },
+        { "icon": "i-globe", "title": "Customer tracking", "text": "Send a link that shows one order's live status, and only that order. It expires when the work is done." }
+      ],
+      "more": { "title": "See field operations", "href": "/field-operations" }
+    },
+    {
+      "kind": "order",
+      "title": "A card is the whole order, not a summary of one",
+      "lede": "Opening a card on the board gives you everything the order carries, and moving it is a real transition the server validates.",
+      "items": [
+        { "title": "Unassigned", "note": "07:10" },
+        { "title": "Assigned", "note": "07:22" },
+        { "title": "En route", "note": "07:41" },
+        { "title": "On site", "note": "08:03" },
+        { "title": "Complete", "note": "08:48" }
+      ],
+      "note": "Columns come from your own order configuration, so the board matches how your business actually works rather than how someone else's does."
+    },
+    {
+      "kind": "split",
+      "title": "The board cannot invent a state",
+      "lede": "A board that lets anyone drag a card anywhere is a board that quietly corrupts the record. Here, the server decides what is legal and the board only offers what it is told.",
+      "body": [
+        "Every order type has a defined set of stages and a defined set of moves between them. When a card is dropped, the change is sent to the server as a transition. If it is allowed, it is applied and written to the order's history. If it is not, it is refused with the moves that are actually available, and the card returns to where it was.",
+        "That is what makes the board trustworthy rather than decorative. The same discipline that governs the technicians' status changes governs the dispatcher's screen, so a card that says complete really is complete, with the proof attached and the invoice following.",
+        "Every move is recorded with who did it, whether that was a person or an agent, and when. The order's history is not reconstructed later from memory. It was written down as it happened."
+      ],
+      "items": [
+        { "icon": "i-layers", "title": "Your stages, not ours", "text": "Define the order types you actually run and the stages each one passes through, with the fields each stage requires." },
+        { "icon": "i-check", "title": "Rules attached to stages", "text": "A stage can require a photo, a signature, a part or a note before the order is allowed to leave it." },
+        { "icon": "i-note", "title": "History as it happened", "text": "Every transition is appended with actor, time and position, giving the timeline and the audit trail from the same records." },
+        { "icon": "i-repeat", "title": "Automation on top", "text": "Transitions can trigger the next thing: notify the customer, raise the invoice, order the part, or ask a person to look." }
+      ]
+    },
+    {
+      "kind": "list",
+      "title": "What is on the map",
+      "lede": "Layers can be turned on and off so a dispatcher sees the district, not the world.",
+      "items": [
+        {
+          "title": "Orders",
+          "text": "Every open order for the day, coloured by stage, so unassigned work is visible as a cluster rather than as a list to read."
+        },
+        {
+          "title": "Technicians and vehicles",
+          "text": "Last known position with a freshness indicator, so a stale ping shows as stale rather than as a truck parked in a field for an hour."
+        },
+        {
+          "title": "Routes",
+          "text": "The sequenced route for a technician, with the remaining stops and the distance left, so a dispatcher can see whether the day is recoverable."
+        },
+        {
+          "title": "Service areas and zones",
+          "text": "The areas you cover, drawn as polygons and used for routing, capacity and pricing rather than only for colour on a screen."
+        },
+        {
+          "title": "Geofences",
+          "text": "Arrival zones, restricted areas and site boundaries, each with a behaviour such as marking arrival or flagging a deviation."
+        },
+        {
+          "title": "Places and customers",
+          "text": "Saved locations, including multi unit buildings, so a job resolves to the right building, floor or unit rather than to a street address."
+        }
+      ]
+    },
+    {
+      "kind": "features",
+      "title": "For operations that run trucks, not just technicians",
+      "lede": "The same records serve a plumbing company with four vans and a fleet operation with trailers and depots.",
+      "items": [
+        { "icon": "i-truck", "title": "Trailers and equipment", "text": "Towed and portable assets tracked in their own right, with connections to vehicles that change over time rather than being overwritten." },
+        { "icon": "i-wrench", "title": "Maintenance schedules", "text": "Service intervals by vehicle or by hours, work orders, parts used and warranty records, so maintenance is planned rather than reactive." },
+        { "icon": "i-gauge", "title": "Fuel and cost per mile", "text": "Fuel records and running costs per vehicle, so the cost of a route is a number rather than an intuition." },
+        { "icon": "i-plug", "title": "Telematics", "text": "Connect a telematics provider and vehicle positions and sensor data arrive without anyone's phone being involved." },
+        { "icon": "i-clipboard", "title": "Manifests", "text": "Group orders onto a manifest for a run, so a multi stop delivery or a bulk collection is one object rather than twenty." },
+        { "icon": "i-chart", "title": "Operations reporting", "text": "On time percentage, jobs per technician, distance and utilisation, out of the records the dispatcher is already using." }
+      ]
+    },
+    {
+      "kind": "statement",
+      "text": "A dispatcher should be able to answer what happened today without asking anyone."
+    },
+    {
+      "kind": "table",
+      "title": "Fleet and dispatch by plan",
+      "cols": ["", "Growth", "Scale", "White label"],
+      "rows": [
+        ["Order board", "yes", "yes", "yes"],
+        ["Custom order types and stages", "yes", "yes", "yes"],
+        ["Live map", "Basic", "yes", "yes"],
+        ["Geofences and arrival detection", "no", "yes", "yes"],
+        ["Arrival estimates", "no", "yes", "yes"],
+        ["Vehicles and trailers", "no", "yes", "yes"],
+        ["Telematics connections", "no", "yes", "yes"],
+        ["Customer tracking links", "no", "yes", "yes"],
+        ["Unlimited everything", "no", "no", "yes"]
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "How often do positions update?",
+      "a": "Positions are reported by the technician's device as they move, and the dispatcher's map updates without a refresh. The interface shows how fresh each position is, because a map that hides a ten minute old position is worse than one that admits it."
+    },
+    {
+      "q": "Can I use my own map provider?",
+      "a": "The map is served through the platform, and no third party script runs in your browser or tracks your customers. Where a commercial basemap is preferred it can be configured, and the customer tracking page continues to render through the platform."
+    },
+    {
+      "q": "Do I need telematics hardware?",
+      "a": "No. Positions come from the technicians' devices by default, which works on day one with no hardware. Telematics is for operations that want vehicle data without depending on a phone, and it can be added later."
+    },
+    {
+      "q": "Can a customer see where the technician is without seeing anything else?",
+      "a": "Yes. A tracking link is scoped to one order and shows only that order's status and arrival window. It carries no customer data, it cannot be used to browse anything else, and it expires when the work is complete."
+    },
+    {
+      "q": "Does the board work for a company with several districts?",
+      "a": "Yes, and the districts are enforced rather than filtered. A dispatcher scoped to one district sees that district's board and map, and the restriction is applied in the query rather than by hiding things on screen."
+    }
+  ]
+}

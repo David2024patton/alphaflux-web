@@ -1,0 +1,132 @@
+{
+  "slug": "inventory",
+  "nav": "Inventory and assets",
+  "group": "Modules",
+  "crumb": "Inventory and assets",
+  "title": "Inventory, asset and chemical tracking across every location",
+  "desc": "Stock that follows the truck. Free inventory on every account, chemical sign in and sign out, and custody across trucks, storage units, mobile units, depots and branches.",
+  "h1": "Every account gets inventory, and every account gets it free",
+  "standfirst": "Stock is never in one place. It is in trucks, in storage units, in a rented bay, in mobile units scattered across three states, and in the depot none of it was written down in. AlphaFlux knows all of it, and who is holding it.",
+  "chips": ["Free on every plan", "Sign in and sign out", "Custody and chain of record"],
+  "sections": [
+    {
+      "kind": "split",
+      "title": "Inventory is included on the free plan, permanently",
+      "lede": "Most platforms treat stock as an enterprise feature. A one person operation with a van full of parts needs it just as much as a depot does, so it is not gated.",
+      "body": [
+        "Every account gets items, movements, locations and low stock alerts at no cost, whether there is one technician or two hundred. What grows with the plan is scale, not capability: how many locations you can define, how much movement history you keep, and how far the reporting reaches.",
+        "The point is that the record starts on day one. A company that tracks its stock from the first van never has to reconstruct a year of purchases later, and never has to run an inventory count to find out what it owns."
+      ],
+      "items": [
+        { "icon": "i-box", "title": "Items and stock levels", "text": "Parts, products and consumables with SKU, quantity on hand, reorder point, unit and cost." },
+        { "icon": "i-warehouse", "title": "Locations that match reality", "text": "Trucks, vans, storage units, rented bays, depots, yards and branches, each with its own stock position." },
+        { "icon": "i-repeat", "title": "Movements, not just a number", "text": "Every change is a movement with a reason, a person and a time, so the quantity is explained rather than asserted." },
+        { "icon": "i-bell", "title": "Low stock before it bites", "text": "Minimums per item and per location, with alerts when a truck is running out rather than when the next job fails." }
+      ]
+    },
+    {
+      "kind": "split",
+      "flip": true,
+      "title": "Chemical and controlled stock, signed in and out",
+      "lede": "Some things in a van are not ordinary stock. They are regulated, they have a usage rate, they must be accounted for, and an inspector may ask.",
+      "body": [
+        "AlphaFlux tracks them the way they are actually used. A container is signed in when it is received, assigned to a technician or a location, and signed out when it is used or returned. The record shows who had it, when they took it, where it went and what remains.",
+        "That record is what turns a difficult conversation into a report. Usage per technician, usage per service, what was applied at a customer's property, and what is currently unaccounted for are all available as views rather than as an afternoon with a clipboard.",
+        "The same mechanism handles any stock that needs a chain of custody: calibrated instruments, keys, PPE, high value tools, controlled parts, and anything else where knowing that it left the building is not enough."
+      ],
+      "items": [
+        { "icon": "i-droplet", "title": "Sign in, sign out", "text": "A container is received, assigned and consumed with a record at every step." },
+        { "icon": "i-note", "title": "Usage on the job", "text": "What was applied is recorded against the job, which is what most customer questions and inspections actually ask for." },
+        { "icon": "i-shield", "title": "Safety data to hand", "text": "Regulatory detail, handling and dilution information available to the technician at the point of use rather than in a folder in the office." },
+        { "icon": "i-search", "title": "Anywhere it should not be", "text": "A reconciliation view that surfaces stock that has moved without a matching reason." }
+      ]
+    },
+    {
+      "kind": "list",
+      "title": "Built for operations that do not fit one building",
+      "lede": "The same records serve a sole trader with a van and an operation with units in every time zone. These are the arrangements the module is designed around.",
+      "items": [
+        {
+          "title": "Technician and vehicle stock",
+          "text": "Every truck holds its own position, so the question where is that part is answered by naming the part rather than by ringing three technicians. A technician's stock moves when the job consumes it, not when someone remembers to update a sheet."
+        },
+        {
+          "title": "Storage units and rented bays",
+          "text": "A rented storage locker is a location like any other. It can hold stock, it can be transferred to and from, and it can be counted without an afternoon of driving to it and writing things down."
+        },
+        {
+          "title": "Mobile and self contained units",
+          "text": "Self contained units that move between sites, whether that is a mobile workshop, a solar powered field unit, a trailer or a container, are tracked as both an asset and a location. The unit has a position, a custodian and its own contents, and both move together."
+        },
+        {
+          "title": "Branches, depots and yards",
+          "text": "Branches hold bulk stock and issue it out. A transfer from a branch to a truck is one operation with a record at both ends, so both locations agree on what happened."
+        },
+        {
+          "title": "Many companies, one view",
+          "text": "An operator running several companies or several legal entities can hold each one's stock separately and still see a single consolidated position, because inventory is scoped to a company like every other record."
+        },
+        {
+          "title": "Assets as well as consumables",
+          "text": "Anything with a serial number, a warranty or a service interval can be tracked as an asset: who has it, where it is, when it was last serviced and when it is due. That covers instruments, machines, test equipment and vehicles."
+        }
+      ]
+    },
+    {
+      "kind": "features",
+      "title": "Day to day, it stays simple",
+      "lede": "A stock system only works if a technician will actually use it from a driveway. Everything here is designed to take seconds.",
+      "items": [
+        { "icon": "i-bolt", "title": "Adjust in two taps", "text": "Search or scan, enter the quantity, pick a reason. Add a note if it needs one." },
+        { "icon": "i-camera", "title": "Scan instead of type", "text": "Barcodes and QR codes read from the phone camera, which is what turns a stock take from a weekend into an hour." },
+        { "icon": "i-clipboard", "title": "Consumed by the job", "text": "Parts used on a job are drawn down automatically when the job closes, and appear on the invoice from the same entry." },
+        { "icon": "i-warehouse", "title": "Transfer between places", "text": "Move stock from depot to truck to site, with a record at each end and an in transit state so nothing is ever in two places." },
+        { "icon": "i-chart", "title": "Counts that reconcile", "text": "Run a count on one location, see the variance against the system, and post the adjustment with a reason." },
+        { "icon": "i-database", "title": "Import and export", "text": "Bring a supplier price list or an existing spreadsheet in, and take the whole register out in a structured format whenever you want." }
+      ]
+    },
+    {
+      "kind": "statement",
+      "text": "Nobody ever lost money knowing exactly what was in the truck and who took it out."
+    },
+    {
+      "kind": "table",
+      "title": "Inventory by plan",
+      "cols": ["", "Free", "Starter", "Growth", "Scale and above"],
+      "rows": [
+        ["Inventory module", "!Included", "Included", "Included", "Included"],
+        ["Items", "Unlimited", "Unlimited", "Unlimited", "Unlimited"],
+        ["Locations", "2", "10", "50", "Unlimited"],
+        ["Movement history", "90 days", "2 years", "5 years", "Unlimited"],
+        ["Sign in and sign out", "yes", "yes", "yes", "yes"],
+        ["Chemical and controlled stock records", "yes", "yes", "yes", "yes"],
+        ["Barcode and QR scanning", "yes", "yes", "yes", "yes"],
+        ["Consolidated multi company view", "no", "no", "yes", "yes"],
+        ["Asset service schedules", "no", "no", "yes", "yes"]
+      ],
+      "note": "Inventory is free on the free plan. The paid plans lift the number of locations and how far back the movement history goes."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is inventory really free?",
+      "a": "Yes, on every plan including the free one. Items, movements, sign in and sign out, scanning and low stock alerts are all included. What a plan changes is how many locations you can define and how long you keep movement history."
+    },
+    {
+      "q": "How do I track chemicals across several technicians?",
+      "a": "Each container is signed in when it is received and assigned to a technician or a location. When it is used, the amount consumed is recorded against the job, which leaves a per technician usage record and a per property application record. A reconciliation view shows anything that moved without a matching reason."
+    },
+    {
+      "q": "Can I track stock that lives on a vehicle that moves between sites?",
+      "a": "Yes. A mobile unit is treated as both an asset and a location, so it has a position, a custodian and its own contents, and all three move together. That covers mobile workshops, trailers, containers and remote units."
+    },
+    {
+      "q": "I run more than one company. Can I see all their stock together?",
+      "a": "Yes. Stock is scoped to a company, and an operator with access to several can see a consolidated position across all of them while each company's records stay separate."
+    },
+    {
+      "q": "Does it handle stock in a truck being consumed by a job?",
+      "a": "Yes. When a job is closed, the parts and consumables used are drawn from the technician's stock and carried onto the invoice. The technician does not enter the same information twice."
+    }
+  ]
+}

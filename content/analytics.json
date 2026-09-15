@@ -1,0 +1,123 @@
+{
+  "slug": "analytics",
+  "nav": "Reports and analytics",
+  "group": "Modules",
+  "crumb": "Reports and analytics",
+  "title": "Owner reporting and an advisor that reads the numbers",
+  "desc": "The numbers an owner actually reads, split by location, and an advisor that turns them into a prioritised plan grounded in your live figures.",
+  "h1": "The numbers an owner reads, and what to do about them",
+  "standfirst": "Most dashboards tell you what happened. This one tells you what happened, where, and what the two or three things worth acting on this week are.",
+  "chips": ["Per location", "Real figures, not projections", "Advisor included"],
+  "sections": [
+    {
+      "kind": "features",
+      "title": "What the owner's view shows",
+      "lede": "Every figure comes from the records the work produced. Nothing here is typed in by hand or projected forward.",
+      "items": [
+        { "icon": "i-gauge", "title": "Customers and non customers", "text": "Real customers counted separately from leads, prospects and empty records, which is the difference between a real number and an inflated one." },
+        { "icon": "i-repeat", "title": "Recurring revenue", "text": "Monthly recurring revenue computed from the actual charges on live agreements, per location and combined." },
+        { "icon": "i-clipboard", "title": "Work completed", "text": "Jobs completed in a period, per technician and per location, with the completed quantity rather than the scheduled quantity." },
+        { "icon": "i-route", "title": "Distance travelled", "text": "Miles driven, computed from check in and check out positions on completed jobs, which is the number that tells you whether your routes are sane." },
+        { "icon": "i-receipt", "title": "Collected and owed", "text": "Revenue collected in the period and the overdue balance with its age, side by side, because a good month that is uncollected is not a good month." },
+        { "icon": "i-chart", "title": "Trends, not snapshots", "text": "Compare a period against the one before it and see which figures moved, rather than reading a single number with no context." }
+      ]
+    },
+    {
+      "kind": "split",
+      "title": "An advisor that has read your numbers before it speaks",
+      "lede": "General business advice is free and everywhere. Advice that knows your overdue balance, your technician count and your recurring book is not.",
+      "body": [
+        "The advisor takes a short brief about the business and then answers using the live figures the platform already holds. It does not guess at your customer count, and it does not offer advice that ignores whether you have the capacity to execute it.",
+        "Ask it where to focus this quarter and it will weigh what it knows: how much of your revenue is recurring, how much is sitting overdue, how the work is distributed across technicians, and which areas are producing. The answer comes back with specific priorities rather than a list of categories.",
+        "It runs on a model of your choosing, including one running on your own hardware, which is the arrangement that keeps your operating numbers inside your building."
+      ],
+      "items": [
+        { "icon": "i-spark", "title": "Grounded in real figures", "text": "The live metrics are given to the advisor, so the plan is about your business rather than about business in general." },
+        { "icon": "i-check", "title": "Prioritised", "text": "A short ordered list of what to do next, not a survey of everything that could be done." },
+        { "icon": "i-shield", "title": "Aggregates only", "text": "The advisor receives summary figures, not customer records. Nothing identifying a customer is put in front of a model." },
+        { "icon": "i-clock", "title": "Ask it on a schedule", "text": "Run it weekly or monthly and have the result delivered, so the review happens without anyone remembering to do it." }
+      ]
+    },
+    {
+      "kind": "list",
+      "title": "The reports the platform produces",
+      "lede": "Every one of these reads from the same records, so two reports never disagree with each other.",
+      "items": [
+        {
+          "title": "Operations",
+          "text": "Jobs completed, on time percentage, average time on site, jobs per technician, distance travelled and route utilisation, by location and period."
+        },
+        {
+          "title": "Revenue",
+          "text": "Collected, invoiced, outstanding and overdue, with the age of the debt, by location, service and period."
+        },
+        {
+          "title": "Recurring book",
+          "text": "How many agreements are active, what they are worth monthly, what has been added and what has been cancelled, with cancellations reported rather than buried."
+        },
+        {
+          "title": "Sales attribution",
+          "text": "Revenue by lead source, by campaign and by the person who booked it, with agent generated revenue shown separately so automation can be judged on its results."
+        },
+        {
+          "title": "Inventory and usage",
+          "text": "Stock position per location, usage per technician, consumption per service, and variance against counts."
+        },
+        {
+          "title": "Customer communication",
+          "text": "Calls answered and missed, response times, messages sent and received, reviews requested and received."
+        }
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Why the honest number is usually the smaller one",
+      "body": [
+        "Dashboards that are assembled from several systems tend to overstate. A lead record gets counted as a customer. A scheduled job gets counted as work done. A recurring charge gets projected twelve times because it looked like a subscription.",
+        "The figures here are deliberately conservative. A customer is a customer because the record says so. A job counts when it is completed and dated. Recurring revenue is what the agreements actually charge, divided by their actual frequency.",
+        "That has a consequence worth stating plainly. The first time an owner sees this dashboard, the numbers often look worse than what they were used to. They are not worse. They are the first ones that were real, and every decision made from them is made on ground that holds."
+      ]
+    },
+    {
+      "kind": "statement",
+      "text": "A number that looks good because of how it was counted is not a result. It is a delay."
+    },
+    {
+      "kind": "table",
+      "title": "Reporting by plan",
+      "cols": ["", "Free", "Starter", "Growth", "Scale and above"],
+      "rows": [
+        ["Basic dashboard", "yes", "yes", "yes", "yes"],
+        ["Per location splits", "no", "yes", "yes", "yes"],
+        ["Recurring revenue reporting", "no", "yes", "yes", "yes"],
+        ["Route and distance reporting", "no", "no", "yes", "yes"],
+        ["Attribution and commission reports", "no", "Basic", "yes", "yes"],
+        ["The advisor", "no", "no", "yes", "yes"],
+        ["Scheduled delivery of reports", "no", "no", "yes", "yes"],
+        ["Consolidated view across companies", "no", "no", "no", "yes"]
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can I export the underlying data rather than just the report?",
+      "a": "Yes. Every report has the records behind it available as structured data through the interface and over the API, so a figure can be traced to the rows that produced it rather than taken on trust."
+    },
+    {
+      "q": "How is distance calculated for a technician's day?",
+      "a": "From the check in and check out positions recorded on completed jobs, which makes it a measurement of what happened rather than a route plan's estimate of what should have happened."
+    },
+    {
+      "q": "Can I see figures for one district only?",
+      "a": "Yes, on the plans that include location splits. A manager scoped to one district sees that district, and an owner sees every district side by side or combined."
+    },
+    {
+      "q": "Does the advisor need internet access?",
+      "a": "It needs a model, and that model can be hosted or local. Organisations that keep their operating numbers on their own hardware can run the advisor against a model on the same machine."
+    },
+    {
+      "q": "Can I schedule a report to be emailed?",
+      "a": "Yes on the plans that include scheduled delivery. A weekly digest can go to the owner, the office manager and anyone else who needs it, without anyone logging in to produce it."
+    }
+  ]
+}

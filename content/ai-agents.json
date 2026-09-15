@@ -1,0 +1,119 @@
+{
+  "slug": "ai-agents",
+  "nav": "AI agents",
+  "group": "Platform",
+  "crumb": "AI agents",
+  "title": "AI agents that can actually run the work",
+  "desc": "Give an agent a scoped key instead of a password. It answers the phone, books against real capacity, chases the money and writes back to the record, inside limits you set.",
+  "h1": "Give an agent a key, not your password",
+  "standfirst": "Most software added a chat box that can talk about your data. AlphaFlux was built the other way round: every capability is an interface first, so an agent can do the work and not just describe it.",
+  "chips": ["Scoped access", "Every action attributed", "Human confirmation where it matters"],
+  "sections": [
+    {
+      "kind": "split",
+      "title": "The receptionist answers before a person has to",
+      "lede": "A call comes in at 9pm on a Friday. Nobody is in the office. The phone is still answered, the caller is still helped, and the job is on the board before Monday.",
+      "body": [
+        "The receptionist answers first, with a fifteen second timer. If it handles the call, a human is never rung and the caller never knows the office was closed. If it cannot, the call rolls to the person on duty, or to voicemail with an automatic text back, according to the rule you set for that number and that hour.",
+        "What it can do is bounded on purpose. It can identify the caller, work out which office serves their address, check whether the service they are describing is one you offer, book an appointment against real capacity, take the details and leave a complete record. It cannot invent a price, promise an exact arrival time, or book a job that would oversell a technician's day.",
+        "Its script is versioned inside the platform rather than hidden in a vendor's dashboard, so changing how your phone is answered is an edit you make, not a support ticket you file."
+      ],
+      "items": [
+        { "icon": "i-clock", "title": "Hour aware", "text": "Different behaviour inside and outside business hours, with a rule per number." },
+        { "icon": "i-pin", "title": "Territory aware", "text": "It resolves the address to the correct office and respects the areas you do and do not serve." },
+        { "icon": "i-calendar", "title": "Capacity aware", "text": "A booking is checked against real capacity before it is confirmed, so an agent cannot oversell a day." },
+        { "icon": "i-message", "title": "Escalation that works", "text": "Emergencies are routed to a person immediately, and a solicitor gets a scripted answer rather than a technician's time." }
+      ],
+      "more": { "title": "See the phone module", "href": "/phone-and-messaging" }
+    },
+    {
+      "kind": "list",
+      "title": "What an agent can do on day one",
+      "lede": "Concrete work, not demonstrations. Each of these runs against the same records your staff use.",
+      "items": [
+        {
+          "title": "Answer, book and tidy up",
+          "text": "The receptionist takes the call and books the visit. An agent then confirms the slot against capacity, texts the customer the window, and writes a note on the account marked as agent authored."
+        },
+        {
+          "title": "Chase a missed call",
+          "text": "Read the missed call, look up the number, send the text back, open a follow up note, and raise a ticket if the customer replies. If they book, the ticket closes itself."
+        },
+        {
+          "title": "Run the money",
+          "text": "Compute the period's usage, apply the agreed margin, issue the invoice, read the payment run, and flag the accounts that have gone past terms with the amount and the age of the debt."
+        },
+        {
+          "title": "Work the board",
+          "text": "Read today's jobs, flag the ones a technician cannot reach in time, re-sequence a route, and notify the affected customers with a new window."
+        },
+        {
+          "title": "Keep the records clean",
+          "text": "Find duplicate accounts with the evidence that links them, propose the merge, and apply the ones a person approves. Nothing merges on its own authority."
+        },
+        {
+          "title": "Report upward",
+          "text": "Pull the operating numbers, compare them with the previous period, and produce a short written digest with the two or three things that changed."
+        }
+      ]
+    },
+    {
+      "kind": "features",
+      "title": "How the access actually works",
+      "lede": "An agent is a credential with a job, not a person with a password. Everything about the design follows from that.",
+      "items": [
+        { "icon": "i-shield", "title": "A scoped key", "text": "Read and write access is granted per module. An agent that books jobs does not need, and does not get, the billing module." },
+        { "icon": "i-lock", "title": "Inherits its owner, and nothing more", "text": "A key carries exactly the permissions and the companies of the account that created it. It cannot reach past its owner." },
+        { "icon": "i-plug", "title": "Revocable without a reset", "text": "Disable a key and the agent stops working. No password changes, no disruption for the humans on the system." },
+        { "icon": "i-bolt", "title": "Everything is an endpoint", "text": "The agent connects over the same documented interface your other software would, so nothing it does is special or unreviewable." },
+        { "icon": "i-note", "title": "Attributed, always", "text": "Records carry whether a person, an agent or an import made a change. Sales, notes, tickets and jobs all record it." },
+        { "icon": "i-gauge", "title": "Autopilot, if you want it", "text": "A per company switch lets agents keep configuration tidy and heal small problems on their own, under the same attributions and the same audit trail." }
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Why attribution is the part that matters",
+      "body": [
+        "Once an agent handles a meaningful share of the work, the first question an owner asks is not whether it is fast. It is which of these did a machine do, and can I see the difference.",
+        "AlphaFlux records the actor on every action, and it distinguishes an agent from a person from an import. Revenue an agent booked is separable from revenue a person booked. A note written by the receptionist reads as agent authored. A ticket the assistant raised says so on its face.",
+        "That is also what makes the numbers trustworthy later. When commission is calculated, when a customer complains, when a regulator asks who touched a record, the answer is already in the data rather than reconstructed from memory."
+      ]
+    },
+    {
+      "kind": "statement",
+      "text": "The difference between an agent you trust with real work and one you do not is whether the platform can say no in a structured way."
+    },
+    {
+      "kind": "features",
+      "title": "Guardrails, stated plainly",
+      "items": [
+        { "icon": "i-lock", "title": "No raw database access", "text": "An agent works through the same validated operations your software uses. There is no path from a model to an arbitrary query." },
+        { "icon": "i-eye", "title": "No credentials in a prompt", "text": "Agents receive what they need to answer and act. Payment tokens, carrier credentials and full customer records are not put in front of a model." },
+        { "icon": "i-check", "title": "Confirmation where it matters", "text": "Proposals are separated from actions. A merge, a price change or a bulk send asks a person to confirm before anything is written." },
+        { "icon": "i-note", "title": "A trail you can read", "text": "Every action lands in the audit log with actor, role, company, action and time, readable by the owner and filterable by an agent." }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do I have to use AI at all?",
+      "a": "No. Every module works fully with people driving it. Agents are an additional way to operate the same records, and they can be switched off entirely without changing how anything else behaves."
+    },
+    {
+      "q": "What stops an agent from doing something expensive?",
+      "a": "Three things. The key only carries the permissions it was issued. The platform refuses operations that break a rule regardless of who asked, such as a booking that would exceed a day's capacity. And the operations that carry real consequence, like merging accounts or issuing a bulk send, are presented as a proposal that a person confirms."
+    },
+    {
+      "q": "Which AI providers can it use?",
+      "a": "AlphaFlux is provider agnostic. It can run against a hosted model of your choosing or against a model running on your own hardware, which is the arrangement that keeps customer data inside your building."
+    },
+    {
+      "q": "How do I connect an agent?",
+      "a": "Issue a scoped key in the console, then hand the key to the agent. For agent clients that support tool protocols, the platform presents itself as a set of callable tools, so the agent discovers the available operations rather than being told about them. Developers can read the developer page for the exact interfaces."
+    },
+    {
+      "q": "Can an agent email my customers?",
+      "a": "Yes, through the email marketing module, under the same suppression list and consent rules a person is held to. A customer who has unsubscribed is excluded from an agent's send exactly as they are from a person's."
+    }
+  ]
+}

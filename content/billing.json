@@ -1,0 +1,115 @@
+{
+  "slug": "billing",
+  "nav": "Billing and payments",
+  "group": "Modules",
+  "crumb": "Billing and payments",
+  "title": "Invoicing, payments and recurring revenue",
+  "desc": "Invoices raised from the work that was done, payments that are voided rather than deleted, usage billing and a recurring revenue number that survives an audit.",
+  "h1": "Money that reconciles to the work, not to a memory",
+  "standfirst": "The invoice is raised from the job that was actually completed, by the technician who completed it, with the parts that were actually used. Nothing is re-typed, so nothing drifts.",
+  "chips": ["Money in whole cents", "Nothing deleted, ever", "Recurring revenue you can trust"],
+  "sections": [
+    {
+      "kind": "features",
+      "title": "The money side, end to end",
+      "lede": "From an agreed price at booking to a payment against the account, with a record at every step.",
+      "items": [
+        { "icon": "i-receipt", "title": "Invoices from the work", "text": "Line items, labour, parts and taxes carried from the completed job, so the invoice describes what happened." },
+        { "icon": "i-card", "title": "Payments against an account", "text": "Applied to a customer, optionally tied to a job or an agreement, recorded in whole cents with the method and the date." },
+        { "icon": "i-shield", "title": "Voided, never deleted", "text": "A payment entered in error is voided with a reason and a name. The row stays, and the voided total is reported separately from the posted total." },
+        { "icon": "i-repeat", "title": "Recurring billing", "text": "An agreement carries a price and a frequency, and the recurring revenue it produces is derived from the actual charges." },
+        { "icon": "i-gauge", "title": "Usage billing", "text": "For anything metered, a period's usage is read, the agreed margin applied, and an invoice issued per period with the underlying lines attached." },
+        { "icon": "i-clock", "title": "Overdue, visible", "text": "Who owes what, how old the debt is, and what it is made of, so chasing is a list rather than a guess." }
+      ]
+    },
+    {
+      "kind": "split",
+      "title": "A payment that can vanish is a payment nobody can audit",
+      "lede": "The most common way a small service business loses money is not theft. It is a payment that was deleted, a rate that was edited and nobody remembers why.",
+      "body": [
+        "AlphaFlux does not delete financial records. A payment made in error is voided, which marks it as reversed, records who reversed it and why, and leaves the original row in place. The posted total excludes voided entries and the voided total is reported separately, so both numbers are always visible.",
+        "Rates, prices and commission percentages are recorded as they were when a transaction happened. Changing a rate in the future does not silently rewrite what someone was owed in the past, because the historical figure is stored rather than recomputed.",
+        "That discipline is what makes the numbers usable for a loan application, a tax return or a partner dispute. A figure you cannot trace back to the records that produced it is not a figure you can defend."
+      ],
+      "items": [
+        { "icon": "i-check", "title": "Both totals, always", "text": "Posted and voided are reported side by side rather than netted into one misleading number." },
+        { "icon": "i-lock", "title": "Historical values stay put", "text": "A price or a rate change applies forward. What happened last month is not recalculated." },
+        { "icon": "i-chart", "title": "Rollups that match the detail", "text": "Totals by method, by day and by period always reconcile to the underlying rows." },
+        { "icon": "i-note", "title": "Every adjustment explained", "text": "An adjustment without a reason is not accepted, because the reason is the only part that cannot be reconstructed later." }
+      ]
+    },
+    {
+      "kind": "list",
+      "title": "How the money is kept straight",
+      "lede": "These are the decisions that make the numbers hold up when someone else looks at them.",
+      "items": [
+        {
+          "title": "Whole cents and basis points",
+          "text": "All amounts are stored as whole cents and all rates as integer basis points. There is no floating point arithmetic anywhere near an invoice, which is why totals do not develop a mysterious fraction over a year."
+        },
+        {
+          "title": "Recurring revenue from real charges",
+          "text": "Monthly recurring revenue is calculated from the recurring charges that actually exist on agreements, split by frequency. It is not a projection and it is not a spreadsheet formula that assumes a renewal."
+        },
+        {
+          "title": "Overdue is measured, not labelled",
+          "text": "An account is overdue because of an unpaid balance with an age, not because a status field was set. The age is computed from the balance and its date, so it cannot go stale."
+        },
+        {
+          "title": "Tax and totals as line items",
+          "text": "Tax rates, discounts and surcharges are line items rather than adjustments applied at the end, so the arithmetic on an invoice can be followed from the first line to the total."
+        },
+        {
+          "title": "Reports that match the ledger",
+          "text": "The revenue figure on the dashboard and the total in the payment list come from the same records, so the executive view and the detail view cannot disagree."
+        }
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "The invoice should be a by-product, not a task",
+      "body": [
+        "In most service businesses, invoicing is a second job. The technician finishes the work on paper, someone types it up, parts get estimated from memory, and the invoice goes out a week later with the wrong total on it more often than anyone would like to admit.",
+        "When the job closes with its parts, its labour, its photos and its signature already attached, the invoice is largely already written. The office reviews it rather than reconstructing it. That is the entire argument for running the field and the money in one system.",
+        "It also changes what a customer experiences. The invoice arrives while the work is still fresh, with a photograph of what was done and the parts that were used, which is a considerably better conversation than a delayed total nobody can explain."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Billing by plan",
+      "cols": ["", "Free", "Starter", "Growth", "Scale and above"],
+      "rows": [
+        ["Invoices", "yes", "yes", "yes", "yes"],
+        ["Payments and voids", "yes", "yes", "yes", "yes"],
+        ["Recurring agreements", "no", "yes", "yes", "yes"],
+        ["Overdue reporting", "Basic", "yes", "yes", "yes"],
+        ["Invoice from a completed job", "no", "yes", "yes", "yes"],
+        ["Usage billing and margins", "no", "no", "yes", "yes"],
+        ["Commission and split payouts", "no", "no", "yes", "yes"],
+        ["Consolidated reporting across locations", "no", "no", "no", "yes"]
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can I take card payments?",
+      "a": "Payments are recorded against accounts and reconcile to the ledger. Card processing is connected through a payment provider, and the platform keeps the record of what was charged, what was collected and what was reversed, so the money is auditable whether it arrived by card, transfer, cheque or cash."
+    },
+    {
+      "q": "What happens if I invoice the wrong amount?",
+      "a": "You issue a corrected document. The original is not deleted, and the correction references it, which is how the paper trail stays intact for accounting and for the customer."
+    },
+    {
+      "q": "Does it handle different pricing per district?",
+      "a": "Yes, prices are per company and per service, and districts can carry different rate cards, which matters for companies operating in markets with different cost structures."
+    },
+    {
+      "q": "Can I bill in something other than dollars?",
+      "a": "Currency is a per company setting. Amounts are held as whole units in the company's currency, and the reporting is presented in the same currency the business operates in."
+    },
+    {
+      "q": "How does the platform know what recurring revenue I have?",
+      "a": "From the agreements themselves. Each agreement has a frequency and a price, and the monthly figure is calculated from those actual charges. If an agreement is cancelled, the number moves because the agreement did, not because someone updated a projection."
+    }
+  ]
+}

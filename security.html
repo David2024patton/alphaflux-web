@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security, access and data ownership</title>
+<meta name="description" content="How AlphaFlux handles authentication, credentials, company isolation, audit and AI safety, and where your data physically sits.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="canonical" href="https://alphaflux.net/security">
+<meta property="og:site_name" content="AlphaFlux">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Security, access and data ownership">
+<meta property="og:description" content="How AlphaFlux handles authentication, credentials, company isolation, audit and AI safety, and where your data physically sits.">
+<meta property="og:url" content="https://alphaflux.net/security">
+<meta property="og:image" content="https://alphaflux.net/assets/og/security.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a1220" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plexmono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+(function(){try{var s=localStorage.getItem("af-theme");var d=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.setAttribute("data-theme",s||d);}catch(e){}})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://alphaflux.net/#org",
+      "@type": "Organization",
+      "description": "A self-hosted, modular operations platform for service businesses, driver accessible by AI agents.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://alphaflux.net/assets/apple-touch-icon.png"
+      },
+      "name": "AlphaFlux",
+      "url": "https://alphaflux.net/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/",
+          "name": "Overview",
+          "position": 1
+        },
+        {
+          "@type": "ListItem",
+          "name": "Platform",
+          "position": 2
+        },
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/security",
+          "name": "Security",
+          "position": 3
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The platform operator runs the infrastructure and can administer it. What that means in practice is governed by the agreement you have with the operator, and the platform supports running on infrastructure you control if that is the answer you need."
+          },
+          "name": "Can you see my customer data?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Your records are not used to train anything. Where AI features run against a model, they receive the specific context required for the task, and the platform deliberately keeps customer identifying records and credentials out of that context."
+          },
+          "name": "Is my data used to train AI models?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Their access is removed, their sessions are destroyed, and anything they did remains attributed to them in the audit trail. Nothing they wrote is deleted, because a note about a customer is part of that customer's file."
+          },
+          "name": "What happens if someone leaves the company?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No third party script runs inside a signed in session. The interface loads nothing from outside the platform, which is enforced by a content security policy rather than by a promise."
+          },
+          "name": "Do you use third party analytics on the platform?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The platform is designed to the practices described on this page: least privilege, hashed credentials, full audit, encrypted transport and encrypted backups. Organisations with a specific regulatory requirement should raise it, because the architecture supports dedicated storage and regional hosting where that is what a rule demands."
+          },
+          "name": "Is there a compliance certification?"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="shell">
+<aside class="rail" aria-label="Site sections">
+<div class="rail-inner">
+<a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a>
+<nav class="rail-nav" aria-label="All sections">
+<div class="rail-group">
+<h2 class="rail-group-title">Platform</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
+<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
+<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/security" aria-current="page"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
+<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
+</ul>
+</div>
+<div class="rail-group">
+<h2 class="rail-group-title">Modules</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/phone-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
+<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
+<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
+<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
+<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
+<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
+<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
+<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
+<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
+<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
+<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
+</ul>
+</div>
+<div class="rail-group">
+<h2 class="rail-group-title">Company</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
+<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
+<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
+<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
+<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
+</ul>
+</div>
+</nav>
+<div class="rail-foot">
+<a class="btn btn-primary" href="/login">Sign in</a>
+<a class="btn btn-secondary" href="/pricing">Start free</a>
+</div>
+</div>
+</aside>
+<div class="main">
+<header class="topbar">
+<button class="nav-toggle" type="button" data-drawer-open aria-expanded="false" aria-label="Open menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-menu"></use></svg></button>
+<a class="topbar-brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg></a>
+<nav class="crumbs" aria-label="Breadcrumb"><ol>
+<li><a href="/">Overview</a></li>
+<li><span class="sep" aria-hidden="true">/</span><span>Platform</span></li>
+<li><span class="sep" aria-hidden="true">/</span><span aria-current="page">Security</span></li>
+</ol></nav>
+<span class="topbar-spacer"></span>
+<div class="topbar-actions">
+<button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch colour theme"><svg class="i-sun" aria-hidden="true"><use href="/assets/icons.svg#i-sun"></use></svg><svg class="i-moon" aria-hidden="true"><use href="/assets/icons.svg#i-moon"></use></svg></button>
+<a class="btn btn-ghost btn-sm" href="/login">Sign in</a>
+<a class="btn btn-primary btn-sm" href="/pricing">Start free</a>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<header class="page-head">
+<div class="eyebrow-line">
+<span class="chip"><span class="chip-dot"></span>No stored passwords</span>
+<span class="chip"><span class="chip-dot"></span>Credentials never returned</span>
+<span class="chip"><span class="chip-dot"></span>Full audit trail</span>
+</div>
+<h1>Access you can explain to someone who asks</h1>
+<p class="standfirst">Security questions are usually answered with adjectives. Here are the actual mechanisms, including the ones that are inconvenient.</p>
+</header>
+</div>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>How signing in works</h2>
+<p class="lede">The largest single cause of account compromise is a password reused somewhere else. The most reliable fix is not to have one.</p>
+</div>
+<dl class="spec-list">
+<li><dt>Email or text one time codes</dt><dd>A person signs in by receiving a short lived code. There is no password to reuse, to forget, to share or to find in a breach dump, because there is no password.</dd></li>
+<li><dt>Codes that expire and limit attempts</dt><dd>A code is valid for a short window, is stored only as a hash, allows a small number of attempts, and cannot be requested again immediately. Guessing is not a realistic path.</dd></li>
+<li><dt>Sign in that does not reveal who has an account</dt><dd>An unrecognised address receives the same response as a recognised one, so the sign in page cannot be used to enumerate your customers or your staff.</dd></li>
+<li><dt>Server side sessions that rotate</dt><dd>A session is a server side record rather than a token the browser holds data in. It rotates on sign in, is destroyed on sign out, and can be invalidated centrally.</dd></li>
+<li><dt>Rate limiting on the way in</dt><dd>Repeated failed attempts from one source are slowed and then refused, which is what turns a brute force attempt into a nuisance rather than an incident.</dd></li>
+</dl>
+</div></section>
+<section class="section"><div class="wrap"><div class="split">
+<div class="stack-lg">
+<h2>Credentials are treated as radioactive</h2>
+<p class="standfirst">The dangerous data in a platform like this is not the customer list. It is the keys that can move money and send messages.</p>
+<div class="prose">
+<p>Carrier credentials and provider tokens are write only after they are stored. They are never returned by the interface, and they are stripped out of the responses that echo them back, because several providers hand your own credential straight back to you in a response body and a naive proxy would pass that on.</p>
+<p>Keys that agents use are stored only as a hash and are displayed exactly once, at the moment they are created. If a key is lost, it is replaced, not recovered, because a system that can show you a key again is a system an attacker can ask the same question of.</p>
+<p>The same rule applies on the way out. When the platform calls a provider, credentials travel in headers the provider expects and are never placed in a URL where they would end up in a log.</p>
+<p>Every action taken with a key is recorded against the account that owns it, so a compromised key has a name, a scope and a timestamp rather than an unknown blast radius.</p>
+</div>
+</div>
+<div class="stack-lg">
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-lock"></use></svg></span>
+<h3>Write only secrets</h3>
+<p>Stored and usable, never readable back to a person or an API caller.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg></span>
+<h3>Scrubbed responses</h3>
+<p>Upstream replies that contain your own credentials have them removed before the reply reaches you.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-terminal"></use></svg></span>
+<h3>Hashed API keys</h3>
+<p>Shown once at creation and stored as a hash. Revoking is immediate and auditable.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-note"></use></svg></span>
+<h3>Every key has a name</h3>
+<p>An action is attributable to the credential and to the account that issued it.</p>
+</li>
+</ul>
+</div>
+</div></div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>Company isolation</h2>
+<p class="lede">Multi-tenant software earns trust by being specific about what separates one company from another, and by not relying on the interface to enforce it.</p>
+</div>
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg></span>
+<h3>Scope on every record</h3>
+<p>Every record carries the company it belongs to, and every request is resolved to a company before it reaches the data. There is no code path that returns a record outside your scope.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-lock"></use></svg></span>
+<h3>Enforced on the server</h3>
+<p>Isolation is a property of the query rather than of the screen. Hiding a button is not a security control and this platform does not use it as one.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-database"></use></svg></span>
+<h3>Separable storage</h3>
+<p>A dedicated store per company is a configuration rather than a rewrite, because every data access goes through one internal interface. Organisations that require physical separation can have it.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg></span>
+<h3>Departments within a company</h3>
+<p>A role scoped to a district cannot reach another district, which matters when the same company runs locations that should not see each other&#39;s customers.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg></span>
+<h3>Transport security</h3>
+<p>All traffic is encrypted in transit with automatically renewed certificates, and the application follows a restrictive security header policy including a content security policy that prevents third party scripts from running in your session.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-check"></use></svg></span>
+<h3>Protected inbound callbacks</h3>
+<p>Requests the platform receives from carriers and providers are verified before they are acted on, so a forged callback cannot create a job or move money.</p>
+</li>
+</ul>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>Where your data physically sits, and who can see it</h2>
+</div>
+<div class="prose stack-lg">
+<p>AlphaFlux runs on infrastructure the operator controls rather than on a shared public cloud, which changes the answer to a question more customers are asking: who else has this.</p>
+<p>The short version is that your records are yours. They are not sold, not shared with advertisers, and not used to train anything. No third party script runs inside your session, because the interface serves everything it needs from the platform itself rather than loading it from an advertising or analytics network.</p>
+<p>Backups are encrypted before they leave the machine that holds them. Where geographic separation is used for resilience, what travels is an encrypted artifact rather than a readable export.</p>
+<p>Export is available at any time, in structured formats, without asking permission. A platform that makes leaving difficult is telling you what it thinks of you.</p>
+</div>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="statement"><p>The right question is not whether the vendor says secure. It is who can see your customers, and what stops them.</p></div>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>Rules for the AI features specifically</h2>
+<p class="lede">Agent access is the newest risk surface in business software, and it deserves specific answers rather than being folded into general security language.</p>
+</div>
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-lock"></use></svg></span>
+<h3>No path to the database</h3>
+<p>Agents act through the same validated operations your software uses. There is no route from a model to an arbitrary query.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-eye"></use></svg></span>
+<h3>Nothing sensitive in a prompt</h3>
+<p>Agents receive the context they need to act. Payment details, carrier credentials and full customer records are not put in front of a model.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-check"></use></svg></span>
+<h3>Consequential actions need a person</h3>
+<p>Merging accounts, changing prices and bulk sending are presented as proposals for confirmation rather than performed on the model&#39;s own judgment.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-note"></use></svg></span>
+<h3>Attributed and reversible</h3>
+<p>Every agent action is recorded with its actor, so an automation that misbehaves is identified and stopped rather than argued about.</p>
+</li>
+</ul>
+</div></section>
+<section class="section" id="faq">
+<div class="wrap"><div class="split">
+<div><h2>Questions people ask before signing up</h2></div>
+<div class="faq">
+<details><summary>Can you see my customer data?</summary><div class="answer"><p>The platform operator runs the infrastructure and can administer it. What that means in practice is governed by the agreement you have with the operator, and the platform supports running on infrastructure you control if that is the answer you need.</p></div></details>
+<details><summary>Is my data used to train AI models?</summary><div class="answer"><p>No. Your records are not used to train anything. Where AI features run against a model, they receive the specific context required for the task, and the platform deliberately keeps customer identifying records and credentials out of that context.</p></div></details>
+<details><summary>What happens if someone leaves the company?</summary><div class="answer"><p>Their access is removed, their sessions are destroyed, and anything they did remains attributed to them in the audit trail. Nothing they wrote is deleted, because a note about a customer is part of that customer&#39;s file.</p></div></details>
+<details><summary>Do you use third party analytics on the platform?</summary><div class="answer"><p>No third party script runs inside a signed in session. The interface loads nothing from outside the platform, which is enforced by a content security policy rather than by a promise.</p></div></details>
+<details><summary>Is there a compliance certification?</summary><div class="answer"><p>The platform is designed to the practices described on this page: least privilege, hashed credentials, full audit, encrypted transport and encrypted backups. Organisations with a specific regulatory requirement should raise it, because the architecture supports dedicated storage and regional hosting where that is what a rule demands.</p></div></details>
+</div>
+</div></div></section>
+</main>
+<section class="band"><div class="wrap"><div class="split">
+<div class="stack-lg">
+<h2>Start on the free plan</h2>
+<p>Twenty customers, one location, every core module, free permanently. Move up when the work outgrows it.</p>
+</div>
+<div class="btn-row" style="align-self:center">
+<a class="btn btn-primary btn-lg" href="/login">Create a free account</a>
+<a class="btn btn-secondary btn-lg" href="/pricing">See what each plan includes</a>
+</div>
+</div></div></section>
+<footer class="footer"><div class="wrap">
+<div class="footer-cols">
+<div><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><p class="small muted" style="margin-block-start:var(--space-4);max-inline-size:34ch">One platform for the phone, the field, the money and the marketing, driven by you or by your agents.</p></div>
+<div><h2>Platform</h2><ul>
+<li><a href="/">Overview</a></li>
+<li><a href="/platform">How it works</a></li>
+<li><a href="/ai-agents">AI agents</a></li>
+<li><a href="/modules">All modules</a></li>
+<li><a href="/security">Security</a></li>
+<li><a href="/white-label">White label</a></li>
+</ul></div>
+<div><h2>Modules</h2><ul>
+<li><a href="/phone-and-messaging">Phone and messaging</a></li>
+<li><a href="/field-operations">Field operations</a></li>
+<li><a href="/fleet">Fleet and dispatch</a></li>
+<li><a href="/scheduling">Scheduling and agreements</a></li>
+<li><a href="/crm">CRM and sales</a></li>
+<li><a href="/inventory">Inventory and assets</a></li>
+<li><a href="/billing">Billing and payments</a></li>
+<li><a href="/email-marketing">Email marketing</a></li>
+<li><a href="/marketing">Marketing and growth</a></li>
+<li><a href="/team">Team and collaboration</a></li>
+<li><a href="/analytics">Reports and analytics</a></li>
+</ul></div>
+<div><h2>Company</h2><ul>
+<li><a href="/pricing">Pricing</a></li>
+<li><a href="/industries">Industries</a></li>
+<li><a href="/programs">Community programs</a></li>
+<li><a href="/developers">Developers</a></li>
+<li><a href="/sitemap">Site map</a></li>
+</ul></div>
+</div>
+<div class="footer-note">
+<span>AlphaFlux. Built and hosted by the companies that use it.</span>
+<span><a href="/sitemap">Site map</a> and <a href="/llms.txt">llms.txt</a> for machines.</span>
+</div>
+</div></footer>
+</div>
+</div>
+<div class="drawer" data-drawer data-open="false" aria-hidden="true" role="dialog" aria-label="Site sections">
+<div class="drawer-scrim" data-drawer-scrim></div>
+<div class="drawer-panel">
+<div class="drawer-head"><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><button class="nav-toggle" type="button" data-drawer-close aria-label="Close menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-close"></use></svg></button></div>
+<div class="rail-group"><h2 class="rail-group-title">Platform</h2><ul class="rail-list">
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
+<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
+<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
+<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
+</ul></div>
+<div class="rail-group"><h2 class="rail-group-title">Modules</h2><ul class="rail-list">
+<li><a class="rail-link" href="/phone-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
+<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
+<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
+<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
+<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
+<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
+<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
+<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
+<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
+<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
+<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
+</ul></div>
+<div class="rail-group"><h2 class="rail-group-title">Company</h2><ul class="rail-list">
+<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
+<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
+<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
+<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
+<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
+</ul></div>
+</div>
+</div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+{
+  "slug": "index",
+  "nav": "Overview",
+  "group": "Platform",
+  "crumb": "Overview",
+  "title": "AlphaFlux: one system to run a service business",
+  "desc": "Phone, field operations, dispatch, CRM, inventory, billing and email marketing in one self-hosted platform. Free plan permanently, and AI agents can run it with a scoped key.",
+  "h1": "One system to run the phone, the field, the money and the marketing",
+  "standfirst": "AlphaFlux puts the whole operation behind one login and one customer record. A call becomes a lead, a lead becomes a job, a job becomes a recurring agreement, and nothing gets typed twice.",
+  "chips": ["Free plan, permanently", "Self-hosted", "Agent-manageable"],
+  "sections": [
+    {
+      "kind": "hero",
+      "title": "One system to run the phone, the field, the money and the marketing",
+      "lede": "A customer calls. The call is logged, the address is geocoded, the job is booked against real capacity, the technician is routed, the proof is captured, the invoice goes out and the follow-up email writes itself. All of that is one record moving through one platform.",
+      "body": [
+        "Most service companies run a phone system, a field service tool, a CRM, an email tool and a spreadsheet, then pay someone to keep the five of them in agreement. AlphaFlux is the alternative: every module reads and writes the same customer, the same job and the same money."
+      ],
+      "more": { "title": "Create a free account", "href": "/login" },
+      "items": [
+        { "title": "Scheduled", "note": "06:40" },
+        { "title": "Dispatched", "note": "07:05" },
+        { "title": "On site", "note": "07:52" },
+        { "title": "Complete", "note": "08:31" }
+      ],
+      "text": "Every job carries its own record: customer, technician, route, proof, payment and notes. Open it once and you see all of it."
+    },
+    {
+      "kind": "figures",
+      "title": "Three numbers that describe the shape of it",
+      "items": [
+        {
+          "title": "1",
+          "text": "One platform in place of a phone system, a field service tool, a CRM, an email tool and a spreadsheet."
+        },
+        {
+          "title": "20",
+          "kicker": "customers",
+          "text": "What the free plan covers, at one location, permanently and without a card."
+        },
+        {
+          "title": "3",
+          "kicker": "ways in",
+          "text": "Anything you can do on screen you can also do over the API or hand to an AI agent with a scoped key."
+        }
+      ]
+    },
+    {
+      "kind": "split",
+      "title": "Five systems means five copies of the same customer",
+      "lede": "The phone system knows the number. The field tool knows the address. The CRM knows the deal. The email tool knows the list. Nobody knows the whole story.",
+      "body": [
+        "That fragmentation is expensive in a way that is easy to miss. Someone becomes a full time translator between systems. Jobs get booked against capacity nobody can see. A customer who moved is still getting mail at the old address in one tool and not another. A technician arrives without knowing the account is ninety days overdue.",
+        "AlphaFlux keeps one record and lets every module work on it. The dispatcher, the technician, the office manager and the owner are all looking at the same customer, in the same state, at the same time."
+      ],
+      "items": [
+        {
+          "icon": "i-users",
+          "title": "One customer record",
+          "text": "Created by the phone call, enriched by the job, billed by the agreement, emailed by the campaign. Never duplicated."
+        },
+        {
+          "icon": "i-route",
+          "title": "One definition of capacity",
+          "text": "A booking is checked against real capacity before it is confirmed, so the schedule cannot be oversold by a person or by an agent."
+        },
+        {
+          "icon": "i-receipt",
+          "title": "One version of the money",
+          "text": "Payments, invoices, recurring agreements and commissions all read from the same ledger, in integer cents."
+        },
+        {
+          "icon": "i-note",
+          "title": "One timeline per account",
+          "text": "Calls, texts, emails, notes, AI activity and payments in a single chronological feed."
+        }
+      ],
+      "more": { "title": "See how the platform is put together", "href": "/platform" }
+    },
+    {
+      "kind": "modules",
+      "title": "Eleven modules, one login",
+      "lede": "Each module can be switched on or off per company. You only see and only pay for what you actually use, and adding one never means migrating your data."
+    },
+    {
+      "kind": "order",
+      "title": "A job is a record, not a text message",
+      "lede": "The order strip below is the same object every module works on. The dispatcher moves it, the technician moves it, an agent can move it, and the customer sees the result.",
+      "note": "Status changes are checked by the server, not by the screen. A move that is not allowed is refused and the allowed moves are named, so a drag on a board can never invent a state.",
+      "items": [
+        { "title": "Scheduled", "note": "06:40" },
+        { "title": "Dispatched", "note": "07:05" },
+        { "title": "On site", "note": "07:52" },
+        { "title": "Complete", "note": "08:31" }
+      ]
+    },
+    {
+      "kind": "split",
+      "flip": true,
+      "title": "Your agents get a key, not your password",
+      "lede": "AlphaFlux was built assuming a machine will do a growing share of the work. Every capability is an interface first, and a screen second.",
+      "body": [
+        "Issue a scoped API key and an agent can book jobs, send texts, run billing, chase overdue accounts or write back to the account timeline, and it can only do the things that key allows. Turn a key off and the agent stops, without a password ever changing hands.",
+        "The receptionist answers the phone before a person does. The assistant answers a technician's question about a treatment. Autopilot lets an agent keep a company's configuration tidy. Every action is attributed, so you can always tell what a machine did and what a person did."
+      ],
+      "items": [
+        { "icon": "i-spark", "title": "Scoped keys", "text": "Read and write, per module. A key inherits exactly the permissions of the account that owns it." },
+        { "icon": "i-terminal", "title": "A command line that speaks JSON", "text": "Every command outputs JSON, so it pipes into a script or straight into another agent turn." },
+        { "icon": "i-plug", "title": "An MCP server", "text": "Point any agent client at it and the whole platform becomes a set of tools it can call." },
+        { "icon": "i-note", "title": "Attribution on every action", "text": "Notes and sales record whether a person, an agent or an import did the work." }
+      ],
+      "more": { "title": "How agents connect", "href": "/ai-agents" }
+    },
+    {
+      "kind": "features",
+      "title": "Built for the way the work actually arrives",
+      "lede": "Nobody calls at a convenient time, and nothing in a service business stays still. The platform assumes both.",
+      "items": [
+        { "icon": "i-phone", "title": "The phone answers itself", "text": "An AI receptionist handles the call, books against real capacity and hands a human the rest. Missed calls get a text back automatically." },
+        { "icon": "i-repeat", "title": "Recurring work runs itself", "text": "Agreements generate their own visits for the length of the term. Monthly recurring revenue is calculated from the actual charges, not from a guess." },
+        { "icon": "i-box", "title": "Stock follows the truck", "text": "Inventory is not one warehouse. It is trucks, storage units, mobile units and branches, with sign in and sign out and a record of who has what." },
+        { "icon": "i-truck", "title": "Dispatch is a map and a board", "text": "See every job and every technician live, drag work between stages, sequence a day route, and let the customer watch their technician arrive." },
+        { "icon": "i-mail", "title": "Email marketing from your own domain", "text": "Campaigns, sequences and a unified inbox, sent from your domain with the authentication records handled for you." },
+        { "icon": "i-shield", "title": "Your data stays on your machine", "text": "Self-hosted, per company isolation, and an audit trail on every change. Nothing is sold, shared or used to train anything." }
+      ]
+    },
+    {
+      "kind": "statement",
+      "text": "You should not have to buy five products, and then buy a person to hold them together."
+    },
+    {
+      "kind": "table",
+      "title": "What the free plan covers, and what moves you up",
+      "lede": "The free plan is a real plan, not a trial. It is free permanently, and it is designed for someone running the business out of a truck.",
+      "cols": ["", "Free", "Starter", "Growth", "Scale"],
+      "rows": [
+        ["Price", "!Free forever", "$49 per month", "$149 per month", "$399 per month"],
+        ["Customers", "20", "250", "1,000", "5,000"],
+        ["Locations", "1", "2", "5", "15"],
+        ["Users", "1", "3", "10", "25"],
+        ["Marketing emails", "100 per month", "2,000 per month", "10,000 per month", "50,000 per month"],
+        ["Phone numbers", "1", "2", "5", "25"],
+        ["Inventory and custody", "yes", "yes", "yes", "yes"],
+        ["Agreements and invoicing", "no", "yes", "yes", "yes"],
+        ["Dispatch board and routing", "no", "no", "yes", "yes"],
+        ["AI receptionist", "no", "no", "yes", "yes"],
+        ["Live fleet map", "no", "no", "no", "yes"],
+        ["API, CLI and agent access", "no", "no", "yes", "yes"]
+      ],
+      "note": "Limits are per company. Moving up a plan keeps every record you already have."
+    },
+    {
+      "kind": "steps",
+      "title": "Start in an afternoon, not a quarter",
+      "items": [
+        { "title": "Create the account", "text": "An email address is the whole signup. No card, no sales call, no implementation fee. The free plan is available immediately." },
+        { "title": "Bring in what you already have", "text": "Import customers and inventory from a spreadsheet, or connect an existing field service account and read it live while you decide what to move." },
+        { "title": "Turn on the modules you want", "text": "Start with the phone and the schedule. Add dispatch, fleet, marketing or agent access when the work needs it." }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the free plan really free, or is it a trial?",
+      "a": "It is free permanently. Twenty customers, one location, one user, one phone number, 100 marketing emails a month and the inventory module are yours for as long as you want them. There is no card on file and no expiry date. Companies move up when their workload outgrows those limits, and when they do, everything they have already entered comes with them."
+    },
+    {
+      "q": "What does one location mean?",
+      "a": "A location is a base you operate from: a city, an office or a service area. If a company works out of one town, that is one location and everything fits on the free plan. A company running crews in three states needs three, which is what the paid plans are for."
+    },
+    {
+      "q": "Do I need to install anything?",
+      "a": "No. AlphaFlux runs on infrastructure the platform provider hosts and keeps running, and every module works in a browser on a laptop, a tablet or a phone. The technician view installs to a phone home screen like an app and keeps working when the signal drops."
+    },
+    {
+      "q": "Can an AI really be trusted to run parts of this?",
+      "a": "It can be trusted with exactly as much as you give it. An agent authenticates with a scoped key, so it can only reach the modules and the operations that key names. Every action it takes is written to the audit trail and to the account timeline, attributed to the agent rather than to a person."
+    },
+    {
+      "q": "What happens to my data if I leave?",
+      "a": "It is yours and it exports. Customer records, jobs, invoices and payment history come out in standard formats, including a full JSON export through the API. Nothing is held hostage and nothing is deleted without an explicit request."
+    },
+    {
+      "q": "Does AlphaFlux work for a company with more than one branch?",
+      "a": "Yes, and branches are modelled properly rather than treated as a naming convention. Each location has its own staff, its own schedule, its own capacity rules and its own stock. Roles can be scoped to a location, so a dispatcher in one district cannot see or change another."
+    }
+  ]
+}

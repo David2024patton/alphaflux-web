@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business phone, texting and an AI receptionist</title>
+<meta name="description" content="Keep your numbers. Calls, texts, voicemail, per number call handling and an AI receptionist that answers first, books the job and hands a human the rest.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="canonical" href="https://alphaflux.net/phone-and-messaging">
+<meta property="og:site_name" content="AlphaFlux">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Business phone, texting and an AI receptionist">
+<meta property="og:description" content="Keep your numbers. Calls, texts, voicemail, per number call handling and an AI receptionist that answers first, books the job and hands a human the rest.">
+<meta property="og:url" content="https://alphaflux.net/phone-and-messaging">
+<meta property="og:image" content="https://alphaflux.net/assets/og/phone-and-messaging.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a1220" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plexmono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+(function(){try{var s=localStorage.getItem("af-theme");var d=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.setAttribute("data-theme",s||d);}catch(e){}})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://alphaflux.net/#org",
+      "@type": "Organization",
+      "description": "A self-hosted, modular operations platform for service businesses, driver accessible by AI agents.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://alphaflux.net/assets/apple-touch-icon.png"
+      },
+      "name": "AlphaFlux",
+      "url": "https://alphaflux.net/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/",
+          "name": "Overview",
+          "position": 1
+        },
+        {
+          "@type": "ListItem",
+          "name": "Modules",
+          "position": 2
+        },
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/phone-and-messaging",
+          "name": "Phone and messaging",
+          "position": 3
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, and in most cases you should not. You can connect the carrier account you already have so your existing numbers keep working and stay yours. Porting is only needed if you want the number managed under a different carrier account."
+          },
+          "name": "Do I have to port my numbers?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It does not take card details on a call, and that is deliberate. It can book the work, take the details and leave a record, and payment is collected through the normal invoicing route where the customer has a receipt and you have a record."
+          },
+          "name": "Can the AI receptionist take a payment?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It hands over. If it cannot place the call in one of the categories it handles, or if the caller asks for a person, or if it is an emergency, the call moves to a human by the rule you set for that number."
+          },
+          "name": "What happens if the AI does not understand the caller?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Recordings and transcriptions are available on the plans that include them, attached to the customer account rather than sitting in a separate call list."
+          },
+          "name": "Can I listen to calls later?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each office can have its own numbers and its own call handling, and the receptionist resolves callers to the correct office by address. A central number can also route by the caller's location."
+          },
+          "name": "Does this work for a company with several offices?"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="shell">
+<aside class="rail" aria-label="Site sections">
+<div class="rail-inner">
+<a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a>
+<nav class="rail-nav" aria-label="All sections">
+<div class="rail-group">
+<h2 class="rail-group-title">Platform</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
+<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
+<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
+<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
+</ul>
+</div>
+<div class="rail-group">
+<h2 class="rail-group-title">Modules</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/phone-and-messaging" aria-current="page"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
+<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
+<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
+<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
+<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
+<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
+<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
+<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
+<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
+<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
+<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
+</ul>
+</div>
+<div class="rail-group">
+<h2 class="rail-group-title">Company</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
+<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
+<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
+<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
+<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
+</ul>
+</div>
+</nav>
+<div class="rail-foot">
+<a class="btn btn-primary" href="/login">Sign in</a>
+<a class="btn btn-secondary" href="/pricing">Start free</a>
+</div>
+</div>
+</aside>
+<div class="main">
+<header class="topbar">
+<button class="nav-toggle" type="button" data-drawer-open aria-expanded="false" aria-label="Open menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-menu"></use></svg></button>
+<a class="topbar-brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg></a>
+<nav class="crumbs" aria-label="Breadcrumb"><ol>
+<li><a href="/">Overview</a></li>
+<li><span class="sep" aria-hidden="true">/</span><span>Modules</span></li>
+<li><span class="sep" aria-hidden="true">/</span><span aria-current="page">Phone and messaging</span></li>
+</ol></nav>
+<span class="topbar-spacer"></span>
+<div class="topbar-actions">
+<button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch colour theme"><svg class="i-sun" aria-hidden="true"><use href="/assets/icons.svg#i-sun"></use></svg><svg class="i-moon" aria-hidden="true"><use href="/assets/icons.svg#i-moon"></use></svg></button>
+<a class="btn btn-ghost btn-sm" href="/login">Sign in</a>
+<a class="btn btn-primary btn-sm" href="/pricing">Start free</a>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<header class="page-head">
+<div class="eyebrow-line">
+<span class="chip"><span class="chip-dot"></span>Keep your numbers</span>
+<span class="chip"><span class="chip-dot"></span>Per number rules</span>
+<span class="chip"><span class="chip-dot"></span>Answers 24 hours</span>
+</div>
+<h1>Every call answered, every text logged, nothing typed twice</h1>
+<p class="standfirst">Your existing numbers on your own carrier account, with call handling per number, a voicemail inbox that reads, and a receptionist that answers before the second ring.</p>
+</header>
+</div>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>The whole phone system, not just a dialler</h2>
+<p class="lede">A phone system that does not connect to the job it produced is a phone system that costs you a re-typing job every day.</p>
+</div>
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg></span>
+<h3>Numbers you control</h3>
+<p>Bring the numbers your customers already know, or buy new ones by area code. Each number gets its own behaviour.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-message"></use></svg></span>
+<h3>Texting that belongs to the account</h3>
+<p>Every inbound and outbound message lands on the customer timeline, not in a separate handset.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clock"></use></svg></span>
+<h3>Call handling per number</h3>
+<p>Greeting, ring through target, business hours and an after hours rule, configured per number rather than once for the whole company.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg></span>
+<h3>A receptionist that books</h3>
+<p>The AI answers first, checks real capacity and puts the job on the schedule. Emergencies go straight to a person.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-bell"></use></svg></span>
+<h3>A voicemail inbox that reads</h3>
+<p>Recordings, playback and transcripts in the console, with an unread count so nothing sits unheard for a week.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-reply"></use></svg></span>
+<h3>Missed call text back</h3>
+<p>A missed call triggers a text within seconds, which is frequently the difference between a booked job and a lost one.</p>
+</li>
+</ul>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>How a call is handled, decision by decision</h2>
+<p class="lede">Every number carries its own rule set. Here is the order the platform works through when the phone rings.</p>
+</div>
+<dl class="spec-list">
+<li><dt>Answer</dt><dd>The call is answered immediately, so the caller never hears a ring they can hang up on.</dd></li>
+<li><dt>Receptionist or person</dt><dd>If the number has an AI receptionist attached, it is dialled first with a fifteen second window. If it does not answer, the human chain runs as if the AI had never been there. If the AI does answer, nobody&#39;s phone rings.</dd></li>
+<li><dt>Inside or outside hours</dt><dd>Business hours are set per number and per day. Inside hours the call rings through to the right person. Outside hours it follows the after hours rule you chose.</dd></li>
+<li><dt>The after hours rule</dt><dd>Three options per number: take a voicemail, forward to a number such as an answering service, or end the call politely. Which one is right depends on the business, so it is a setting rather than an assumption.</dd></li>
+<li><dt>Voicemail and text back</dt><dd>When a voicemail is taken it is transcribed, and a text back can be sent automatically so the caller knows they were heard rather than hoping.</dd></li>
+<li><dt>The record</dt><dd>The call, the transcript, the voicemail, any texts and the outcome all attach to the customer account. If the caller is new, the account is created by the call.</dd></li>
+</dl>
+</div></section>
+<section class="section"><div class="wrap"><div class="split">
+<div class="stack-lg">
+<h2>The receptionist does the parts you would rather not staff</h2>
+<p class="standfirst">Answering the phone at nine at night is expensive to staff and cheap to automate, as long as it is done properly.</p>
+<div class="prose">
+<p>It identifies the caller, works out which office serves the address, checks whether the service described is one you offer, and books the visit against real capacity. It takes the details, leaves a complete record, and hands over to a person for anything that needs judgement.</p>
+<p>It is bounded by the same rules your staff are: the service areas you actually cover, the capacity your technicians actually have, and a list of things it must never do. It does not quote a price that is not on your list, and it does not promise an exact arrival time.</p>
+<p>The script lives inside AlphaFlux and is versioned, so changing how your business answers the phone is an edit rather than a ticket to a vendor.</p>
+</div>
+<a class="link-more" href="/ai-agents">More on agents<svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-arrow"></use></svg></a>
+</div>
+<div class="stack-lg">
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-pin"></use></svg></span>
+<h3>Right office, first time</h3>
+<p>The address is resolved against the areas each office covers before anything is booked.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-check"></use></svg></span>
+<h3>Knows what you sell</h3>
+<p>It can check the service against your catalogue, and deflect what you do not do instead of booking it.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-calendar"></use></svg></span>
+<h3>Books into real space</h3>
+<p>Availability comes from capacity rules, not from a guess, so the schedule is never oversold.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-bell"></use></svg></span>
+<h3>Escalates properly</h3>
+<p>An emergency is routed to a person immediately, and a sales call is answered from a script.</p>
+</li>
+</ul>
+</div>
+</div></div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>Messaging done to carrier standards</h2>
+<p class="lede">Business texting has rules. The platform handles the registration and the compliance so messages arrive.</p>
+</div>
+<dl class="spec-list">
+<li><dt>Brand and campaign registration</dt><dd>The registration work that carriers require before application to person messaging is supported in the console, with the status of each registration visible rather than hidden.</dd></li>
+<li><dt>Opt out handling</dt><dd>A customer who replies to stop is suppressed from future sends automatically. That applies equally to a person sending and to an agent sending.</dd></li>
+<li><dt>Message logging on the account</dt><dd>Every message in and out is recorded against the customer timeline, with the number it came from and the person or agent who sent it.</dd></li>
+<li><dt>Deliverability signals</dt><dd>Failed and undelivered messages are surfaced rather than silently dropped, because a text that never arrived is worse than one never sent.</dd></li>
+<li><dt>More than one sender identity</dt><dd>Alphanumeric sender identifiers, short codes and messaging services are all manageable from the same place on the larger plans.</dd></li>
+</dl>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="statement"><p>A missed call is a lead that has already decided to call you. It should almost never be lost.</p></div>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>What the phone module includes</h2>
+</div>
+<div class="table-scroll" role="region" aria-label="What the phone module includes, scrolls horizontally" tabindex="0"><table class="data">
+<caption></caption>
+<thead><tr><th scope="col"></th><th scope="col">Free</th><th scope="col">Starter and Growth</th><th scope="col">Scale and above</th></tr></thead>
+<tbody>
+<tr><th scope="row">Phone numbers</th><td>1</td><td>2 to 5</td><td>25</td></tr>
+<tr><th scope="row">Text messaging</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Voicemail with transcript</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Missed call text back</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Per number call handling</th><td>Basic</td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">AI receptionist</th><td><span class="no">Not included</span></td><td>Growth and above</td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Recording and transcription</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Registration and compliance tools</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+</tbody></table></div>
+</div></section>
+<section class="section" id="faq">
+<div class="wrap"><div class="split">
+<div><h2>Questions people ask before signing up</h2></div>
+<div class="faq">
+<details><summary>Do I have to port my numbers?</summary><div class="answer"><p>No, and in most cases you should not. You can connect the carrier account you already have so your existing numbers keep working and stay yours. Porting is only needed if you want the number managed under a different carrier account.</p></div></details>
+<details><summary>Can the AI receptionist take a payment?</summary><div class="answer"><p>It does not take card details on a call, and that is deliberate. It can book the work, take the details and leave a record, and payment is collected through the normal invoicing route where the customer has a receipt and you have a record.</p></div></details>
+<details><summary>What happens if the AI does not understand the caller?</summary><div class="answer"><p>It hands over. If it cannot place the call in one of the categories it handles, or if the caller asks for a person, or if it is an emergency, the call moves to a human by the rule you set for that number.</p></div></details>
+<details><summary>Can I listen to calls later?</summary><div class="answer"><p>Recordings and transcriptions are available on the plans that include them, attached to the customer account rather than sitting in a separate call list.</p></div></details>
+<details><summary>Does this work for a company with several offices?</summary><div class="answer"><p>Each office can have its own numbers and its own call handling, and the receptionist resolves callers to the correct office by address. A central number can also route by the caller&#39;s location.</p></div></details>
+</div>
+</div></div></section>
+</main>
+<section class="band"><div class="wrap"><div class="split">
+<div class="stack-lg">
+<h2>Start on the free plan</h2>
+<p>Twenty customers, one location, every core module, free permanently. Move up when the work outgrows it.</p>
+</div>
+<div class="btn-row" style="align-self:center">
+<a class="btn btn-primary btn-lg" href="/login">Create a free account</a>
+<a class="btn btn-secondary btn-lg" href="/pricing">See what each plan includes</a>
+</div>
+</div></div></section>
+<footer class="footer"><div class="wrap">
+<div class="footer-cols">
+<div><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><p class="small muted" style="margin-block-start:var(--space-4);max-inline-size:34ch">One platform for the phone, the field, the money and the marketing, driven by you or by your agents.</p></div>
+<div><h2>Platform</h2><ul>
+<li><a href="/">Overview</a></li>
+<li><a href="/platform">How it works</a></li>
+<li><a href="/ai-agents">AI agents</a></li>
+<li><a href="/modules">All modules</a></li>
+<li><a href="/security">Security</a></li>
+<li><a href="/white-label">White label</a></li>
+</ul></div>
+<div><h2>Modules</h2><ul>
+<li><a href="/phone-and-messaging">Phone and messaging</a></li>
+<li><a href="/field-operations">Field operations</a></li>
+<li><a href="/fleet">Fleet and dispatch</a></li>
+<li><a href="/scheduling">Scheduling and agreements</a></li>
+<li><a href="/crm">CRM and sales</a></li>
+<li><a href="/inventory">Inventory and assets</a></li>
+<li><a href="/billing">Billing and payments</a></li>
+<li><a href="/email-marketing">Email marketing</a></li>
+<li><a href="/marketing">Marketing and growth</a></li>
+<li><a href="/team">Team and collaboration</a></li>
+<li><a href="/analytics">Reports and analytics</a></li>
+</ul></div>
+<div><h2>Company</h2><ul>
+<li><a href="/pricing">Pricing</a></li>
+<li><a href="/industries">Industries</a></li>
+<li><a href="/programs">Community programs</a></li>
+<li><a href="/developers">Developers</a></li>
+<li><a href="/sitemap">Site map</a></li>
+</ul></div>
+</div>
+<div class="footer-note">
+<span>AlphaFlux. Built and hosted by the companies that use it.</span>
+<span><a href="/sitemap">Site map</a> and <a href="/llms.txt">llms.txt</a> for machines.</span>
+</div>
+</div></footer>
+</div>
+</div>
+<div class="drawer" data-drawer data-open="false" aria-hidden="true" role="dialog" aria-label="Site sections">
+<div class="drawer-scrim" data-drawer-scrim></div>
+<div class="drawer-panel">
+<div class="drawer-head"><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><button class="nav-toggle" type="button" data-drawer-close aria-label="Close menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-close"></use></svg></button></div>
+<div class="rail-group"><h2 class="rail-group-title">Platform</h2><ul class="rail-list">
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
+<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
+<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
+<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
+</ul></div>
+<div class="rail-group"><h2 class="rail-group-title">Modules</h2><ul class="rail-list">
+<li><a class="rail-link" href="/phone-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
+<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
+<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
+<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
+<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
+<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
+<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
+<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
+<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
+<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
+<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
+</ul></div>
+<div class="rail-group"><h2 class="rail-group-title">Company</h2><ul class="rail-list">
+<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
+<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
+<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
+<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
+<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
+</ul></div>
+</div>
+</div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>White label: run the whole platform as your own</title>
+<meta name="description" content="Every module, no limits, your brand, your domain, your sending identity and resale rights. The platform your customers see should be yours.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="canonical" href="https://alphaflux.net/white-label">
+<meta property="og:site_name" content="AlphaFlux">
+<meta property="og:type" content="website">
+<meta property="og:title" content="White label: run the whole platform as your own">
+<meta property="og:description" content="Every module, no limits, your brand, your domain, your sending identity and resale rights. The platform your customers see should be yours.">
+<meta property="og:url" content="https://alphaflux.net/white-label">
+<meta property="og:image" content="https://alphaflux.net/assets/og/white-label.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a1220" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plexmono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+(function(){try{var s=localStorage.getItem("af-theme");var d=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.setAttribute("data-theme",s||d);}catch(e){}})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://alphaflux.net/#org",
+      "@type": "Organization",
+      "description": "A self-hosted, modular operations platform for service businesses, driver accessible by AI agents.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://alphaflux.net/assets/apple-touch-icon.png"
+      },
+      "name": "AlphaFlux",
+      "url": "https://alphaflux.net/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/",
+          "name": "Overview",
+          "position": 1
+        },
+        {
+          "@type": "ListItem",
+          "name": "Platform",
+          "position": 2
+        },
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/white-label",
+          "name": "White label",
+          "position": 3
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Branding, domains, sending identities and catalogues are configuration. Infrastructure is looked after, and certificates and updates are handled. Technical staff are only needed if you want to build custom integrations, and the interfaces for that are documented."
+          },
+          "name": "Do I need technical staff to run it?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You define your own bundles, your own limits and your own pricing, and you bill your customers directly. The platform does not see your customer relationships and does not sell to them."
+          },
+          "name": "Can I set my own prices and keep the difference?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The white label plan carries no limits on customers, locations or users. The flat monthly price does not change as your customer base grows."
+          },
+          "name": "Is there a limit on how many customers I can have?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. They are your customers. The platform does not market to them, does not email them, and does not use their data for anything beyond running their workspaces."
+          },
+          "name": "Will my customers ever be contacted by AlphaFlux?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and most operators do. You have every module available, and you decide which of them appear in which of your bundles. A customer of yours sees your product line, and you keep the rest in reserve for the next tier up."
+          },
+          "name": "Can I offer less than the whole platform to my customers?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That is an enterprise conversation. Custom modules follow the same contract as the existing ones, which is what allows them to be added without disturbing anything already running."
+          },
+          "name": "What if I want custom modules?"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="shell">
+<aside class="rail" aria-label="Site sections">
+<div class="rail-inner">
+<a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a>
+<nav class="rail-nav" aria-label="All sections">
+<div class="rail-group">
+<h2 class="rail-group-title">Platform</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
+<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
+<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
+<li><a class="rail-link" href="/white-label" aria-current="page"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
+</ul>
+</div>
+<div class="rail-group">
+<h2 class="rail-group-title">Modules</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/phone-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
+<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
+<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
+<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
+<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
+<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
+<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
+<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
+<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
+<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
+<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
+</ul>
+</div>
+<div class="rail-group">
+<h2 class="rail-group-title">Company</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
+<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
+<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
+<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
+<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
+</ul>
+</div>
+</nav>
+<div class="rail-foot">
+<a class="btn btn-primary" href="/login">Sign in</a>
+<a class="btn btn-secondary" href="/pricing">Start free</a>
+</div>
+</div>
+</aside>
+<div class="main">
+<header class="topbar">
+<button class="nav-toggle" type="button" data-drawer-open aria-expanded="false" aria-label="Open menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-menu"></use></svg></button>
+<a class="topbar-brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg></a>
+<nav class="crumbs" aria-label="Breadcrumb"><ol>
+<li><a href="/">Overview</a></li>
+<li><span class="sep" aria-hidden="true">/</span><span>Platform</span></li>
+<li><span class="sep" aria-hidden="true">/</span><span aria-current="page">White label</span></li>
+</ol></nav>
+<span class="topbar-spacer"></span>
+<div class="topbar-actions">
+<button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch colour theme"><svg class="i-sun" aria-hidden="true"><use href="/assets/icons.svg#i-sun"></use></svg><svg class="i-moon" aria-hidden="true"><use href="/assets/icons.svg#i-moon"></use></svg></button>
+<a class="btn btn-ghost btn-sm" href="/login">Sign in</a>
+<a class="btn btn-primary btn-sm" href="/pricing">Start free</a>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<header class="page-head">
+<div class="eyebrow-line">
+<span class="chip"><span class="chip-dot"></span>Every module</span>
+<span class="chip"><span class="chip-dot"></span>No limits</span>
+<span class="chip"><span class="chip-dot"></span>Resale rights</span>
+</div>
+<h1>Your platform, your name, your customers</h1>
+<p class="standfirst">Five thousand a month buys the entire platform with every limit lifted, under your brand, on your domain, with the right to sell it to your own customers as your own product.</p>
+</header>
+</div>
+<section class="section"><div class="wrap"><div class="split">
+<div class="stack-lg">
+<h2>What it is, plainly</h2>
+<p class="standfirst">Some companies do not want to buy software. They want to sell it. This is the version of AlphaFlux that makes that possible.</p>
+<div class="prose">
+<p>A franchise group wants one system across its locations, branded as the group. A managed service provider wants to offer field operations alongside what it already sells. A software company serving an industry wants an operations module without building one. An agency running marketing for service businesses wants to hand them the tool as part of the retainer.</p>
+<p>In each case the platform is the same platform. What changes is whose name is on it, whose domain the customer signs in at, whose sending identity the email comes from, and who sets the pricing.</p>
+<p>There is one flat monthly price, every module is included, no limits are applied, and the right to resell is part of it rather than a separate negotiation.</p>
+</div>
+</div>
+<div class="stack-lg">
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg></span>
+<h3>Your brand everywhere a customer looks</h3>
+<p>Sign in page, console, mobile view, emails, invoices and the customer facing pages. No mention of AlphaFlux remains.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-globe"></use></svg></span>
+<h3>Your domain</h3>
+<p>Customers sign in at your address. Certificates are issued and renewed automatically, so there is nothing to maintain.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg></span>
+<h3>Your sending identity</h3>
+<p>Email leaves under your domain with your authentication records, so your reputation is built rather than borrowed.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg></span>
+<h3>Your bundles and pricing</h3>
+<p>Define your own plans, your own limits and your own add ons from the module catalogue, and price them however you want.</p>
+</li>
+</ul>
+</div>
+</div></div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>What arrives with it</h2>
+<p class="lede">Everything, with nothing held back for a higher tier.</p>
+</div>
+<dl class="spec-list">
+<li><dt>Every module, no limits</dt><dd>Phone and messaging, field operations, fleet and dispatch, scheduling and agreements, CRM, inventory and chemical tracking, billing, email marketing, marketing and growth, team collaboration, reporting and the advisor. Unlimited customers, locations, users, numbers and email volume.</dd></li>
+<li><dt>Agent access for your customers</dt><dd>The API, the command line and the agent protocol server are included, so your customers can automate against your platform the same way they could against ours.</dd></li>
+<li><dt>Separate companies under one operator</dt><dd>Run your own business and your customers&#39; businesses side by side, each with its own records, users, branding and modules. New customers are provisioned without touching infrastructure.</dd></li>
+<li><dt>Your own catalogue</dt><dd>Because the module registry is data, you define which modules belong in which of your bundles and what each one costs. A customer buying from you sees your product line, not ours.</dd></li>
+<li><dt>Onboarding</dt><dd>Time with your team to get the first customers live, including how branding is applied, how workspaces are provisioned and how support should be handled.</dd></li>
+<li><dt>A named contact</dt><dd>One person who knows your account and your customers, rather than a ticket queue.</dd></li>
+</dl>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>Why the badge exists on every other plan</h2>
+</div>
+<div class="prose stack-lg">
+<p>On every other plan, the customer facing pages carry a small line stating that the platform is provided by AlphaFlux. It is worth being direct about why, because it is an unusual thing to do.</p>
+<p>It is how a host is discovered, and it is a large part of why a free plan can cost nothing. A company running happily on the free tier is, in a small way, paying for it by being an example. That keeps the free tier genuinely free rather than a trial with a countdown.</p>
+<p>The badge is deliberately minimal. It appears only on the pages an end customer might see, never on the internal dashboards a company works in, and never in emails, invoices or anything a customer reads that is about money.</p>
+<p>White label removes it entirely, along with every other trace, and hands over resale rights. That is the trade, stated plainly rather than buried in a footnote.</p>
+</div>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>How a white labelled deployment works</h2>
+<p class="lede">Setting it up is a configuration exercise, not a fork of the software.</p>
+</div>
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg></span>
+<h3>One line of configuration per brand</h3>
+<p>Brand name, marks, colour system, domain, sender identity and catalogue. Every one is a setting rather than a code change.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg></span>
+<h3>You hold the accounts</h3>
+<p>You provision workspaces and manage them. Your customers see your support, because it is your product.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-lock"></use></svg></span>
+<h3>Isolation is unchanged</h3>
+<p>Each of your customers is a company with its own records and its own scope, exactly as they would be under any other plan.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-plug"></use></svg></span>
+<h3>Your own integrations</h3>
+<p>The interfaces are the same ones documented for developers, so your team can build on them under your own API surface if you want.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-check"></use></svg></span>
+<h3>Updates included</h3>
+<p>New modules and improvements land in your deployment. You are running the platform, not a frozen copy of one.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg></span>
+<h3>Your customers&#39; data stays theirs</h3>
+<p>The platform does not read your customers&#39; data, does not use it to train anything, and does not market to them.</p>
+</li>
+</ul>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="statement"><p>If your customers are signing in somewhere with someone else&#39;s name on it, you are renting an audience rather than building one.</p></div>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>What white label changes</h2>
+</div>
+<div class="table-scroll" role="region" aria-label="What white label changes, scrolls horizontally" tabindex="0"><table class="data">
+<caption></caption>
+<thead><tr><th scope="col"></th><th scope="col">Standard plans</th><th scope="col">White label</th></tr></thead>
+<tbody>
+<tr><th scope="row">Modules</th><td>By plan</td><td>All of them</td></tr>
+<tr><th scope="row">Limits</th><td>By plan</td><td>None applied</td></tr>
+<tr><th scope="row">Customers and locations</th><td>By plan</td><td>Unlimited</td></tr>
+<tr><th scope="row">Users</th><td>By plan</td><td>Unlimited</td></tr>
+<tr><th scope="row">Branding</th><td>AlphaFlux</td><td><span class="cell-strong">Yours</span></td></tr>
+<tr><th scope="row">Sign in domain</th><td>Platform domain</td><td><span class="cell-strong">Your domain</span></td></tr>
+<tr><th scope="row">Email sending identity</th><td>Platform</td><td><span class="cell-strong">Yours</span></td></tr>
+<tr><th scope="row">Your own bundles and pricing</th><td><span class="no">Not included</span></td><td><span class="cell-strong">Yes</span></td></tr>
+<tr><th scope="row">Resale to your own customers</th><td><span class="no">Not included</span></td><td><span class="cell-strong">Yes</span></td></tr>
+<tr><th scope="row">Badge on customer facing pages</th><td>Present</td><td><span class="cell-strong">Removed</span></td></tr>
+<tr><th scope="row">Support</th><td>Shared queue</td><td>Named contact</td></tr>
+<tr><th scope="row">Setup</th><td>Self service</td><td>Onboarding included</td></tr>
+</tbody></table></div>
+</div></section>
+<section class="section" id="faq">
+<div class="wrap"><div class="split">
+<div><h2>Questions people ask before signing up</h2></div>
+<div class="faq">
+<details><summary>Do I need technical staff to run it?</summary><div class="answer"><p>No. Branding, domains, sending identities and catalogues are configuration. Infrastructure is looked after, and certificates and updates are handled. Technical staff are only needed if you want to build custom integrations, and the interfaces for that are documented.</p></div></details>
+<details><summary>Can I set my own prices and keep the difference?</summary><div class="answer"><p>Yes. You define your own bundles, your own limits and your own pricing, and you bill your customers directly. The platform does not see your customer relationships and does not sell to them.</p></div></details>
+<details><summary>Is there a limit on how many customers I can have?</summary><div class="answer"><p>No. The white label plan carries no limits on customers, locations or users. The flat monthly price does not change as your customer base grows.</p></div></details>
+<details><summary>Will my customers ever be contacted by AlphaFlux?</summary><div class="answer"><p>No. They are your customers. The platform does not market to them, does not email them, and does not use their data for anything beyond running their workspaces.</p></div></details>
+<details><summary>Can I offer less than the whole platform to my customers?</summary><div class="answer"><p>Yes, and most operators do. You have every module available, and you decide which of them appear in which of your bundles. A customer of yours sees your product line, and you keep the rest in reserve for the next tier up.</p></div></details>
+<details><summary>What if I want custom modules?</summary><div class="answer"><p>That is an enterprise conversation. Custom modules follow the same contract as the existing ones, which is what allows them to be added without disturbing anything already running.</p></div></details>
+</div>
+</div></div></section>
+</main>
+<section class="band"><div class="wrap"><div class="split">
+<div class="stack-lg">
+<h2>Start on the free plan</h2>
+<p>Twenty customers, one location, every core module, free permanently. Move up when the work outgrows it.</p>
+</div>
+<div class="btn-row" style="align-self:center">
+<a class="btn btn-primary btn-lg" href="/login">Create a free account</a>
+<a class="btn btn-secondary btn-lg" href="/pricing">See what each plan includes</a>
+</div>
+</div></div></section>
+<footer class="footer"><div class="wrap">
+<div class="footer-cols">
+<div><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><p class="small muted" style="margin-block-start:var(--space-4);max-inline-size:34ch">One platform for the phone, the field, the money and the marketing, driven by you or by your agents.</p></div>
+<div><h2>Platform</h2><ul>
+<li><a href="/">Overview</a></li>
+<li><a href="/platform">How it works</a></li>
+<li><a href="/ai-agents">AI agents</a></li>
+<li><a href="/modules">All modules</a></li>
+<li><a href="/security">Security</a></li>
+<li><a href="/white-label">White label</a></li>
+</ul></div>
+<div><h2>Modules</h2><ul>
+<li><a href="/phone-and-messaging">Phone and messaging</a></li>
+<li><a href="/field-operations">Field operations</a></li>
+<li><a href="/fleet">Fleet and dispatch</a></li>
+<li><a href="/scheduling">Scheduling and agreements</a></li>
+<li><a href="/crm">CRM and sales</a></li>
+<li><a href="/inventory">Inventory and assets</a></li>
+<li><a href="/billing">Billing and payments</a></li>
+<li><a href="/email-marketing">Email marketing</a></li>
+<li><a href="/marketing">Marketing and growth</a></li>
+<li><a href="/team">Team and collaboration</a></li>
+<li><a href="/analytics">Reports and analytics</a></li>
+</ul></div>
+<div><h2>Company</h2><ul>
+<li><a href="/pricing">Pricing</a></li>
+<li><a href="/industries">Industries</a></li>
+<li><a href="/programs">Community programs</a></li>
+<li><a href="/developers">Developers</a></li>
+<li><a href="/sitemap">Site map</a></li>
+</ul></div>
+</div>
+<div class="footer-note">
+<span>AlphaFlux. Built and hosted by the companies that use it.</span>
+<span><a href="/sitemap">Site map</a> and <a href="/llms.txt">llms.txt</a> for machines.</span>
+</div>
+</div></footer>
+</div>
+</div>
+<div class="drawer" data-drawer data-open="false" aria-hidden="true" role="dialog" aria-label="Site sections">
+<div class="drawer-scrim" data-drawer-scrim></div>
+<div class="drawer-panel">
+<div class="drawer-head"><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><button class="nav-toggle" type="button" data-drawer-close aria-label="Close menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-close"></use></svg></button></div>
+<div class="rail-group"><h2 class="rail-group-title">Platform</h2><ul class="rail-list">
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
+<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
+<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
+<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
+</ul></div>
+<div class="rail-group"><h2 class="rail-group-title">Modules</h2><ul class="rail-list">
+<li><a class="rail-link" href="/phone-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
+<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
+<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
+<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
+<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
+<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
+<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
+<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
+<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
+<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
+<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
+</ul></div>
+<div class="rail-group"><h2 class="rail-group-title">Company</h2><ul class="rail-list">
+<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
+<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
+<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
+<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
+<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
+</ul></div>
+</div>
+</div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+{
+  "slug": "email-marketing",
+  "nav": "Email marketing",
+  "group": "Modules",
+  "crumb": "Email marketing",
+  "title": "Email marketing from your own domain",
+  "desc": "Campaigns, automated sequences and a unified inbox that send from your domain with authentication handled, suppression respected and every reply on the customer record.",
+  "h1": "Email marketing that sends from your own domain, not someone else's",
+  "standfirst": "Campaigns, sequences and follow ups that reach customers with your name on them, from your own domain, with the authentication records set up for you and every reply landing on the account.",
+  "chips": ["Your own domain", "Free plan includes 100 a month", "Replies on the record"],
+  "sections": [
+    {
+      "kind": "features",
+      "title": "What the module covers",
+      "lede": "A campaign is a message sent on purpose to a list that consented. A sequence is a set of messages sent because something happened. Both belong to the customer record.",
+      "items": [
+        { "icon": "i-megaphone", "title": "Campaigns", "text": "Build a message, choose an audience, schedule it and read the result, with the content saved as a reusable template." },
+        { "icon": "i-repeat", "title": "Sequences and automations", "text": "Welcome a new customer, remind before a visit, follow up after a job, win back a lapsed account. Triggered by real events, not by a manual list." },
+        { "icon": "i-grid", "title": "A visual builder", "text": "Drag blocks into a layout, with the same design tokens as the rest of the platform so a message cannot look like it came from a different company." },
+        { "icon": "i-users", "title": "Lists and segments", "text": "Target by tag, pipeline stage, service, area, spend, last visit or any combination, because a segment is a query over real records." },
+        { "icon": "i-mail", "title": "A unified inbox", "text": "Replies arrive in the platform and attach to the account, so a response to a campaign is a conversation on the timeline, not a message in a separate tool." },
+        { "icon": "i-chart", "title": "Results that mean something", "text": "Opens, clicks, replies, unsubscribes, and the harder number: revenue attributed to the campaign against the accounts it touched." }
+      ]
+    },
+    {
+      "kind": "split",
+      "title": "Deliverability is the whole game",
+      "lede": "A beautiful campaign that lands in a promotions tab or a spam folder did not happen. Most small business email fails here, not in the writing.",
+      "body": [
+        "AlphaFlux sends from a domain you control and sets up the authentication records that mailbox providers check before they decide whether to trust a message. Sending from your own domain means your reputation is yours, rather than borrowed from a shared sender that another company can damage for you.",
+        "Bounces, complaints and unsubscribes are handled automatically. A customer who opts out is suppressed everywhere, including from messages an agent would send, because consent is a property of the customer rather than a setting on a campaign.",
+        "Sending is separated from transactional mail. A receipt or an appointment confirmation is one kind of message, and a marketing offer is another, and mixing them is what turns a useful notification into a spam complaint."
+      ],
+      "items": [
+        { "icon": "i-shield", "title": "Authentication handled", "text": "The records mailbox providers check are configured and kept correct, so your domain carries its own reputation." },
+        { "icon": "i-lock", "title": "Consent is respected", "text": "An unsubscribe suppresses across every campaign, every sequence and anything an agent sends." },
+        { "icon": "i-bell", "title": "Bounces acted on", "text": "Hard bounces are removed, soft bounces retried, and the reasons are visible rather than counted." },
+        { "icon": "i-layers", "title": "Separated from notifications", "text": "Transactional messages and marketing messages travel on different rails, so a reminder never looks like an advertisement." }
+      ]
+    },
+    {
+      "kind": "list",
+      "title": "Sequences worth having on day one",
+      "lede": "These are the automations that pay for the module, and each one is triggered by an event the platform already records.",
+      "items": [
+        {
+          "title": "Missed call recovery",
+          "text": "A call to the business that is not answered triggers a text immediately and an email shortly after, asking whether the customer still needs help. This is usually the highest returning sequence a service business can run."
+        },
+        {
+          "title": "Quote follow up",
+          "text": "A quote that has not been accepted after a set number of days triggers a short follow up. Most quotes are not lost, they are forgotten, by both sides."
+        },
+        {
+          "title": "Before the visit",
+          "text": "A confirmation before an appointment, with what to expect and how to prepare. This reduces wasted trips more reliably than any reminder system a customer has to opt into."
+        },
+        {
+          "title": "After the visit",
+          "text": "A thank you, a receipt, a request for a review, and any paperwork the customer needs to keep. Sent while the work is still memorable."
+        },
+        {
+          "title": "Lapsed customer win back",
+          "text": "A customer who has not booked in a set period gets a sequence that offers a reason to come back, timed to the season or the service interval rather than to a generic calendar."
+        },
+        {
+          "title": "Review request",
+          "text": "Ask for a review at the moment satisfaction is highest, which is minutes after a completed visit, and route the response to the platform's own review page."
+        }
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Why the inbox belongs inside the platform",
+      "body": [
+        "Email marketing tools are good at sending and bad at knowing anything. They have their own list, their own idea of who a customer is, and no idea that the person on it is ninety days overdue or just had a complaint resolved yesterday.",
+        "Because AlphaFlux sends from records rather than from a copied list, a campaign can exclude customers with an open complaint, segment on a pipeline stage, and count revenue against the accounts it touched. A reply lands on the account timeline next to the job it relates to.",
+        "That is what makes the reporting real instead of decorative. A campaign that reports a twenty percent open rate and no attributable revenue has not told anyone anything useful."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Email marketing by plan",
+      "cols": ["", "Free", "Starter", "Growth", "Scale and above"],
+      "rows": [
+        ["Marketing emails", "100 per month", "2,000 per month", "10,000 per month", "50,000 per month"],
+        ["Campaign builder", "Basic", "yes", "yes", "yes"],
+        ["Saved templates", "2", "20", "Unlimited", "Unlimited"],
+        ["Lists and segments", "Basic", "yes", "yes", "yes"],
+        ["Automated sequences", "no", "3", "Unlimited", "Unlimited"],
+        ["Unified inbox", "yes", "yes", "yes", "yes"],
+        ["Send from your own domain", "no", "yes", "yes", "yes"],
+        ["Revenue attribution", "no", "Basic", "yes", "yes"]
+      ],
+      "note": "Transactional messages such as receipts and appointment confirmations are not counted against the marketing allowance."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the free plan enough to send anything useful?",
+      "a": "It is enough to keep in touch with a small customer base and to run a missed call recovery sequence, which is often the one that matters most. A hundred marketing messages a month covers a solo operator with a few dozen regular customers. When the list outgrows it, that is usually a good sign."
+    },
+    {
+      "q": "Can I send from my own email address?",
+      "a": "Yes, from a domain you control. Sending from your own domain means your reputation is yours and your customers see your name. The platform sets up the authentication records that mailbox providers check and keeps them correct."
+    },
+    {
+      "q": "What about customers who unsubscribed?",
+      "a": "They are suppressed permanently, across every campaign, every automated sequence and anything an agent sends. The suppression is a property of the customer record, so it cannot be bypassed by starting a new campaign."
+    },
+    {
+      "q": "Do receipts and appointment reminders count toward my allowance?",
+      "a": "No. Transactional messages such as receipts, confirmations and reminders travel separately and are not counted against the marketing allowance, because they are expected communication rather than marketing."
+    },
+    {
+      "q": "Can I see whether a campaign made money?",
+      "a": "On the plans that include attribution, yes. Revenue is counted against the accounts a campaign touched, using the jobs and invoices the platform already holds, rather than a tracking pixel's best guess."
+    }
+  ]
+}

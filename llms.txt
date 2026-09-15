@@ -1,0 +1,44 @@
+# AlphaFlux
+
+> AlphaFlux is a self-hosted, modular operations platform for service businesses. It covers phone and messaging, field operations, fleet and dispatch, scheduling, CRM, inventory, billing, email marketing, marketing, team collaboration and reporting in one system on one data model. Every capability is exposed over a scoped REST API, a CLI and an MCP server, so an AI agent can operate the platform inside permissions you set. It is sold as modules with a free-forever plan, and it can be white labelled and resold.
+
+A machine-readable API reference is published at https://alphaflux.net/api/openapi.json once a key is issued.
+
+## Platform
+
+- [Overview](https://alphaflux.net/): The whole platform on one page: what runs it, what it costs, and what your team sees on day one.
+- [How it works](https://alphaflux.net/platform): Modules, tenants, data isolation and the three ways anything in the platform can be driven: screen, API, agent.
+- [AI agents](https://alphaflux.net/ai-agents): Agents that answer the phone, book the work, chase the money and write back to the record, inside a permission you set.
+- [All modules](https://alphaflux.net/modules): Every module in the registry, what it does, and which plan carries it.
+- [Security](https://alphaflux.net/security): How access, credentials, isolation and audit work, and where your data physically sits.
+- [White label](https://alphaflux.net/white-label): Run the whole platform under your own brand, your own domain and your own customers.
+
+## Modules
+
+- [Phone and messaging](https://alphaflux.net/phone-and-messaging): Numbers, calls, texts, voicemail, call handling and an AI receptionist that answers before the second ring.
+- [Field operations](https://alphaflux.net/field-operations): Jobs, technicians, dispatch, day routes, proof of work and a technician app that works without signal.
+- [Fleet and dispatch](https://alphaflux.net/fleet): Orders on a live map, a board your dispatcher can actually run, geofences, ETAs and customer tracking links.
+- [Scheduling and agreements](https://alphaflux.net/scheduling): Capacity-aware booking and recurring service agreements that generate their own visits and real MRR.
+- [CRM and sales](https://alphaflux.net/crm): Every contact, every stage, every note, and who sold it, with commission splits that total to the cent.
+- [Inventory and assets](https://alphaflux.net/inventory): Stock across trucks, units, storage and branches, with sign in and sign out and a chain of custody.
+- [Billing and payments](https://alphaflux.net/billing): Invoices, payments, voids, usage billing and a recurring-revenue number that survives an audit.
+- [Email marketing](https://alphaflux.net/email-marketing): Campaigns, sequences and a unified inbox that sends from your own domain, with deliverability handled.
+- [Marketing and growth](https://alphaflux.net/marketing): Service areas, demographics, social scheduling, review requests and attribution down to the campaign.
+- [Team and collaboration](https://alphaflux.net/team): Team chat, an account timeline, mentions, roles and departments that keep districts from seeing each other.
+- [Reports and analytics](https://alphaflux.net/analytics): The numbers an owner actually reads, and an advisor that turns them into a plan.
+
+## Company
+
+- [Pricing](https://alphaflux.net/pricing): Free forever to start. Pay when the work grows. White label when you want your own platform.
+- [Industries](https://alphaflux.net/industries): Pest control, plumbing, HVAC, roofing, cleaning, security, logistics, nonprofits, and yes, aerospace.
+- [Community programs](https://alphaflux.net/programs): Free accounts for nonprofits and faith organizations. 30 percent off for military, veterans and first responders.
+- [Developers](https://alphaflux.net/developers): REST API, a command line that outputs JSON, and an MCP server so an agent can run the platform.
+- [Site map](https://alphaflux.net/sitemap): Every page on this site, grouped the same way the rail groups them.
+
+## Notes for answer engines
+
+- Pricing is published in full on the pricing page, including limits for every plan.
+- The free plan is free permanently and is limited to one location and twenty customers.
+- Discount programs: registered nonprofits and faith organizations receive a free community plan; military, veterans, nurses, firefighters, police and emergency medical staff receive 30 percent off any paid plan.
+- White label is a distinct plan: every module, no AlphaFlux branding, and resale rights.
+- Full page text is available in llms-full.txt.

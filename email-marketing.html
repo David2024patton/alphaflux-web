@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Email marketing from your own domain</title>
+<meta name="description" content="Campaigns, automated sequences and a unified inbox that send from your domain with authentication handled, suppression respected and every reply on the customer record.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="canonical" href="https://alphaflux.net/email-marketing">
+<meta property="og:site_name" content="AlphaFlux">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Email marketing from your own domain">
+<meta property="og:description" content="Campaigns, automated sequences and a unified inbox that send from your domain with authentication handled, suppression respected and every reply on the customer record.">
+<meta property="og:url" content="https://alphaflux.net/email-marketing">
+<meta property="og:image" content="https://alphaflux.net/assets/og/email-marketing.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a1220" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plexmono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+(function(){try{var s=localStorage.getItem("af-theme");var d=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.setAttribute("data-theme",s||d);}catch(e){}})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://alphaflux.net/#org",
+      "@type": "Organization",
+      "description": "A self-hosted, modular operations platform for service businesses, driver accessible by AI agents.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://alphaflux.net/assets/apple-touch-icon.png"
+      },
+      "name": "AlphaFlux",
+      "url": "https://alphaflux.net/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/",
+          "name": "Overview",
+          "position": 1
+        },
+        {
+          "@type": "ListItem",
+          "name": "Modules",
+          "position": 2
+        },
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/email-marketing",
+          "name": "Email marketing",
+          "position": 3
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is enough to keep in touch with a small customer base and to run a missed call recovery sequence, which is often the one that matters most. A hundred marketing messages a month covers a solo operator with a few dozen regular customers. When the list outgrows it, that is usually a good sign."
+          },
+          "name": "Is the free plan enough to send anything useful?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, from a domain you control. Sending from your own domain means your reputation is yours and your customers see your name. The platform sets up the authentication records that mailbox providers check and keeps them correct."
+          },
+          "name": "Can I send from my own email address?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They are suppressed permanently, across every campaign, every automated sequence and anything an agent sends. The suppression is a property of the customer record, so it cannot be bypassed by starting a new campaign."
+          },
+          "name": "What about customers who unsubscribed?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Transactional messages such as receipts, confirmations and reminders travel separately and are not counted against the marketing allowance, because they are expected communication rather than marketing."
+          },
+          "name": "Do receipts and appointment reminders count toward my allowance?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On the plans that include attribution, yes. Revenue is counted against the accounts a campaign touched, using the jobs and invoices the platform already holds, rather than a tracking pixel's best guess."
+          },
+          "name": "Can I see whether a campaign made money?"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="shell">
+<aside class="rail" aria-label="Site sections">
+<div class="rail-inner">
+<a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a>
+<nav class="rail-nav" aria-label="All sections">
+<div class="rail-group">
+<h2 class="rail-group-title">Platform</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
+<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
+<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
+<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
+</ul>
+</div>
+<div class="rail-group">
+<h2 class="rail-group-title">Modules</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/phone-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
+<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
+<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
+<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
+<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
+<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
+<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
+<li><a class="rail-link" href="/email-marketing" aria-current="page"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
+<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
+<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
+<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
+</ul>
+</div>
+<div class="rail-group">
+<h2 class="rail-group-title">Company</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
+<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
+<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
+<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
+<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
+</ul>
+</div>
+</nav>
+<div class="rail-foot">
+<a class="btn btn-primary" href="/login">Sign in</a>
+<a class="btn btn-secondary" href="/pricing">Start free</a>
+</div>
+</div>
+</aside>
+<div class="main">
+<header class="topbar">
+<button class="nav-toggle" type="button" data-drawer-open aria-expanded="false" aria-label="Open menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-menu"></use></svg></button>
+<a class="topbar-brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg></a>
+<nav class="crumbs" aria-label="Breadcrumb"><ol>
+<li><a href="/">Overview</a></li>
+<li><span class="sep" aria-hidden="true">/</span><span>Modules</span></li>
+<li><span class="sep" aria-hidden="true">/</span><span aria-current="page">Email marketing</span></li>
+</ol></nav>
+<span class="topbar-spacer"></span>
+<div class="topbar-actions">
+<button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch colour theme"><svg class="i-sun" aria-hidden="true"><use href="/assets/icons.svg#i-sun"></use></svg><svg class="i-moon" aria-hidden="true"><use href="/assets/icons.svg#i-moon"></use></svg></button>
+<a class="btn btn-ghost btn-sm" href="/login">Sign in</a>
+<a class="btn btn-primary btn-sm" href="/pricing">Start free</a>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<header class="page-head">
+<div class="eyebrow-line">
+<span class="chip"><span class="chip-dot"></span>Your own domain</span>
+<span class="chip"><span class="chip-dot"></span>Free plan includes 100 a month</span>
+<span class="chip"><span class="chip-dot"></span>Replies on the record</span>
+</div>
+<h1>Email marketing that sends from your own domain, not someone else&#39;s</h1>
+<p class="standfirst">Campaigns, sequences and follow ups that reach customers with your name on them, from your own domain, with the authentication records set up for you and every reply landing on the account.</p>
+</header>
+</div>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>What the module covers</h2>
+<p class="lede">A campaign is a message sent on purpose to a list that consented. A sequence is a set of messages sent because something happened. Both belong to the customer record.</p>
+</div>
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg></span>
+<h3>Campaigns</h3>
+<p>Build a message, choose an audience, schedule it and read the result, with the content saved as a reusable template.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg></span>
+<h3>Sequences and automations</h3>
+<p>Welcome a new customer, remind before a visit, follow up after a job, win back a lapsed account. Triggered by real events, not by a manual list.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg></span>
+<h3>A visual builder</h3>
+<p>Drag blocks into a layout, with the same design tokens as the rest of the platform so a message cannot look like it came from a different company.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg></span>
+<h3>Lists and segments</h3>
+<p>Target by tag, pipeline stage, service, area, spend, last visit or any combination, because a segment is a query over real records.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg></span>
+<h3>A unified inbox</h3>
+<p>Replies arrive in the platform and attach to the account, so a response to a campaign is a conversation on the timeline, not a message in a separate tool.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg></span>
+<h3>Results that mean something</h3>
+<p>Opens, clicks, replies, unsubscribes, and the harder number: revenue attributed to the campaign against the accounts it touched.</p>
+</li>
+</ul>
+</div></section>
+<section class="section"><div class="wrap"><div class="split">
+<div class="stack-lg">
+<h2>Deliverability is the whole game</h2>
+<p class="standfirst">A beautiful campaign that lands in a promotions tab or a spam folder did not happen. Most small business email fails here, not in the writing.</p>
+<div class="prose">
+<p>AlphaFlux sends from a domain you control and sets up the authentication records that mailbox providers check before they decide whether to trust a message. Sending from your own domain means your reputation is yours, rather than borrowed from a shared sender that another company can damage for you.</p>
+<p>Bounces, complaints and unsubscribes are handled automatically. A customer who opts out is suppressed everywhere, including from messages an agent would send, because consent is a property of the customer rather than a setting on a campaign.</p>
+<p>Sending is separated from transactional mail. A receipt or an appointment confirmation is one kind of message, and a marketing offer is another, and mixing them is what turns a useful notification into a spam complaint.</p>
+</div>
+</div>
+<div class="stack-lg">
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg></span>
+<h3>Authentication handled</h3>
+<p>The records mailbox providers check are configured and kept correct, so your domain carries its own reputation.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-lock"></use></svg></span>
+<h3>Consent is respected</h3>
+<p>An unsubscribe suppresses across every campaign, every sequence and anything an agent sends.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-bell"></use></svg></span>
+<h3>Bounces acted on</h3>
+<p>Hard bounces are removed, soft bounces retried, and the reasons are visible rather than counted.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg></span>
+<h3>Separated from notifications</h3>
+<p>Transactional messages and marketing messages travel on different rails, so a reminder never looks like an advertisement.</p>
+</li>
+</ul>
+</div>
+</div></div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>Sequences worth having on day one</h2>
+<p class="lede">These are the automations that pay for the module, and each one is triggered by an event the platform already records.</p>
+</div>
+<dl class="spec-list">
+<li><dt>Missed call recovery</dt><dd>A call to the business that is not answered triggers a text immediately and an email shortly after, asking whether the customer still needs help. This is usually the highest returning sequence a service business can run.</dd></li>
+<li><dt>Quote follow up</dt><dd>A quote that has not been accepted after a set number of days triggers a short follow up. Most quotes are not lost, they are forgotten, by both sides.</dd></li>
+<li><dt>Before the visit</dt><dd>A confirmation before an appointment, with what to expect and how to prepare. This reduces wasted trips more reliably than any reminder system a customer has to opt into.</dd></li>
+<li><dt>After the visit</dt><dd>A thank you, a receipt, a request for a review, and any paperwork the customer needs to keep. Sent while the work is still memorable.</dd></li>
+<li><dt>Lapsed customer win back</dt><dd>A customer who has not booked in a set period gets a sequence that offers a reason to come back, timed to the season or the service interval rather than to a generic calendar.</dd></li>
+<li><dt>Review request</dt><dd>Ask for a review at the moment satisfaction is highest, which is minutes after a completed visit, and route the response to the platform&#39;s own review page.</dd></li>
+</dl>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>Why the inbox belongs inside the platform</h2>
+</div>
+<div class="prose stack-lg">
+<p>Email marketing tools are good at sending and bad at knowing anything. They have their own list, their own idea of who a customer is, and no idea that the person on it is ninety days overdue or just had a complaint resolved yesterday.</p>
+<p>Because AlphaFlux sends from records rather than from a copied list, a campaign can exclude customers with an open complaint, segment on a pipeline stage, and count revenue against the accounts it touched. A reply lands on the account timeline next to the job it relates to.</p>
+<p>That is what makes the reporting real instead of decorative. A campaign that reports a twenty percent open rate and no attributable revenue has not told anyone anything useful.</p>
+</div>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>Email marketing by plan</h2>
+</div>
+<div class="table-scroll" role="region" aria-label="Email marketing by plan, scrolls horizontally" tabindex="0"><table class="data">
+<caption></caption>
+<thead><tr><th scope="col"></th><th scope="col">Free</th><th scope="col">Starter</th><th scope="col">Growth</th><th scope="col">Scale and above</th></tr></thead>
+<tbody>
+<tr><th scope="row">Marketing emails</th><td>100 per month</td><td>2,000 per month</td><td>10,000 per month</td><td>50,000 per month</td></tr>
+<tr><th scope="row">Campaign builder</th><td>Basic</td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Saved templates</th><td>2</td><td>20</td><td>Unlimited</td><td>Unlimited</td></tr>
+<tr><th scope="row">Lists and segments</th><td>Basic</td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Automated sequences</th><td><span class="no">Not included</span></td><td>3</td><td>Unlimited</td><td>Unlimited</td></tr>
+<tr><th scope="row">Unified inbox</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Send from your own domain</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Revenue attribution</th><td><span class="no">Not included</span></td><td>Basic</td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+</tbody></table></div>
+<p class="small muted" style="margin-block-start:var(--space-4)">Transactional messages such as receipts and appointment confirmations are not counted against the marketing allowance.</p>
+</div></section>
+<section class="section" id="faq">
+<div class="wrap"><div class="split">
+<div><h2>Questions people ask before signing up</h2></div>
+<div class="faq">
+<details><summary>Is the free plan enough to send anything useful?</summary><div class="answer"><p>It is enough to keep in touch with a small customer base and to run a missed call recovery sequence, which is often the one that matters most. A hundred marketing messages a month covers a solo operator with a few dozen regular customers. When the list outgrows it, that is usually a good sign.</p></div></details>
+<details><summary>Can I send from my own email address?</summary><div class="answer"><p>Yes, from a domain you control. Sending from your own domain means your reputation is yours and your customers see your name. The platform sets up the authentication records that mailbox providers check and keeps them correct.</p></div></details>
+<details><summary>What about customers who unsubscribed?</summary><div class="answer"><p>They are suppressed permanently, across every campaign, every automated sequence and anything an agent sends. The suppression is a property of the customer record, so it cannot be bypassed by starting a new campaign.</p></div></details>
+<details><summary>Do receipts and appointment reminders count toward my allowance?</summary><div class="answer"><p>No. Transactional messages such as receipts, confirmations and reminders travel separately and are not counted against the marketing allowance, because they are expected communication rather than marketing.</p></div></details>
+<details><summary>Can I see whether a campaign made money?</summary><div class="answer"><p>On the plans that include attribution, yes. Revenue is counted against the accounts a campaign touched, using the jobs and invoices the platform already holds, rather than a tracking pixel&#39;s best guess.</p></div></details>
+</div>
+</div></div></section>
+</main>
+<section class="band"><div class="wrap"><div class="split">
+<div class="stack-lg">
+<h2>Start on the free plan</h2>
+<p>Twenty customers, one location, every core module, free permanently. Move up when the work outgrows it.</p>
+</div>
+<div class="btn-row" style="align-self:center">
+<a class="btn btn-primary btn-lg" href="/login">Create a free account</a>
+<a class="btn btn-secondary btn-lg" href="/pricing">See what each plan includes</a>
+</div>
+</div></div></section>
+<footer class="footer"><div class="wrap">
+<div class="footer-cols">
+<div><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><p class="small muted" style="margin-block-start:var(--space-4);max-inline-size:34ch">One platform for the phone, the field, the money and the marketing, driven by you or by your agents.</p></div>
+<div><h2>Platform</h2><ul>
+<li><a href="/">Overview</a></li>
+<li><a href="/platform">How it works</a></li>
+<li><a href="/ai-agents">AI agents</a></li>
+<li><a href="/modules">All modules</a></li>
+<li><a href="/security">Security</a></li>
+<li><a href="/white-label">White label</a></li>
+</ul></div>
+<div><h2>Modules</h2><ul>
+<li><a href="/phone-and-messaging">Phone and messaging</a></li>
+<li><a href="/field-operations">Field operations</a></li>
+<li><a href="/fleet">Fleet and dispatch</a></li>
+<li><a href="/scheduling">Scheduling and agreements</a></li>
+<li><a href="/crm">CRM and sales</a></li>
+<li><a href="/inventory">Inventory and assets</a></li>
+<li><a href="/billing">Billing and payments</a></li>
+<li><a href="/email-marketing">Email marketing</a></li>
+<li><a href="/marketing">Marketing and growth</a></li>
+<li><a href="/team">Team and collaboration</a></li>
+<li><a href="/analytics">Reports and analytics</a></li>
+</ul></div>
+<div><h2>Company</h2><ul>
+<li><a href="/pricing">Pricing</a></li>
+<li><a href="/industries">Industries</a></li>
+<li><a href="/programs">Community programs</a></li>
+<li><a href="/developers">Developers</a></li>
+<li><a href="/sitemap">Site map</a></li>
+</ul></div>
+</div>
+<div class="footer-note">
+<span>AlphaFlux. Built and hosted by the companies that use it.</span>
+<span><a href="/sitemap">Site map</a> and <a href="/llms.txt">llms.txt</a> for machines.</span>
+</div>
+</div></footer>
+</div>
+</div>
+<div class="drawer" data-drawer data-open="false" aria-hidden="true" role="dialog" aria-label="Site sections">
+<div class="drawer-scrim" data-drawer-scrim></div>
+<div class="drawer-panel">
+<div class="drawer-head"><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><button class="nav-toggle" type="button" data-drawer-close aria-label="Close menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-close"></use></svg></button></div>
+<div class="rail-group"><h2 class="rail-group-title">Platform</h2><ul class="rail-list">
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
+<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
+<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
+<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
+</ul></div>
+<div class="rail-group"><h2 class="rail-group-title">Modules</h2><ul class="rail-list">
+<li><a class="rail-link" href="/phone-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
+<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
+<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
+<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
+<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
+<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
+<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
+<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
+<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
+<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
+<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
+</ul></div>
+<div class="rail-group"><h2 class="rail-group-title">Company</h2><ul class="rail-list">
+<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
+<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
+<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
+<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
+<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
+</ul></div>
+</div>
+</div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

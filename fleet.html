@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live map, dispatch board and order tracking</title>
+<meta name="description" content="Track every order, vehicle and technician on a live map. Run the day on a board where a drag is a real status change. Geofences, arrival detection and customer tracking links.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="canonical" href="https://alphaflux.net/fleet">
+<meta property="og:site_name" content="AlphaFlux">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Live map, dispatch board and order tracking">
+<meta property="og:description" content="Track every order, vehicle and technician on a live map. Run the day on a board where a drag is a real status change. Geofences, arrival detection and customer tracking links.">
+<meta property="og:url" content="https://alphaflux.net/fleet">
+<meta property="og:image" content="https://alphaflux.net/assets/og/fleet.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a1220" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plexmono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+(function(){try{var s=localStorage.getItem("af-theme");var d=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.setAttribute("data-theme",s||d);}catch(e){}})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://alphaflux.net/#org",
+      "@type": "Organization",
+      "description": "A self-hosted, modular operations platform for service businesses, driver accessible by AI agents.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://alphaflux.net/assets/apple-touch-icon.png"
+      },
+      "name": "AlphaFlux",
+      "url": "https://alphaflux.net/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/",
+          "name": "Overview",
+          "position": 1
+        },
+        {
+          "@type": "ListItem",
+          "name": "Modules",
+          "position": 2
+        },
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/fleet",
+          "name": "Fleet and dispatch",
+          "position": 3
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Positions are reported by the technician's device as they move, and the dispatcher's map updates without a refresh. The interface shows how fresh each position is, because a map that hides a ten minute old position is worse than one that admits it."
+          },
+          "name": "How often do positions update?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The map is served through the platform, and no third party script runs in your browser or tracks your customers. Where a commercial basemap is preferred it can be configured, and the customer tracking page continues to render through the platform."
+          },
+          "name": "Can I use my own map provider?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Positions come from the technicians' devices by default, which works on day one with no hardware. Telematics is for operations that want vehicle data without depending on a phone, and it can be added later."
+          },
+          "name": "Do I need telematics hardware?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A tracking link is scoped to one order and shows only that order's status and arrival window. It carries no customer data, it cannot be used to browse anything else, and it expires when the work is complete."
+          },
+          "name": "Can a customer see where the technician is without seeing anything else?"
+        },
+        {
+          "@type": "Question",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and the districts are enforced rather than filtered. A dispatcher scoped to one district sees that district's board and map, and the restriction is applied in the query rather than by hiding things on screen."
+          },
+          "name": "Does the board work for a company with several districts?"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="shell">
+<aside class="rail" aria-label="Site sections">
+<div class="rail-inner">
+<a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a>
+<nav class="rail-nav" aria-label="All sections">
+<div class="rail-group">
+<h2 class="rail-group-title">Platform</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
+<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
+<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
+<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
+</ul>
+</div>
+<div class="rail-group">
+<h2 class="rail-group-title">Modules</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/phone-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
+<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
+<li><a class="rail-link" href="/fleet" aria-current="page"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
+<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
+<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
+<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
+<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
+<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
+<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
+<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
+<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
+</ul>
+</div>
+<div class="rail-group">
+<h2 class="rail-group-title">Company</h2>
+<ul class="rail-list">
+<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
+<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
+<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
+<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
+<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
+</ul>
+</div>
+</nav>
+<div class="rail-foot">
+<a class="btn btn-primary" href="/login">Sign in</a>
+<a class="btn btn-secondary" href="/pricing">Start free</a>
+</div>
+</div>
+</aside>
+<div class="main">
+<header class="topbar">
+<button class="nav-toggle" type="button" data-drawer-open aria-expanded="false" aria-label="Open menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-menu"></use></svg></button>
+<a class="topbar-brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg></a>
+<nav class="crumbs" aria-label="Breadcrumb"><ol>
+<li><a href="/">Overview</a></li>
+<li><span class="sep" aria-hidden="true">/</span><span>Modules</span></li>
+<li><span class="sep" aria-hidden="true">/</span><span aria-current="page">Fleet and dispatch</span></li>
+</ol></nav>
+<span class="topbar-spacer"></span>
+<div class="topbar-actions">
+<button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch colour theme"><svg class="i-sun" aria-hidden="true"><use href="/assets/icons.svg#i-sun"></use></svg><svg class="i-moon" aria-hidden="true"><use href="/assets/icons.svg#i-moon"></use></svg></button>
+<a class="btn btn-ghost btn-sm" href="/login">Sign in</a>
+<a class="btn btn-primary btn-sm" href="/pricing">Start free</a>
+</div>
+</header>
+<main id="main">
+<div class="wrap">
+<header class="page-head">
+<div class="eyebrow-line">
+<span class="chip"><span class="chip-dot"></span>Live positions</span>
+<span class="chip"><span class="chip-dot"></span>Drag to dispatch</span>
+<span class="chip"><span class="chip-dot"></span>Customer tracking links</span>
+</div>
+<h1>Watch the work move on a map, run it on a board</h1>
+<p class="standfirst">A dispatcher&#39;s screen that shows the truth at a glance: every order, every vehicle, every technician, the route each one is on and the customer watching their own technician arrive.</p>
+</header>
+</div>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>The dispatcher&#39;s screen</h2>
+<p class="lede">Dispatch is two questions asked all day: what is happening right now, and who should take the next one. Both should be answerable without opening four things.</p>
+</div>
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-map"></use></svg></span>
+<h3>A live fleet map</h3>
+<p>Orders, technicians, vehicles, routes, service areas and geofences on one map, updating as the day moves rather than when someone refreshes.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg></span>
+<h3>An order board</h3>
+<p>Every order as a card, every stage as a column. Drag a card to move it and the record moves with it.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-pin"></use></svg></span>
+<h3>Geofences that notice</h3>
+<p>Draw an arrival zone and the platform marks the order on site when the technician crosses it, so nobody has to tap a button in a driveway.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clock"></use></svg></span>
+<h3>Arrival estimates</h3>
+<p>Remaining distance and the technician&#39;s recent pace produce a window, labelled as an estimate and updated as the day changes.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg></span>
+<h3>Vehicles and fleets</h3>
+<p>Track trucks and trailers as assets with their own status, capacity, assigned driver and service history, not just as a name in a spreadsheet.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-globe"></use></svg></span>
+<h3>Customer tracking</h3>
+<p>Send a link that shows one order&#39;s live status, and only that order. It expires when the work is done.</p>
+</li>
+</ul>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>A card is the whole order, not a summary of one</h2>
+<p class="lede">Opening a card on the board gives you everything the order carries, and moving it is a real transition the server validates.</p>
+</div>
+<div class="order-strip" data-order-strip>
+<div class="order-head">
+<span class="order-id">JOB-24188</span>
+<span class="chip chip-ok"><span class="chip-dot"></span>Capacity cleared</span>
+<span class="order-meta">Quarterly treatment. Technician, truck 4. Zone, North Spokane.</span>
+</div>
+<ol class="order-track">
+<li data-state="now">
+<span class="stage">Unassigned</span>
+<span class="at">07:10</span>
+</li>
+<li data-state="todo">
+<span class="stage">Assigned</span>
+<span class="at">07:22</span>
+</li>
+<li data-state="todo">
+<span class="stage">En route</span>
+<span class="at">07:41</span>
+</li>
+<li data-state="todo">
+<span class="stage">On site</span>
+<span class="at">08:03</span>
+</li>
+<li data-state="todo">
+<span class="stage">Complete</span>
+<span class="at">08:48</span>
+</li>
+</ol>
+</div>
+<p class="small muted" style="margin-block-start:var(--space-4)">Columns come from your own order configuration, so the board matches how your business actually works rather than how someone else&#39;s does.</p>
+</div></section>
+<section class="section"><div class="wrap"><div class="split">
+<div class="stack-lg">
+<h2>The board cannot invent a state</h2>
+<p class="standfirst">A board that lets anyone drag a card anywhere is a board that quietly corrupts the record. Here, the server decides what is legal and the board only offers what it is told.</p>
+<div class="prose">
+<p>Every order type has a defined set of stages and a defined set of moves between them. When a card is dropped, the change is sent to the server as a transition. If it is allowed, it is applied and written to the order&#39;s history. If it is not, it is refused with the moves that are actually available, and the card returns to where it was.</p>
+<p>That is what makes the board trustworthy rather than decorative. The same discipline that governs the technicians&#39; status changes governs the dispatcher&#39;s screen, so a card that says complete really is complete, with the proof attached and the invoice following.</p>
+<p>Every move is recorded with who did it, whether that was a person or an agent, and when. The order&#39;s history is not reconstructed later from memory. It was written down as it happened.</p>
+</div>
+</div>
+<div class="stack-lg">
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg></span>
+<h3>Your stages, not ours</h3>
+<p>Define the order types you actually run and the stages each one passes through, with the fields each stage requires.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-check"></use></svg></span>
+<h3>Rules attached to stages</h3>
+<p>A stage can require a photo, a signature, a part or a note before the order is allowed to leave it.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-note"></use></svg></span>
+<h3>History as it happened</h3>
+<p>Every transition is appended with actor, time and position, giving the timeline and the audit trail from the same records.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg></span>
+<h3>Automation on top</h3>
+<p>Transitions can trigger the next thing: notify the customer, raise the invoice, order the part, or ask a person to look.</p>
+</li>
+</ul>
+</div>
+</div></div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>What is on the map</h2>
+<p class="lede">Layers can be turned on and off so a dispatcher sees the district, not the world.</p>
+</div>
+<dl class="spec-list">
+<li><dt>Orders</dt><dd>Every open order for the day, coloured by stage, so unassigned work is visible as a cluster rather than as a list to read.</dd></li>
+<li><dt>Technicians and vehicles</dt><dd>Last known position with a freshness indicator, so a stale ping shows as stale rather than as a truck parked in a field for an hour.</dd></li>
+<li><dt>Routes</dt><dd>The sequenced route for a technician, with the remaining stops and the distance left, so a dispatcher can see whether the day is recoverable.</dd></li>
+<li><dt>Service areas and zones</dt><dd>The areas you cover, drawn as polygons and used for routing, capacity and pricing rather than only for colour on a screen.</dd></li>
+<li><dt>Geofences</dt><dd>Arrival zones, restricted areas and site boundaries, each with a behaviour such as marking arrival or flagging a deviation.</dd></li>
+<li><dt>Places and customers</dt><dd>Saved locations, including multi unit buildings, so a job resolves to the right building, floor or unit rather than to a street address.</dd></li>
+</dl>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>For operations that run trucks, not just technicians</h2>
+<p class="lede">The same records serve a plumbing company with four vans and a fleet operation with trailers and depots.</p>
+</div>
+<ul class="grid grid-3" style="list-style:none">
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg></span>
+<h3>Trailers and equipment</h3>
+<p>Towed and portable assets tracked in their own right, with connections to vehicles that change over time rather than being overwritten.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-wrench"></use></svg></span>
+<h3>Maintenance schedules</h3>
+<p>Service intervals by vehicle or by hours, work orders, parts used and warranty records, so maintenance is planned rather than reactive.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-gauge"></use></svg></span>
+<h3>Fuel and cost per mile</h3>
+<p>Fuel records and running costs per vehicle, so the cost of a route is a number rather than an intuition.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-plug"></use></svg></span>
+<h3>Telematics</h3>
+<p>Connect a telematics provider and vehicle positions and sensor data arrive without anyone&#39;s phone being involved.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg></span>
+<h3>Manifests</h3>
+<p>Group orders onto a manifest for a run, so a multi stop delivery or a bulk collection is one object rather than twenty.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg></span>
+<h3>Operations reporting</h3>
+<p>On time percentage, jobs per technician, distance and utilisation, out of the records the dispatcher is already using.</p>
+</li>
+</ul>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="statement"><p>A dispatcher should be able to answer what happened today without asking anyone.</p></div>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head">
+<h2>Fleet and dispatch by plan</h2>
+</div>
+<div class="table-scroll" role="region" aria-label="Fleet and dispatch by plan, scrolls horizontally" tabindex="0"><table class="data">
+<caption></caption>
+<thead><tr><th scope="col"></th><th scope="col">Growth</th><th scope="col">Scale</th><th scope="col">White label</th></tr></thead>
+<tbody>
+<tr><th scope="row">Order board</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Custom order types and stages</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Live map</th><td>Basic</td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Geofences and arrival detection</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Arrival estimates</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Vehicles and trailers</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Telematics connections</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Customer tracking links</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Unlimited everything</th><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td></tr>
+</tbody></table></div>
+</div></section>
+<section class="section" id="faq">
+<div class="wrap"><div class="split">
+<div><h2>Questions people ask before signing up</h2></div>
+<div class="faq">
+<details><summary>How often do positions update?</summary><div class="answer"><p>Positions are reported by the technician&#39;s device as they move, and the dispatcher&#39;s map updates without a refresh. The interface shows how fresh each position is, because a map that hides a ten minute old position is worse than one that admits it.</p></div></details>
+<details><summary>Can I use my own map provider?</summary><div class="answer"><p>The map is served through the platform, and no third party script runs in your browser or tracks your customers. Where a commercial basemap is preferred it can be configured, and the customer tracking page continues to render through the platform.</p></div></details>
+<details><summary>Do I need telematics hardware?</summary><div class="answer"><p>No. Positions come from the technicians&#39; devices by default, which works on day one with no hardware. Telematics is for operations that want vehicle data without depending on a phone, and it can be added later.</p></div></details>
+<details><summary>Can a customer see where the technician is without seeing anything else?</summary><div class="answer"><p>Yes. A tracking link is scoped to one order and shows only that order&#39;s status and arrival window. It carries no customer data, it cannot be used to browse anything else, and it expires when the work is complete.</p></div></details>
+<details><summary>Does the board work for a company with several districts?</summary><div class="answer"><p>Yes, and the districts are enforced rather than filtered. A dispatcher scoped to one district sees that district&#39;s board and map, and the restriction is applied in the query rather than by hiding things on screen.</p></div></details>
+</div>
+</div></div></section>
+</main>
+<section class="band"><div class="wrap"><div class="split">
+<div class="stack-lg">
+<h2>Start on the free plan</h2>
+<p>Twenty customers, one location, every core module, free permanently. Move up when the work outgrows it.</p>
+</div>
+<div class="btn-row" style="align-self:center">
+<a class="btn btn-primary btn-lg" href="/login">Create a free account</a>
+<a class="btn btn-secondary btn-lg" href="/pricing">See what each plan includes</a>
+</div>
+</div></div></section>
+<footer class="footer"><div class="wrap">
+<div class="footer-cols">
+<div><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><p class="small muted" style="margin-block-start:var(--space-4);max-inline-size:34ch">One platform for the phone, the field, the money and the marketing, driven by you or by your agents.</p></div>
+<div><h2>Platform</h2><ul>
+<li><a href="/">Overview</a></li>
+<li><a href="/platform">How it works</a></li>
+<li><a href="/ai-agents">AI agents</a></li>
+<li><a href="/modules">All modules</a></li>
+<li><a href="/security">Security</a></li>
+<li><a href="/white-label">White label</a></li>
+</ul></div>
+<div><h2>Modules</h2><ul>
+<li><a href="/phone-and-messaging">Phone and messaging</a></li>
+<li><a href="/field-operations">Field operations</a></li>
+<li><a href="/fleet">Fleet and dispatch</a></li>
+<li><a href="/scheduling">Scheduling and agreements</a></li>
+<li><a href="/crm">CRM and sales</a></li>
+<li><a href="/inventory">Inventory and assets</a></li>
+<li><a href="/billing">Billing and payments</a></li>
+<li><a href="/email-marketing">Email marketing</a></li>
+<li><a href="/marketing">Marketing and growth</a></li>
+<li><a href="/team">Team and collaboration</a></li>
+<li><a href="/analytics">Reports and analytics</a></li>
+</ul></div>
+<div><h2>Company</h2><ul>
+<li><a href="/pricing">Pricing</a></li>
+<li><a href="/industries">Industries</a></li>
+<li><a href="/programs">Community programs</a></li>
+<li><a href="/developers">Developers</a></li>
+<li><a href="/sitemap">Site map</a></li>
+</ul></div>
+</div>
+<div class="footer-note">
+<span>AlphaFlux. Built and hosted by the companies that use it.</span>
+<span><a href="/sitemap">Site map</a> and <a href="/llms.txt">llms.txt</a> for machines.</span>
+</div>
+</div></footer>
+</div>
+</div>
+<div class="drawer" data-drawer data-open="false" aria-hidden="true" role="dialog" aria-label="Site sections">
+<div class="drawer-scrim" data-drawer-scrim></div>
+<div class="drawer-panel">
+<div class="drawer-head"><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><button class="nav-toggle" type="button" data-drawer-close aria-label="Close menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-close"></use></svg></button></div>
+<div class="rail-group"><h2 class="rail-group-title">Platform</h2><ul class="rail-list">
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
+<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
+<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
+<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
+</ul></div>
+<div class="rail-group"><h2 class="rail-group-title">Modules</h2><ul class="rail-list">
+<li><a class="rail-link" href="/phone-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
+<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
+<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
+<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
+<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
+<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
+<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
+<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
+<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
+<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
+<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
+</ul></div>
+<div class="rail-group"><h2 class="rail-group-title">Company</h2><ul class="rail-list">
+<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
+<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
+<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
+<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
+<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
+</ul></div>
+</div>
+</div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

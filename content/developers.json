@@ -1,0 +1,128 @@
+{
+  "slug": "developers",
+  "nav": "Developers",
+  "group": "Company",
+  "crumb": "Developers",
+  "title": "API, command line and agent access",
+  "desc": "A documented REST API with a machine readable specification, a command line that prints JSON, an agent protocol server, and webhooks for everything the platform does.",
+  "h1": "Every capability is an interface first, and a screen second",
+  "standfirst": "There is nothing you can do in the console that you cannot do over the API. That is a design rule rather than an aspiration, and it is what allows an agent to run real work here instead of describing it.",
+  "chips": ["REST with OpenAPI", "CLI with JSON out", "Agent protocol server"],
+  "sections": [
+    {
+      "kind": "list",
+      "title": "The four ways in",
+      "lede": "Pick the one that fits, or use all of them. They reach the same records under the same permissions.",
+      "items": [
+        {
+          "title": "The REST API",
+          "text": "Every module exposes its operations over HTTP with JSON in and JSON out. A machine readable specification is published, so a client can be generated rather than hand written, and an agent can discover the available operations without being told about them.",
+          "items": [
+            "Bearer authentication with scoped keys",
+            "A published specification describing every operation and its rules",
+            "Consistent conventions for filtering, pagination and errors",
+            "Credentials are never returned, including in responses that would otherwise echo them"
+          ]
+        },
+        {
+          "title": "The command line",
+          "text": "One binary that talks to the same API and prints JSON, which means it pipes into another tool or straight into a script. It includes generic call and post commands, so a new endpoint is usable before a typed wrapper exists.",
+          "items": [
+            "Around forty commands covering the whole platform",
+            "Every command outputs JSON",
+            "A generic call and post for anything not yet wrapped",
+            "Configured with two environment variables"
+          ]
+        },
+        {
+          "title": "The agent protocol server",
+          "text": "A server that presents the platform to an agent client as a set of callable tools over a standard protocol. It runs as a local process the client launches, holds no state of its own, and authenticates with the same scoped key.",
+          "items": [
+            "Point any compatible agent client at it with two settings",
+            "Each tool maps to an API operation with typed arguments and a description",
+            "Permissions come from the key, so the tool list is the permission list"
+          ]
+        },
+        {
+          "title": "Webhooks and callbacks",
+          "text": "The platform receives events from carriers and providers, verifies them, and acts on them. Outbound notification for your own integrations follows the same model, so an external system can be told when work changes rather than polling for it."
+        }
+      ]
+    },
+    {
+      "kind": "code",
+      "title": "A request, and what comes back",
+      "lede": "Authenticate with a scoped key and ask for identity. Everything else follows the same shape.",
+      "idref": "code-api",
+      "text": "curl -H \"Authorization: Bearer $ALPHAFLUX_API_KEY\" \\\n  https://alphaflux.net/api/me\n\n{\n  \"email\": \"you@example.com\",\n  \"roles\": [\"owner\"],\n  \"tenants\": [\n    {\n      \"name\": \"Northside Services\",\n      \"role\": \"owner\",\n      \"plan\": \"growth\",\n      \"modules\": [\"phone\", \"field\", \"crm\", \"inventory\", \"billing\", \"email\"]\n    }\n  ]\n}",
+      "more": { "title": "See the module list", "href": "/modules" }
+    },
+    {
+      "kind": "code",
+      "title": "The same thing from the command line",
+      "lede": "JSON out, so it composes. The last two commands reach any endpoint, including ones that do not have a typed command yet.",
+      "idref": "code-cli",
+      "text": "export ALPHAFLUX_API_KEY=afx_...\nexport ALPHAFLUX_BASE=https://alphaflux.net\n\nalphaflux me\nalphaflux field jobs add --customer \"Acme LLC\" --service \"Treatment\" --date 2026-10-02\nalphaflux field status --id fs_job:abc123 --status done\nalphaflux phone text --to +15095551234 --body \"On the way\"\nalphaflux billing run\nalphaflux key create --label dispatch-agent --scopes \"field:write,phone:read\"\n\nalphaflux call api/dashboard\nalphaflux post api/notes --json '{\"account\":\"fieldroutes:10000\",\"body\":\"Called back, no answer\"}'"
+    },
+    {
+      "kind": "features",
+      "title": "How keys and scopes work",
+      "lede": "An integration is a credential with a job to do. Nothing about the design assumes a human holds it.",
+      "items": [
+        { "icon": "i-shield", "title": "Scoped read and write", "text": "Access is granted per module, so an integration that books work does not need the billing module and does not get it." },
+        { "icon": "i-lock", "title": "Hashed and shown once", "text": "A key is displayed at the moment it is created and stored only as a hash. Losing one means issuing a new one, not recovering the old one." },
+        { "icon": "i-users", "title": "Inherits its owner", "text": "A key carries exactly the permissions and companies of the account that created it, and cannot reach past them." },
+        { "icon": "i-plug", "title": "Revocable immediately", "text": "Disable a key and every request using it stops. Nothing else on the account is disturbed." },
+        { "icon": "i-clock", "title": "Optional expiry", "text": "A key can be issued with an expiry date for temporary or contractor access." },
+        { "icon": "i-note", "title": "Every use is recorded", "text": "Actions are written to the audit trail against the account that owns the key, so a key is never anonymous." }
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Why the platform was built this way",
+      "body": [
+        "Most business software treats its API as a concession. It exists, it lags the interface, and some things are simply not exposed. That is no longer a defensible position now that a meaningful share of work is done by software talking to software.",
+        "The rule here is the opposite. A capability is designed as an interface first and then wrapped in a screen. The screen is a client. The command line is a client. An agent is a client. If something is missing from one of them, it is a bug rather than a decision.",
+        "It also future proofs the work. When an operation is available over a documented interface with a machine readable specification, the next tool that needs it does not require anyone's permission or a new integration project. It reads the specification and does the work.",
+        "And it means the audit trail is complete. An agent, a script, a scheduled job and a person all arrive through the same door, so every change is attributable to something identifiable rather than to root."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "What each plan includes",
+      "cols": ["", "Free and Starter", "Growth", "Scale and above", "White label"],
+      "rows": [
+        ["Console access", "yes", "yes", "yes", "yes"],
+        ["REST API", "no", "yes", "yes", "yes"],
+        ["Published API specification", "no", "yes", "yes", "yes"],
+        ["Command line", "no", "yes", "yes", "yes"],
+        ["Agent protocol server", "no", "yes", "yes", "yes"],
+        ["Scoped API keys", "no", "yes", "yes", "yes"],
+        ["Webhooks", "no", "no", "yes", "yes"],
+        ["Your own API surface for your customers", "no", "no", "no", "yes"]
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is there a sandbox?",
+      "a": "Yes. A test company can be created alongside the real one with its own records and its own keys, so an integration can be built and broken without touching live data."
+    },
+    {
+      "q": "Are there rate limits?",
+      "a": "Requests are rate limited per key to protect the platform, and the limit is generous enough that a normal integration never meets it. The response headers tell you where you are against the limit rather than leaving you to discover it by being refused."
+    },
+    {
+      "q": "What happens if an integration breaks something?",
+      "a": "Everything it did is attributed to its key and visible in the audit trail, and the key can be disabled immediately. Financial records are voided rather than deleted and merges are reversible, so a bad batch can be walked back."
+    },
+    {
+      "q": "Can I use an agent client that is not yours?",
+      "a": "Yes. The agent server speaks a standard protocol, so any compatible client can use it. There is nothing proprietary about the connection, and the key is the only thing that decides what the agent can reach."
+    },
+    {
+      "q": "Can I build my own product on top of this?",
+      "a": "That is what white label is for. It gives you the platform under your own brand with resale rights, and the same interfaces to build against."
+    }
+  ]
+}

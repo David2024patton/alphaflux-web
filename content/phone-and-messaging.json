@@ -1,0 +1,142 @@
+{
+  "slug": "phone-and-messaging",
+  "nav": "Phone and messaging",
+  "group": "Modules",
+  "crumb": "Phone and messaging",
+  "title": "Business phone, texting and an AI receptionist",
+  "desc": "Keep your numbers. Calls, texts, voicemail, per number call handling and an AI receptionist that answers first, books the job and hands a human the rest.",
+  "h1": "Every call answered, every text logged, nothing typed twice",
+  "standfirst": "Your existing numbers on your own carrier account, with call handling per number, a voicemail inbox that reads, and a receptionist that answers before the second ring.",
+  "chips": ["Keep your numbers", "Per number rules", "Answers 24 hours"],
+  "sections": [
+    {
+      "kind": "features",
+      "title": "The whole phone system, not just a dialler",
+      "lede": "A phone system that does not connect to the job it produced is a phone system that costs you a re-typing job every day.",
+      "items": [
+        { "icon": "i-phone", "title": "Numbers you control", "text": "Bring the numbers your customers already know, or buy new ones by area code. Each number gets its own behaviour." },
+        { "icon": "i-message", "title": "Texting that belongs to the account", "text": "Every inbound and outbound message lands on the customer timeline, not in a separate handset." },
+        { "icon": "i-clock", "title": "Call handling per number", "text": "Greeting, ring through target, business hours and an after hours rule, configured per number rather than once for the whole company." },
+        { "icon": "i-spark", "title": "A receptionist that books", "text": "The AI answers first, checks real capacity and puts the job on the schedule. Emergencies go straight to a person." },
+        { "icon": "i-bell", "title": "A voicemail inbox that reads", "text": "Recordings, playback and transcripts in the console, with an unread count so nothing sits unheard for a week." },
+        { "icon": "i-reply", "title": "Missed call text back", "text": "A missed call triggers a text within seconds, which is frequently the difference between a booked job and a lost one." }
+      ]
+    },
+    {
+      "kind": "list",
+      "title": "How a call is handled, decision by decision",
+      "lede": "Every number carries its own rule set. Here is the order the platform works through when the phone rings.",
+      "items": [
+        {
+          "title": "Answer",
+          "text": "The call is answered immediately, so the caller never hears a ring they can hang up on."
+        },
+        {
+          "title": "Receptionist or person",
+          "text": "If the number has an AI receptionist attached, it is dialled first with a fifteen second window. If it does not answer, the human chain runs as if the AI had never been there. If the AI does answer, nobody's phone rings."
+        },
+        {
+          "title": "Inside or outside hours",
+          "text": "Business hours are set per number and per day. Inside hours the call rings through to the right person. Outside hours it follows the after hours rule you chose."
+        },
+        {
+          "title": "The after hours rule",
+          "text": "Three options per number: take a voicemail, forward to a number such as an answering service, or end the call politely. Which one is right depends on the business, so it is a setting rather than an assumption."
+        },
+        {
+          "title": "Voicemail and text back",
+          "text": "When a voicemail is taken it is transcribed, and a text back can be sent automatically so the caller knows they were heard rather than hoping."
+        },
+        {
+          "title": "The record",
+          "text": "The call, the transcript, the voicemail, any texts and the outcome all attach to the customer account. If the caller is new, the account is created by the call."
+        }
+      ]
+    },
+    {
+      "kind": "split",
+      "title": "The receptionist does the parts you would rather not staff",
+      "lede": "Answering the phone at nine at night is expensive to staff and cheap to automate, as long as it is done properly.",
+      "body": [
+        "It identifies the caller, works out which office serves the address, checks whether the service described is one you offer, and books the visit against real capacity. It takes the details, leaves a complete record, and hands over to a person for anything that needs judgement.",
+        "It is bounded by the same rules your staff are: the service areas you actually cover, the capacity your technicians actually have, and a list of things it must never do. It does not quote a price that is not on your list, and it does not promise an exact arrival time.",
+        "The script lives inside AlphaFlux and is versioned, so changing how your business answers the phone is an edit rather than a ticket to a vendor."
+      ],
+      "items": [
+        { "icon": "i-pin", "title": "Right office, first time", "text": "The address is resolved against the areas each office covers before anything is booked." },
+        { "icon": "i-check", "title": "Knows what you sell", "text": "It can check the service against your catalogue, and deflect what you do not do instead of booking it." },
+        { "icon": "i-calendar", "title": "Books into real space", "text": "Availability comes from capacity rules, not from a guess, so the schedule is never oversold." },
+        { "icon": "i-bell", "title": "Escalates properly", "text": "An emergency is routed to a person immediately, and a sales call is answered from a script." }
+      ],
+      "more": { "title": "More on agents", "href": "/ai-agents" }
+    },
+    {
+      "kind": "list",
+      "title": "Messaging done to carrier standards",
+      "lede": "Business texting has rules. The platform handles the registration and the compliance so messages arrive.",
+      "items": [
+        {
+          "title": "Brand and campaign registration",
+          "text": "The registration work that carriers require before application to person messaging is supported in the console, with the status of each registration visible rather than hidden."
+        },
+        {
+          "title": "Opt out handling",
+          "text": "A customer who replies to stop is suppressed from future sends automatically. That applies equally to a person sending and to an agent sending."
+        },
+        {
+          "title": "Message logging on the account",
+          "text": "Every message in and out is recorded against the customer timeline, with the number it came from and the person or agent who sent it."
+        },
+        {
+          "title": "Deliverability signals",
+          "text": "Failed and undelivered messages are surfaced rather than silently dropped, because a text that never arrived is worse than one never sent."
+        },
+        {
+          "title": "More than one sender identity",
+          "text": "Alphanumeric sender identifiers, short codes and messaging services are all manageable from the same place on the larger plans."
+        }
+      ]
+    },
+    {
+      "kind": "statement",
+      "text": "A missed call is a lead that has already decided to call you. It should almost never be lost."
+    },
+    {
+      "kind": "table",
+      "title": "What the phone module includes",
+      "cols": ["", "Free", "Starter and Growth", "Scale and above"],
+      "rows": [
+        ["Phone numbers", "1", "2 to 5", "25"],
+        ["Text messaging", "yes", "yes", "yes"],
+        ["Voicemail with transcript", "yes", "yes", "yes"],
+        ["Missed call text back", "yes", "yes", "yes"],
+        ["Per number call handling", "Basic", "yes", "yes"],
+        ["AI receptionist", "no", "Growth and above", "yes"],
+        ["Recording and transcription", "no", "yes", "yes"],
+        ["Registration and compliance tools", "no", "yes", "yes"]
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do I have to port my numbers?",
+      "a": "No, and in most cases you should not. You can connect the carrier account you already have so your existing numbers keep working and stay yours. Porting is only needed if you want the number managed under a different carrier account."
+    },
+    {
+      "q": "Can the AI receptionist take a payment?",
+      "a": "It does not take card details on a call, and that is deliberate. It can book the work, take the details and leave a record, and payment is collected through the normal invoicing route where the customer has a receipt and you have a record."
+    },
+    {
+      "q": "What happens if the AI does not understand the caller?",
+      "a": "It hands over. If it cannot place the call in one of the categories it handles, or if the caller asks for a person, or if it is an emergency, the call moves to a human by the rule you set for that number."
+    },
+    {
+      "q": "Can I listen to calls later?",
+      "a": "Recordings and transcriptions are available on the plans that include them, attached to the customer account rather than sitting in a separate call list."
+    },
+    {
+      "q": "Does this work for a company with several offices?",
+      "a": "Each office can have its own numbers and its own call handling, and the receptionist resolves callers to the correct office by address. A central number can also route by the caller's location."
+    }
+  ]
+}

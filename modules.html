@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AlphaFlux: one system to run a service business</title>
-<meta name="description" content="Phone, field operations, dispatch, CRM, inventory, billing and email marketing in one self-hosted platform. Free plan permanently, and AI agents can run it with a scoped key.">
+<title>Every AlphaFlux module and what it does</title>
+<meta name="description" content="The full module registry: phone, field operations, fleet, scheduling, CRM, inventory, billing, email marketing, marketing, team and analytics, with the plan that carries each.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
-<link rel="canonical" href="https://alphaflux.net/">
+<link rel="canonical" href="https://alphaflux.net/modules">
 <meta property="og:site_name" content="AlphaFlux">
 <meta property="og:type" content="website">
-<meta property="og:title" content="AlphaFlux: one system to run a service business">
-<meta property="og:description" content="Phone, field operations, dispatch, CRM, inventory, billing and email marketing in one self-hosted platform. Free plan permanently, and AI agents can run it with a scoped key.">
-<meta property="og:url" content="https://alphaflux.net/">
-<meta property="og:image" content="https://alphaflux.net/assets/og/home.png">
+<meta property="og:title" content="Every AlphaFlux module and what it does">
+<meta property="og:description" content="The full module registry: phone, field operations, fleet, scheduling, CRM, inventory, billing, email marketing, marketing, team and analytics, with the plan that carries each.">
+<meta property="og:url" content="https://alphaflux.net/modules">
+<meta property="og:image" content="https://alphaflux.net/assets/og/modules.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -44,13 +44,26 @@
       "url": "https://alphaflux.net/"
     },
     {
-      "@id": "https://alphaflux.net/#website",
-      "@type": "WebSite",
-      "name": "AlphaFlux",
-      "publisher": {
-        "@id": "https://alphaflux.net/#org"
-      },
-      "url": "https://alphaflux.net/"
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/",
+          "name": "Overview",
+          "position": 1
+        },
+        {
+          "@type": "ListItem",
+          "name": "Platform",
+          "position": 2
+        },
+        {
+          "@type": "ListItem",
+          "item": "https://alphaflux.net/modules",
+          "name": "All modules",
+          "position": 3
+        }
+      ]
     },
     {
       "@type": "FAQPage",
@@ -59,51 +72,173 @@
           "@type": "Question",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It is free permanently. Twenty customers, one location, one user, one phone number, 100 marketing emails a month and the inventory module are yours for as long as you want them. There is no card on file and no expiry date. Companies move up when their workload outgrows those limits, and when they do, everything they have already entered comes with them."
+            "text": "Yes. Any module can be added to any plan as an add on, priced on its own. That is usually how a company moves up: it adds the one thing that is currently costing it money rather than changing plan."
           },
-          "name": "Is the free plan really free, or is it a trial?"
+          "name": "Can I buy a module without the bundle around it?"
         },
         {
           "@type": "Question",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A location is a base you operate from: a city, an office or a service area. If a company works out of one town, that is one location and everything fits on the free plan. A company running crews in three states needs three, which is what the paid plans are for."
+            "text": "It stops appearing and its operations stop being available. The records it produced are not deleted, and switching it back on restores access to all of it."
           },
-          "name": "What does one location mean?"
+          "name": "What happens if I switch a module off?"
         },
         {
           "@type": "Question",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. AlphaFlux runs on infrastructure the platform provider hosts and keeps running, and every module works in a browser on a laptop, a tablet or a phone. The technician view installs to a phone home screen like an app and keeps working when the signal drops."
+            "text": "The registry is open. New modules follow the same contract as the existing ones, so adding one does not disturb the others, and the interface picks it up without a redesign."
           },
-          "name": "Do I need to install anything?"
+          "name": "Is there a module for something you have not built yet?"
         },
         {
           "@type": "Question",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It can be trusted with exactly as much as you give it. An agent authenticates with a scoped key, so it can only reach the modules and the operations that key names. Every action it takes is written to the audit trail and to the account timeline, attributed to the agent rather than to a person."
+            "text": "They share one data model, which is the point. Records are scoped to the company that owns them rather than to the module that created them, so the customer your phone module logged is the customer the dispatch board routes to."
           },
-          "name": "Can an AI really be trusted to run parts of this?"
-        },
-        {
-          "@type": "Question",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It is yours and it exports. Customer records, jobs, invoices and payment history come out in standard formats, including a full JSON export through the API. Nothing is held hostage and nothing is deleted without an explicit request."
-          },
-          "name": "What happens to my data if I leave?"
-        },
-        {
-          "@type": "Question",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, and branches are modelled properly rather than treated as a naming convention. Each location has its own staff, its own schedule, its own capacity rules and its own stock. Roles can be scoped to a location, so a dispatcher in one district cannot see or change another."
-          },
-          "name": "Does AlphaFlux work for a company with more than one branch?"
+          "name": "Do the modules share one database?"
         }
       ]
+    },
+    {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "name": "Overview",
+          "position": 1,
+          "url": "https://alphaflux.net/"
+        },
+        {
+          "@type": "ListItem",
+          "name": "How it works",
+          "position": 2,
+          "url": "https://alphaflux.net/platform"
+        },
+        {
+          "@type": "ListItem",
+          "name": "AI agents",
+          "position": 3,
+          "url": "https://alphaflux.net/ai-agents"
+        },
+        {
+          "@type": "ListItem",
+          "name": "All modules",
+          "position": 4,
+          "url": "https://alphaflux.net/modules"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Security",
+          "position": 5,
+          "url": "https://alphaflux.net/security"
+        },
+        {
+          "@type": "ListItem",
+          "name": "White label",
+          "position": 6,
+          "url": "https://alphaflux.net/white-label"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Phone and messaging",
+          "position": 7,
+          "url": "https://alphaflux.net/phone-and-messaging"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Field operations",
+          "position": 8,
+          "url": "https://alphaflux.net/field-operations"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Fleet and dispatch",
+          "position": 9,
+          "url": "https://alphaflux.net/fleet"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Scheduling and agreements",
+          "position": 10,
+          "url": "https://alphaflux.net/scheduling"
+        },
+        {
+          "@type": "ListItem",
+          "name": "CRM and sales",
+          "position": 11,
+          "url": "https://alphaflux.net/crm"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Inventory and assets",
+          "position": 12,
+          "url": "https://alphaflux.net/inventory"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Billing and payments",
+          "position": 13,
+          "url": "https://alphaflux.net/billing"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Email marketing",
+          "position": 14,
+          "url": "https://alphaflux.net/email-marketing"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Marketing and growth",
+          "position": 15,
+          "url": "https://alphaflux.net/marketing"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Team and collaboration",
+          "position": 16,
+          "url": "https://alphaflux.net/team"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Reports and analytics",
+          "position": 17,
+          "url": "https://alphaflux.net/analytics"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Pricing",
+          "position": 18,
+          "url": "https://alphaflux.net/pricing"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Industries",
+          "position": 19,
+          "url": "https://alphaflux.net/industries"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Community programs",
+          "position": 20,
+          "url": "https://alphaflux.net/programs"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Developers",
+          "position": 21,
+          "url": "https://alphaflux.net/developers"
+        },
+        {
+          "@type": "ListItem",
+          "name": "Site map",
+          "position": 22,
+          "url": "https://alphaflux.net/sitemap"
+        }
+      ],
+      "name": "AlphaFlux modules"
     }
   ]
 }
@@ -119,10 +254,10 @@
 <div class="rail-group">
 <h2 class="rail-group-title">Platform</h2>
 <ul class="rail-list">
-<li><a class="rail-link" href="/" aria-current="page"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
+<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
 <li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
 <li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
-<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
+<li><a class="rail-link" href="/modules" aria-current="page"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
 <li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
 <li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
 </ul>
@@ -164,6 +299,11 @@
 <header class="topbar">
 <button class="nav-toggle" type="button" data-drawer-open aria-expanded="false" aria-label="Open menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-menu"></use></svg></button>
 <a class="topbar-brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg></a>
+<nav class="crumbs" aria-label="Breadcrumb"><ol>
+<li><a href="/">Overview</a></li>
+<li><span class="sep" aria-hidden="true">/</span><span>Platform</span></li>
+<li><span class="sep" aria-hidden="true">/</span><span aria-current="page">All modules</span></li>
+</ol></nav>
 <span class="topbar-spacer"></span>
 <div class="topbar-actions">
 <button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch colour theme"><svg class="i-sun" aria-hidden="true"><use href="/assets/icons.svg#i-sun"></use></svg><svg class="i-moon" aria-hidden="true"><use href="/assets/icons.svg#i-moon"></use></svg></button>
@@ -172,106 +312,21 @@
 </div>
 </header>
 <main id="main">
-<section class="section section-flush" id="top"><div class="wrap">
-<div class="split">
-<div class="stack-lg">
-<div class="eyebrow-line"><span class="chip"><span class="chip-dot"></span>Free plan, permanently</span><span class="chip"><span class="chip-dot"></span>Self-hosted</span><span class="chip"><span class="chip-dot"></span>Agent-manageable</span></div>
-<h1 class="display">One system to run the phone, the field, the money and the marketing</h1>
-<p class="standfirst">A customer calls. The call is logged, the address is geocoded, the job is booked against real capacity, the technician is routed, the proof is captured, the invoice goes out and the follow-up email writes itself. All of that is one record moving through one platform.</p>
-<div class="prose">
-<p>Most service companies run a phone system, a field service tool, a CRM, an email tool and a spreadsheet, then pay someone to keep the five of them in agreement. AlphaFlux is the alternative: every module reads and writes the same customer, the same job and the same money.</p>
+<div class="wrap">
+<header class="page-head">
+<div class="eyebrow-line">
+<span class="chip"><span class="chip-dot"></span>Toggleable per company</span>
+<span class="chip"><span class="chip-dot"></span>Add one at a time</span>
+<span class="chip"><span class="chip-dot"></span>No migration to add one</span>
 </div>
-<div class="btn-row">
-<a class="btn btn-primary btn-lg" href="/login">Create a free account</a>
+<h1>Every module in the registry</h1>
+<p class="standfirst">Eleven modules, one customer record, one login. Switch on what a company needs, leave the rest off. Nothing here requires a migration to adopt later.</p>
+</header>
 </div>
-</div>
-<div class="stack-lg">
-<div class="order-strip" data-order-strip>
-<div class="order-head">
-<span class="order-id">JOB-24188</span>
-<span class="chip chip-ok"><span class="chip-dot"></span>Capacity cleared</span>
-<span class="order-meta">Quarterly treatment. Technician, truck 4. Zone, North Spokane.</span>
-</div>
-<ol class="order-track">
-<li data-state="now">
-<span class="stage">Scheduled</span>
-<span class="at">06:40</span>
-</li>
-<li data-state="todo">
-<span class="stage">Dispatched</span>
-<span class="at">07:05</span>
-</li>
-<li data-state="todo">
-<span class="stage">On site</span>
-<span class="at">07:52</span>
-</li>
-<li data-state="todo">
-<span class="stage">Complete</span>
-<span class="at">08:31</span>
-</li>
-</ol>
-</div>
-<p class="small muted">Every job carries its own record: customer, technician, route, proof, payment and notes. Open it once and you see all of it.</p>
-</div>
-</div></div></section>
-<section class="section"><div class="wrap">
-<div class="section-head">
-<h2>Three numbers that describe the shape of it</h2>
-</div>
-<div class="figures">
-<div class="figure">
-<div class="value numeric">1</div>
-<p class="caption">One platform in place of a phone system, a field service tool, a CRM, an email tool and a spreadsheet.</p>
-</div>
-<div class="figure">
-<div class="value numeric">20<span class="unit">customers</span></div>
-<p class="caption">What the free plan covers, at one location, permanently and without a card.</p>
-</div>
-<div class="figure">
-<div class="value numeric">3<span class="unit">ways in</span></div>
-<p class="caption">Anything you can do on screen you can also do over the API or hand to an AI agent with a scoped key.</p>
-</div>
-</div>
-</div></section>
-<section class="section"><div class="wrap"><div class="split">
-<div class="stack-lg">
-<h2>Five systems means five copies of the same customer</h2>
-<p class="standfirst">The phone system knows the number. The field tool knows the address. The CRM knows the deal. The email tool knows the list. Nobody knows the whole story.</p>
-<div class="prose">
-<p>That fragmentation is expensive in a way that is easy to miss. Someone becomes a full time translator between systems. Jobs get booked against capacity nobody can see. A customer who moved is still getting mail at the old address in one tool and not another. A technician arrives without knowing the account is ninety days overdue.</p>
-<p>AlphaFlux keeps one record and lets every module work on it. The dispatcher, the technician, the office manager and the owner are all looking at the same customer, in the same state, at the same time.</p>
-</div>
-<a class="link-more" href="/platform">See how the platform is put together<svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-arrow"></use></svg></a>
-</div>
-<div class="stack-lg">
-<ul class="grid grid-3" style="list-style:none">
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg></span>
-<h3>One customer record</h3>
-<p>Created by the phone call, enriched by the job, billed by the agreement, emailed by the campaign. Never duplicated.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-route"></use></svg></span>
-<h3>One definition of capacity</h3>
-<p>A booking is checked against real capacity before it is confirmed, so the schedule cannot be oversold by a person or by an agent.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg></span>
-<h3>One version of the money</h3>
-<p>Payments, invoices, recurring agreements and commissions all read from the same ledger, in integer cents.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-note"></use></svg></span>
-<h3>One timeline per account</h3>
-<p>Calls, texts, emails, notes, AI activity and payments in a single chronological feed.</p>
-</li>
-</ul>
-</div>
-</div></div></section>
 <section class="section" id="modules"><div class="wrap">
 <div class="section-head">
-<h2>Eleven modules, one login</h2>
-<p class="lede">Each module can be switched on or off per company. You only see and only pay for what you actually use, and adding one never means migrating your data.</p>
+<h2>The modules</h2>
+<p class="lede">Each one works on its own and gets better when the others are on, because they all read and write the same records.</p>
 </div>
 <ul class="module-grid">
 <li><a class="module-card" href="/phone-and-messaging">
@@ -333,156 +388,109 @@
 </div></section>
 <section class="section"><div class="wrap">
 <div class="section-head">
-<h2>A job is a record, not a text message</h2>
-<p class="lede">The order strip below is the same object every module works on. The dispatcher moves it, the technician moves it, an agent can move it, and the customer sees the result.</p>
+<h2>Which plan carries which module</h2>
+<p class="lede">Bundles set the floor. Any module can also be added to any plan on its own.</p>
 </div>
-<div class="order-strip" data-order-strip>
-<div class="order-head">
-<span class="order-id">JOB-24188</span>
-<span class="chip chip-ok"><span class="chip-dot"></span>Capacity cleared</span>
-<span class="order-meta">Quarterly treatment. Technician, truck 4. Zone, North Spokane.</span>
-</div>
-<ol class="order-track">
-<li data-state="now">
-<span class="stage">Scheduled</span>
-<span class="at">06:40</span>
-</li>
-<li data-state="todo">
-<span class="stage">Dispatched</span>
-<span class="at">07:05</span>
-</li>
-<li data-state="todo">
-<span class="stage">On site</span>
-<span class="at">07:52</span>
-</li>
-<li data-state="todo">
-<span class="stage">Complete</span>
-<span class="at">08:31</span>
-</li>
-</ol>
-</div>
-<p class="small muted" style="margin-block-start:var(--space-4)">Status changes are checked by the server, not by the screen. A move that is not allowed is refused and the allowed moves are named, so a drag on a board can never invent a state.</p>
+<div class="table-scroll" role="region" aria-label="Which plan carries which module, scrolls horizontally" tabindex="0"><table class="data">
+<caption>Bundles set the floor. Any module can also be added to any plan on its own.</caption>
+<thead><tr><th scope="col">Module</th><th scope="col">Free</th><th scope="col">Starter</th><th scope="col">Growth</th><th scope="col">Scale and above</th></tr></thead>
+<tbody>
+<tr><th scope="row">Phone and messaging</th><td>1 number, 1 user</td><td>2 numbers, 3 users</td><td>5 numbers, 10 users</td><td>25 numbers, 25 users</td></tr>
+<tr><th scope="row">Field operations</th><td>Basic jobs</td><td>Jobs and scheduling</td><td>Dispatch, routing and proof</td><td>Full operations, multi district</td></tr>
+<tr><th scope="row">Fleet and dispatch</th><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td>Board and tracking links</td><td>Live map, geofences, ETAs</td></tr>
+<tr><th scope="row">Scheduling and agreements</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">CRM and sales</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Inventory and assets</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Billing and payments</th><td>Invoices only</td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Email marketing</th><td>100 per month</td><td>2,000 per month</td><td>10,000 per month</td><td>50,000 per month</td></tr>
+<tr><th scope="row">Marketing and growth</th><td><span class="no">Not included</span></td><td>Basic</td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">Team and collaboration</th><td>Single user</td><td>3 users</td><td>10 users</td><td>25 users</td></tr>
+<tr><th scope="row">Reports and analytics</th><td>Basic</td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+<tr><th scope="row">API, CLI and agent access</th><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
+</tbody></table></div>
+<p class="small muted" style="margin-block-start:var(--space-4)">White label carries every module with no limits and no AlphaFlux branding.</p>
 </div></section>
-<section class="section"><div class="wrap"><div class="split split-flip">
+<section class="section"><div class="wrap"><div class="split">
 <div class="stack-lg">
-<h2>Your agents get a key, not your password</h2>
-<p class="standfirst">AlphaFlux was built assuming a machine will do a growing share of the work. Every capability is an interface first, and a screen second.</p>
+<h2>Turning a module on is a configuration change</h2>
+<p class="standfirst">There is no separate database per feature and no import step between them. A module is a view onto records the platform was already keeping.</p>
 <div class="prose">
-<p>Issue a scoped API key and an agent can book jobs, send texts, run billing, chase overdue accounts or write back to the account timeline, and it can only do the things that key allows. Turn a key off and the agent stops, without a password ever changing hands.</p>
-<p>The receptionist answers the phone before a person does. The assistant answers a technician&#39;s question about a treatment. Autopilot lets an agent keep a company&#39;s configuration tidy. Every action is attributed, so you can always tell what a machine did and what a person did.</p>
+<p>That is why a company can start with the phone and the schedule, add dispatch three months later, and add fleet after buying its first truck, without any of it being a project.</p>
+<p>It is also why reports stay honest as modules appear. The numbers were always being recorded, so history does not start over when a new module is switched on.</p>
 </div>
-<a class="link-more" href="/ai-agents">How agents connect<svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-arrow"></use></svg></a>
+<a class="link-more" href="/platform">See the platform architecture<svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-arrow"></use></svg></a>
 </div>
 <div class="stack-lg">
 <ul class="grid grid-3" style="list-style:none">
 <li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg></span>
-<h3>Scoped keys</h3>
-<p>Read and write, per module. A key inherits exactly the permissions of the account that owns it.</p>
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg></span>
+<h3>Registry driven</h3>
+<p>Screens, permissions and limits all come from the module registry, so the interface matches what a company actually has.</p>
 </li>
 <li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-terminal"></use></svg></span>
-<h3>A command line that speaks JSON</h3>
-<p>Every command outputs JSON, so it pipes into a script or straight into another agent turn.</p>
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-lock"></use></svg></span>
+<h3>Permissions do not grant themselves</h3>
+<p>Turning on a module makes new permissions available. Someone still has to assign them, so nobody gains access by accident.</p>
 </li>
 <li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-plug"></use></svg></span>
-<h3>An MCP server</h3>
-<p>Point any agent client at it and the whole platform becomes a set of tools it can call.</p>
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-database"></use></svg></span>
+<h3>History is continuous</h3>
+<p>A module that starts today reads work that was recorded before it existed. Nothing has to be backfilled.</p>
 </li>
 <li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-note"></use></svg></span>
-<h3>Attribution on every action</h3>
-<p>Notes and sales record whether a person, an agent or an import did the work.</p>
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg></span>
+<h3>Repackageable</h3>
+<p>Because the catalogue is data, an operator running the platform under their own brand can define their own bundles and pricing.</p>
 </li>
 </ul>
 </div>
 </div></div></section>
 <section class="section"><div class="wrap">
 <div class="section-head">
-<h2>Built for the way the work actually arrives</h2>
-<p class="lede">Nobody calls at a convenient time, and nothing in a service business stays still. The platform assumes both.</p>
+<h2>Modules that pair well</h2>
+<p class="lede">Some combinations are the reason the platform exists. These are the ones companies turn on first.</p>
 </div>
 <ul class="grid grid-3" style="list-style:none">
 <li class="item">
 <span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg></span>
-<h3>The phone answers itself</h3>
-<p>An AI receptionist handles the call, books against real capacity and hands a human the rest. Missed calls get a text back automatically.</p>
+<h3>Phone plus scheduling</h3>
+<p>The agent answers, checks real capacity and books, so the schedule fills itself instead of waiting for office hours.</p>
 </li>
 <li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg></span>
-<h3>Recurring work runs itself</h3>
-<p>Agreements generate their own visits for the length of the term. Monthly recurring revenue is calculated from the actual charges, not from a guess.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg></span>
-<h3>Stock follows the truck</h3>
-<p>Inventory is not one warehouse. It is trucks, storage units, mobile units and branches, with sign in and sign out and a record of who has what.</p>
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg></span>
+<h3>Field operations plus inventory</h3>
+<p>A job draws down the technician&#39;s stock, and a low part is visible before the next job needs it rather than after.</p>
 </li>
 <li class="item">
 <span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg></span>
-<h3>Dispatch is a map and a board</h3>
-<p>See every job and every technician live, drag work between stages, sequence a day route, and let the customer watch their technician arrive.</p>
+<h3>Fleet plus reports</h3>
+<p>Distance, on time percentage and jobs per technician come out of the same records the dispatcher is already using.</p>
+</li>
+<li class="item">
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg></span>
+<h3>Billing plus agreements</h3>
+<p>Recurring visits and recurring revenue are one object, so the invoiced amount and the booked work cannot drift apart.</p>
 </li>
 <li class="item">
 <span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg></span>
-<h3>Email marketing from your own domain</h3>
-<p>Campaigns, sequences and a unified inbox, sent from your domain with the authentication records handled for you.</p>
+<h3>Email plus CRM</h3>
+<p>A campaign targets a real pipeline stage, and a reply lands on the account timeline rather than in a separate list.</p>
 </li>
 <li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg></span>
-<h3>Your data stays on your machine</h3>
-<p>Self-hosted, per company isolation, and an audit trail on every change. Nothing is sold, shared or used to train anything.</p>
+<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg></span>
+<h3>Anything plus agent access</h3>
+<p>Hand an agent a scoped key and it can work across modules under one set of permissions and one audit trail.</p>
 </li>
 </ul>
-</div></section>
-<section class="section"><div class="wrap">
-<div class="statement"><p>You should not have to buy five products, and then buy a person to hold them together.</p></div>
-</div></section>
-<section class="section"><div class="wrap">
-<div class="section-head">
-<h2>What the free plan covers, and what moves you up</h2>
-<p class="lede">The free plan is a real plan, not a trial. It is free permanently, and it is designed for someone running the business out of a truck.</p>
-</div>
-<div class="table-scroll" role="region" aria-label="What the free plan covers, and what moves you up, scrolls horizontally" tabindex="0"><table class="data">
-<caption>The free plan is a real plan, not a trial. It is free permanently, and it is designed for someone running the business out of a truck.</caption>
-<thead><tr><th scope="col"></th><th scope="col">Free</th><th scope="col">Starter</th><th scope="col">Growth</th><th scope="col">Scale</th></tr></thead>
-<tbody>
-<tr><th scope="row">Price</th><td><span class="cell-strong">Free forever</span></td><td>$49 per month</td><td>$149 per month</td><td>$399 per month</td></tr>
-<tr><th scope="row">Customers</th><td>20</td><td>250</td><td>1,000</td><td>5,000</td></tr>
-<tr><th scope="row">Locations</th><td>1</td><td>2</td><td>5</td><td>15</td></tr>
-<tr><th scope="row">Users</th><td>1</td><td>3</td><td>10</td><td>25</td></tr>
-<tr><th scope="row">Marketing emails</th><td>100 per month</td><td>2,000 per month</td><td>10,000 per month</td><td>50,000 per month</td></tr>
-<tr><th scope="row">Phone numbers</th><td>1</td><td>2</td><td>5</td><td>25</td></tr>
-<tr><th scope="row">Inventory and custody</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">Agreements and invoicing</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">Dispatch board and routing</th><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">AI receptionist</th><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">Live fleet map</th><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">API, CLI and agent access</th><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-</tbody></table></div>
-<p class="small muted" style="margin-block-start:var(--space-4)">Limits are per company. Moving up a plan keeps every record you already have.</p>
-</div></section>
-<section class="section"><div class="wrap">
-<div class="section-head">
-<h2>Start in an afternoon, not a quarter</h2>
-</div>
-<ol class="steps">
-<li><h3>Create the account</h3><p>An email address is the whole signup. No card, no sales call, no implementation fee. The free plan is available immediately.</p></li>
-<li><h3>Bring in what you already have</h3><p>Import customers and inventory from a spreadsheet, or connect an existing field service account and read it live while you decide what to move.</p></li>
-<li><h3>Turn on the modules you want</h3><p>Start with the phone and the schedule. Add dispatch, fleet, marketing or agent access when the work needs it.</p></li>
-</ol>
 </div></section>
 <section class="section" id="faq">
 <div class="wrap"><div class="split">
 <div><h2>Questions people ask before signing up</h2></div>
 <div class="faq">
-<details><summary>Is the free plan really free, or is it a trial?</summary><div class="answer"><p>It is free permanently. Twenty customers, one location, one user, one phone number, 100 marketing emails a month and the inventory module are yours for as long as you want them. There is no card on file and no expiry date. Companies move up when their workload outgrows those limits, and when they do, everything they have already entered comes with them.</p></div></details>
-<details><summary>What does one location mean?</summary><div class="answer"><p>A location is a base you operate from: a city, an office or a service area. If a company works out of one town, that is one location and everything fits on the free plan. A company running crews in three states needs three, which is what the paid plans are for.</p></div></details>
-<details><summary>Do I need to install anything?</summary><div class="answer"><p>No. AlphaFlux runs on infrastructure the platform provider hosts and keeps running, and every module works in a browser on a laptop, a tablet or a phone. The technician view installs to a phone home screen like an app and keeps working when the signal drops.</p></div></details>
-<details><summary>Can an AI really be trusted to run parts of this?</summary><div class="answer"><p>It can be trusted with exactly as much as you give it. An agent authenticates with a scoped key, so it can only reach the modules and the operations that key names. Every action it takes is written to the audit trail and to the account timeline, attributed to the agent rather than to a person.</p></div></details>
-<details><summary>What happens to my data if I leave?</summary><div class="answer"><p>It is yours and it exports. Customer records, jobs, invoices and payment history come out in standard formats, including a full JSON export through the API. Nothing is held hostage and nothing is deleted without an explicit request.</p></div></details>
-<details><summary>Does AlphaFlux work for a company with more than one branch?</summary><div class="answer"><p>Yes, and branches are modelled properly rather than treated as a naming convention. Each location has its own staff, its own schedule, its own capacity rules and its own stock. Roles can be scoped to a location, so a dispatcher in one district cannot see or change another.</p></div></details>
+<details><summary>Can I buy a module without the bundle around it?</summary><div class="answer"><p>Yes. Any module can be added to any plan as an add on, priced on its own. That is usually how a company moves up: it adds the one thing that is currently costing it money rather than changing plan.</p></div></details>
+<details><summary>What happens if I switch a module off?</summary><div class="answer"><p>It stops appearing and its operations stop being available. The records it produced are not deleted, and switching it back on restores access to all of it.</p></div></details>
+<details><summary>Is there a module for something you have not built yet?</summary><div class="answer"><p>The registry is open. New modules follow the same contract as the existing ones, so adding one does not disturb the others, and the interface picks it up without a redesign.</p></div></details>
+<details><summary>Do the modules share one database?</summary><div class="answer"><p>They share one data model, which is the point. Records are scoped to the company that owns them rather than to the module that created them, so the customer your phone module logged is the customer the dispatch board routes to.</p></div></details>
 </div>
 </div></div></section>
 </main>

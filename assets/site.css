@@ -1,0 +1,1173 @@
+/* =============================================================================
+   AlphaFlux marketing site
+   Two layers: PRIMITIVES (raw values) then SEMANTIC ROLES. Components read
+   roles only.
+
+   Identity decisions, all derived from the product rather than from a trend:
+     radius   2 / 4 / 6 / 10   precise and industrial, not soft, not the 0px costume
+     ratio    ~1.2 on UI steps, wider only between display and body
+     motion   90 / 120 / 180 / 240ms  fast reads industrial
+     neutral  cool, hue 222, taken from the product's own navy (#0a1220)
+   ========================================================================== */
+
+/* --- 1. PRIMITIVES ------------------------------------------------------- */
+
+:root {
+  --neutral-0:   #ffffff;
+  --neutral-50:  #f5f7fb;
+  --neutral-100: #e9eef6;
+  --neutral-200: #d5deeb;
+  --neutral-300: #b4c1d6;
+  --neutral-400: #8798b4;
+  --neutral-500: #5f7191;
+  --neutral-600: #46587a;
+  --neutral-700: #31425f;
+  --neutral-800: #1e2b44;
+  --neutral-900: #131d31;
+  --neutral-950: #0a1220;
+
+  /* Brand ramp. 500 is the product's own blue. 300 exists for dark mode,
+     where a saturated step vibrates and reads neon on a near-black surface. */
+  --brand-100: #d9e8fd;
+  --brand-300: #79b0f6;
+  --brand-500: #0263e0;
+  --brand-600: #0250bb;
+  --brand-700: #013c8c;
+
+  /* The signal accent. Used once per screen, for live telemetry marks only.
+     Never for text, never for a button. */
+  --signal-400: #7ae4f7;
+  --signal-500: #2fd0f0;
+  --signal-600: #12a8c9;
+
+  /* Status ramps, deliberately clear of the brand hue so a status never
+     reads as branding. */
+  --green-100: #d8f3e2;  --green-500: #17914f;  --green-600: #116b3a;  --green-300: #57c98a;
+  --amber-100: #fbeccf;  --amber-500: #b87810;  --amber-600: #8d5a08;  --amber-300: #e0ab4a;
+  --red-100:   #fbdcdc;  --red-500:   #c62f2f;  --red-600:   #9c1f1f;  --red-300:   #e37777;
+  --teal-100:  #d3f0ed;  --teal-500:  #0d8d84;  --teal-600:  #0a6b64;  --teal-300:  #52bdb5;
+
+  /* Chart series 3, 4 and 6 are roles with no status or brand equivalent, so
+     they need their own primitives rather than an inline literal. */
+  --violet-500: #6d4fd6;  --violet-300: #a58bf5;
+  --orange-500: #c2650f;  --orange-300: #e0913f;
+  --magenta-500: #b83b86; --magenta-300: #e07bb8;
+
+  /* Shadow tints, cool and derived from the neutral ramp's hue. */
+  --tint-05: rgba(10, 18, 32, .05);  --tint-06: rgba(10, 18, 32, .06);
+  --tint-07: rgba(10, 18, 32, .07);  --tint-10: rgba(10, 18, 32, .10);
+  --tint-13: rgba(10, 18, 32, .13);
+  --ink-50:  rgba(0, 0, 0, .5);      --ink-55:  rgba(0, 0, 0, .55);
+  --ink-60:  rgba(0, 0, 0, .6);      --ink-70:  rgba(0, 0, 0, .7);
+}
+
+/* --- 2. SEMANTIC, LIGHT -------------------------------------------------- */
+
+:root {
+  --background:            var(--neutral-0);
+  --surface:               var(--neutral-0);
+  --surface-secondary:     var(--neutral-50);
+  --surface-elevated:      var(--neutral-0);
+  --surface-inverted:      var(--neutral-950);
+  --surface-hover:         var(--neutral-50);
+  --surface-active:        var(--neutral-100);
+  --surface-selected:      var(--brand-100);
+  --surface-code:          var(--neutral-50);
+
+  --foreground:            var(--neutral-950);
+  --foreground-secondary:  var(--neutral-700);
+  --muted-foreground:      var(--neutral-600);
+  --foreground-inverted:   var(--neutral-0);
+  --foreground-on-brand:   var(--neutral-0);
+
+  --border:                var(--neutral-200);
+  --border-strong:         var(--neutral-300);
+  --border-subtle:         var(--neutral-100);
+
+  --primary:               var(--brand-500);
+  --primary-hover:         var(--brand-600);
+  --primary-active:        var(--brand-700);
+  --primary-foreground:    var(--neutral-0);
+  --primary-subtle:        var(--brand-100);
+
+  --accent-signal:         var(--signal-600);
+
+  --success:               var(--green-500);
+  --success-subtle:        var(--green-100);
+  --warning:               var(--amber-500);
+  --warning-subtle:        var(--amber-100);
+  --destructive:           var(--red-500);
+  --destructive-subtle:    var(--red-100);
+  --info:                  var(--teal-500);
+  --info-subtle:           var(--teal-100);
+
+  --chart-1: var(--brand-500);
+  --chart-2: var(--signal-600);
+  --chart-3: var(--violet-500);
+  --chart-4: var(--orange-500);
+  --chart-5: var(--teal-500);
+  --chart-6: var(--magenta-500);
+
+  --ring:                  var(--brand-500);
+  --ring-offset:           var(--background);
+  --ring-width:            2px;
+  --ring-offset-width:     2px;
+
+  /* Tinted with the neutral ramp's own hue rather than pure black, which over
+     a cool neutral reads muddy. */
+  --shadow-sm: 0 1px 2px var(--tint-06);
+  --shadow-md: 0 2px 6px var(--tint-07), 0 1px 2px var(--tint-05);
+  --shadow-lg: 0 10px 28px var(--tint-10);
+  --shadow-xl: 0 22px 56px var(--tint-13);
+
+  color-scheme: light;
+}
+
+/* --- 3. SEMANTIC, DARK --------------------------------------------------- */
+/* Elevation inverts: a raised surface is lighter, never more shadowed. */
+
+:root[data-theme="dark"] {
+  --background:            var(--neutral-950);
+  --surface:               var(--neutral-900);
+  --surface-secondary:     var(--neutral-900);
+  --surface-elevated:      var(--neutral-800);
+  --surface-inverted:      var(--neutral-0);
+  --surface-hover:         var(--neutral-800);
+  --surface-active:        var(--neutral-700);
+  --surface-selected:      color-mix(in oklab, var(--brand-500) 24%, var(--neutral-900));
+  --surface-code:          var(--neutral-900);
+
+  --foreground:            var(--neutral-100);
+  --foreground-secondary:  var(--neutral-300);
+  --muted-foreground:      var(--neutral-300);
+  --foreground-inverted:   var(--neutral-950);
+  --foreground-on-brand:   var(--neutral-0);
+
+  --border:                var(--neutral-700);
+  --border-strong:         var(--neutral-600);
+  --border-subtle:         var(--neutral-800);
+
+  --primary:               var(--brand-300);
+  --primary-hover:         var(--brand-100);
+  --primary-active:        var(--brand-100);
+  --primary-foreground:    var(--neutral-950);
+  --primary-subtle:        color-mix(in oklab, var(--brand-500) 22%, var(--neutral-900));
+
+  --accent-signal:         var(--signal-500);
+
+  --success:               var(--green-300);
+  --success-subtle:        color-mix(in oklab, var(--green-500) 22%, var(--neutral-900));
+  --warning:               var(--amber-300);
+  --warning-subtle:        color-mix(in oklab, var(--amber-500) 22%, var(--neutral-900));
+  --destructive:           var(--red-300);
+  --destructive-subtle:    color-mix(in oklab, var(--red-500) 22%, var(--neutral-900));
+  --info:                  var(--teal-300);
+  --info-subtle:           color-mix(in oklab, var(--teal-500) 22%, var(--neutral-900));
+
+  /* Re-tuned rather than reused: a series colour chosen against white reads
+     neon on a near-black surface. */
+  --chart-1: var(--brand-300);
+  --chart-2: var(--signal-500);
+  --chart-3: var(--violet-300);
+  --chart-4: var(--orange-300);
+  --chart-5: var(--teal-300);
+  --chart-6: var(--magenta-300);
+
+  --ring:                  var(--brand-300);
+  --ring-offset:           var(--background);
+
+  /* Shadows barely read on a dark surface; depth comes from surface contrast.
+     These are for the few layers that genuinely float. */
+  --shadow-sm: 0 1px 2px var(--ink-50);
+  --shadow-md: 0 2px 8px var(--ink-55);
+  --shadow-lg: 0 10px 30px var(--ink-60);
+  --shadow-xl: 0 22px 60px var(--ink-70);
+
+  color-scheme: dark;
+}
+
+/* --- 4. SCALES ----------------------------------------------------------- */
+
+:root {
+  --space-0: 0;
+  --space-1: .25rem;  --space-2: .5rem;   --space-3: .75rem;  --space-4: 1rem;
+  --space-5: 1.25rem; --space-6: 1.5rem;  --space-7: 2rem;    --space-8: 2.5rem;
+  --space-9: 3rem;    --space-10: 4rem;   --space-11: 5rem;
+
+  --section-y: clamp(3.5rem, 2rem + 6vw, 7rem);
+  --gutter:    clamp(1.125rem, .5rem + 2.6vw, 2.5rem);
+
+  --container-text: 68ch;
+  --container-max:  1180px;
+  --container-wide: 1560px;
+  --rail-w:         16.5rem;
+  --grid-gap:       var(--space-6);
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 10px;
+  --radius-full: 9999px;
+
+  --font-sans:    "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --weight-regular: 400; --weight-medium: 500;
+  --weight-semibold: 600; --weight-bold: 700;
+
+  --text-display: clamp(2.5rem, 1.35rem + 4.4vw, 4.75rem);
+  --text-h1:      clamp(2rem, 1.3rem + 2.7vw, 3.25rem);
+  --text-h2:      clamp(1.5rem, 1.2rem + 1.35vw, 2.125rem);
+  --text-h3:      clamp(1.1875rem, 1.1rem + .45vw, 1.4375rem);
+  --text-h4:      1.0625rem;
+  --text-title:   1rem;
+  --text-body:    1rem;
+  --text-body-sm: .9375rem;
+  --text-label:   .8125rem;
+
+  --leading-tight:   1.05;
+  --leading-snug:    1.18;
+  --leading-normal:  1.6;
+  --leading-relaxed: 1.7;
+
+  --tracking-display: -.022em;
+  --tracking-heading: -.016em;
+  --tracking-normal:  0;
+
+  --duration-instant: 90ms;
+  --duration-fast:    120ms;
+  --duration-normal:  180ms;
+  --duration-slow:    240ms;
+  --duration-slower:  420ms;
+
+  --ease-out:    cubic-bezier(.2, .7, .3, 1);
+  --ease-in:     cubic-bezier(.6, .05, .9, .4);
+  --ease-in-out: cubic-bezier(.4, 0, .2, 1);
+
+  --control-h-sm: 2rem;
+  --control-h-md: 2.5rem;
+  --control-h-lg: 3rem;
+  --row-h:        3rem;
+  --header-height: 3.5rem;
+
+  --z-base: 0;    --z-raised: 10;   --z-sticky: 100;
+  --z-header: 200; --z-drawer: 300; --z-overlay: 400;
+  --z-dialog: 500; --z-popover: 600; --z-tooltip: 700; --z-toast: 800;
+}
+
+/* Numeric alignment for anything that updates or sits in a column. */
+.numeric, [data-numeric] { font-variant-numeric: tabular-nums; }
+
+/* --- 5. RESET AND BASE --------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--tracking-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--leading-snug);
+  color: var(--foreground);
+}
+
+h1 { font-size: var(--text-h1); letter-spacing: var(--tracking-display); }
+h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); font-weight: var(--weight-semibold); }
+h4 { font-size: var(--text-h4); }
+
+p { margin: 0; }
+p + p { margin-block-start: var(--space-4); }
+
+a { color: var(--primary); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+a:hover { color: var(--primary-hover); }
+
+ul, ol { margin: 0; padding: 0; }
+
+img, svg, video { display: block; max-width: 100%; }
+img { height: auto; }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+
+/* --- 6. ACCESSIBILITY FLOOR ---------------------------------------------- */
+
+:focus:not(:focus-visible) { outline: none; }
+
+:focus-visible {
+  outline: var(--ring-width) solid var(--ring);
+  outline-offset: var(--ring-offset-width);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+  :where(button, a, [role="button"], input, select, textarea) {
+    transition-property: color, background-color, border-color, opacity !important;
+    transition-duration: var(--duration-instant) !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root { scroll-behavior: smooth; }
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: var(--space-4);
+  inset-block-start: var(--space-4);
+  z-index: var(--z-toast);
+  padding: var(--space-2) var(--space-4);
+  background: var(--surface-elevated);
+  color: var(--foreground);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-220%);
+}
+/* No transition here, on purpose. The link has to be on screen on the frame
+   focus lands; a fade means a fast tab sequence can move past it while it is
+   still arriving, which is exactly the keyboard user it exists for. Same rule
+   as the focus ring: never animate the thing that shows focus. */
+.skip-link:focus-visible { transform: translateY(0); }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* Touch targets.
+   WCAG 2.2 puts the floor at 24 CSS px; 44 is the practical size for a thumb.
+   Links inside running text are inline boxes and are untouched by min-*
+   (min-inline-size does not apply to non-replaced inline boxes), so prose links
+   keep their natural line rhythm. Anything that owns its box grows to 44.
+
+   For links in a dense list the box grows rather than gaining an invisible
+   overlay: a 44px overlay on a 24px row overlaps the neighbouring row, and the
+   link that wins is whichever comes later in the DOM. A bigger row is the only
+   honest fix, so the lists are laid out to absorb it. */
+@media (pointer: coarse) {
+  :where(button, [role="button"], [role="tab"], [role="menuitem"], summary, select) {
+    min-block-size: 44px;
+    min-inline-size: 44px;
+  }
+  :where(.btn, .theme-toggle, .nav-toggle, .topbar-brand) {
+    min-block-size: 44px;
+    min-inline-size: 44px;
+  }
+  :where(.crumbs a, .footer a, .rail-link, .link-more, .brand, .sitemap-cols a) {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+  }
+  .footer li, .crumbs li, .sitemap-cols li { padding-block: 0; }
+
+  /* Two columns rather than one so the taller rows do not turn the footer into
+     a page of its own on a phone. */
+  .footer-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-cols > :first-child { grid-column: 1 / -1; }
+}
+
+@media (forced-colors: active) {
+  :where(button, [role="button"], .card, .chip, [data-state]) { border: 1px solid ButtonBorder; }
+  :focus-visible { outline: 2px solid Highlight; outline-offset: 2px; }
+}
+
+:where(h1, h2, h3, h4, p, li, td, th) { overflow-wrap: break-word; }
+:where(h1, h2, h3) { text-wrap: balance; }
+:where(p) { text-wrap: pretty; }
+
+/* --- 7. LAYOUT ----------------------------------------------------------- */
+
+.shell { display: grid; min-block-size: 100dvh; }
+
+@media (min-width: 64rem) {
+  .shell { grid-template-columns: var(--rail-w) minmax(0, 1fr); }
+}
+
+.main { min-inline-size: 0; }
+
+.wrap {
+  inline-size: 100%;
+  max-inline-size: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.wrap-wide { max-inline-size: var(--container-wide); }
+.wrap-text { max-inline-size: var(--container-text); }
+
+.section { padding-block: var(--section-y); }
+.section + .section { border-block-start: 1px solid var(--border-subtle); }
+.section-tight { padding-block: clamp(2rem, 1rem + 3vw, 3.5rem); }
+.section-flush { border-block-start: 0; }
+
+/* The held asymmetry: primary 7, support 5. Used on every page, no exception.
+
+   The base rule declares one column explicitly as minmax(0, 1fr) rather than
+   leaving it implicit. An implicit auto column is sized to its widest child's
+   min-content, so a child that resists shrinking (the horizontally scrolling
+   order track, a wide table) pushed this column past a 375px viewport and the
+   page scrolled sideways. minmax(0, ...) lets the track shrink and its own
+   overflow container do the scrolling. */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-8) var(--grid-gap);
+  align-items: start;
+}
+.split > * { min-inline-size: 0; }
+@media (min-width: 56rem) {
+  .split { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .split-flip > :first-child { order: 2; }
+}
+
+.grid { display: grid; gap: var(--grid-gap); }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr)); }
+
+.stack > * + * { margin-block-start: var(--space-4); }
+.stack-lg > * + * { margin-block-start: var(--space-6); }
+.stack-tight > * + * { margin-block-start: var(--space-2); }
+
+.prose { max-inline-size: var(--container-text); }
+.prose p { font-size: var(--text-body); line-height: var(--leading-relaxed); }
+.prose p + p { margin-block-start: var(--space-5); }
+
+.rule { border: 0; border-block-start: 1px solid var(--border); margin: 0; }
+
+/* --- 8. TYPE ROLES ------------------------------------------------------- */
+
+.display {
+  font-size: var(--text-display);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  font-weight: var(--weight-semibold);
+}
+
+.standfirst {
+  font-size: clamp(1.0625rem, .95rem + .5vw, 1.3125rem);
+  line-height: 1.5;
+  color: var(--foreground-secondary);
+  max-inline-size: 46ch;
+}
+
+.measure { max-inline-size: var(--container-text); }
+
+.muted { color: var(--muted-foreground); }
+.small { font-size: var(--text-body-sm); }
+.label { font-size: var(--text-label); color: var(--muted-foreground); }
+
+/* Mono is for identifiers and measured values only. Never a decoration. */
+.ident {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0;
+  color: var(--muted-foreground);
+}
+
+.section-head { margin-block-end: var(--space-7); }
+.section-head h2 { max-inline-size: 32ch; }
+.section-head .lede {
+  margin-block-start: var(--space-4);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--foreground-secondary);
+  max-inline-size: 62ch;
+}
+
+/* --- 9. CONTROLS --------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  block-size: var(--control-h-md);
+  padding-inline: var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--duration-instant) var(--ease-out),
+              border-color var(--duration-instant) var(--ease-out),
+              color var(--duration-instant) var(--ease-out);
+}
+.btn-primary { background: var(--primary); color: var(--primary-foreground); }
+.btn-primary:hover { background: var(--primary-hover); color: var(--primary-foreground); }
+.btn-primary:active { background: var(--primary-active); }
+.btn-secondary {
+  background: var(--surface); color: var(--foreground);
+  border-color: var(--border-strong);
+}
+.btn-secondary:hover { background: var(--surface-hover); color: var(--foreground); }
+.btn-ghost { background: transparent; color: var(--foreground-secondary); }
+.btn-ghost:hover { background: var(--surface-hover); color: var(--foreground); }
+.btn-lg { block-size: var(--control-h-lg); padding-inline: var(--space-6); font-size: var(--text-body); }
+.btn-sm { block-size: var(--control-h-sm); padding-inline: var(--space-3); font-size: var(--text-label); }
+
+.btn-row {
+  display: flex; flex-wrap: wrap; gap: var(--space-3);
+  align-items: center; margin-block-start: var(--space-6);
+}
+
+.link-more {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-body-sm); font-weight: var(--weight-medium);
+  color: var(--primary); text-decoration: none;
+}
+.link-more:hover { color: var(--primary-hover); text-decoration: underline; text-underline-offset: .2em; }
+.link-more svg { inline-size: 1rem; block-size: 1rem; flex: none; }
+
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  inline-size: var(--control-h-sm); block-size: var(--control-h-sm);
+  background: transparent; border: 1px solid var(--border);
+  border-radius: var(--radius-md); color: var(--foreground-secondary);
+  cursor: pointer;
+  transition: background-color var(--duration-instant) var(--ease-out);
+}
+.theme-toggle:hover { background: var(--surface-hover); color: var(--foreground); }
+.theme-toggle svg { inline-size: 1rem; block-size: 1rem; }
+:root[data-theme="dark"] .theme-toggle .i-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .i-moon { display: none; }
+:root:not([data-theme="dark"]) .theme-toggle .i-sun { display: none; }
+:root:not([data-theme="dark"]) .theme-toggle .i-moon { display: block; }
+
+/* --- 10. CHIPS AND STATUS ------------------------------------------------ */
+
+.chip {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-secondary);
+  font-size: var(--text-label);
+  color: var(--foreground-secondary);
+  white-space: nowrap;
+}
+/* A chip is a single fact and reads best on one line, but a long one on a
+   320px screen would push the page sideways. Past that point it wraps. */
+@media (max-width: 30rem) {
+  .eyebrow-line { flex-direction: column; align-items: flex-start; }
+  .eyebrow-line .chip { white-space: normal; }
+}
+.chip-dot {
+  inline-size: .375rem; block-size: .375rem; border-radius: var(--radius-full);
+  background: var(--muted-foreground); flex: none;
+}
+.chip-ok { border-color: color-mix(in oklab, var(--success) 40%, var(--border)); }
+.chip-ok .chip-dot { background: var(--success); }
+.chip-live { border-color: color-mix(in oklab, var(--accent-signal) 45%, var(--border)); color: var(--foreground); }
+.chip-live .chip-dot { background: var(--accent-signal); }
+
+/* --- 11. THE MODULE RAIL (the site's spine) ------------------------------ */
+
+.rail {
+  display: none;
+  border-inline-end: 1px solid var(--border);
+  background: var(--surface-secondary);
+}
+
+@media (min-width: 64rem) {
+  .rail {
+    display: block;
+    position: sticky;
+    inset-block-start: 0;
+    block-size: 100dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+.rail-inner {
+  display: flex; flex-direction: column;
+  min-block-size: 100%;
+  padding: var(--space-5) var(--space-4) var(--space-4);
+  gap: var(--space-6);
+}
+
+.brand {
+  display: inline-flex; align-items: center; gap: var(--space-3);
+  text-decoration: none; color: var(--foreground);
+  padding-inline: var(--space-2);
+}
+.brand-mark { inline-size: 1.5rem; block-size: 1.5rem; flex: none; color: var(--primary); }
+.brand-name {
+  font-size: 1.0625rem; font-weight: var(--weight-semibold);
+  letter-spacing: -.012em;
+}
+
+.rail-nav { flex: 1 1 auto; }
+
+.rail-group + .rail-group { margin-block-start: var(--space-6); }
+.rail-group-title {
+  padding-inline: var(--space-2);
+  margin-block-end: var(--space-2);
+  font-size: var(--text-label);
+  color: var(--muted-foreground);
+  letter-spacing: .01em;
+}
+
+.rail-list { list-style: none; display: flex; flex-direction: column; gap: 1px; }
+
+.rail-link {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-2) var(--space-2);
+  border-radius: var(--radius-md);
+  font-size: var(--text-body-sm);
+  color: var(--foreground-secondary);
+  text-decoration: none;
+  transition: background-color var(--duration-instant) var(--ease-out),
+              color var(--duration-instant) var(--ease-out);
+}
+.rail-link svg { inline-size: 1rem; block-size: 1rem; flex: none; color: var(--muted-foreground); }
+.rail-link:hover { background: var(--surface-hover); color: var(--foreground); }
+.rail-link:hover svg { color: var(--foreground-secondary); }
+.rail-link[aria-current="page"] {
+  background: var(--surface-selected);
+  color: var(--foreground);
+  font-weight: var(--weight-medium);
+}
+.rail-link[aria-current="page"] svg { color: var(--primary); }
+
+.rail-foot {
+  display: flex; flex-direction: column; gap: var(--space-3);
+  padding-block-start: var(--space-5);
+  border-block-start: 1px solid var(--border);
+}
+.rail-foot .btn { inline-size: 100%; }
+
+/* --- 12. TOP BAR --------------------------------------------------------- */
+
+.topbar {
+  position: sticky; inset-block-start: 0;
+  z-index: var(--z-header);
+  display: flex; align-items: center; gap: var(--space-4);
+  block-size: var(--header-height);
+  padding-inline: var(--gutter);
+  background: color-mix(in oklab, var(--background) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-block-end: 1px solid var(--border);
+}
+
+@media (min-width: 64rem) {
+  .topbar { padding-inline: var(--space-6); }
+}
+
+.topbar-brand { display: inline-flex; align-items: center; gap: var(--space-2); text-decoration: none; color: var(--foreground); }
+.topbar-brand .brand-mark { inline-size: 1.375rem; block-size: 1.375rem; }
+@media (min-width: 64rem) { .topbar-brand { display: none; } }
+
+.topbar-spacer { flex: 1 1 auto; }
+
+.topbar-actions { display: flex; align-items: center; gap: var(--space-2); flex: none; }
+/* The primary action stays visible at every width. A visitor on a phone who
+   has to open a menu to find the way in is a visitor who does not. Sign in is
+   secondary and only appears once there is room for both. */
+.topbar-actions .btn-ghost { display: none; }
+@media (min-width: 40rem) { .topbar-actions .btn-ghost { display: inline-flex; } }
+
+/* The current page name gets whatever room is left and truncates rather than
+   running under the controls. */
+.topbar .crumbs li:last-child { min-inline-size: 0; }
+.topbar .crumbs li:last-child [aria-current="page"] {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  inline-size: var(--control-h-sm); block-size: var(--control-h-sm);
+  background: transparent; border: 1px solid var(--border);
+  border-radius: var(--radius-md); color: var(--foreground-secondary); cursor: pointer;
+}
+.nav-toggle svg { inline-size: 1.125rem; block-size: 1.125rem; }
+@media (min-width: 64rem) { .nav-toggle { display: none; } }
+
+/* --- 13. BREADCRUMBS ----------------------------------------------------- */
+
+.crumbs { min-inline-size: 0; overflow: hidden; }
+.crumbs ol {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: var(--space-2);
+  list-style: none;
+  font-size: var(--text-label);
+}
+/* In the top bar there is one line of room. On a phone the trail collapses to
+   the page you are on, which is the part that orients; the rest is in the menu. */
+.topbar .crumbs li:not(:last-child),
+.topbar .crumbs li:last-child .sep { display: none; }
+@media (min-width: 48rem) {
+  .topbar .crumbs li:not(:last-child),
+  .topbar .crumbs li:last-child .sep { display: flex; }
+}
+.crumbs li { display: flex; align-items: center; gap: var(--space-2); }
+.crumbs a { color: var(--muted-foreground); text-decoration: none; }
+.crumbs a:hover { color: var(--primary); text-decoration: underline; text-underline-offset: .2em; }
+.crumbs [aria-current="page"] { color: var(--foreground-secondary); }
+.crumbs .sep { color: var(--border-strong); }
+
+/* --- 14. PAGE HEADER ----------------------------------------------------- */
+
+.page-head { padding-block: var(--space-6) var(--space-8); }
+.page-head h1 { max-inline-size: 22ch; }
+.page-head .standfirst { margin-block-start: var(--space-5); }
+
+.eyebrow-line {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3);
+  margin-block-end: var(--space-5);
+}
+
+/* --- 15. CARDS AND FEATURE ITEMS ----------------------------------------- */
+/* A card earns its border. Most content here is separated by type and rule. */
+
+.card {
+  padding: var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.item { display: grid; gap: var(--space-3); }
+.item-icon {
+  inline-size: 2rem; block-size: 2rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-secondary);
+  color: var(--primary);
+}
+.item-icon svg { inline-size: 1.0625rem; block-size: 1.0625rem; }
+.item h3 { font-size: var(--text-h4); font-weight: var(--weight-semibold); }
+.item p { color: var(--foreground-secondary); font-size: var(--text-body-sm); line-height: 1.6; }
+.item .item-note {
+  font-family: var(--font-mono); font-size: var(--text-label);
+  color: var(--muted-foreground);
+}
+
+/* A bordered list: real rows, real separators, no card wrapper. */
+.spec-list { list-style: none; border-block-start: 1px solid var(--border); }
+.spec-list > li {
+  display: grid;
+  gap: var(--space-2) var(--space-6);
+  padding-block: var(--space-4);
+  border-block-end: 1px solid var(--border);
+}
+@media (min-width: 40rem) {
+  .spec-list > li { grid-template-columns: minmax(0, 16rem) minmax(0, 1fr); }
+}
+.spec-list dt, .spec-term {
+  font-size: var(--text-body-sm); font-weight: var(--weight-medium);
+  color: var(--foreground);
+}
+.spec-list dd, .spec-desc {
+  margin: 0; font-size: var(--text-body-sm);
+  color: var(--foreground-secondary); line-height: 1.6;
+}
+.spec-list ul { list-style: none; margin-block-start: var(--space-2); }
+.spec-list ul li { position: relative; padding-inline-start: var(--space-5); font-size: var(--text-body-sm); color: var(--foreground-secondary); }
+.spec-list ul li + li { margin-block-start: var(--space-1); }
+.spec-list ul li::before {
+  content: ""; position: absolute; inset-inline-start: 0; inset-block-start: .6em;
+  inline-size: .375rem; block-size: .375rem;
+  border: 1px solid var(--border-strong); border-radius: var(--radius-full);
+}
+
+/* --- 16. SEQUENCE (numbered steps, real order) --------------------------- */
+
+.steps { list-style: none; counter-reset: step; }
+.steps > li {
+  counter-increment: step;
+  position: relative;
+  padding-inline-start: var(--space-8);
+  padding-block-end: var(--space-7);
+  border-inline-start: 1px solid var(--border);
+  margin-inline-start: .5rem;
+}
+.steps > li:last-child { padding-block-end: 0; border-inline-start-color: transparent; }
+.steps > li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute; inset-inline-start: -.5rem; inset-block-start: 0;
+  inline-size: 1rem; block-size: 1rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: .5625rem;
+  color: var(--muted-foreground);
+  background: var(--background);
+}
+.steps h3 { font-size: var(--text-h4); }
+.steps p { margin-block-start: var(--space-2); color: var(--foreground-secondary); font-size: var(--text-body-sm); line-height: 1.6; max-inline-size: 62ch; }
+
+/* --- 17. TABLES ---------------------------------------------------------- */
+
+/* The right edge fades while there is more table to the right. background
+   attachment local on the two gradient layers is what makes the fade disappear
+   at the end of the scroll without any script. */
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(to right, var(--surface) 30%, transparent) left / 2.5rem 100% no-repeat local,
+    linear-gradient(to left, var(--surface) 30%, transparent) right / 2.5rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, var(--tint-10), transparent) left / .75rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, var(--tint-10), transparent) right / .75rem 100% no-repeat scroll,
+    var(--surface);
+}
+.table-scroll table.data { min-inline-size: 100%; }
+table.data {
+  inline-size: 100%; border-collapse: collapse;
+  font-size: var(--text-body-sm);
+}
+table.data caption { text-align: start; padding: var(--space-4); color: var(--muted-foreground); font-size: var(--text-label); }
+table.data th, table.data td {
+  padding: var(--space-3) var(--space-4);
+  text-align: start;
+  border-block-end: 1px solid var(--border);
+  vertical-align: top;
+}
+table.data thead th {
+  background: var(--surface-secondary);
+  font-weight: var(--weight-medium);
+  color: var(--foreground);
+  white-space: nowrap;
+}
+table.data tbody tr:last-child th, table.data tbody tr:last-child td { border-block-end: 0; }
+table.data tbody th { font-weight: var(--weight-medium); color: var(--foreground); }
+table.data td { color: var(--foreground-secondary); }
+table.data .yes { color: var(--success); font-weight: var(--weight-medium); }
+table.data .no { color: var(--muted-foreground); }
+table.data .cell-strong { color: var(--foreground); font-weight: var(--weight-medium); }
+
+/* --- 18. WORK-ORDER STRIP (real record as ornament) --------------------- */
+
+.order-strip {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  overflow: hidden;
+}
+.order-head {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-block-end: 1px solid var(--border);
+  background: var(--surface-secondary);
+}
+.order-id { font-family: var(--font-mono); font-size: var(--text-label); color: var(--foreground); }
+.order-meta { font-size: var(--text-label); color: var(--muted-foreground); }
+.order-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(7.5rem, 1fr);
+  overflow-x: auto;
+  list-style: none;
+}
+.order-track li {
+  position: relative;
+  padding: var(--space-4);
+  border-inline-start: 1px solid var(--border);
+}
+.order-track li:first-child { border-inline-start: 0; }
+.order-track .stage {
+  font-size: var(--text-label); color: var(--muted-foreground);
+}
+.order-track .at {
+  margin-block-start: var(--space-2);
+  font-family: var(--font-mono); font-size: var(--text-label);
+  color: var(--foreground-secondary);
+}
+.order-track li[data-state="done"] .stage { color: var(--foreground); }
+.order-track li[data-state="now"] { background: var(--surface-selected); }
+.order-track li[data-state="now"] .stage { color: var(--foreground); font-weight: var(--weight-medium); }
+.order-track li[data-state="now"] .at { color: var(--primary); }
+
+/* On a phone the track wraps to two per row instead of scrolling sideways.
+   Every stage stays visible, which is the entire point of the component: a
+   strip you have to drag to read is a strip that hides the outcome. */
+@media (max-width: 47.99rem) {
+  .order-track {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow-x: visible;
+  }
+  .order-track li { border-block-start: 1px solid var(--border); }
+  .order-track li:nth-child(-n + 2) { border-block-start: 0; }
+  .order-track li:nth-child(odd) { border-inline-start: 0; }
+}
+
+/* --- 19. ROUTE LINE (brand mark, drawn from a dispatch route) ------------ */
+
+.route-line { inline-size: 100%; block-size: auto; color: var(--accent-signal); }
+.route-line .path {
+  fill: none; stroke: currentColor; stroke-width: 1.5;
+  stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: var(--dash, 1400); stroke-dashoffset: var(--dash, 1400);
+  animation: trace 2.2s var(--ease-out) forwards;
+}
+.route-line .stop { fill: var(--surface); stroke: currentColor; stroke-width: 1.5; }
+.route-line .stop-live { fill: currentColor; }
+@keyframes trace { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .route-line .path { stroke-dashoffset: 0; animation: none; }
+}
+
+/* --- 20. MODULE INDEX GRID ----------------------------------------------- */
+
+.module-grid { list-style: none; display: grid; gap: 0; border-block-start: 1px solid var(--border); }
+@media (min-width: 48rem) {
+  .module-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .module-grid > li:nth-child(odd) { border-inline-end: 1px solid var(--border); }
+}
+.module-card {
+  display: grid; gap: var(--space-3);
+  padding: var(--space-6) var(--space-5);
+  border-block-end: 1px solid var(--border);
+  text-decoration: none; color: inherit;
+  transition: background-color var(--duration-instant) var(--ease-out);
+}
+.module-card:hover { background: var(--surface-hover); }
+.module-card .item-icon { border-color: var(--border); }
+.module-card h3 { font-size: var(--text-h4); }
+.module-card p { color: var(--foreground-secondary); font-size: var(--text-body-sm); line-height: 1.6; }
+
+/* --- 21. PULL QUOTE / STATEMENT ------------------------------------------ */
+
+.statement {
+  padding-block: var(--space-7);
+  border-block: 1px solid var(--border);
+}
+.statement p {
+  font-size: clamp(1.25rem, 1rem + 1.5vw, 1.875rem);
+  line-height: 1.32;
+  letter-spacing: -.014em;
+  font-weight: var(--weight-medium);
+  max-inline-size: 30ch;
+}
+
+/* --- 22. NUMBERS --------------------------------------------------------- */
+
+.figures { display: flex; flex-wrap: wrap; gap: var(--space-8) var(--space-10); }
+.figure { max-inline-size: 22ch; }
+.figure .value {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.figure .unit { font-size: .5em; color: var(--muted-foreground); margin-inline-start: .25em; }
+.figure .caption {
+  margin-block-start: var(--space-3);
+  font-size: var(--text-body-sm); color: var(--foreground-secondary); line-height: 1.55;
+}
+
+/* --- 23. FAQ ------------------------------------------------------------- */
+
+.faq { border-block-start: 1px solid var(--border); }
+.faq details { border-block-end: 1px solid var(--border); }
+.faq summary {
+  display: flex; align-items: baseline; gap: var(--space-4);
+  padding-block: var(--space-5);
+  cursor: pointer; list-style: none;
+  font-size: var(--text-h4); font-weight: var(--weight-medium);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: ""; margin-inline-start: auto; flex: none;
+  inline-size: .5rem; block-size: .5rem;
+  border-inline-end: 1.5px solid var(--muted-foreground);
+  border-block-end: 1.5px solid var(--muted-foreground);
+  transform: rotate(45deg) translateY(-.15em);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+.faq details[open] summary::after { transform: rotate(225deg) translateY(-.15em); }
+.faq .answer { padding-block-end: var(--space-5); max-inline-size: var(--container-text); }
+.faq .answer p { color: var(--foreground-secondary); font-size: var(--text-body-sm); line-height: 1.7; }
+.faq .answer p + p { margin-block-start: var(--space-3); }
+
+/* --- 24. PLAN COMPARISON ------------------------------------------------- */
+
+.plans { display: grid; gap: var(--grid-gap); }
+@media (min-width: 60rem) {
+  .plans { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.plans:has(> :nth-child(4)) { }
+@media (min-width: 60rem) {
+  .plans-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.plan {
+  display: flex; flex-direction: column;
+  padding: var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.plan-featured { border-color: var(--primary); box-shadow: var(--shadow-md); }
+.plan-name { font-size: var(--text-title); font-weight: var(--weight-semibold); }
+.plan-price {
+  margin-block: var(--space-4) var(--space-1);
+  font-size: 2rem; font-weight: var(--weight-semibold);
+  letter-spacing: -.02em; line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.plan-price .per { font-size: var(--text-label); font-weight: var(--weight-regular); color: var(--muted-foreground); letter-spacing: 0; }
+.plan-for { font-size: var(--text-label); color: var(--muted-foreground); }
+.plan-limits {
+  margin-block: var(--space-5); padding-block: var(--space-4);
+  border-block: 1px solid var(--border);
+  list-style: none;
+  font-size: var(--text-body-sm);
+}
+.plan-limits li { display: flex; justify-content: space-between; gap: var(--space-4); padding-block: var(--space-1); }
+.plan-limits dt, .plan-limits .k { color: var(--muted-foreground); }
+.plan-limits dd, .plan-limits .v { margin: 0; font-weight: var(--weight-medium); font-variant-numeric: tabular-nums; }
+.plan-features { list-style: none; flex: 1 1 auto; font-size: var(--text-body-sm); }
+.plan-features li { position: relative; padding-inline-start: var(--space-5); padding-block: var(--space-1); color: var(--foreground-secondary); }
+.plan-features li::before {
+  content: ""; position: absolute; inset-inline-start: 0; inset-block-start: .55em;
+  inline-size: .5rem; block-size: .3rem;
+  border-inline-start: 1.5px solid var(--primary);
+  border-block-end: 1.5px solid var(--primary);
+  transform: rotate(-45deg);
+}
+.plan .btn { margin-block-start: var(--space-5); inline-size: 100%; }
+.plan-badge {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  align-self: flex-start;
+  margin-block-end: var(--space-3);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-label);
+  color: var(--foreground-secondary);
+}
+
+/* --- 25. SITE MAP -------------------------------------------------------- */
+
+.sitemap-cols { display: grid; gap: var(--space-8) var(--grid-gap); }
+@media (min-width: 48rem) { .sitemap-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.sitemap-cols h2 { font-size: var(--text-title); margin-block-end: var(--space-4); }
+.sitemap-cols ul { list-style: none; }
+.sitemap-cols li { padding-block: var(--space-2); border-block-end: 1px solid var(--border-subtle); }
+.sitemap-cols a { font-size: var(--text-body-sm); text-decoration: none; color: var(--foreground-secondary); }
+.sitemap-cols a:hover { color: var(--primary); text-decoration: underline; text-underline-offset: .2em; }
+
+/* --- 26. FOOTER ---------------------------------------------------------- */
+
+.footer {
+  border-block-start: 1px solid var(--border);
+  background: var(--surface-secondary);
+  padding-block: var(--space-10) var(--space-8);
+}
+.footer-cols { display: grid; gap: var(--space-8) var(--grid-gap); }
+@media (min-width: 48rem) { .footer-cols { grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr)); } }
+.footer h2 { font-size: var(--text-label); color: var(--muted-foreground); font-weight: var(--weight-medium); margin-block-end: var(--space-4); }
+.footer ul { list-style: none; }
+.footer li { padding-block: var(--space-1); }
+.footer a { font-size: var(--text-body-sm); color: var(--foreground-secondary); text-decoration: none; }
+.footer a:hover { color: var(--primary); text-decoration: underline; text-underline-offset: .2em; }
+.footer-note {
+  margin-block-start: var(--space-9);
+  padding-block-start: var(--space-5);
+  border-block-start: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: var(--space-4);
+  align-items: center; justify-content: space-between;
+  font-size: var(--text-label); color: var(--muted-foreground);
+}
+
+/* --- 27. CODE ------------------------------------------------------------ */
+
+.code {
+  margin: 0;
+  padding: var(--space-4);
+  background: var(--surface-code);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  line-height: 1.7;
+  color: var(--foreground-secondary);
+  tab-size: 2;
+}
+.code .c-key { color: var(--primary); }
+.code .c-str { color: var(--success); }
+.code .c-dim { color: var(--muted-foreground); }
+
+/* --- 28. MOBILE DRAWER --------------------------------------------------- */
+
+.drawer {
+  position: fixed; inset: 0;
+  z-index: var(--z-drawer);
+  display: none;
+}
+.drawer[data-open="true"] { display: block; }
+.drawer-scrim {
+  position: absolute; inset: 0;
+  background: color-mix(in oklab, var(--neutral-950) 62%, transparent);
+}
+.drawer-panel {
+  position: absolute; inset-block: 0; inset-inline-start: 0;
+  inline-size: min(20rem, 88vw);
+  background: var(--surface);
+  border-inline-end: 1px solid var(--border);
+  overflow-y: auto;
+  padding: var(--space-4);
+  animation: slide-in var(--duration-slow) var(--ease-out);
+}
+@keyframes slide-in { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+.drawer-head { display: flex; align-items: center; justify-content: space-between; margin-block-end: var(--space-5); }
+
+/* --- 29. CTA BAND -------------------------------------------------------- */
+
+.band {
+  background: var(--surface-inverted);
+  color: var(--foreground-inverted);
+  padding-block: var(--section-y);
+}
+.band h2 { color: var(--foreground-inverted); }
+.band p { color: color-mix(in oklab, var(--foreground-inverted) 78%, transparent); }
+.band .btn-primary { background: var(--neutral-0); color: var(--neutral-950); }
+.band .btn-primary:hover { background: var(--neutral-100); color: var(--neutral-950); }
+.band .btn-secondary {
+  background: transparent; color: var(--foreground-inverted);
+  border-color: color-mix(in oklab, var(--foreground-inverted) 30%, transparent);
+}
+.band .btn-secondary:hover { background: color-mix(in oklab, var(--foreground-inverted) 10%, transparent); color: var(--foreground-inverted); }
+
+/* --- 30. MOTION ---------------------------------------------------------- */
+/* There is no scroll-reveal on sections, on purpose. Content that is invisible
+   until script moves it is invisible to a crawler, to a full page capture and
+   to anyone whose script failed. The two pieces of motion on this site are the
+   route line tracing once and the order strip advancing a stage: both show
+   something the page is claiming rather than decorating a heading. */
+
+.route-line[data-run] .path { animation-play-state: running; }

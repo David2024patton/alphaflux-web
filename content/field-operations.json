@@ -1,0 +1,122 @@
+{
+  "slug": "field-operations",
+  "nav": "Field operations",
+  "group": "Modules",
+  "crumb": "Field operations",
+  "title": "Field operations, dispatch and proof of work",
+  "desc": "Jobs, technicians, dispatch, day routes, check in and out, proof of work and a technician view that keeps working when the signal does not.",
+  "h1": "The whole day, from the first job to the proof it was done",
+  "standfirst": "One object moves from booked to dispatched to on site to complete to paid. The office sees it, the technician sees it, the customer sees a window, and the proof is attached before anyone leaves.",
+  "chips": ["Dispatch map", "Day routes", "Works offline"],
+  "sections": [
+    {
+      "kind": "features",
+      "title": "What the field operation gets",
+      "lede": "The point is that the office and the truck are looking at the same thing at the same time.",
+      "items": [
+        { "icon": "i-clipboard", "title": "Jobs with a real record", "text": "Customer, service, technician, time window, price, duration, notes, photos and signature on one object." },
+        { "icon": "i-map", "title": "A dispatch map", "text": "Today's work and every technician's last known position on one map, so a late job is visible before it becomes a call." },
+        { "icon": "i-route", "title": "Day routes that make sense", "text": "Sequence a technician's stops, with the total distance stated and the option to re-optimise before the day starts." },
+        { "icon": "i-signature", "title": "Proof of work", "text": "Photo, signature, timestamp and location captured at the job, attached to the record and available to the customer." },
+        { "icon": "i-users", "title": "Technicians as real people", "text": "Skills, home base, schedule and availability, so work is assigned to someone who can actually do it." },
+        { "icon": "i-pin", "title": "Check in and out", "text": "A technician checks in when they arrive and out when they leave, which is what makes the mileage and the time on site real numbers." }
+      ]
+    },
+    {
+      "kind": "list",
+      "title": "The job lifecycle, and what is enforced at each step",
+      "lede": "Status is not a label someone types. It is a state the platform checks, and a transition that is not allowed is refused with the ones that are.",
+      "items": [
+        {
+          "title": "Booked",
+          "text": "The job is created with a customer, a service and a time. The address is placed on the map so the job can be routed, and the booking is checked against real capacity before it is confirmed."
+        },
+        {
+          "title": "Assigned",
+          "text": "A technician is chosen. Skills and service area are respected, so work does not land on someone who cannot do it or who is hours away."
+        },
+        {
+          "title": "Dispatched",
+          "text": "The technician has the job and the customer has a window. If the day moves, the affected customers are notified rather than left waiting."
+        },
+        {
+          "title": "On site",
+          "text": "Checked in, with the arrival time recorded from the technician's device. This is where the time on site and the mileage start being real numbers rather than estimates."
+        },
+        {
+          "title": "Complete",
+          "text": "The work is done and the proof is attached. If the job type requires a photo or a signature, the job cannot be closed without one, so the file is complete at the moment of closure rather than a week later."
+        },
+        {
+          "title": "Billed",
+          "text": "The completed job carries its parts, its labour and its notes into the invoice. Nothing is re-keyed from a paper form, and the price was agreed when the job was booked."
+        }
+      ]
+    },
+    {
+      "kind": "split",
+      "title": "A technician view built for one hand and bad signal",
+      "lede": "The field view runs in the phone's browser and installs to the home screen. It is designed for a technician standing in a crawlspace, not for someone at a desk.",
+      "body": [
+        "Today's jobs, in order, with the address and the customer's notes. One button to check in, one to check out, one to attach a photo, one to take a signature. The next job is one tap away and the driving directions open in the phone's own maps.",
+        "Status changes made without a signal are queued and applied in order when the connection returns, so a technician in a basement does not lose the arrival time or the completion.",
+        "Nothing on the screen needs two hands, and nothing needs reading at arm's length in the sun. That is the whole design brief for this view."
+      ],
+      "items": [
+        { "icon": "i-clipboard", "title": "The day, in order", "text": "Stops sequenced, addresses and customer notes attached, and the next stop one tap away." },
+        { "icon": "i-camera", "title": "Capture from the phone", "text": "Photos and signatures taken on the device and attached to the job rather than texted to the office." },
+        { "icon": "i-pin", "title": "Location, when it helps", "text": "Check in and check out report a position, which makes arrival times and distance travelled real rather than reconstructed." },
+        { "icon": "i-clock", "title": "Offline that recovers", "text": "Changes made with no signal are held and applied in order, so the record stays correct even from a basement." }
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Why the routing numbers say straight line",
+      "body": [
+        "Route sequencing measures straight line distance between stops, and the interface says so. That is not a limitation to be embarrassed about, it is a decision about honesty: a dispatcher who catches a system claiming road accuracy it does not have stops trusting every other number it produces.",
+        "Straight line ordering gets a day of eight to fifteen stops very close to the right sequence, which is the part that saves the fuel. Where road distance genuinely changes the answer, the platform supports a road based routing engine as a configuration rather than pretending.",
+        "The same rule applies to arrival estimates. An estimate is labelled as an estimate, and the platform would rather show a range it can stand behind than a precise time it cannot."
+      ]
+    },
+    {
+      "kind": "statement",
+      "text": "A job is not finished when the work is done. It is finished when the record, the proof and the invoice agree."
+    },
+    {
+      "kind": "table",
+      "title": "Field operations by plan",
+      "cols": ["", "Free", "Starter", "Growth", "Scale and above"],
+      "rows": [
+        ["Jobs and customers", "20 customers", "250 customers", "1,000 customers", "5,000 and above"],
+        ["Technicians", "1", "3", "10", "25 and above"],
+        ["Dispatch map", "no", "Basic", "yes", "yes"],
+        ["Day route sequencing", "no", "no", "yes", "yes"],
+        ["Proof of work", "no", "no", "yes", "yes"],
+        ["Technician mobile view", "yes", "yes", "yes", "yes"],
+        ["Service agreements", "no", "yes", "yes", "yes"]
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can I assign the same technician to two jobs at once?",
+      "a": "The platform will let you if you force it, but it will tell you first. Booking is checked against the capacity rules you set at the office, the area and the individual level, and an override is recorded so it is visible later rather than invisible forever."
+    },
+    {
+      "q": "Does the technician need a company phone?",
+      "a": "No. The field view is a web page that installs to the home screen of whatever phone the technician carries, including a personal one. Nothing needs to be installed from an app store."
+    },
+    {
+      "q": "How does the platform handle a job that runs long?",
+      "a": "The remaining stops for that day can be re-sequenced, and the affected customers can be notified with a new window. Because the customer's window comes from the same record the dispatcher is moving, there is no second list to keep in step."
+    },
+    {
+      "q": "Is there a paper option?",
+      "a": "A completed job can be printed or exported with its photos, signature and notes, which is what most companies need when a customer or an insurer asks for documentation."
+    },
+    {
+      "q": "Can customers see where the technician is?",
+      "a": "Yes, on the plans that include tracking. The customer receives a link that shows their own job and nothing else, and the link expires when the job is done."
+    }
+  ]
+}

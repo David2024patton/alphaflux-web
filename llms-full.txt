@@ -1,0 +1,2112 @@
+# AlphaFlux: full site text
+
+Generated 2026-09-15 from the published pages.
+
+---
+
+# One system to run the phone, the field, the money and the marketing
+
+URL: https://alphaflux.net/
+Section: Platform
+
+AlphaFlux puts the whole operation behind one login and one customer record. A call becomes a lead, a lead becomes a job, a job becomes a recurring agreement, and nothing gets typed twice.
+
+## One system to run the phone, the field, the money and the marketing
+
+A customer calls. The call is logged, the address is geocoded, the job is booked against real capacity, the technician is routed, the proof is captured, the invoice goes out and the follow-up email writes itself. All of that is one record moving through one platform.
+
+Most service companies run a phone system, a field service tool, a CRM, an email tool and a spreadsheet, then pay someone to keep the five of them in agreement. AlphaFlux is the alternative: every module reads and writes the same customer, the same job and the same money.
+
+Every job carries its own record: customer, technician, route, proof, payment and notes. Open it once and you see all of it.
+
+- Scheduled (06:40)
+- Dispatched (07:05)
+- On site (07:52)
+- Complete (08:31)
+
+## Three numbers that describe the shape of it
+
+- 1: One platform in place of a phone system, a field service tool, a CRM, an email tool and a spreadsheet.
+- 20: What the free plan covers, at one location, permanently and without a card.
+- 3: Anything you can do on screen you can also do over the API or hand to an AI agent with a scoped key.
+
+## Five systems means five copies of the same customer
+
+The phone system knows the number. The field tool knows the address. The CRM knows the deal. The email tool knows the list. Nobody knows the whole story.
+
+That fragmentation is expensive in a way that is easy to miss. Someone becomes a full time translator between systems. Jobs get booked against capacity nobody can see. A customer who moved is still getting mail at the old address in one tool and not another. A technician arrives without knowing the account is ninety days overdue.
+
+AlphaFlux keeps one record and lets every module work on it. The dispatcher, the technician, the office manager and the owner are all looking at the same customer, in the same state, at the same time.
+
+- One customer record: Created by the phone call, enriched by the job, billed by the agreement, emailed by the campaign. Never duplicated.
+- One definition of capacity: A booking is checked against real capacity before it is confirmed, so the schedule cannot be oversold by a person or by an agent.
+- One version of the money: Payments, invoices, recurring agreements and commissions all read from the same ledger, in integer cents.
+- One timeline per account: Calls, texts, emails, notes, AI activity and payments in a single chronological feed.
+
+## Eleven modules, one login
+
+Each module can be switched on or off per company. You only see and only pay for what you actually use, and adding one never means migrating your data.
+
+
+## A job is a record, not a text message
+
+The order strip below is the same object every module works on. The dispatcher moves it, the technician moves it, an agent can move it, and the customer sees the result.
+
+- Scheduled (06:40)
+- Dispatched (07:05)
+- On site (07:52)
+- Complete (08:31)
+
+## Your agents get a key, not your password
+
+AlphaFlux was built assuming a machine will do a growing share of the work. Every capability is an interface first, and a screen second.
+
+Issue a scoped API key and an agent can book jobs, send texts, run billing, chase overdue accounts or write back to the account timeline, and it can only do the things that key allows. Turn a key off and the agent stops, without a password ever changing hands.
+
+The receptionist answers the phone before a person does. The assistant answers a technician's question about a treatment. Autopilot lets an agent keep a company's configuration tidy. Every action is attributed, so you can always tell what a machine did and what a person did.
+
+- Scoped keys: Read and write, per module. A key inherits exactly the permissions of the account that owns it.
+- A command line that speaks JSON: Every command outputs JSON, so it pipes into a script or straight into another agent turn.
+- An MCP server: Point any agent client at it and the whole platform becomes a set of tools it can call.
+- Attribution on every action: Notes and sales record whether a person, an agent or an import did the work.
+
+## Built for the way the work actually arrives
+
+Nobody calls at a convenient time, and nothing in a service business stays still. The platform assumes both.
+
+- The phone answers itself: An AI receptionist handles the call, books against real capacity and hands a human the rest. Missed calls get a text back automatically.
+- Recurring work runs itself: Agreements generate their own visits for the length of the term. Monthly recurring revenue is calculated from the actual charges, not from a guess.
+- Stock follows the truck: Inventory is not one warehouse. It is trucks, storage units, mobile units and branches, with sign in and sign out and a record of who has what.
+- Dispatch is a map and a board: See every job and every technician live, drag work between stages, sequence a day route, and let the customer watch their technician arrive.
+- Email marketing from your own domain: Campaigns, sequences and a unified inbox, sent from your domain with the authentication records handled for you.
+- Your data stays on your machine: Self-hosted, per company isolation, and an audit trail on every change. Nothing is sold, shared or used to train anything.
+
+You should not have to buy five products, and then buy a person to hold them together.
+
+
+## What the free plan covers, and what moves you up
+
+The free plan is a real plan, not a trial. It is free permanently, and it is designed for someone running the business out of a truck.
+
+
+| Price | !Free forever | $49 per month | $149 per month | $399 per month |
+| Customers | 20 | 250 | 1,000 | 5,000 |
+| Locations | 1 | 2 | 5 | 15 |
+| Users | 1 | 3 | 10 | 25 |
+| Marketing emails | 100 per month | 2,000 per month | 10,000 per month | 50,000 per month |
+| Phone numbers | 1 | 2 | 5 | 25 |
+| Inventory and custody | yes | yes | yes | yes |
+| Agreements and invoicing | no | yes | yes | yes |
+| Dispatch board and routing | no | no | yes | yes |
+| AI receptionist | no | no | yes | yes |
+| Live fleet map | no | no | no | yes |
+| API, CLI and agent access | no | no | yes | yes |
+
+## Start in an afternoon, not a quarter
+
+- Create the account: An email address is the whole signup. No card, no sales call, no implementation fee. The free plan is available immediately.
+- Bring in what you already have: Import customers and inventory from a spreadsheet, or connect an existing field service account and read it live while you decide what to move.
+- Turn on the modules you want: Start with the phone and the schedule. Add dispatch, fleet, marketing or agent access when the work needs it.
+
+### Is the free plan really free, or is it a trial?
+
+It is free permanently. Twenty customers, one location, one user, one phone number, 100 marketing emails a month and the inventory module are yours for as long as you want them. There is no card on file and no expiry date. Companies move up when their workload outgrows those limits, and when they do, everything they have already entered comes with them.
+
+### What does one location mean?
+
+A location is a base you operate from: a city, an office or a service area. If a company works out of one town, that is one location and everything fits on the free plan. A company running crews in three states needs three, which is what the paid plans are for.
+
+### Do I need to install anything?
+
+No. AlphaFlux runs on infrastructure the platform provider hosts and keeps running, and every module works in a browser on a laptop, a tablet or a phone. The technician view installs to a phone home screen like an app and keeps working when the signal drops.
+
+### Can an AI really be trusted to run parts of this?
+
+It can be trusted with exactly as much as you give it. An agent authenticates with a scoped key, so it can only reach the modules and the operations that key names. Every action it takes is written to the audit trail and to the account timeline, attributed to the agent rather than to a person.
+
+### What happens to my data if I leave?
+
+It is yours and it exports. Customer records, jobs, invoices and payment history come out in standard formats, including a full JSON export through the API. Nothing is held hostage and nothing is deleted without an explicit request.
+
+### Does AlphaFlux work for a company with more than one branch?
+
+Yes, and branches are modelled properly rather than treated as a naming convention. Each location has its own staff, its own schedule, its own capacity rules and its own stock. Roles can be scoped to a location, so a dispatcher in one district cannot see or change another.
+
+---
+
+# One platform, eleven modules, one customer record
+
+URL: https://alphaflux.net/platform
+Section: Platform
+
+AlphaFlux is not eleven products bolted together. It is one system with a registry of modules, a single data model underneath, and three interchangeable ways to drive it.
+
+## Modules are switched on per company, not per installation
+
+Every feature area ships as a module with a stable identity. A company sees the modules it has and nothing else.
+
+That matters for two reasons. First, a company that answers the phone, books the work and invoices it does not have to look at fleet telematics or chemical registers it will never use. Second, turning a module on later never means a migration, because the module was always reading the same records the rest of the platform already keeps.
+
+Modules are grouped into bundles so pricing stays legible, and any single module can be added to any plan as an add on. The catalogue, the bundles and the limits are all data, which is what makes white labelling possible: the whole catalogue can be repackaged under another brand.
+
+- A registry, not a menu: Each module declares its own identity, the limits it enforces and the permissions it needs. The screen is generated from that registry rather than hard coded.
+- No cross-module coupling: Modules work on shared records through defined interfaces, so one can be replaced without touching the others.
+- Bundles and add ons: A plan is a set of modules plus limits on customers, locations, users, volume and storage.
+- Limits that announce themselves: Approaching a limit is visible before it is hit, and hitting one never destroys data. It stops the next thing from being created.
+
+## How your data is kept separate from everyone else's
+
+Multi-tenant software earns trust by being specific about what separates one company's records from another's. Here is exactly what does.
+
+- Tenant scope on every record: Every domain row carries the company it belongs to, and every query is scoped to the company of the account making the request. There is no code path that returns a record outside your scope.
+- Scoped credentials, hashed at rest: API keys are stored only as a hash and shown once at creation. Provider credentials, such as a phone carrier token, are write only and are stripped out of every response, including the ones that echo them back.
+- Roles and departments: A role is a named set of permissions. A department is a slice of the company, such as a district or a line of service. A role can be scoped to a department, so a dispatcher in one office cannot see another office's work.
+  - Owner, administrator, office manager, dispatcher, technician, billing, marketing, support, and read only auditor
+  - Permissions are explicit per capability rather than implied by a job title
+  - Restricted actions are refused by the server and the reason is named in the response
+- Isolation you can upgrade: Records are currently separated by tenant scope inside one store, which keeps operations simple and cost low. A dedicated store per company is a configuration change rather than a rewrite, because every data access goes through one internal interface.
+- Where it physically runs: Self-hosted on a machine the operator controls, behind a TLS terminator with automatic certificates. Backups are encrypted before they leave the host.
+
+## Three ways to drive the same platform
+
+The screen, the API and an agent are three clients of one thing. Nothing is available in one and missing from another.
+
+This is the design decision that separates AlphaFlux from software that bolted a chat box onto an existing interface. Every capability is an interface first, which is why an agent can do real work here rather than summarising a dashboard.
+
+It also means you are not locked into a single way of working. A manager uses the board. An ops lead scripts a nightly report. An agent answers the phone at nine at night. The same records change either way.
+
+- The screen: A console for the office and a mobile view for the field, both generated from the module registry and the permissions of the person signed in.
+- The API: A documented REST interface with a machine readable specification, so an integration can be written against it without a conversation.
+- The command line: A single binary that talks to the same API and prints JSON, for scripts, cron jobs and pipelines.
+- Agent access: A protocol server that presents the platform to an AI client as a set of callable tools, authenticated with a scoped key.
+
+## The engineering choices a buyer should care about
+
+None of this is visible on screen, and all of it decides whether the platform is still fast and correct in year three.
+
+- Fast by construction: A small compiled service per component, no framework layered on top, and no third party script running in your browser. Pages and lists stay quick as the data grows.
+- Money in whole cents: Prices, payments, splits and recurring revenue are stored as whole cents and basis points. There is no floating point arithmetic anywhere near an invoice.
+- Callbacks verified when they arrive: Inbound carrier webhooks and provider callbacks are checked before they are acted on, so a forged request cannot create a job or move money.
+- An audit entry on every change: Who acted, under what role, on which company, doing what, at what time. Readable by the owner, filterable by an agent.
+- Idempotent where it counts: Recurring visit generation, campaign sends and imports are safe to run twice. A retry never bills a customer twice.
+- Built to be left alone: Scheduled work, retrying jobs and health checks run without supervision, and a person is alerted when something needs one.
+
+If the platform is doing its job, nobody should be copying and pasting between two tabs.
+
+
+## What happens when a module goes live
+
+- The catalogue changes, not the data: Enabling a module registers its screens, its permissions and its endpoints. The records it needs already exist because the customer record is shared.
+- Limits attach to the company: The plan sets what the module is allowed to grow to. The module enforces those limits itself rather than trusting the interface.
+- Permissions appear for the roles you choose: Enabling a module adds new available permissions. Nothing is granted automatically, so nobody gains access because a feature was switched on.
+- History starts now, and it is complete: From the first day a module is on, its actions appear in the account timeline and the audit trail alongside everything else.
+
+### Can I run more than one company on one installation?
+
+Yes. One installation serves many companies, each with its own records, users, modules, limits and branding. That is the same mechanism white labelling uses, so an operator can run their own business and their customers' businesses side by side.
+
+### What happens when I reach a limit on my plan?
+
+The platform stops the next record from being created and tells you which limit you reached and what plan lifts it. Nothing is deleted, nothing is hidden, and nothing you have already entered becomes read only. Raising the plan takes effect immediately.
+
+### Can I use just one module?
+
+Yes. Some companies start with the phone module and nothing else, because that is the part that is losing them money. Modules can be added one at a time as the need appears.
+
+### Is there a mobile app?
+
+The field views install to a phone home screen and work offline, which covers the technician case without an app store. Camera capture, signatures and location reporting all work from the browser, and status changes made without signal are queued and applied when the connection returns.
+
+### Do I need a server?
+
+No. AlphaFlux runs on infrastructure the platform provider hosts and maintains. Self-hosting on your own hardware is available for organisations that require it, and it uses the same components.
+
+---
+
+# Give an agent a key, not your password
+
+URL: https://alphaflux.net/ai-agents
+Section: Platform
+
+Most software added a chat box that can talk about your data. AlphaFlux was built the other way round: every capability is an interface first, so an agent can do the work and not just describe it.
+
+## The receptionist answers before a person has to
+
+A call comes in at 9pm on a Friday. Nobody is in the office. The phone is still answered, the caller is still helped, and the job is on the board before Monday.
+
+The receptionist answers first, with a fifteen second timer. If it handles the call, a human is never rung and the caller never knows the office was closed. If it cannot, the call rolls to the person on duty, or to voicemail with an automatic text back, according to the rule you set for that number and that hour.
+
+What it can do is bounded on purpose. It can identify the caller, work out which office serves their address, check whether the service they are describing is one you offer, book an appointment against real capacity, take the details and leave a complete record. It cannot invent a price, promise an exact arrival time, or book a job that would oversell a technician's day.
+
+Its script is versioned inside the platform rather than hidden in a vendor's dashboard, so changing how your phone is answered is an edit you make, not a support ticket you file.
+
+- Hour aware: Different behaviour inside and outside business hours, with a rule per number.
+- Territory aware: It resolves the address to the correct office and respects the areas you do and do not serve.
+- Capacity aware: A booking is checked against real capacity before it is confirmed, so an agent cannot oversell a day.
+- Escalation that works: Emergencies are routed to a person immediately, and a solicitor gets a scripted answer rather than a technician's time.
+
+## What an agent can do on day one
+
+Concrete work, not demonstrations. Each of these runs against the same records your staff use.
+
+- Answer, book and tidy up: The receptionist takes the call and books the visit. An agent then confirms the slot against capacity, texts the customer the window, and writes a note on the account marked as agent authored.
+- Chase a missed call: Read the missed call, look up the number, send the text back, open a follow up note, and raise a ticket if the customer replies. If they book, the ticket closes itself.
+- Run the money: Compute the period's usage, apply the agreed margin, issue the invoice, read the payment run, and flag the accounts that have gone past terms with the amount and the age of the debt.
+- Work the board: Read today's jobs, flag the ones a technician cannot reach in time, re-sequence a route, and notify the affected customers with a new window.
+- Keep the records clean: Find duplicate accounts with the evidence that links them, propose the merge, and apply the ones a person approves. Nothing merges on its own authority.
+- Report upward: Pull the operating numbers, compare them with the previous period, and produce a short written digest with the two or three things that changed.
+
+## How the access actually works
+
+An agent is a credential with a job, not a person with a password. Everything about the design follows from that.
+
+- A scoped key: Read and write access is granted per module. An agent that books jobs does not need, and does not get, the billing module.
+- Inherits its owner, and nothing more: A key carries exactly the permissions and the companies of the account that created it. It cannot reach past its owner.
+- Revocable without a reset: Disable a key and the agent stops working. No password changes, no disruption for the humans on the system.
+- Everything is an endpoint: The agent connects over the same documented interface your other software would, so nothing it does is special or unreviewable.
+- Attributed, always: Records carry whether a person, an agent or an import made a change. Sales, notes, tickets and jobs all record it.
+- Autopilot, if you want it: A per company switch lets agents keep configuration tidy and heal small problems on their own, under the same attributions and the same audit trail.
+
+## Why attribution is the part that matters
+
+Once an agent handles a meaningful share of the work, the first question an owner asks is not whether it is fast. It is which of these did a machine do, and can I see the difference.
+
+AlphaFlux records the actor on every action, and it distinguishes an agent from a person from an import. Revenue an agent booked is separable from revenue a person booked. A note written by the receptionist reads as agent authored. A ticket the assistant raised says so on its face.
+
+That is also what makes the numbers trustworthy later. When commission is calculated, when a customer complains, when a regulator asks who touched a record, the answer is already in the data rather than reconstructed from memory.
+
+
+The difference between an agent you trust with real work and one you do not is whether the platform can say no in a structured way.
+
+
+## Guardrails, stated plainly
+
+- No raw database access: An agent works through the same validated operations your software uses. There is no path from a model to an arbitrary query.
+- No credentials in a prompt: Agents receive what they need to answer and act. Payment tokens, carrier credentials and full customer records are not put in front of a model.
+- Confirmation where it matters: Proposals are separated from actions. A merge, a price change or a bulk send asks a person to confirm before anything is written.
+- A trail you can read: Every action lands in the audit log with actor, role, company, action and time, readable by the owner and filterable by an agent.
+
+### Do I have to use AI at all?
+
+No. Every module works fully with people driving it. Agents are an additional way to operate the same records, and they can be switched off entirely without changing how anything else behaves.
+
+### What stops an agent from doing something expensive?
+
+Three things. The key only carries the permissions it was issued. The platform refuses operations that break a rule regardless of who asked, such as a booking that would exceed a day's capacity. And the operations that carry real consequence, like merging accounts or issuing a bulk send, are presented as a proposal that a person confirms.
+
+### Which AI providers can it use?
+
+AlphaFlux is provider agnostic. It can run against a hosted model of your choosing or against a model running on your own hardware, which is the arrangement that keeps customer data inside your building.
+
+### How do I connect an agent?
+
+Issue a scoped key in the console, then hand the key to the agent. For agent clients that support tool protocols, the platform presents itself as a set of callable tools, so the agent discovers the available operations rather than being told about them. Developers can read the developer page for the exact interfaces.
+
+### Can an agent email my customers?
+
+Yes, through the email marketing module, under the same suppression list and consent rules a person is held to. A customer who has unsubscribed is excluded from an agent's send exactly as they are from a person's.
+
+---
+
+# Every module in the registry
+
+URL: https://alphaflux.net/modules
+Section: Platform
+
+Eleven modules, one customer record, one login. Switch on what a company needs, leave the rest off. Nothing here requires a migration to adopt later.
+
+## The modules
+
+Each one works on its own and gets better when the others are on, because they all read and write the same records.
+
+
+## Which plan carries which module
+
+Bundles set the floor. Any module can also be added to any plan on its own.
+
+
+| Phone and messaging | 1 number, 1 user | 2 numbers, 3 users | 5 numbers, 10 users | 25 numbers, 25 users |
+| Field operations | Basic jobs | Jobs and scheduling | Dispatch, routing and proof | Full operations, multi district |
+| Fleet and dispatch | no | no | Board and tracking links | Live map, geofences, ETAs |
+| Scheduling and agreements | no | yes | yes | yes |
+| CRM and sales | yes | yes | yes | yes |
+| Inventory and assets | yes | yes | yes | yes |
+| Billing and payments | Invoices only | yes | yes | yes |
+| Email marketing | 100 per month | 2,000 per month | 10,000 per month | 50,000 per month |
+| Marketing and growth | no | Basic | yes | yes |
+| Team and collaboration | Single user | 3 users | 10 users | 25 users |
+| Reports and analytics | Basic | yes | yes | yes |
+| API, CLI and agent access | no | no | yes | yes |
+
+## Turning a module on is a configuration change
+
+There is no separate database per feature and no import step between them. A module is a view onto records the platform was already keeping.
+
+That is why a company can start with the phone and the schedule, add dispatch three months later, and add fleet after buying its first truck, without any of it being a project.
+
+It is also why reports stay honest as modules appear. The numbers were always being recorded, so history does not start over when a new module is switched on.
+
+- Registry driven: Screens, permissions and limits all come from the module registry, so the interface matches what a company actually has.
+- Permissions do not grant themselves: Turning on a module makes new permissions available. Someone still has to assign them, so nobody gains access by accident.
+- History is continuous: A module that starts today reads work that was recorded before it existed. Nothing has to be backfilled.
+- Repackageable: Because the catalogue is data, an operator running the platform under their own brand can define their own bundles and pricing.
+
+## Modules that pair well
+
+Some combinations are the reason the platform exists. These are the ones companies turn on first.
+
+- Phone plus scheduling: The agent answers, checks real capacity and books, so the schedule fills itself instead of waiting for office hours.
+- Field operations plus inventory: A job draws down the technician's stock, and a low part is visible before the next job needs it rather than after.
+- Fleet plus reports: Distance, on time percentage and jobs per technician come out of the same records the dispatcher is already using.
+- Billing plus agreements: Recurring visits and recurring revenue are one object, so the invoiced amount and the booked work cannot drift apart.
+- Email plus CRM: A campaign targets a real pipeline stage, and a reply lands on the account timeline rather than in a separate list.
+- Anything plus agent access: Hand an agent a scoped key and it can work across modules under one set of permissions and one audit trail.
+
+### Can I buy a module without the bundle around it?
+
+Yes. Any module can be added to any plan as an add on, priced on its own. That is usually how a company moves up: it adds the one thing that is currently costing it money rather than changing plan.
+
+### What happens if I switch a module off?
+
+It stops appearing and its operations stop being available. The records it produced are not deleted, and switching it back on restores access to all of it.
+
+### Is there a module for something you have not built yet?
+
+The registry is open. New modules follow the same contract as the existing ones, so adding one does not disturb the others, and the interface picks it up without a redesign.
+
+### Do the modules share one database?
+
+They share one data model, which is the point. Records are scoped to the company that owns them rather than to the module that created them, so the customer your phone module logged is the customer the dispatch board routes to.
+
+---
+
+# Access you can explain to someone who asks
+
+URL: https://alphaflux.net/security
+Section: Platform
+
+Security questions are usually answered with adjectives. Here are the actual mechanisms, including the ones that are inconvenient.
+
+## How signing in works
+
+The largest single cause of account compromise is a password reused somewhere else. The most reliable fix is not to have one.
+
+- Email or text one time codes: A person signs in by receiving a short lived code. There is no password to reuse, to forget, to share or to find in a breach dump, because there is no password.
+- Codes that expire and limit attempts: A code is valid for a short window, is stored only as a hash, allows a small number of attempts, and cannot be requested again immediately. Guessing is not a realistic path.
+- Sign in that does not reveal who has an account: An unrecognised address receives the same response as a recognised one, so the sign in page cannot be used to enumerate your customers or your staff.
+- Server side sessions that rotate: A session is a server side record rather than a token the browser holds data in. It rotates on sign in, is destroyed on sign out, and can be invalidated centrally.
+- Rate limiting on the way in: Repeated failed attempts from one source are slowed and then refused, which is what turns a brute force attempt into a nuisance rather than an incident.
+
+## Credentials are treated as radioactive
+
+The dangerous data in a platform like this is not the customer list. It is the keys that can move money and send messages.
+
+Carrier credentials and provider tokens are write only after they are stored. They are never returned by the interface, and they are stripped out of the responses that echo them back, because several providers hand your own credential straight back to you in a response body and a naive proxy would pass that on.
+
+Keys that agents use are stored only as a hash and are displayed exactly once, at the moment they are created. If a key is lost, it is replaced, not recovered, because a system that can show you a key again is a system an attacker can ask the same question of.
+
+The same rule applies on the way out. When the platform calls a provider, credentials travel in headers the provider expects and are never placed in a URL where they would end up in a log.
+
+Every action taken with a key is recorded against the account that owns it, so a compromised key has a name, a scope and a timestamp rather than an unknown blast radius.
+
+- Write only secrets: Stored and usable, never readable back to a person or an API caller.
+- Scrubbed responses: Upstream replies that contain your own credentials have them removed before the reply reaches you.
+- Hashed API keys: Shown once at creation and stored as a hash. Revoking is immediate and auditable.
+- Every key has a name: An action is attributable to the credential and to the account that issued it.
+
+## Company isolation
+
+Multi-tenant software earns trust by being specific about what separates one company from another, and by not relying on the interface to enforce it.
+
+- Scope on every record: Every record carries the company it belongs to, and every request is resolved to a company before it reaches the data. There is no code path that returns a record outside your scope.
+- Enforced on the server: Isolation is a property of the query rather than of the screen. Hiding a button is not a security control and this platform does not use it as one.
+- Separable storage: A dedicated store per company is a configuration rather than a rewrite, because every data access goes through one internal interface. Organisations that require physical separation can have it.
+- Departments within a company: A role scoped to a district cannot reach another district, which matters when the same company runs locations that should not see each other's customers.
+- Transport security: All traffic is encrypted in transit with automatically renewed certificates, and the application follows a restrictive security header policy including a content security policy that prevents third party scripts from running in your session.
+- Protected inbound callbacks: Requests the platform receives from carriers and providers are verified before they are acted on, so a forged callback cannot create a job or move money.
+
+## Where your data physically sits, and who can see it
+
+AlphaFlux runs on infrastructure the operator controls rather than on a shared public cloud, which changes the answer to a question more customers are asking: who else has this.
+
+The short version is that your records are yours. They are not sold, not shared with advertisers, and not used to train anything. No third party script runs inside your session, because the interface serves everything it needs from the platform itself rather than loading it from an advertising or analytics network.
+
+Backups are encrypted before they leave the machine that holds them. Where geographic separation is used for resilience, what travels is an encrypted artifact rather than a readable export.
+
+Export is available at any time, in structured formats, without asking permission. A platform that makes leaving difficult is telling you what it thinks of you.
+
+
+The right question is not whether the vendor says secure. It is who can see your customers, and what stops them.
+
+
+## Rules for the AI features specifically
+
+Agent access is the newest risk surface in business software, and it deserves specific answers rather than being folded into general security language.
+
+- No path to the database: Agents act through the same validated operations your software uses. There is no route from a model to an arbitrary query.
+- Nothing sensitive in a prompt: Agents receive the context they need to act. Payment details, carrier credentials and full customer records are not put in front of a model.
+- Consequential actions need a person: Merging accounts, changing prices and bulk sending are presented as proposals for confirmation rather than performed on the model's own judgment.
+- Attributed and reversible: Every agent action is recorded with its actor, so an automation that misbehaves is identified and stopped rather than argued about.
+
+### Can you see my customer data?
+
+The platform operator runs the infrastructure and can administer it. What that means in practice is governed by the agreement you have with the operator, and the platform supports running on infrastructure you control if that is the answer you need.
+
+### Is my data used to train AI models?
+
+No. Your records are not used to train anything. Where AI features run against a model, they receive the specific context required for the task, and the platform deliberately keeps customer identifying records and credentials out of that context.
+
+### What happens if someone leaves the company?
+
+Their access is removed, their sessions are destroyed, and anything they did remains attributed to them in the audit trail. Nothing they wrote is deleted, because a note about a customer is part of that customer's file.
+
+### Do you use third party analytics on the platform?
+
+No third party script runs inside a signed in session. The interface loads nothing from outside the platform, which is enforced by a content security policy rather than by a promise.
+
+### Is there a compliance certification?
+
+The platform is designed to the practices described on this page: least privilege, hashed credentials, full audit, encrypted transport and encrypted backups. Organisations with a specific regulatory requirement should raise it, because the architecture supports dedicated storage and regional hosting where that is what a rule demands.
+
+---
+
+# Your platform, your name, your customers
+
+URL: https://alphaflux.net/white-label
+Section: Platform
+
+Five thousand a month buys the entire platform with every limit lifted, under your brand, on your domain, with the right to sell it to your own customers as your own product.
+
+## What it is, plainly
+
+Some companies do not want to buy software. They want to sell it. This is the version of AlphaFlux that makes that possible.
+
+A franchise group wants one system across its locations, branded as the group. A managed service provider wants to offer field operations alongside what it already sells. A software company serving an industry wants an operations module without building one. An agency running marketing for service businesses wants to hand them the tool as part of the retainer.
+
+In each case the platform is the same platform. What changes is whose name is on it, whose domain the customer signs in at, whose sending identity the email comes from, and who sets the pricing.
+
+There is one flat monthly price, every module is included, no limits are applied, and the right to resell is part of it rather than a separate negotiation.
+
+- Your brand everywhere a customer looks: Sign in page, console, mobile view, emails, invoices and the customer facing pages. No mention of AlphaFlux remains.
+- Your domain: Customers sign in at your address. Certificates are issued and renewed automatically, so there is nothing to maintain.
+- Your sending identity: Email leaves under your domain with your authentication records, so your reputation is built rather than borrowed.
+- Your bundles and pricing: Define your own plans, your own limits and your own add ons from the module catalogue, and price them however you want.
+
+## What arrives with it
+
+Everything, with nothing held back for a higher tier.
+
+- Every module, no limits: Phone and messaging, field operations, fleet and dispatch, scheduling and agreements, CRM, inventory and chemical tracking, billing, email marketing, marketing and growth, team collaboration, reporting and the advisor. Unlimited customers, locations, users, numbers and email volume.
+- Agent access for your customers: The API, the command line and the agent protocol server are included, so your customers can automate against your platform the same way they could against ours.
+- Separate companies under one operator: Run your own business and your customers' businesses side by side, each with its own records, users, branding and modules. New customers are provisioned without touching infrastructure.
+- Your own catalogue: Because the module registry is data, you define which modules belong in which of your bundles and what each one costs. A customer buying from you sees your product line, not ours.
+- Onboarding: Time with your team to get the first customers live, including how branding is applied, how workspaces are provisioned and how support should be handled.
+- A named contact: One person who knows your account and your customers, rather than a ticket queue.
+
+## Why the badge exists on every other plan
+
+On every other plan, the customer facing pages carry a small line stating that the platform is provided by AlphaFlux. It is worth being direct about why, because it is an unusual thing to do.
+
+It is how a host is discovered, and it is a large part of why a free plan can cost nothing. A company running happily on the free tier is, in a small way, paying for it by being an example. That keeps the free tier genuinely free rather than a trial with a countdown.
+
+The badge is deliberately minimal. It appears only on the pages an end customer might see, never on the internal dashboards a company works in, and never in emails, invoices or anything a customer reads that is about money.
+
+White label removes it entirely, along with every other trace, and hands over resale rights. That is the trade, stated plainly rather than buried in a footnote.
+
+
+## How a white labelled deployment works
+
+Setting it up is a configuration exercise, not a fork of the software.
+
+- One line of configuration per brand: Brand name, marks, colour system, domain, sender identity and catalogue. Every one is a setting rather than a code change.
+- You hold the accounts: You provision workspaces and manage them. Your customers see your support, because it is your product.
+- Isolation is unchanged: Each of your customers is a company with its own records and its own scope, exactly as they would be under any other plan.
+- Your own integrations: The interfaces are the same ones documented for developers, so your team can build on them under your own API surface if you want.
+- Updates included: New modules and improvements land in your deployment. You are running the platform, not a frozen copy of one.
+- Your customers' data stays theirs: The platform does not read your customers' data, does not use it to train anything, and does not market to them.
+
+If your customers are signing in somewhere with someone else's name on it, you are renting an audience rather than building one.
+
+
+## What white label changes
+
+
+| Modules | By plan | All of them |
+| Limits | By plan | None applied |
+| Customers and locations | By plan | Unlimited |
+| Users | By plan | Unlimited |
+| Branding | AlphaFlux | !Yours |
+| Sign in domain | Platform domain | !Your domain |
+| Email sending identity | Platform | !Yours |
+| Your own bundles and pricing | no | !Yes |
+| Resale to your own customers | no | !Yes |
+| Badge on customer facing pages | Present | !Removed |
+| Support | Shared queue | Named contact |
+| Setup | Self service | Onboarding included |
+
+### Do I need technical staff to run it?
+
+No. Branding, domains, sending identities and catalogues are configuration. Infrastructure is looked after, and certificates and updates are handled. Technical staff are only needed if you want to build custom integrations, and the interfaces for that are documented.
+
+### Can I set my own prices and keep the difference?
+
+Yes. You define your own bundles, your own limits and your own pricing, and you bill your customers directly. The platform does not see your customer relationships and does not sell to them.
+
+### Is there a limit on how many customers I can have?
+
+No. The white label plan carries no limits on customers, locations or users. The flat monthly price does not change as your customer base grows.
+
+### Will my customers ever be contacted by AlphaFlux?
+
+No. They are your customers. The platform does not market to them, does not email them, and does not use their data for anything beyond running their workspaces.
+
+### Can I offer less than the whole platform to my customers?
+
+Yes, and most operators do. You have every module available, and you decide which of them appear in which of your bundles. A customer of yours sees your product line, and you keep the rest in reserve for the next tier up.
+
+### What if I want custom modules?
+
+That is an enterprise conversation. Custom modules follow the same contract as the existing ones, which is what allows them to be added without disturbing anything already running.
+
+---
+
+# Every call answered, every text logged, nothing typed twice
+
+URL: https://alphaflux.net/phone-and-messaging
+Section: Modules
+
+Your existing numbers on your own carrier account, with call handling per number, a voicemail inbox that reads, and a receptionist that answers before the second ring.
+
+## The whole phone system, not just a dialler
+
+A phone system that does not connect to the job it produced is a phone system that costs you a re-typing job every day.
+
+- Numbers you control: Bring the numbers your customers already know, or buy new ones by area code. Each number gets its own behaviour.
+- Texting that belongs to the account: Every inbound and outbound message lands on the customer timeline, not in a separate handset.
+- Call handling per number: Greeting, ring through target, business hours and an after hours rule, configured per number rather than once for the whole company.
+- A receptionist that books: The AI answers first, checks real capacity and puts the job on the schedule. Emergencies go straight to a person.
+- A voicemail inbox that reads: Recordings, playback and transcripts in the console, with an unread count so nothing sits unheard for a week.
+- Missed call text back: A missed call triggers a text within seconds, which is frequently the difference between a booked job and a lost one.
+
+## How a call is handled, decision by decision
+
+Every number carries its own rule set. Here is the order the platform works through when the phone rings.
+
+- Answer: The call is answered immediately, so the caller never hears a ring they can hang up on.
+- Receptionist or person: If the number has an AI receptionist attached, it is dialled first with a fifteen second window. If it does not answer, the human chain runs as if the AI had never been there. If the AI does answer, nobody's phone rings.
+- Inside or outside hours: Business hours are set per number and per day. Inside hours the call rings through to the right person. Outside hours it follows the after hours rule you chose.
+- The after hours rule: Three options per number: take a voicemail, forward to a number such as an answering service, or end the call politely. Which one is right depends on the business, so it is a setting rather than an assumption.
+- Voicemail and text back: When a voicemail is taken it is transcribed, and a text back can be sent automatically so the caller knows they were heard rather than hoping.
+- The record: The call, the transcript, the voicemail, any texts and the outcome all attach to the customer account. If the caller is new, the account is created by the call.
+
+## The receptionist does the parts you would rather not staff
+
+Answering the phone at nine at night is expensive to staff and cheap to automate, as long as it is done properly.
+
+It identifies the caller, works out which office serves the address, checks whether the service described is one you offer, and books the visit against real capacity. It takes the details, leaves a complete record, and hands over to a person for anything that needs judgement.
+
+It is bounded by the same rules your staff are: the service areas you actually cover, the capacity your technicians actually have, and a list of things it must never do. It does not quote a price that is not on your list, and it does not promise an exact arrival time.
+
+The script lives inside AlphaFlux and is versioned, so changing how your business answers the phone is an edit rather than a ticket to a vendor.
+
+- Right office, first time: The address is resolved against the areas each office covers before anything is booked.
+- Knows what you sell: It can check the service against your catalogue, and deflect what you do not do instead of booking it.
+- Books into real space: Availability comes from capacity rules, not from a guess, so the schedule is never oversold.
+- Escalates properly: An emergency is routed to a person immediately, and a sales call is answered from a script.
+
+## Messaging done to carrier standards
+
+Business texting has rules. The platform handles the registration and the compliance so messages arrive.
+
+- Brand and campaign registration: The registration work that carriers require before application to person messaging is supported in the console, with the status of each registration visible rather than hidden.
+- Opt out handling: A customer who replies to stop is suppressed from future sends automatically. That applies equally to a person sending and to an agent sending.
+- Message logging on the account: Every message in and out is recorded against the customer timeline, with the number it came from and the person or agent who sent it.
+- Deliverability signals: Failed and undelivered messages are surfaced rather than silently dropped, because a text that never arrived is worse than one never sent.
+- More than one sender identity: Alphanumeric sender identifiers, short codes and messaging services are all manageable from the same place on the larger plans.
+
+A missed call is a lead that has already decided to call you. It should almost never be lost.
+
+
+## What the phone module includes
+
+
+| Phone numbers | 1 | 2 to 5 | 25 |
+| Text messaging | yes | yes | yes |
+| Voicemail with transcript | yes | yes | yes |
+| Missed call text back | yes | yes | yes |
+| Per number call handling | Basic | yes | yes |
+| AI receptionist | no | Growth and above | yes |
+| Recording and transcription | no | yes | yes |
+| Registration and compliance tools | no | yes | yes |
+
+### Do I have to port my numbers?
+
+No, and in most cases you should not. You can connect the carrier account you already have so your existing numbers keep working and stay yours. Porting is only needed if you want the number managed under a different carrier account.
+
+### Can the AI receptionist take a payment?
+
+It does not take card details on a call, and that is deliberate. It can book the work, take the details and leave a record, and payment is collected through the normal invoicing route where the customer has a receipt and you have a record.
+
+### What happens if the AI does not understand the caller?
+
+It hands over. If it cannot place the call in one of the categories it handles, or if the caller asks for a person, or if it is an emergency, the call moves to a human by the rule you set for that number.
+
+### Can I listen to calls later?
+
+Recordings and transcriptions are available on the plans that include them, attached to the customer account rather than sitting in a separate call list.
+
+### Does this work for a company with several offices?
+
+Each office can have its own numbers and its own call handling, and the receptionist resolves callers to the correct office by address. A central number can also route by the caller's location.
+
+---
+
+# The whole day, from the first job to the proof it was done
+
+URL: https://alphaflux.net/field-operations
+Section: Modules
+
+One object moves from booked to dispatched to on site to complete to paid. The office sees it, the technician sees it, the customer sees a window, and the proof is attached before anyone leaves.
+
+## What the field operation gets
+
+The point is that the office and the truck are looking at the same thing at the same time.
+
+- Jobs with a real record: Customer, service, technician, time window, price, duration, notes, photos and signature on one object.
+- A dispatch map: Today's work and every technician's last known position on one map, so a late job is visible before it becomes a call.
+- Day routes that make sense: Sequence a technician's stops, with the total distance stated and the option to re-optimise before the day starts.
+- Proof of work: Photo, signature, timestamp and location captured at the job, attached to the record and available to the customer.
+- Technicians as real people: Skills, home base, schedule and availability, so work is assigned to someone who can actually do it.
+- Check in and out: A technician checks in when they arrive and out when they leave, which is what makes the mileage and the time on site real numbers.
+
+## The job lifecycle, and what is enforced at each step
+
+Status is not a label someone types. It is a state the platform checks, and a transition that is not allowed is refused with the ones that are.
+
+- Booked: The job is created with a customer, a service and a time. The address is placed on the map so the job can be routed, and the booking is checked against real capacity before it is confirmed.
+- Assigned: A technician is chosen. Skills and service area are respected, so work does not land on someone who cannot do it or who is hours away.
+- Dispatched: The technician has the job and the customer has a window. If the day moves, the affected customers are notified rather than left waiting.
+- On site: Checked in, with the arrival time recorded from the technician's device. This is where the time on site and the mileage start being real numbers rather than estimates.
+- Complete: The work is done and the proof is attached. If the job type requires a photo or a signature, the job cannot be closed without one, so the file is complete at the moment of closure rather than a week later.
+- Billed: The completed job carries its parts, its labour and its notes into the invoice. Nothing is re-keyed from a paper form, and the price was agreed when the job was booked.
+
+## A technician view built for one hand and bad signal
+
+The field view runs in the phone's browser and installs to the home screen. It is designed for a technician standing in a crawlspace, not for someone at a desk.
+
+Today's jobs, in order, with the address and the customer's notes. One button to check in, one to check out, one to attach a photo, one to take a signature. The next job is one tap away and the driving directions open in the phone's own maps.
+
+Status changes made without a signal are queued and applied in order when the connection returns, so a technician in a basement does not lose the arrival time or the completion.
+
+Nothing on the screen needs two hands, and nothing needs reading at arm's length in the sun. That is the whole design brief for this view.
+
+- The day, in order: Stops sequenced, addresses and customer notes attached, and the next stop one tap away.
+- Capture from the phone: Photos and signatures taken on the device and attached to the job rather than texted to the office.
+- Location, when it helps: Check in and check out report a position, which makes arrival times and distance travelled real rather than reconstructed.
+- Offline that recovers: Changes made with no signal are held and applied in order, so the record stays correct even from a basement.
+
+## Why the routing numbers say straight line
+
+Route sequencing measures straight line distance between stops, and the interface says so. That is not a limitation to be embarrassed about, it is a decision about honesty: a dispatcher who catches a system claiming road accuracy it does not have stops trusting every other number it produces.
+
+Straight line ordering gets a day of eight to fifteen stops very close to the right sequence, which is the part that saves the fuel. Where road distance genuinely changes the answer, the platform supports a road based routing engine as a configuration rather than pretending.
+
+The same rule applies to arrival estimates. An estimate is labelled as an estimate, and the platform would rather show a range it can stand behind than a precise time it cannot.
+
+
+A job is not finished when the work is done. It is finished when the record, the proof and the invoice agree.
+
+
+## Field operations by plan
+
+
+| Jobs and customers | 20 customers | 250 customers | 1,000 customers | 5,000 and above |
+| Technicians | 1 | 3 | 10 | 25 and above |
+| Dispatch map | no | Basic | yes | yes |
+| Day route sequencing | no | no | yes | yes |
+| Proof of work | no | no | yes | yes |
+| Technician mobile view | yes | yes | yes | yes |
+| Service agreements | no | yes | yes | yes |
+
+### Can I assign the same technician to two jobs at once?
+
+The platform will let you if you force it, but it will tell you first. Booking is checked against the capacity rules you set at the office, the area and the individual level, and an override is recorded so it is visible later rather than invisible forever.
+
+### Does the technician need a company phone?
+
+No. The field view is a web page that installs to the home screen of whatever phone the technician carries, including a personal one. Nothing needs to be installed from an app store.
+
+### How does the platform handle a job that runs long?
+
+The remaining stops for that day can be re-sequenced, and the affected customers can be notified with a new window. Because the customer's window comes from the same record the dispatcher is moving, there is no second list to keep in step.
+
+### Is there a paper option?
+
+A completed job can be printed or exported with its photos, signature and notes, which is what most companies need when a customer or an insurer asks for documentation.
+
+### Can customers see where the technician is?
+
+Yes, on the plans that include tracking. The customer receives a link that shows their own job and nothing else, and the link expires when the job is done.
+
+---
+
+# Watch the work move on a map, run it on a board
+
+URL: https://alphaflux.net/fleet
+Section: Modules
+
+A dispatcher's screen that shows the truth at a glance: every order, every vehicle, every technician, the route each one is on and the customer watching their own technician arrive.
+
+## The dispatcher's screen
+
+Dispatch is two questions asked all day: what is happening right now, and who should take the next one. Both should be answerable without opening four things.
+
+- A live fleet map: Orders, technicians, vehicles, routes, service areas and geofences on one map, updating as the day moves rather than when someone refreshes.
+- An order board: Every order as a card, every stage as a column. Drag a card to move it and the record moves with it.
+- Geofences that notice: Draw an arrival zone and the platform marks the order on site when the technician crosses it, so nobody has to tap a button in a driveway.
+- Arrival estimates: Remaining distance and the technician's recent pace produce a window, labelled as an estimate and updated as the day changes.
+- Vehicles and fleets: Track trucks and trailers as assets with their own status, capacity, assigned driver and service history, not just as a name in a spreadsheet.
+- Customer tracking: Send a link that shows one order's live status, and only that order. It expires when the work is done.
+
+## A card is the whole order, not a summary of one
+
+Opening a card on the board gives you everything the order carries, and moving it is a real transition the server validates.
+
+- Unassigned (07:10)
+- Assigned (07:22)
+- En route (07:41)
+- On site (08:03)
+- Complete (08:48)
+
+## The board cannot invent a state
+
+A board that lets anyone drag a card anywhere is a board that quietly corrupts the record. Here, the server decides what is legal and the board only offers what it is told.
+
+Every order type has a defined set of stages and a defined set of moves between them. When a card is dropped, the change is sent to the server as a transition. If it is allowed, it is applied and written to the order's history. If it is not, it is refused with the moves that are actually available, and the card returns to where it was.
+
+That is what makes the board trustworthy rather than decorative. The same discipline that governs the technicians' status changes governs the dispatcher's screen, so a card that says complete really is complete, with the proof attached and the invoice following.
+
+Every move is recorded with who did it, whether that was a person or an agent, and when. The order's history is not reconstructed later from memory. It was written down as it happened.
+
+- Your stages, not ours: Define the order types you actually run and the stages each one passes through, with the fields each stage requires.
+- Rules attached to stages: A stage can require a photo, a signature, a part or a note before the order is allowed to leave it.
+- History as it happened: Every transition is appended with actor, time and position, giving the timeline and the audit trail from the same records.
+- Automation on top: Transitions can trigger the next thing: notify the customer, raise the invoice, order the part, or ask a person to look.
+
+## What is on the map
+
+Layers can be turned on and off so a dispatcher sees the district, not the world.
+
+- Orders: Every open order for the day, coloured by stage, so unassigned work is visible as a cluster rather than as a list to read.
+- Technicians and vehicles: Last known position with a freshness indicator, so a stale ping shows as stale rather than as a truck parked in a field for an hour.
+- Routes: The sequenced route for a technician, with the remaining stops and the distance left, so a dispatcher can see whether the day is recoverable.
+- Service areas and zones: The areas you cover, drawn as polygons and used for routing, capacity and pricing rather than only for colour on a screen.
+- Geofences: Arrival zones, restricted areas and site boundaries, each with a behaviour such as marking arrival or flagging a deviation.
+- Places and customers: Saved locations, including multi unit buildings, so a job resolves to the right building, floor or unit rather than to a street address.
+
+## For operations that run trucks, not just technicians
+
+The same records serve a plumbing company with four vans and a fleet operation with trailers and depots.
+
+- Trailers and equipment: Towed and portable assets tracked in their own right, with connections to vehicles that change over time rather than being overwritten.
+- Maintenance schedules: Service intervals by vehicle or by hours, work orders, parts used and warranty records, so maintenance is planned rather than reactive.
+- Fuel and cost per mile: Fuel records and running costs per vehicle, so the cost of a route is a number rather than an intuition.
+- Telematics: Connect a telematics provider and vehicle positions and sensor data arrive without anyone's phone being involved.
+- Manifests: Group orders onto a manifest for a run, so a multi stop delivery or a bulk collection is one object rather than twenty.
+- Operations reporting: On time percentage, jobs per technician, distance and utilisation, out of the records the dispatcher is already using.
+
+A dispatcher should be able to answer what happened today without asking anyone.
+
+
+## Fleet and dispatch by plan
+
+
+| Order board | yes | yes | yes |
+| Custom order types and stages | yes | yes | yes |
+| Live map | Basic | yes | yes |
+| Geofences and arrival detection | no | yes | yes |
+| Arrival estimates | no | yes | yes |
+| Vehicles and trailers | no | yes | yes |
+| Telematics connections | no | yes | yes |
+| Customer tracking links | no | yes | yes |
+| Unlimited everything | no | no | yes |
+
+### How often do positions update?
+
+Positions are reported by the technician's device as they move, and the dispatcher's map updates without a refresh. The interface shows how fresh each position is, because a map that hides a ten minute old position is worse than one that admits it.
+
+### Can I use my own map provider?
+
+The map is served through the platform, and no third party script runs in your browser or tracks your customers. Where a commercial basemap is preferred it can be configured, and the customer tracking page continues to render through the platform.
+
+### Do I need telematics hardware?
+
+No. Positions come from the technicians' devices by default, which works on day one with no hardware. Telematics is for operations that want vehicle data without depending on a phone, and it can be added later.
+
+### Can a customer see where the technician is without seeing anything else?
+
+Yes. A tracking link is scoped to one order and shows only that order's status and arrival window. It carries no customer data, it cannot be used to browse anything else, and it expires when the work is complete.
+
+### Does the board work for a company with several districts?
+
+Yes, and the districts are enforced rather than filtered. A dispatcher scoped to one district sees that district's board and map, and the restriction is applied in the query rather than by hiding things on screen.
+
+---
+
+# Fill the calendar without overselling the day
+
+URL: https://alphaflux.net/scheduling
+Section: Modules
+
+Booking that checks the real limits of the day before it confirms, and recurring agreements that generate their own visits for the whole term without anyone remembering to renew them.
+
+## Capacity is the limit nobody can see until it is broken
+
+Most companies discover they oversold a day when a technician calls in from the road. Booking against a rule instead of a feeling is what stops it.
+
+Every booking is checked against the capacity rules that apply to it before it is confirmed. The rules can be set at the office level, the area level or the individual technician level, and per weekday, because Tuesday is rarely Saturday.
+
+When two rules apply, the more specific one wins, and the narrower limit is checked as well as the wider one. A technician with a light day inside a busy area still has a personal limit, and the platform checks both rather than picking one.
+
+A booking that does not fit is refused with the reason named, and the platform offers the next day that does fit. Overriding it is possible, and the override is recorded with who did it, because a person sometimes genuinely knows better than the rule.
+
+- Limits that match reality: Jobs, minutes or both, at office, area or technician level, set per day of the week.
+- Areas, not guesswork: Service areas are grouped from postcodes, so coverage and capacity are expressed the way the business already describes itself.
+- Availability on request: Ask what a given day can still take and get an answer, which is what makes online booking and agent booking safe.
+- Overrides are visible: A forced booking is allowed, recorded and flagged, so the exception is documented rather than quietly absorbed.
+
+## Recurring work, handled properly
+
+Recurring service is the backbone of a service business and the part most software handles worst.
+
+- Agreements that generate visits: Define a frequency and a term and the platform creates every visit for the term, each with its own date, price and technician.
+- Dates that stay honest: A visit on the 31st stays on the 31st, and clamps sensibly in a short month rather than drifting forward forever.
+- Recurring revenue you can trust: Monthly recurring revenue is calculated from the actual charges on the agreement, not from a projection or a guess.
+- Changes without damage: Moving a schedule cancels and regenerates future visits and leaves completed work exactly where it was.
+- Reminders that go out: Upcoming visits trigger a confirmation before the technician is dispatched, so a wasted trip becomes a rebooked one.
+- A book you can read: One view of the recurring book: how many agreements, what they are worth a month, and which ones are up for renewal.
+
+## How a booking is checked
+
+The order the platform works through when something is being put on the calendar, whether by a person, a customer or an agent.
+
+- Does this area accept work: The address is resolved to a service area. A postcode outside every area you cover is declined at the point of booking rather than after a technician is dispatched.
+- Is there capacity that day: The technician's limit, the area's limit and the office's limit are all checked. The most specific rule wins, and the tighter constraint applies.
+- Does the technician fit the work: Skills and certifications are checked, so a job that requires a particular licence does not land on someone who does not hold it.
+- Is the travel realistic: The location is checked against the rest of that technician's day, so the schedule does not contain a stop that is physically impossible.
+- Is it confirmed or proposed: A booking that fits is confirmed and the customer is notified. One that does not is declined with the reason and the nearest day that works.
+
+## The appointment is the promise, the visit is the work
+
+A recurring agreement is not a list of dates in a spreadsheet. It is an agreement with a term, a frequency, a price and a start date, and the platform derives every visit from it.
+
+That distinction matters when something changes. Because each visit knows which agreement produced it and which visit number it is, regenerating a schedule is safe to run twice, and a visit that has already been completed is never disturbed by a change to the future.
+
+It also means the money and the work cannot drift apart. The recurring revenue a plan reports comes from the same agreements that generate the visits, so the number on the dashboard and the work on the calendar are the same fact.
+
+
+## Scheduling by plan
+
+
+| Job booking | yes | yes | yes |
+| Service areas | 1 | 2 | 5 and above |
+| Capacity rules | no | yes | yes |
+| Availability lookup | no | yes | yes |
+| Service agreements | no | yes | yes |
+| Automated visit generation | no | yes | yes |
+| Appointment reminders | no | yes | yes |
+| Recurring revenue reporting | no | yes | yes |
+
+### Can customers book themselves?
+
+Yes. Because availability is a real answer rather than a calendar someone maintains by hand, a customer facing booking page can only offer slots that genuinely exist, which removes the confirmation round trip entirely.
+
+### What if I need to squeeze in an emergency?
+
+Force it. The platform will tell you the day is over its limit, and if you proceed it books the job and records that the limit was overridden and by whom. Emergencies happen, and the platform is built to accommodate them without losing the record.
+
+### How does a change to an agreement affect visits already done?
+
+It does not touch them. Completed and past work is left exactly as it is. Only future visits that have not happened are cancelled and regenerated under the new schedule.
+
+### Can different services have different frequencies?
+
+Yes, each agreement carries its own service and frequency. A company can run quarterly pest treatments on one agreement and a monthly maintenance contract on another for the same customer.
+
+### What time zone are appointments in?
+
+Times are stored unambiguously and displayed in the company's local time, so a business operating across states sees its own day rather than a server's.
+
+---
+
+# The customer record the phone system and the truck both point at
+
+URL: https://alphaflux.net/crm
+Section: Modules
+
+A CRM that is not a separate list of people. It is the same account the call came into, the job was booked against, the invoice was raised for and the campaign was sent to.
+
+## What the customer record holds
+
+Everything about one account in one place, because the alternative is four places that disagree.
+
+- Contacts and accounts: People and the companies or properties they belong to, with multiple sites under one account where that is how the relationship works.
+- A pipeline that reflects your sales: Lead, contacted, quoted, won or lost, with the stages and values that make sense for how you actually sell.
+- One timeline per account: Calls, texts, emails, notes, jobs, invoices, payments and changes in a single chronological feed.
+- Notes with mentions: Write a note on an account and mention a colleague or another account. The mention becomes a notification, not a message that gets lost.
+- Tags that are a system: A shared tag vocabulary with colour and category, applied in bulk, so accounts can be filtered the same way by everyone.
+- Duplicates found and merged: The platform proposes merges when a phone number, an email or a name matches, shows the evidence that linked them, and merges only when a person approves.
+
+## Teams, territories and who can see what
+
+Selling and servicing a large account is rarely one person's job. The record supports the whole team without everyone seeing everything.
+
+- Account teams: Attach the people who work on an account with a role on that account: who sells it, who services it, who handles the billing, who is the escalation point. Each one is named on the record rather than inferred from who happened to touch it last.
+- Territories and assignment: Define territories by area, postcode or service line and let an account be assigned automatically when it arrives, so a new lead lands with the right person without a manual sorting step.
+- Roles that scope access: A role is a set of permissions. Scoped to a territory or a district, it means a salesperson sees their own patch and a manager sees all of it, and neither has to be maintained by hand.
+- Sharing on the account: An account can be shared with specific people or a whole team, so covering for someone on leave does not mean sharing a login.
+- Activity that is attributable: Every call, note, job and message records who did it, whether that was a person, an agent or an import, and when.
+
+## Who sold it, and who gets paid for it
+
+Three different people can be responsible for one sale, and collapsing them into a single owner column is how commission disputes start.
+
+AlphaFlux records three separate roles on an account. Who sold it, which is the person owed commission. Who services it, which is the technician or team who keeps it. And who booked it, which distinguishes a lead that came from a person from one that came from an agent or an import.
+
+Splits are recorded in basis points and must total exactly one hundred percent before they can be saved. A split that does not add up is not a rounding problem to be tolerated, it is a commission error waiting to be discovered at the worst moment.
+
+Attribution history is append-only. When ownership changes, the previous entry is superseded rather than overwritten, so a payout made in March can still be explained in September, and revenue an agent generated stays separable from revenue a person generated.
+
+- Splits that must total: The platform refuses a split that does not add to one hundred percent, in basis points, before it is stored.
+- History that is not overwritten: Ownership changes supersede the prior entry. Nothing is erased, so an old payout is always explicable.
+- Agent revenue, separated: Revenue booked by an agent is a distinct category, which is how you find out whether the automation is actually paying for itself.
+- Reports by source and by person: Who sold what, over what period, at what commission rate, from which lead source.
+
+If two systems know a customer, one of them is wrong and you will find out at the worst possible time.
+
+
+## CRM by plan
+
+
+| Contacts and accounts | 20 | 250 | 1,000 | 5,000 and above |
+| Pipeline and stages | yes | yes | yes | yes |
+| Account timeline | yes | yes | yes | yes |
+| Tags | Basic | yes | yes | yes |
+| Notes and mentions | yes | yes | yes | yes |
+| Duplicate detection and merge | no | yes | yes | yes |
+| Sales attribution and splits | no | yes | yes | yes |
+| Teams and territories | no | no | yes | yes |
+
+### Do I have to move my contacts in from somewhere else?
+
+You can import from a spreadsheet, or connect an existing field service account and read it live while you decide what to move. Many companies run both for a period, which is a deliberate option rather than a leap of faith.
+
+### What happens if two people create the same customer?
+
+The platform notices and proposes a merge, showing which signal linked the two records, whether that was a shared phone number, a shared email or the same name and address. Nothing merges automatically, and a merge can be reversed if it turns out to be wrong.
+
+### Can I see an account's whole history in one place?
+
+Yes. The account timeline mixes calls, texts, emails, notes, jobs, payments and agent activity in one chronological feed, with filtering so a support question can be answered without reading a year of unrelated activity.
+
+### How does commission work for a team sale?
+
+Splits are recorded per person in basis points and must total one hundred percent. Payouts are computed from those splits and snapshotted, so a rate change in the future does not silently rewrite what someone was owed in the past.
+
+### Does the CRM know about field work?
+
+It is the same record. A job booked by a technician or an agent appears on the account timeline, and a customer's job history is visible from the account without switching modules.
+
+---
+
+# Every account gets inventory, and every account gets it free
+
+URL: https://alphaflux.net/inventory
+Section: Modules
+
+Stock is never in one place. It is in trucks, in storage units, in a rented bay, in mobile units scattered across three states, and in the depot none of it was written down in. AlphaFlux knows all of it, and who is holding it.
+
+## Inventory is included on the free plan, permanently
+
+Most platforms treat stock as an enterprise feature. A one person operation with a van full of parts needs it just as much as a depot does, so it is not gated.
+
+Every account gets items, movements, locations and low stock alerts at no cost, whether there is one technician or two hundred. What grows with the plan is scale, not capability: how many locations you can define, how much movement history you keep, and how far the reporting reaches.
+
+The point is that the record starts on day one. A company that tracks its stock from the first van never has to reconstruct a year of purchases later, and never has to run an inventory count to find out what it owns.
+
+- Items and stock levels: Parts, products and consumables with SKU, quantity on hand, reorder point, unit and cost.
+- Locations that match reality: Trucks, vans, storage units, rented bays, depots, yards and branches, each with its own stock position.
+- Movements, not just a number: Every change is a movement with a reason, a person and a time, so the quantity is explained rather than asserted.
+- Low stock before it bites: Minimums per item and per location, with alerts when a truck is running out rather than when the next job fails.
+
+## Chemical and controlled stock, signed in and out
+
+Some things in a van are not ordinary stock. They are regulated, they have a usage rate, they must be accounted for, and an inspector may ask.
+
+AlphaFlux tracks them the way they are actually used. A container is signed in when it is received, assigned to a technician or a location, and signed out when it is used or returned. The record shows who had it, when they took it, where it went and what remains.
+
+That record is what turns a difficult conversation into a report. Usage per technician, usage per service, what was applied at a customer's property, and what is currently unaccounted for are all available as views rather than as an afternoon with a clipboard.
+
+The same mechanism handles any stock that needs a chain of custody: calibrated instruments, keys, PPE, high value tools, controlled parts, and anything else where knowing that it left the building is not enough.
+
+- Sign in, sign out: A container is received, assigned and consumed with a record at every step.
+- Usage on the job: What was applied is recorded against the job, which is what most customer questions and inspections actually ask for.
+- Safety data to hand: Regulatory detail, handling and dilution information available to the technician at the point of use rather than in a folder in the office.
+- Anywhere it should not be: A reconciliation view that surfaces stock that has moved without a matching reason.
+
+## Built for operations that do not fit one building
+
+The same records serve a sole trader with a van and an operation with units in every time zone. These are the arrangements the module is designed around.
+
+- Technician and vehicle stock: Every truck holds its own position, so the question where is that part is answered by naming the part rather than by ringing three technicians. A technician's stock moves when the job consumes it, not when someone remembers to update a sheet.
+- Storage units and rented bays: A rented storage locker is a location like any other. It can hold stock, it can be transferred to and from, and it can be counted without an afternoon of driving to it and writing things down.
+- Mobile and self contained units: Self contained units that move between sites, whether that is a mobile workshop, a solar powered field unit, a trailer or a container, are tracked as both an asset and a location. The unit has a position, a custodian and its own contents, and both move together.
+- Branches, depots and yards: Branches hold bulk stock and issue it out. A transfer from a branch to a truck is one operation with a record at both ends, so both locations agree on what happened.
+- Many companies, one view: An operator running several companies or several legal entities can hold each one's stock separately and still see a single consolidated position, because inventory is scoped to a company like every other record.
+- Assets as well as consumables: Anything with a serial number, a warranty or a service interval can be tracked as an asset: who has it, where it is, when it was last serviced and when it is due. That covers instruments, machines, test equipment and vehicles.
+
+## Day to day, it stays simple
+
+A stock system only works if a technician will actually use it from a driveway. Everything here is designed to take seconds.
+
+- Adjust in two taps: Search or scan, enter the quantity, pick a reason. Add a note if it needs one.
+- Scan instead of type: Barcodes and QR codes read from the phone camera, which is what turns a stock take from a weekend into an hour.
+- Consumed by the job: Parts used on a job are drawn down automatically when the job closes, and appear on the invoice from the same entry.
+- Transfer between places: Move stock from depot to truck to site, with a record at each end and an in transit state so nothing is ever in two places.
+- Counts that reconcile: Run a count on one location, see the variance against the system, and post the adjustment with a reason.
+- Import and export: Bring a supplier price list or an existing spreadsheet in, and take the whole register out in a structured format whenever you want.
+
+Nobody ever lost money knowing exactly what was in the truck and who took it out.
+
+
+## Inventory by plan
+
+
+| Inventory module | !Included | Included | Included | Included |
+| Items | Unlimited | Unlimited | Unlimited | Unlimited |
+| Locations | 2 | 10 | 50 | Unlimited |
+| Movement history | 90 days | 2 years | 5 years | Unlimited |
+| Sign in and sign out | yes | yes | yes | yes |
+| Chemical and controlled stock records | yes | yes | yes | yes |
+| Barcode and QR scanning | yes | yes | yes | yes |
+| Consolidated multi company view | no | no | yes | yes |
+| Asset service schedules | no | no | yes | yes |
+
+### Is inventory really free?
+
+Yes, on every plan including the free one. Items, movements, sign in and sign out, scanning and low stock alerts are all included. What a plan changes is how many locations you can define and how long you keep movement history.
+
+### How do I track chemicals across several technicians?
+
+Each container is signed in when it is received and assigned to a technician or a location. When it is used, the amount consumed is recorded against the job, which leaves a per technician usage record and a per property application record. A reconciliation view shows anything that moved without a matching reason.
+
+### Can I track stock that lives on a vehicle that moves between sites?
+
+Yes. A mobile unit is treated as both an asset and a location, so it has a position, a custodian and its own contents, and all three move together. That covers mobile workshops, trailers, containers and remote units.
+
+### I run more than one company. Can I see all their stock together?
+
+Yes. Stock is scoped to a company, and an operator with access to several can see a consolidated position across all of them while each company's records stay separate.
+
+### Does it handle stock in a truck being consumed by a job?
+
+Yes. When a job is closed, the parts and consumables used are drawn from the technician's stock and carried onto the invoice. The technician does not enter the same information twice.
+
+---
+
+# Money that reconciles to the work, not to a memory
+
+URL: https://alphaflux.net/billing
+Section: Modules
+
+The invoice is raised from the job that was actually completed, by the technician who completed it, with the parts that were actually used. Nothing is re-typed, so nothing drifts.
+
+## The money side, end to end
+
+From an agreed price at booking to a payment against the account, with a record at every step.
+
+- Invoices from the work: Line items, labour, parts and taxes carried from the completed job, so the invoice describes what happened.
+- Payments against an account: Applied to a customer, optionally tied to a job or an agreement, recorded in whole cents with the method and the date.
+- Voided, never deleted: A payment entered in error is voided with a reason and a name. The row stays, and the voided total is reported separately from the posted total.
+- Recurring billing: An agreement carries a price and a frequency, and the recurring revenue it produces is derived from the actual charges.
+- Usage billing: For anything metered, a period's usage is read, the agreed margin applied, and an invoice issued per period with the underlying lines attached.
+- Overdue, visible: Who owes what, how old the debt is, and what it is made of, so chasing is a list rather than a guess.
+
+## A payment that can vanish is a payment nobody can audit
+
+The most common way a small service business loses money is not theft. It is a payment that was deleted, a rate that was edited and nobody remembers why.
+
+AlphaFlux does not delete financial records. A payment made in error is voided, which marks it as reversed, records who reversed it and why, and leaves the original row in place. The posted total excludes voided entries and the voided total is reported separately, so both numbers are always visible.
+
+Rates, prices and commission percentages are recorded as they were when a transaction happened. Changing a rate in the future does not silently rewrite what someone was owed in the past, because the historical figure is stored rather than recomputed.
+
+That discipline is what makes the numbers usable for a loan application, a tax return or a partner dispute. A figure you cannot trace back to the records that produced it is not a figure you can defend.
+
+- Both totals, always: Posted and voided are reported side by side rather than netted into one misleading number.
+- Historical values stay put: A price or a rate change applies forward. What happened last month is not recalculated.
+- Rollups that match the detail: Totals by method, by day and by period always reconcile to the underlying rows.
+- Every adjustment explained: An adjustment without a reason is not accepted, because the reason is the only part that cannot be reconstructed later.
+
+## How the money is kept straight
+
+These are the decisions that make the numbers hold up when someone else looks at them.
+
+- Whole cents and basis points: All amounts are stored as whole cents and all rates as integer basis points. There is no floating point arithmetic anywhere near an invoice, which is why totals do not develop a mysterious fraction over a year.
+- Recurring revenue from real charges: Monthly recurring revenue is calculated from the recurring charges that actually exist on agreements, split by frequency. It is not a projection and it is not a spreadsheet formula that assumes a renewal.
+- Overdue is measured, not labelled: An account is overdue because of an unpaid balance with an age, not because a status field was set. The age is computed from the balance and its date, so it cannot go stale.
+- Tax and totals as line items: Tax rates, discounts and surcharges are line items rather than adjustments applied at the end, so the arithmetic on an invoice can be followed from the first line to the total.
+- Reports that match the ledger: The revenue figure on the dashboard and the total in the payment list come from the same records, so the executive view and the detail view cannot disagree.
+
+## The invoice should be a by-product, not a task
+
+In most service businesses, invoicing is a second job. The technician finishes the work on paper, someone types it up, parts get estimated from memory, and the invoice goes out a week later with the wrong total on it more often than anyone would like to admit.
+
+When the job closes with its parts, its labour, its photos and its signature already attached, the invoice is largely already written. The office reviews it rather than reconstructing it. That is the entire argument for running the field and the money in one system.
+
+It also changes what a customer experiences. The invoice arrives while the work is still fresh, with a photograph of what was done and the parts that were used, which is a considerably better conversation than a delayed total nobody can explain.
+
+
+## Billing by plan
+
+
+| Invoices | yes | yes | yes | yes |
+| Payments and voids | yes | yes | yes | yes |
+| Recurring agreements | no | yes | yes | yes |
+| Overdue reporting | Basic | yes | yes | yes |
+| Invoice from a completed job | no | yes | yes | yes |
+| Usage billing and margins | no | no | yes | yes |
+| Commission and split payouts | no | no | yes | yes |
+| Consolidated reporting across locations | no | no | no | yes |
+
+### Can I take card payments?
+
+Payments are recorded against accounts and reconcile to the ledger. Card processing is connected through a payment provider, and the platform keeps the record of what was charged, what was collected and what was reversed, so the money is auditable whether it arrived by card, transfer, cheque or cash.
+
+### What happens if I invoice the wrong amount?
+
+You issue a corrected document. The original is not deleted, and the correction references it, which is how the paper trail stays intact for accounting and for the customer.
+
+### Does it handle different pricing per district?
+
+Yes, prices are per company and per service, and districts can carry different rate cards, which matters for companies operating in markets with different cost structures.
+
+### Can I bill in something other than dollars?
+
+Currency is a per company setting. Amounts are held as whole units in the company's currency, and the reporting is presented in the same currency the business operates in.
+
+### How does the platform know what recurring revenue I have?
+
+From the agreements themselves. Each agreement has a frequency and a price, and the monthly figure is calculated from those actual charges. If an agreement is cancelled, the number moves because the agreement did, not because someone updated a projection.
+
+---
+
+# Email marketing that sends from your own domain, not someone else's
+
+URL: https://alphaflux.net/email-marketing
+Section: Modules
+
+Campaigns, sequences and follow ups that reach customers with your name on them, from your own domain, with the authentication records set up for you and every reply landing on the account.
+
+## What the module covers
+
+A campaign is a message sent on purpose to a list that consented. A sequence is a set of messages sent because something happened. Both belong to the customer record.
+
+- Campaigns: Build a message, choose an audience, schedule it and read the result, with the content saved as a reusable template.
+- Sequences and automations: Welcome a new customer, remind before a visit, follow up after a job, win back a lapsed account. Triggered by real events, not by a manual list.
+- A visual builder: Drag blocks into a layout, with the same design tokens as the rest of the platform so a message cannot look like it came from a different company.
+- Lists and segments: Target by tag, pipeline stage, service, area, spend, last visit or any combination, because a segment is a query over real records.
+- A unified inbox: Replies arrive in the platform and attach to the account, so a response to a campaign is a conversation on the timeline, not a message in a separate tool.
+- Results that mean something: Opens, clicks, replies, unsubscribes, and the harder number: revenue attributed to the campaign against the accounts it touched.
+
+## Deliverability is the whole game
+
+A beautiful campaign that lands in a promotions tab or a spam folder did not happen. Most small business email fails here, not in the writing.
+
+AlphaFlux sends from a domain you control and sets up the authentication records that mailbox providers check before they decide whether to trust a message. Sending from your own domain means your reputation is yours, rather than borrowed from a shared sender that another company can damage for you.
+
+Bounces, complaints and unsubscribes are handled automatically. A customer who opts out is suppressed everywhere, including from messages an agent would send, because consent is a property of the customer rather than a setting on a campaign.
+
+Sending is separated from transactional mail. A receipt or an appointment confirmation is one kind of message, and a marketing offer is another, and mixing them is what turns a useful notification into a spam complaint.
+
+- Authentication handled: The records mailbox providers check are configured and kept correct, so your domain carries its own reputation.
+- Consent is respected: An unsubscribe suppresses across every campaign, every sequence and anything an agent sends.
+- Bounces acted on: Hard bounces are removed, soft bounces retried, and the reasons are visible rather than counted.
+- Separated from notifications: Transactional messages and marketing messages travel on different rails, so a reminder never looks like an advertisement.
+
+## Sequences worth having on day one
+
+These are the automations that pay for the module, and each one is triggered by an event the platform already records.
+
+- Missed call recovery: A call to the business that is not answered triggers a text immediately and an email shortly after, asking whether the customer still needs help. This is usually the highest returning sequence a service business can run.
+- Quote follow up: A quote that has not been accepted after a set number of days triggers a short follow up. Most quotes are not lost, they are forgotten, by both sides.
+- Before the visit: A confirmation before an appointment, with what to expect and how to prepare. This reduces wasted trips more reliably than any reminder system a customer has to opt into.
+- After the visit: A thank you, a receipt, a request for a review, and any paperwork the customer needs to keep. Sent while the work is still memorable.
+- Lapsed customer win back: A customer who has not booked in a set period gets a sequence that offers a reason to come back, timed to the season or the service interval rather than to a generic calendar.
+- Review request: Ask for a review at the moment satisfaction is highest, which is minutes after a completed visit, and route the response to the platform's own review page.
+
+## Why the inbox belongs inside the platform
+
+Email marketing tools are good at sending and bad at knowing anything. They have their own list, their own idea of who a customer is, and no idea that the person on it is ninety days overdue or just had a complaint resolved yesterday.
+
+Because AlphaFlux sends from records rather than from a copied list, a campaign can exclude customers with an open complaint, segment on a pipeline stage, and count revenue against the accounts it touched. A reply lands on the account timeline next to the job it relates to.
+
+That is what makes the reporting real instead of decorative. A campaign that reports a twenty percent open rate and no attributable revenue has not told anyone anything useful.
+
+
+## Email marketing by plan
+
+
+| Marketing emails | 100 per month | 2,000 per month | 10,000 per month | 50,000 per month |
+| Campaign builder | Basic | yes | yes | yes |
+| Saved templates | 2 | 20 | Unlimited | Unlimited |
+| Lists and segments | Basic | yes | yes | yes |
+| Automated sequences | no | 3 | Unlimited | Unlimited |
+| Unified inbox | yes | yes | yes | yes |
+| Send from your own domain | no | yes | yes | yes |
+| Revenue attribution | no | Basic | yes | yes |
+
+### Is the free plan enough to send anything useful?
+
+It is enough to keep in touch with a small customer base and to run a missed call recovery sequence, which is often the one that matters most. A hundred marketing messages a month covers a solo operator with a few dozen regular customers. When the list outgrows it, that is usually a good sign.
+
+### Can I send from my own email address?
+
+Yes, from a domain you control. Sending from your own domain means your reputation is yours and your customers see your name. The platform sets up the authentication records that mailbox providers check and keeps them correct.
+
+### What about customers who unsubscribed?
+
+They are suppressed permanently, across every campaign, every automated sequence and anything an agent sends. The suppression is a property of the customer record, so it cannot be bypassed by starting a new campaign.
+
+### Do receipts and appointment reminders count toward my allowance?
+
+No. Transactional messages such as receipts, confirmations and reminders travel separately and are not counted against the marketing allowance, because they are expected communication rather than marketing.
+
+### Can I see whether a campaign made money?
+
+On the plans that include attribution, yes. Revenue is counted against the accounts a campaign touched, using the jobs and invoices the platform already holds, rather than a tracking pixel's best guess.
+
+---
+
+# Decide where to grow, then prove it worked
+
+URL: https://alphaflux.net/marketing
+Section: Modules
+
+Most marketing tools stop at the message. This one starts a step earlier, with the map and the numbers that tell you which area is worth the drive, and finishes with the revenue the campaign actually produced.
+
+## The growth work, in one place
+
+Finding customers, keeping them, and knowing which channel paid for itself.
+
+- Territory planning: Draw the areas you want to work in, save each one with its own notes and pursuit status, and see at a glance which are prospects and which are earning.
+- Demographics on the map: Population, income, age, housing and education for any area you draw, so a decision about coverage is made on data rather than on a drive past.
+- Social scheduling: Connect your accounts, write a post once, schedule it, and keep a calendar of what is going out and when.
+- Reviews at the right moment: Ask for a review minutes after a completed visit rather than days later, when the customer can still remember the technician's name.
+- Attribution to revenue: Which campaign, channel or referral produced the jobs, and what those jobs were worth, out of the same records as the invoices.
+- Your public presence: Landing pages and a booking entry point that feed directly into the schedule, with availability answered from real capacity.
+
+## Most marketing decisions should be made on a map
+
+Where a service business grows is a geographic question, and it is usually answered by intuition and a long drive.
+
+Draw an area on the map and the platform returns the demographic picture for it: how many households, what they earn, how old they are, whether they own or rent. Compare two candidate areas side by side and the decision stops being a feeling.
+
+Layer that against where the work already is and the answer gets sharper still. An area adjacent to your densest cluster is cheaper to serve than one across the county, and the platform shows both the opportunity and the drive.
+
+Each saved area carries a pursuit status and its own notes, so a plan that spans a year does not live in one person's head. It lives on a map that anyone with permission can open.
+
+- Areas and zones: Saved service areas, target areas and zones, drawn directly on the map and reused for routing, capacity and pricing.
+- Real demographic data: Census and mapping data served through the platform, so no third party script follows your customers around the internet.
+- Density and drive time: See where jobs cluster and what adding an area would cost in travel, because revenue per mile is the number that decides whether growth is real.
+- A plan with dates: Each area carries where it is in the pursuit, so a quarterly review is a look at the map rather than a reconstruction.
+
+## Everything the module reports on
+
+Attribution only means something if it reaches the money. These are the links the platform already has.
+
+- Lead source and campaign: Every account records where it came from and which campaign touched it, as two separate facts rather than as one field that has to serve both purposes.
+- Booked by: Whether a person, an agent or an import created the work, so the value of automation is measurable rather than asserted.
+- Revenue by source: Revenue counted from the invoices on accounts a channel produced, over a date range you choose.
+- Referrals: Referred accounts record who referred them, so a customer who sends business is visible and can be thanked.
+- Cost per acquisition: Enter what a channel costs and the platform reports what it returned, which is the only comparison that settles an argument about marketing spend.
+
+Marketing that cannot be traced to an invoice is a hobby with a budget.
+
+
+## Marketing by plan
+
+
+| Contacts you can market to | 20 | 250 | 1,000 | 5,000 and above |
+| Review requests | no | yes | yes | yes |
+| Social scheduling | no | Basic | yes | yes |
+| Territory planning map | no | no | yes | yes |
+| Demographic data | no | no | yes | yes |
+| Attribution reporting | no | Basic | yes | yes |
+| Landing pages and online booking | no | no | yes | yes |
+| Multi location campaigns | no | no | no | yes |
+
+### Do I need a separate email tool as well?
+
+No. Email marketing is a module in the same platform, so a campaign audience can be a segment of your real customer records and a reply lands on the account timeline. Running both is what most companies are trying to stop doing.
+
+### Where does the demographic data come from?
+
+Public census and mapping data, served through the platform rather than loaded from a third party in your browser. That keeps the customer experience clean and means nothing about your customers is shared with an advertising network.
+
+### Can reviews be requested automatically?
+
+Yes. A completed job is the trigger, and the request goes out within minutes rather than days. That timing is the single biggest factor in whether a customer actually leaves a review.
+
+### Does this replace my website?
+
+It gives you landing pages and an online booking entry point that are wired to real availability, which is what most service company websites fail at. A company that wants to keep its existing site can keep it and use these for campaigns.
+
+### How many social accounts can I connect?
+
+The larger plans connect multiple accounts across platforms, each with its own calendar, and support scheduling ahead. Publishing and scheduling are managed from the same place as everything else.
+
+---
+
+# The conversation and the record, in the same place
+
+URL: https://alphaflux.net/team
+Section: Modules
+
+A company does not need another chat app. It needs the conversation about a customer to sit on the customer, where the next person to open the account will actually find it.
+
+## Working together without a second tool
+
+The work is in the field and the decisions are in the office. Both should leave a trail on the account.
+
+- Channels and direct messages: Public channels, private channels, one to one messages and group conversations, with reactions, edits and search.
+- A note on the account: Anything worth remembering goes on the customer, not in a private message, so the next person sees it.
+- Mentions that notify: Mention a colleague on a note or a message and they are told. Mention an account and it becomes a link.
+- Unread that is honest: Unread counts per channel and per conversation, so nothing is missed without a notification firing for every message.
+- Search across everything: Find a message, a note, a job or a document by what was said in it, not only by where it lives.
+- Shifts and availability: Who is on today, who is off, and who has the right skills, so the schedule is built from reality.
+
+## Roles, departments and what each person can reach
+
+Permissions are explicit per capability rather than implied by a job title, and a role can be scoped to a part of the company.
+
+- Account classes: A platform owner manages the installation, the module catalogue and the companies on it. A user belongs to one company, has a role, and optionally a department.
+- Roles: Owner, administrator, office manager, dispatcher, technician, billing, marketing, support and read only auditor. Roles are composable, and a person can hold more than one.
+- Departments: A department is a slice of a company: a district, an office, a line of service. A role scoped to a department means a dispatcher in one office cannot see or change another office's work, and the restriction is applied in the query rather than hidden on screen.
+- Explicit permissions: View jobs, edit a schedule, collect a payment, export data, manage billing, manage users. Each is a named permission attached to a role and a scope, so access is a decision rather than a side effect.
+- Restriction states designed in: A restricted action is refused by the server with the reason named, and the interface shows the disabled state with an explanation rather than failing silently.
+
+## An audit trail, not a log file
+
+Every change records who acted, under what role, for which company, doing what, and when.
+
+The owner sees every entry across the installation. A company user sees their own company's entries. Nothing about that is optional, and nothing bypasses it, including actions taken by an agent or by a scheduled job.
+
+That is what makes a bad afternoon recoverable. When a schedule was changed and the customer is annoyed, the answer is not a guess. It is a filtered list with a name on it.
+
+It is also what makes automation safe to adopt. An owner can see exactly what an agent has been doing, in the same view as what their staff have been doing, and can turn it off with evidence rather than on a hunch.
+
+- Attributed actions: Person, agent or import, recorded on the action itself rather than inferred.
+- Overrides flagged: A capacity override, a forced booking or a manual adjustment is recorded with the person who made it.
+- Filterable: Filter by person, role, company, action or date range, and read it as a list rather than scrolling a raw file.
+- Readable by an agent: The audit log is an endpoint, so an agent can summarise it, spot a pattern, or alert on an unusual change.
+
+## Why the chat polls instead of streaming
+
+Team chat in AlphaFlux updates by asking the server for anything new rather than by holding a constant connection open. That is a deliberate choice, and it is worth explaining because it affects what the product feels like.
+
+A persistent connection per user is a thing to run, secure and monitor, and on a platform where the AI and the database are already competing for a finite machine, that cost buys less than it appears to. Polling with a proper cursor is simple, survives a dropped connection without a state machine, and works behind the corporate networks and field connections that a real service business operates on.
+
+The honest trade is that typing indicators and presence, the little signals that make a chat product feel alive, are not part of it. That is the correct trade for a system whose job is to hold the record straight rather than to be the place people hang out.
+
+
+If a decision about a customer lives in a private message, it did not get made.
+
+
+## Team and collaboration by plan
+
+
+| Users | 1 | 3 | 10 | 25 and above |
+| Account timeline and notes | yes | yes | yes | yes |
+| Mentions and notifications | yes | yes | yes | yes |
+| Team chat | no | yes | yes | yes |
+| Departments | no | no | yes | yes |
+| Custom roles | no | no | yes | yes |
+| Audit log access | Basic | yes | yes | yes |
+| Single sign on | no | no | no | Enterprise |
+
+### Do I still need a separate chat app?
+
+For conversations about customers, probably not. AlphaFlux chat keeps the discussion on the account where it belongs. Companies that also want a general purpose chat tool for lunch plans are welcome to keep one, but the customer conversation is better on the customer.
+
+### Can I stop one office seeing another office's customers?
+
+Yes. A role scoped to a department restricts access at the query level, so a dispatcher in one district cannot see, search or change another district's records. It is enforced on the server rather than hidden in the interface.
+
+### Can a technician see pricing?
+
+That is a permission, not a fixed rule. A company can give technicians the job detail without the money, or the money without the customer's payment history, according to how it wants to run.
+
+### What happens to a chat message if someone leaves?
+
+It stays on the record. Messages are attributed to the person, and deactivating an account removes access without deleting the history, because a conversation about a customer is part of that customer's file.
+
+### Does the audit log slow the platform down?
+
+No. Entries are written alongside the change they describe rather than in a separate pass, and the log is designed to be read in filtered slices rather than scanned in full.
+
+---
+
+# The numbers an owner reads, and what to do about them
+
+URL: https://alphaflux.net/analytics
+Section: Modules
+
+Most dashboards tell you what happened. This one tells you what happened, where, and what the two or three things worth acting on this week are.
+
+## What the owner's view shows
+
+Every figure comes from the records the work produced. Nothing here is typed in by hand or projected forward.
+
+- Customers and non customers: Real customers counted separately from leads, prospects and empty records, which is the difference between a real number and an inflated one.
+- Recurring revenue: Monthly recurring revenue computed from the actual charges on live agreements, per location and combined.
+- Work completed: Jobs completed in a period, per technician and per location, with the completed quantity rather than the scheduled quantity.
+- Distance travelled: Miles driven, computed from check in and check out positions on completed jobs, which is the number that tells you whether your routes are sane.
+- Collected and owed: Revenue collected in the period and the overdue balance with its age, side by side, because a good month that is uncollected is not a good month.
+- Trends, not snapshots: Compare a period against the one before it and see which figures moved, rather than reading a single number with no context.
+
+## An advisor that has read your numbers before it speaks
+
+General business advice is free and everywhere. Advice that knows your overdue balance, your technician count and your recurring book is not.
+
+The advisor takes a short brief about the business and then answers using the live figures the platform already holds. It does not guess at your customer count, and it does not offer advice that ignores whether you have the capacity to execute it.
+
+Ask it where to focus this quarter and it will weigh what it knows: how much of your revenue is recurring, how much is sitting overdue, how the work is distributed across technicians, and which areas are producing. The answer comes back with specific priorities rather than a list of categories.
+
+It runs on a model of your choosing, including one running on your own hardware, which is the arrangement that keeps your operating numbers inside your building.
+
+- Grounded in real figures: The live metrics are given to the advisor, so the plan is about your business rather than about business in general.
+- Prioritised: A short ordered list of what to do next, not a survey of everything that could be done.
+- Aggregates only: The advisor receives summary figures, not customer records. Nothing identifying a customer is put in front of a model.
+- Ask it on a schedule: Run it weekly or monthly and have the result delivered, so the review happens without anyone remembering to do it.
+
+## The reports the platform produces
+
+Every one of these reads from the same records, so two reports never disagree with each other.
+
+- Operations: Jobs completed, on time percentage, average time on site, jobs per technician, distance travelled and route utilisation, by location and period.
+- Revenue: Collected, invoiced, outstanding and overdue, with the age of the debt, by location, service and period.
+- Recurring book: How many agreements are active, what they are worth monthly, what has been added and what has been cancelled, with cancellations reported rather than buried.
+- Sales attribution: Revenue by lead source, by campaign and by the person who booked it, with agent generated revenue shown separately so automation can be judged on its results.
+- Inventory and usage: Stock position per location, usage per technician, consumption per service, and variance against counts.
+- Customer communication: Calls answered and missed, response times, messages sent and received, reviews requested and received.
+
+## Why the honest number is usually the smaller one
+
+Dashboards that are assembled from several systems tend to overstate. A lead record gets counted as a customer. A scheduled job gets counted as work done. A recurring charge gets projected twelve times because it looked like a subscription.
+
+The figures here are deliberately conservative. A customer is a customer because the record says so. A job counts when it is completed and dated. Recurring revenue is what the agreements actually charge, divided by their actual frequency.
+
+That has a consequence worth stating plainly. The first time an owner sees this dashboard, the numbers often look worse than what they were used to. They are not worse. They are the first ones that were real, and every decision made from them is made on ground that holds.
+
+
+A number that looks good because of how it was counted is not a result. It is a delay.
+
+
+## Reporting by plan
+
+
+| Basic dashboard | yes | yes | yes | yes |
+| Per location splits | no | yes | yes | yes |
+| Recurring revenue reporting | no | yes | yes | yes |
+| Route and distance reporting | no | no | yes | yes |
+| Attribution and commission reports | no | Basic | yes | yes |
+| The advisor | no | no | yes | yes |
+| Scheduled delivery of reports | no | no | yes | yes |
+| Consolidated view across companies | no | no | no | yes |
+
+### Can I export the underlying data rather than just the report?
+
+Yes. Every report has the records behind it available as structured data through the interface and over the API, so a figure can be traced to the rows that produced it rather than taken on trust.
+
+### How is distance calculated for a technician's day?
+
+From the check in and check out positions recorded on completed jobs, which makes it a measurement of what happened rather than a route plan's estimate of what should have happened.
+
+### Can I see figures for one district only?
+
+Yes, on the plans that include location splits. A manager scoped to one district sees that district, and an owner sees every district side by side or combined.
+
+### Does the advisor need internet access?
+
+It needs a model, and that model can be hosted or local. Organisations that keep their operating numbers on their own hardware can run the advisor against a model on the same machine.
+
+### Can I schedule a report to be emailed?
+
+Yes on the plans that include scheduled delivery. A weekly digest can go to the owner, the office manager and anyone else who needs it, without anyone logging in to produce it.
+
+---
+
+# Free to start, and free to stay
+
+URL: https://alphaflux.net/pricing
+Section: Company
+
+The free plan is a real plan with no expiry and no card. It is built for one person running a business out of a truck, and it stops being enough at roughly the moment the business starts working.
+
+## The full comparison
+
+Every limit, so the decision can be made from the page rather than from a call.
+
+
+| Price per month | !Free | $49 | $149 | $399 | $5,000 |
+| Customers | 20 | 250 | 1,000 | 5,000 | Unlimited |
+| Locations | 1 | 2 | 5 | 15 | Unlimited |
+| Users | 1 | 3 | 10 | 25 | Unlimited |
+| Marketing emails | 100 | 2,000 | 10,000 | 50,000 | Unlimited |
+| Phone numbers | 1 | 2 | 5 | 25 | Unlimited |
+| Inventory | yes | yes | yes | yes | yes |
+| CRM and account timeline | yes | yes | yes | yes | yes |
+| Job booking | yes | yes | yes | yes | yes |
+| Invoicing and payments | yes | yes | yes | yes | yes |
+| Recurring agreements | no | yes | yes | yes | yes |
+| Capacity rules | no | yes | yes | yes | yes |
+| Duplicate detection and merge | no | yes | yes | yes | yes |
+| Email marketing from your domain | no | yes | yes | yes | yes |
+| AI receptionist | no | no | yes | yes | yes |
+| Dispatch board and routing | no | no | yes | yes | yes |
+| Proof of work | no | no | yes | yes | yes |
+| The advisor | no | no | yes | yes | yes |
+| API, CLI and agent access | no | no | yes | yes | yes |
+| Departments and custom roles | no | no | yes | yes | yes |
+| Live fleet map and geofences | no | no | no | yes | yes |
+| Customer tracking links | no | no | no | yes | yes |
+| Telematics | no | no | no | yes | yes |
+| Your own branding | no | no | no | no | !Yes |
+| Resale to your own customers | no | no | no | no | !Yes |
+
+## Every plan shows the same small badge until you white label
+
+That is a deliberate design decision rather than a limitation, and it is worth explaining because it is unusual.
+
+- Why the badge is there: A customer facing page carries a small line stating that the platform is provided by AlphaFlux. It is how a company we host can be discovered, and it is how a free plan costs nothing.
+- What it looks like: A single unobtrusive line in the footer of the pages your customers see. It is not on your internal dashboards and it never appears in your emails, your invoices or your branding.
+- How to remove it: White label removes it entirely, along with every other trace of AlphaFlux, and gives you the platform under your own name with resale rights.
+
+## Moving up never means migrating
+
+The most common reason a small business avoids software is the fear that starting cheap means starting over later.
+
+Every plan runs the same platform on the same records. Moving from one to the next lifts a limit and unlocks modules. Nothing is exported, nothing is re-imported, and nothing that was entered under a smaller plan is withheld until it is paid for.
+
+Limits are visible before they are reached, so an upgrade is a decision rather than an emergency. And if a limit is hit at an inconvenient moment, the platform stops the next record rather than locking the ones you already have.
+
+A company can also add a single module to any plan without changing plan at all, which is usually how it goes: one thing is currently costing money, so that one thing gets added.
+
+- Same records: No export, no import, no reconciliation. The account you built on Free is the account you have on Scale.
+- Limits announced early: Approaching a limit is visible on the dashboard so the decision is never made under pressure.
+- Single modules available: Add one module to any plan rather than changing the whole thing.
+- Change when you want: Move up, move down or add a module at any time, effective immediately, with no notice period.
+
+A free plan that expires was never a free plan. It was a countdown.
+
+
+## Programs that take money off
+
+These apply on top of any plan, including the paid ones, and they stack with nothing else.
+
+- Nonprofits and faith organizations: A registered nonprofit, church or faith based organization receives the Growth plan at no cost, verified once and kept for as long as the organization qualifies.
+- Military and veterans: Thirty percent off any paid plan, for active service members and veterans, verified once.
+- First responders: Thirty percent off any paid plan for firefighters, police officers, emergency medical staff and dispatchers.
+- Nurses and healthcare staff: Thirty percent off any paid plan for registered nurses and clinical staff.
+
+## Plans
+
+### Free
+
+Price: $0 forever
+
+- Customers: 20
+- Locations: 1
+- Users: 1
+- Marketing emails: 100 / month
+- Phone numbers: 1
+- CRM, contacts and the account timeline
+- Inventory, stock movements and sign in and out
+- Job booking and the mobile technician view
+- Invoicing, payments and overdue tracking
+- Voicemail with transcript and missed call text back
+- One time code sign in with no password
+- Free inventory and free email allowance
+
+### Starter
+
+Price: $49 per month
+
+- Customers: 250
+- Locations: 2
+- Users: 3
+- Marketing emails: 2,000 / month
+- Phone numbers: 2
+- Everything on Free
+- Recurring agreements that generate their own visits
+- Capacity rules so a day cannot be oversold
+- Invoice raised from the completed job
+- Duplicate detection and safe merging
+- Email marketing from your own domain
+- Commission and sales attribution
+
+### Growth
+
+Price: $149 per month
+
+- Customers: 1,000
+- Locations: 5
+- Users: 10
+- Marketing emails: 10,000 / month
+- Phone numbers: 5
+- Everything on Starter
+- The AI receptionist answering the phone
+- Dispatch board, day route sequencing and proof of work
+- Automated sequences and review requests
+- Territory planning with demographic data
+- The advisor, grounded in your live figures
+- API, CLI and agent access with scoped keys
+- Departments, custom roles and the audit trail
+
+### Scale
+
+Price: $399 per month
+
+- Customers: 5,000
+- Locations: 15
+- Users: 25
+- Marketing emails: 50,000 / month
+- Phone numbers: 25
+- Everything on Growth
+- The live fleet map with geofences and arrival estimates
+- Vehicles, trailers and maintenance schedules
+- Telematics connections
+- Customer tracking links
+- Consolidated reporting across every location
+- Asset service schedules and equipment history
+
+### Enterprise
+
+Price: Custom
+
+- Customers: Unlimited
+- Locations: Unlimited
+- Users: Unlimited
+- Storage: Agreed
+- Support: Named contact
+- Everything on Scale
+- Every module, with no limits
+- Single sign on against your own directory
+- Dedicated storage or dedicated hosting
+- A service level agreement
+- Custom modules built to your process
+- Onboarding and data migration assistance
+
+### White label
+
+Price: $5,000 per month
+
+- Everything: Unlimited
+- Your branding: Yes
+- Your customers: Unlimited
+- Resale rights: Yes
+- Support: Named contact
+- Every module, every limit lifted
+- Your brand, your logo, your colour system
+- Your own domain on the dashboards your customers see
+- Email sent under your sending identity, not ours
+- Your own bundles and pricing, defined by you
+- No AlphaFlux branding anywhere a customer looks
+- Onboarding for your team and your first customers
+
+### Is the free plan really free forever?
+
+Yes. There is no expiry, no card on file and no automatic conversion to a paid plan. It covers twenty customers, one location, one user, one phone number, a hundred marketing emails a month, and the inventory module. Companies move up when their own workload outgrows those limits, not because a timer ran out.
+
+### What counts as a location?
+
+A base you operate from: a town, an office, a depot or a service area. A company working out of one place is one location. A company with crews in three states needs three, because each one has its own schedule, staff and capacity.
+
+### Why is white label five thousand a month?
+
+Because it is not a plan, it is a platform. Whoever buys it gets every module with no limits, their own branding and domain, email under their own sending identity, their own bundles and pricing, and the right to resell it to their own customers. That is an operator's cost, and it is priced as one.
+
+### Do I have to pay for a year up front?
+
+No. Plans are monthly and can be changed at any time. Annual billing is available and carries a discount for companies that prefer it.
+
+### What happens if I stop paying?
+
+The plan reverts to the free tier rather than the account being closed. If your usage exceeds what the free plan covers, you keep read access to everything and can export it in full. Nothing is held hostage and nothing is deleted on a payment lapse.
+
+### Can I get a discount for a nonprofit?
+
+Yes, registered nonprofits and faith based organizations receive the Growth plan at no cost. Military, veterans, nurses, firefighters, police and emergency medical staff receive thirty percent off any paid plan. Both are verified once and are described in full on the community programs page.
+
+### Is there a setup fee or a contract?
+
+Neither on the standard plans. There is no implementation fee, no onboarding charge and no minimum term. White label and enterprise arrangements are agreed individually because they involve work beyond turning features on.
+
+---
+
+# Built for anyone whose work happens at somebody else's address
+
+URL: https://alphaflux.net/industries
+Section: Company
+
+If a truck, a van or a technician goes somewhere, does the work and needs to prove it happened, this platform fits. The same records serve a one van pest control route and a fleet of mobile units scattered across three states.
+
+## Where it fits, and what the fit looks like
+
+These are not industry templates with different colours. They are the same modules, arranged around the way each business actually runs.
+
+- Pest control: Recurring treatment agreements with a genuine frequency model, service areas and territory rules, chemical usage recorded against the property, technician stock on the truck, and an AI receptionist that can tell an emergency sting call from a routine quote request.
+  - Quarterly, monthly and seasonal agreements that generate their own visits
+  - Chemical sign in and sign out with per property application records
+  - Do not service lists, territory rules and re-service tracking
+  - State and federal reporting on applications, available on demand
+- Plumbing, HVAC and electrical: Emergency work arriving at unpredictable hours, capacity that is genuinely limited by the number of vans, and invoices that need parts, labour and a signature on them before the van leaves.
+  - After hours call handling that routes an emergency to a person immediately
+  - Capacity rules that stop a day being oversold by a dispatcher in a hurry
+  - Parts drawn from the technician's own stock as the job closes
+  - Proof of work captured before the technician drives away
+- Roofing, solar and exterior trades: Long jobs, permits and inspections, and the same customer coming back after a storm. Work that has to survive a weather delay without losing its history.
+  - Jobs that span days with their own history and status flow
+  - Photo evidence at each stage, attached to the job rather than texted to an office phone
+  - Storm and weather data on the map for planning and for documentation
+  - Maintenance and warranty tracking on installed equipment
+- Mobile and self contained units: Operations built around units that move: mobile workshops, solar powered field units, trailers, containers and remote stations deployed wherever the work is. The unit and its contents move together and both need a position and a custodian.
+  - A unit tracked as both an asset and a location, with its own stock position
+  - Custody of whatever is inside it and who is responsible for it
+  - Maintenance schedules and service history by unit
+  - A consolidated view across every unit, whichever site it is sitting on
+- Cleaning and janitorial: Recurring contracts, multi site accounts, crews rather than individual technicians, and a client who wants proof that the work happened at each site.
+  - Multi site accounts with checklists and photo proof per site
+  - Crew based scheduling rather than one technician per job
+  - Client facing completion reports generated from the work itself
+  - Consumable stock tracked across every site and every vehicle
+- Security patrol: Rounds that have to be provable, checkpoints that can be scanned, and a client who wants the log rather than a summary of it.
+  - Checkpoint scanning from a phone with a location and a time on each scan
+  - Rounds logs per site, per officer and per shift
+  - Incident reporting that attaches to the site and the shift
+  - Client access to the record without a report being assembled by hand
+- Landscaping and grounds: Route dense work where the drive between sites is the cost. Density and sequencing are the whole margin.
+  - Dense route sequencing across many short stops
+  - Seasonal agreements and service intervals
+  - Distance and utilisation reporting per crew and per day
+  - Equipment and consumable tracking across vehicles
+- Logistics, delivery and haulage: Orders rather than jobs, a board rather than a list, and customers who want to watch a vehicle approach.
+  - Order board with custom stages per order type
+  - Live map of orders, vehicles and drivers with arrival estimates
+  - Multi stop manifests for a single run
+  - Customer tracking links that show one order and nothing else
+- Construction and general contracting: Projects, change orders, subcontractors and a schedule that has to survive a supplier being late. The same customer, many jobs, and money that has to be tracked per job rather than per month.
+  - Job costing with line items, change orders and retention
+  - Subcontractor and supplier records with their own paperwork
+  - Progress photos and sign offs per stage
+  - Inventory across sites, yards and lock ups
+- Industrial, additive and aerospace: Some of the same problems at a different scale: assets with service lives and certifications, tooling and materials that must be traceable, and documentation that has to survive an audit years later.
+  - Asset registers with service intervals, calibration and warranty
+  - Material and component traceability through sign in and sign out
+  - Work orders and maintenance history on every machine
+  - An audit trail on every record change, readable and exportable
+- Nonprofits, faith organizations and community groups: Volunteers rather than employees, service users rather than customers, and a budget that has to be spent on the mission. The free organization plan is built for exactly this.
+  - A free plan available to any registered nonprofit or faith organization
+  - Volunteer scheduling and shift coverage
+  - Service logs, check ins and follow ups on the people served
+  - Grant and programme reporting from the records the work produced
+
+## Why one platform fits all of these
+
+The industries look different from the outside and are almost identical from the inside. Somebody needs something done at a place, by a person, on a date, for a price, and then needs to prove it and get paid.
+
+That is the same record in every case. A pest control visit, a plumbing call out, a delivery, a patrol round and a cleaning job are all a customer, a place, a person, a time, a price, an outcome and a proof. Once that is one object, the industry differences become configuration rather than different software.
+
+Which is why the same platform can run a two person operation on the free plan and a fleet of mobile units with several hundred sites. What changes is the number of locations, the modules switched on, and the stages the work passes through, all of which are settings.
+
+It also means a company that grows into a different line of work does not have to buy a second system. The second line of business is another module and another order type, sharing the same customers.
+
+- Order types: Define your own job or order types with their own stages, required fields and proof rules.
+- One customer, many services: A customer who buys recurring treatment and a one off repair is one account with two kinds of work.
+- Inventory that fits the trade: Consumables for cleaning, chemicals and regulated stock for pest control, parts and materials for trade work, tools and tooling everywhere.
+- Billing that matches the trade: Recurring agreements for contract work, job costing for projects, per stop pricing for route work, all in the same ledger.
+
+The industry is not the differentiator. Whether the truck was where it said it was is.
+
+
+## What every one of them gets
+
+- Free inventory, always: Stock and custody on every plan including the free one, because a one van operation needs to know what is in the van as much as a depot does.
+- A phone that answers: Missed call text back on every plan, and an AI receptionist that books real work once the business is big enough to need one.
+- Agents that can act: Scoped access so software can book, chase, report and update records without a password being shared.
+- A record that holds up: Every change attributed, every financial record preserved, every proof attached to the job it belongs to.
+
+### Do you have a template for my industry?
+
+There are starting configurations for the common trades that set sensible order types, stages and required fields, so a new account does not begin with a blank slate. Beyond that, the configuration is yours to change.
+
+### My business does not fit any of these.
+
+Then test it against the underlying shape: does somebody need something done at a place, by a person, on a date, for a price, and then need to prove it and get paid. If that describes the work, the platform fits, whatever the trade is called.
+
+### Can I run two different businesses on one account?
+
+Yes, as two companies under one operator, each with its own records and its own modules, or as one company with two order types. Which is better depends on whether the two businesses share customers and money.
+
+### Does it work outside the United States?
+
+Addressing, currency, time zone and phone handling are configurable per company, so it works in other English speaking markets and in any market where the carrier side is available.
+
+### Is there an industry the platform genuinely does not suit?
+
+Businesses where the work has no location and no scheduled appointment, such as pure software or retail over a counter. Those are better served by something else, and it is better to say so than to sell around it.
+
+---
+
+# Some of the people who need this most are not trying to make a lot of money
+
+URL: https://alphaflux.net/programs
+Section: Company
+
+A church running a food pantry, a volunteer fire department, a nurse picking up weekend work, a veteran starting a one van operation. The platform can afford to help, so it does.
+
+## The programs
+
+There are two of them. One gives the platform away, and one takes thirty percent off. Both are verified once and then left alone.
+
+- Registered nonprofits: Any registered charitable organization receives the Growth plan at no cost: unlimited customers, locations and users within the plan, every module except the enterprise tier, and no expiry.
+- Faith organizations: Churches, synagogues, temples, mosques and any other registered faith organization receive the same free plan on the same terms, because the program is about the work an organization does rather than about what it believes.
+- Military and veterans: Thirty percent off any paid plan, for active service members, reservists, national guard and veterans, including the family member running the business.
+- Firefighters: Thirty percent off any paid plan, career and volunteer, including wildland crews and the side businesses they run.
+- Police and emergency medical: Thirty percent off any paid plan for sworn officers, dispatchers, emergency medical technicians and paramedics.
+- Nurses and clinical staff: Thirty percent off any paid plan for registered nurses, licensed practical nurses and clinical staff, including the home care and mobile services many of them run.
+
+## Why the faith program is not limited to one faith
+
+It is worth stating the policy plainly rather than leaving it to be inferred, because a policy that excludes some houses of worship and not others is not one a business should have.
+
+The free plan is offered to registered faith organizations on identical terms regardless of which faith they practise. A church, a synagogue, a temple and a mosque running the same kind of community work get the same account, the same modules and the same support.
+
+There are two reasons, and the second one matters more than the first. The first is legal: a commercial service that gives away an account to one religion and refuses another is discriminating on the basis of religion, and that is not a defensible position for a business to hold in writing.
+
+The second is that the program exists because community organizations do work that is worth helping, and the food pantry, the shelter, the burial fund and the after school program are not the property of any one congregation. Helping the work means helping whoever is doing it.
+
+- Same terms, same support: Identical plan, identical limits and identical support for every registered faith organization.
+- No creed test: Verification is about the organization's registration and the work it does, not about its doctrine.
+- The intention is unchanged: The purpose is to put a capable system in the hands of organizations that spend their money on people rather than on software.
+
+## What each program actually includes
+
+Not a coupon code and not a discount on a first month. A real account with real capability.
+
+- The nonprofit and faith account: The Growth plan at no cost. That is unlimited customers and locations within the plan, ten users, ten thousand marketing emails a month, five phone numbers, the AI receptionist, the dispatch board, email marketing from their own domain, the advisor and the full reporting.
+  - No card, no expiry and no automatic conversion to a paid plan
+  - The same support as a paying customer on the same plan
+  - If the organization grows past the Growth limits, the next plan has the discount already applied
+- The thirty percent service discount: Thirty percent off any paid plan, applied to the monthly price, for as long as the person is eligible. It combines with nothing else and it does not expire while the eligibility holds.
+  - Applies to Starter, Growth, Scale and Enterprise
+  - Applies to the business the person owns or operates, not only to a personal account
+  - Can be applied after signing up, with the difference credited forward
+
+## How verification works
+
+- Apply: Request the program from inside the account after signing up on the free plan. No forms by email and no waiting on a sales call.
+- Prove it once: A registration number for an organization, or a document for an individual: a veteran's identification, a certification, a department identification or an employer letter.
+- It applies: The discount or the plan change is applied to the account, and nothing further is asked for. It is not re-verified every year unless the eligibility itself is time limited.
+
+A verification that is done once and then forgotten is the difference between a program and a form.
+
+
+## Why this is affordable to offer
+
+A free account costs the platform very little. The infrastructure is shared, the modules already exist, and an organization using the platform is likely to be one that tells other organizations about it. The economics work because the software is built and the marginal cost of one more company on it is close to nothing.
+
+It is also the right shape for a platform that was built by someone running a service business rather than by a venture funded team optimising for a metric. The point of the product is that a small operator can afford what a large one has. That argument is weaker if small operators are the only people who never get a break.
+
+So the programs are permanent rather than promotional, and they are stated with their limits on the page rather than negotiated in a call.
+
+
+### Is the free nonprofit account really free, permanently?
+
+Yes. No card, no expiry, no automatic conversion to a paid plan. If the organization later grows past the Growth plan's limits, the next plan up has the relevant discount applied rather than starting from full price.
+
+### Which faith organizations qualify?
+
+Any registered faith organization, of any faith, on identical terms. Verification looks at the organization's registration and the work it does rather than at its beliefs.
+
+### I am a veteran running a company. Does the discount apply to the business?
+
+Yes. The discount applies to the business the person owns or operates, not only to a personal account. It is thirty percent off any paid plan.
+
+### Can I combine a discount with anything else?
+
+Discounts do not stack with each other, and the free organization plan is not discounted further because it already costs nothing. One program per account.
+
+### How long does verification take?
+
+Usually the same day. The check is against a registration number or a document, not against a decision by a committee.
+
+### What documents do you accept for the service discount?
+
+A veteran's identification or a discharge document, a department or station identification, a professional certification or licence number, or an employer letter. Anything that establishes the eligibility is acceptable, and the review is done by a person rather than an automated check.
+
+---
+
+# Every capability is an interface first, and a screen second
+
+URL: https://alphaflux.net/developers
+Section: Company
+
+There is nothing you can do in the console that you cannot do over the API. That is a design rule rather than an aspiration, and it is what allows an agent to run real work here instead of describing it.
+
+## The four ways in
+
+Pick the one that fits, or use all of them. They reach the same records under the same permissions.
+
+- The REST API: Every module exposes its operations over HTTP with JSON in and JSON out. A machine readable specification is published, so a client can be generated rather than hand written, and an agent can discover the available operations without being told about them.
+  - Bearer authentication with scoped keys
+  - A published specification describing every operation and its rules
+  - Consistent conventions for filtering, pagination and errors
+  - Credentials are never returned, including in responses that would otherwise echo them
+- The command line: One binary that talks to the same API and prints JSON, which means it pipes into another tool or straight into a script. It includes generic call and post commands, so a new endpoint is usable before a typed wrapper exists.
+  - Around forty commands covering the whole platform
+  - Every command outputs JSON
+  - A generic call and post for anything not yet wrapped
+  - Configured with two environment variables
+- The agent protocol server: A server that presents the platform to an agent client as a set of callable tools over a standard protocol. It runs as a local process the client launches, holds no state of its own, and authenticates with the same scoped key.
+  - Point any compatible agent client at it with two settings
+  - Each tool maps to an API operation with typed arguments and a description
+  - Permissions come from the key, so the tool list is the permission list
+- Webhooks and callbacks: The platform receives events from carriers and providers, verifies them, and acts on them. Outbound notification for your own integrations follows the same model, so an external system can be told when work changes rather than polling for it.
+
+## A request, and what comes back
+
+Authenticate with a scoped key and ask for identity. Everything else follows the same shape.
+
+curl -H "Authorization: Bearer $ALPHAFLUX_API_KEY" \
+  https://alphaflux.net/api/me
+
+{
+  "email": "you@example.com",
+  "roles": ["owner"],
+  "tenants": [
+    {
+      "name": "Northside Services",
+      "role": "owner",
+      "plan": "growth",
+      "modules": ["phone", "field", "crm", "inventory", "billing", "email"]
+    }
+  ]
+}
+
+
+## The same thing from the command line
+
+JSON out, so it composes. The last two commands reach any endpoint, including ones that do not have a typed command yet.
+
+export ALPHAFLUX_API_KEY=afx_...
+export ALPHAFLUX_BASE=https://alphaflux.net
+
+alphaflux me
+alphaflux field jobs add --customer "Acme LLC" --service "Treatment" --date 2026-10-02
+alphaflux field status --id fs_job:abc123 --status done
+alphaflux phone text --to +15095551234 --body "On the way"
+alphaflux billing run
+alphaflux key create --label dispatch-agent --scopes "field:write,phone:read"
+
+alphaflux call api/dashboard
+alphaflux post api/notes --json '{"account":"fieldroutes:10000","body":"Called back, no answer"}'
+
+
+## How keys and scopes work
+
+An integration is a credential with a job to do. Nothing about the design assumes a human holds it.
+
+- Scoped read and write: Access is granted per module, so an integration that books work does not need the billing module and does not get it.
+- Hashed and shown once: A key is displayed at the moment it is created and stored only as a hash. Losing one means issuing a new one, not recovering the old one.
+- Inherits its owner: A key carries exactly the permissions and companies of the account that created it, and cannot reach past them.
+- Revocable immediately: Disable a key and every request using it stops. Nothing else on the account is disturbed.
+- Optional expiry: A key can be issued with an expiry date for temporary or contractor access.
+- Every use is recorded: Actions are written to the audit trail against the account that owns the key, so a key is never anonymous.
+
+## Why the platform was built this way
+
+Most business software treats its API as a concession. It exists, it lags the interface, and some things are simply not exposed. That is no longer a defensible position now that a meaningful share of work is done by software talking to software.
+
+The rule here is the opposite. A capability is designed as an interface first and then wrapped in a screen. The screen is a client. The command line is a client. An agent is a client. If something is missing from one of them, it is a bug rather than a decision.
+
+It also future proofs the work. When an operation is available over a documented interface with a machine readable specification, the next tool that needs it does not require anyone's permission or a new integration project. It reads the specification and does the work.
+
+And it means the audit trail is complete. An agent, a script, a scheduled job and a person all arrive through the same door, so every change is attributable to something identifiable rather than to root.
+
+
+## What each plan includes
+
+
+| Console access | yes | yes | yes | yes |
+| REST API | no | yes | yes | yes |
+| Published API specification | no | yes | yes | yes |
+| Command line | no | yes | yes | yes |
+| Agent protocol server | no | yes | yes | yes |
+| Scoped API keys | no | yes | yes | yes |
+| Webhooks | no | no | yes | yes |
+| Your own API surface for your customers | no | no | no | yes |
+
+### Is there a sandbox?
+
+Yes. A test company can be created alongside the real one with its own records and its own keys, so an integration can be built and broken without touching live data.
+
+### Are there rate limits?
+
+Requests are rate limited per key to protect the platform, and the limit is generous enough that a normal integration never meets it. The response headers tell you where you are against the limit rather than leaving you to discover it by being refused.
+
+### What happens if an integration breaks something?
+
+Everything it did is attributed to its key and visible in the audit trail, and the key can be disabled immediately. Financial records are voided rather than deleted and merges are reversible, so a bad batch can be walked back.
+
+### Can I use an agent client that is not yours?
+
+Yes. The agent server speaks a standard protocol, so any compatible client can use it. There is nothing proprietary about the connection, and the key is the only thing that decides what the agent can reach.
+
+### Can I build my own product on top of this?
+
+That is what white label is for. It gives you the platform under your own brand with resale rights, and the same interfaces to build against.
+
+---
+
+# Every page on this site
+
+URL: https://alphaflux.net/sitemap
+Section: Company
+
+Grouped the same way the navigation rail groups them, so the map and the interface agree.
+
+## The whole site
+
+If you are looking for something specific, it is on this page.
+
+
+## For machines
+
+This site is built to be read by software as well as by people. These are the files published for that purpose.
+
+- sitemap.xml (https://alphaflux.net/sitemap.xml): The standard sitemap, listing every page with its last modified date and a priority. Linked from robots.txt.
+- robots.txt (https://alphaflux.net/robots.txt): Crawl rules. Everything on this site is public product documentation, and answer engines and AI crawlers are explicitly welcome across all of it rather than tolerated.
+- llms.txt (https://alphaflux.net/llms.txt): A short index written for language models: what the platform is, what each module does, the pricing structure and how the discount programs work.
+- llms-full.txt (https://alphaflux.net/llms-full.txt): The full text of every page in one file, so an answer engine can read the whole site without fetching each page separately.
+- Structured data (application/ld+json on every page): Every page publishes structured data describing the organisation, the breadcrumb trail, and where relevant the product, the plans and the questions answered on the page. The markup and the visible content match, because structured data describing something the page does not say is a lie told to a machine.
+- The API specification (https://alphaflux.net/api/openapi.json): A machine readable description of the platform's own interface, for developers and for agents. Issued with an API key.
+
+### Why publish a file just for language models?
+
+Because a growing share of people find software by asking a question rather than by searching. A file that states plainly what the platform does, what it costs and what the limits are gives an answer engine something accurate to read. Publishing it is a way of being described correctly rather than being guessed at.
+
+### Can I crawl this site?
+
+Yes. Everything here is public product documentation, the crawl rules permit the whole site, and no part of it requires JavaScript to read. Structured data is published on every page describing the same content a person sees.
+

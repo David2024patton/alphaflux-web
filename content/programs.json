@@ -1,0 +1,114 @@
+{
+  "slug": "programs",
+  "nav": "Community programs",
+  "group": "Company",
+  "crumb": "Community programs",
+  "title": "Community programs, nonprofit accounts and service discounts",
+  "desc": "Free accounts for registered nonprofits and faith organizations. Thirty percent off for military, veterans, nurses, firefighters, police and emergency medical staff.",
+  "h1": "Some of the people who need this most are not trying to make a lot of money",
+  "standfirst": "A church running a food pantry, a volunteer fire department, a nurse picking up weekend work, a veteran starting a one van operation. The platform can afford to help, so it does.",
+  "chips": ["Free for nonprofits and faith groups", "30% off for service members and first responders", "Verified once"],
+  "sections": [
+    {
+      "kind": "features",
+      "title": "The programs",
+      "lede": "There are two of them. One gives the platform away, and one takes thirty percent off. Both are verified once and then left alone.",
+      "items": [
+        { "icon": "i-heart", "title": "Registered nonprofits", "text": "Any registered charitable organization receives the Growth plan at no cost: unlimited customers, locations and users within the plan, every module except the enterprise tier, and no expiry." },
+        { "icon": "i-users", "title": "Faith organizations", "text": "Churches, synagogues, temples, mosques and any other registered faith organization receive the same free plan on the same terms, because the program is about the work an organization does rather than about what it believes." },
+        { "icon": "i-shield", "title": "Military and veterans", "text": "Thirty percent off any paid plan, for active service members, reservists, national guard and veterans, including the family member running the business." },
+        { "icon": "i-bolt", "title": "Firefighters", "text": "Thirty percent off any paid plan, career and volunteer, including wildland crews and the side businesses they run." },
+        { "icon": "i-lock", "title": "Police and emergency medical", "text": "Thirty percent off any paid plan for sworn officers, dispatchers, emergency medical technicians and paramedics." },
+        { "icon": "i-check", "title": "Nurses and clinical staff", "text": "Thirty percent off any paid plan for registered nurses, licensed practical nurses and clinical staff, including the home care and mobile services many of them run." }
+      ]
+    },
+    {
+      "kind": "split",
+      "title": "Why the faith program is not limited to one faith",
+      "lede": "It is worth stating the policy plainly rather than leaving it to be inferred, because a policy that excludes some houses of worship and not others is not one a business should have.",
+      "body": [
+        "The free plan is offered to registered faith organizations on identical terms regardless of which faith they practise. A church, a synagogue, a temple and a mosque running the same kind of community work get the same account, the same modules and the same support.",
+        "There are two reasons, and the second one matters more than the first. The first is legal: a commercial service that gives away an account to one religion and refuses another is discriminating on the basis of religion, and that is not a defensible position for a business to hold in writing.",
+        "The second is that the program exists because community organizations do work that is worth helping, and the food pantry, the shelter, the burial fund and the after school program are not the property of any one congregation. Helping the work means helping whoever is doing it."
+      ],
+      "items": [
+        { "icon": "i-check", "title": "Same terms, same support", "text": "Identical plan, identical limits and identical support for every registered faith organization." },
+        { "icon": "i-shield", "title": "No creed test", "text": "Verification is about the organization's registration and the work it does, not about its doctrine." },
+        { "icon": "i-heart", "title": "The intention is unchanged", "text": "The purpose is to put a capable system in the hands of organizations that spend their money on people rather than on software." }
+      ]
+    },
+    {
+      "kind": "list",
+      "title": "What each program actually includes",
+      "lede": "Not a coupon code and not a discount on a first month. A real account with real capability.",
+      "items": [
+        {
+          "title": "The nonprofit and faith account",
+          "text": "The Growth plan at no cost. That is unlimited customers and locations within the plan, ten users, ten thousand marketing emails a month, five phone numbers, the AI receptionist, the dispatch board, email marketing from their own domain, the advisor and the full reporting.",
+          "items": [
+            "No card, no expiry and no automatic conversion to a paid plan",
+            "The same support as a paying customer on the same plan",
+            "If the organization grows past the Growth limits, the next plan has the discount already applied"
+          ]
+        },
+        {
+          "title": "The thirty percent service discount",
+          "text": "Thirty percent off any paid plan, applied to the monthly price, for as long as the person is eligible. It combines with nothing else and it does not expire while the eligibility holds.",
+          "items": [
+            "Applies to Starter, Growth, Scale and Enterprise",
+            "Applies to the business the person owns or operates, not only to a personal account",
+            "Can be applied after signing up, with the difference credited forward"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "steps",
+      "title": "How verification works",
+      "items": [
+        { "title": "Apply", "text": "Request the program from inside the account after signing up on the free plan. No forms by email and no waiting on a sales call." },
+        { "title": "Prove it once", "text": "A registration number for an organization, or a document for an individual: a veteran's identification, a certification, a department identification or an employer letter." },
+        { "title": "It applies", "text": "The discount or the plan change is applied to the account, and nothing further is asked for. It is not re-verified every year unless the eligibility itself is time limited." }
+      ]
+    },
+    {
+      "kind": "statement",
+      "text": "A verification that is done once and then forgotten is the difference between a program and a form."
+    },
+    {
+      "kind": "prose",
+      "title": "Why this is affordable to offer",
+      "body": [
+        "A free account costs the platform very little. The infrastructure is shared, the modules already exist, and an organization using the platform is likely to be one that tells other organizations about it. The economics work because the software is built and the marginal cost of one more company on it is close to nothing.",
+        "It is also the right shape for a platform that was built by someone running a service business rather than by a venture funded team optimising for a metric. The point of the product is that a small operator can afford what a large one has. That argument is weaker if small operators are the only people who never get a break.",
+        "So the programs are permanent rather than promotional, and they are stated with their limits on the page rather than negotiated in a call."
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the free nonprofit account really free, permanently?",
+      "a": "Yes. No card, no expiry, no automatic conversion to a paid plan. If the organization later grows past the Growth plan's limits, the next plan up has the relevant discount applied rather than starting from full price."
+    },
+    {
+      "q": "Which faith organizations qualify?",
+      "a": "Any registered faith organization, of any faith, on identical terms. Verification looks at the organization's registration and the work it does rather than at its beliefs."
+    },
+    {
+      "q": "I am a veteran running a company. Does the discount apply to the business?",
+      "a": "Yes. The discount applies to the business the person owns or operates, not only to a personal account. It is thirty percent off any paid plan."
+    },
+    {
+      "q": "Can I combine a discount with anything else?",
+      "a": "Discounts do not stack with each other, and the free organization plan is not discounted further because it already costs nothing. One program per account."
+    },
+    {
+      "q": "How long does verification take?",
+      "a": "Usually the same day. The check is against a registration number or a document, not against a decision by a committee."
+    },
+    {
+      "q": "What documents do you accept for the service discount?",
+      "a": "A veteran's identification or a discharge document, a department or station identification, a professional certification or licence number, or an employer letter. Anything that establishes the eligibility is acceptable, and the review is done by a person rather than an automated check."
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "slug": "team",
+  "nav": "Team and collaboration",
+  "group": "Modules",
+  "crumb": "Team and collaboration",
+  "title": "Team chat, account history and permissions",
+  "desc": "Team chat, one timeline per account, mentions that notify, roles and departments that keep districts separate, and an audit trail on every change.",
+  "h1": "The conversation and the record, in the same place",
+  "standfirst": "A company does not need another chat app. It needs the conversation about a customer to sit on the customer, where the next person to open the account will actually find it.",
+  "chips": ["Channels and direct messages", "Mentions that notify", "Departments that isolate"],
+  "sections": [
+    {
+      "kind": "features",
+      "title": "Working together without a second tool",
+      "lede": "The work is in the field and the decisions are in the office. Both should leave a trail on the account.",
+      "items": [
+        { "icon": "i-chat", "title": "Channels and direct messages", "text": "Public channels, private channels, one to one messages and group conversations, with reactions, edits and search." },
+        { "icon": "i-note", "title": "A note on the account", "text": "Anything worth remembering goes on the customer, not in a private message, so the next person sees it." },
+        { "icon": "i-bell", "title": "Mentions that notify", "text": "Mention a colleague on a note or a message and they are told. Mention an account and it becomes a link." },
+        { "icon": "i-clock", "title": "Unread that is honest", "text": "Unread counts per channel and per conversation, so nothing is missed without a notification firing for every message." },
+        { "icon": "i-search", "title": "Search across everything", "text": "Find a message, a note, a job or a document by what was said in it, not only by where it lives." },
+        { "icon": "i-users", "title": "Shifts and availability", "text": "Who is on today, who is off, and who has the right skills, so the schedule is built from reality." }
+      ]
+    },
+    {
+      "kind": "list",
+      "title": "Roles, departments and what each person can reach",
+      "lede": "Permissions are explicit per capability rather than implied by a job title, and a role can be scoped to a part of the company.",
+      "items": [
+        {
+          "title": "Account classes",
+          "text": "A platform owner manages the installation, the module catalogue and the companies on it. A user belongs to one company, has a role, and optionally a department."
+        },
+        {
+          "title": "Roles",
+          "text": "Owner, administrator, office manager, dispatcher, technician, billing, marketing, support and read only auditor. Roles are composable, and a person can hold more than one."
+        },
+        {
+          "title": "Departments",
+          "text": "A department is a slice of a company: a district, an office, a line of service. A role scoped to a department means a dispatcher in one office cannot see or change another office's work, and the restriction is applied in the query rather than hidden on screen."
+        },
+        {
+          "title": "Explicit permissions",
+          "text": "View jobs, edit a schedule, collect a payment, export data, manage billing, manage users. Each is a named permission attached to a role and a scope, so access is a decision rather than a side effect."
+        },
+        {
+          "title": "Restriction states designed in",
+          "text": "A restricted action is refused by the server with the reason named, and the interface shows the disabled state with an explanation rather than failing silently."
+        }
+      ]
+    },
+    {
+      "kind": "split",
+      "title": "An audit trail, not a log file",
+      "lede": "Every change records who acted, under what role, for which company, doing what, and when.",
+      "body": [
+        "The owner sees every entry across the installation. A company user sees their own company's entries. Nothing about that is optional, and nothing bypasses it, including actions taken by an agent or by a scheduled job.",
+        "That is what makes a bad afternoon recoverable. When a schedule was changed and the customer is annoyed, the answer is not a guess. It is a filtered list with a name on it.",
+        "It is also what makes automation safe to adopt. An owner can see exactly what an agent has been doing, in the same view as what their staff have been doing, and can turn it off with evidence rather than on a hunch."
+      ],
+      "items": [
+        { "icon": "i-note", "title": "Attributed actions", "text": "Person, agent or import, recorded on the action itself rather than inferred." },
+        { "icon": "i-shield", "title": "Overrides flagged", "text": "A capacity override, a forced booking or a manual adjustment is recorded with the person who made it." },
+        { "icon": "i-search", "title": "Filterable", "text": "Filter by person, role, company, action or date range, and read it as a list rather than scrolling a raw file." },
+        { "icon": "i-plug", "title": "Readable by an agent", "text": "The audit log is an endpoint, so an agent can summarise it, spot a pattern, or alert on an unusual change." }
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Why the chat polls instead of streaming",
+      "body": [
+        "Team chat in AlphaFlux updates by asking the server for anything new rather than by holding a constant connection open. That is a deliberate choice, and it is worth explaining because it affects what the product feels like.",
+        "A persistent connection per user is a thing to run, secure and monitor, and on a platform where the AI and the database are already competing for a finite machine, that cost buys less than it appears to. Polling with a proper cursor is simple, survives a dropped connection without a state machine, and works behind the corporate networks and field connections that a real service business operates on.",
+        "The honest trade is that typing indicators and presence, the little signals that make a chat product feel alive, are not part of it. That is the correct trade for a system whose job is to hold the record straight rather than to be the place people hang out."
+      ]
+    },
+    {
+      "kind": "statement",
+      "text": "If a decision about a customer lives in a private message, it did not get made."
+    },
+    {
+      "kind": "table",
+      "title": "Team and collaboration by plan",
+      "cols": ["", "Free", "Starter", "Growth", "Scale and above"],
+      "rows": [
+        ["Users", "1", "3", "10", "25 and above"],
+        ["Account timeline and notes", "yes", "yes", "yes", "yes"],
+        ["Mentions and notifications", "yes", "yes", "yes", "yes"],
+        ["Team chat", "no", "yes", "yes", "yes"],
+        ["Departments", "no", "no", "yes", "yes"],
+        ["Custom roles", "no", "no", "yes", "yes"],
+        ["Audit log access", "Basic", "yes", "yes", "yes"],
+        ["Single sign on", "no", "no", "no", "Enterprise"]
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do I still need a separate chat app?",
+      "a": "For conversations about customers, probably not. AlphaFlux chat keeps the discussion on the account where it belongs. Companies that also want a general purpose chat tool for lunch plans are welcome to keep one, but the customer conversation is better on the customer."
+    },
+    {
+      "q": "Can I stop one office seeing another office's customers?",
+      "a": "Yes. A role scoped to a department restricts access at the query level, so a dispatcher in one district cannot see, search or change another district's records. It is enforced on the server rather than hidden in the interface."
+    },
+    {
+      "q": "Can a technician see pricing?",
+      "a": "That is a permission, not a fixed rule. A company can give technicians the job detail without the money, or the money without the customer's payment history, according to how it wants to run."
+    },
+    {
+      "q": "What happens to a chat message if someone leaves?",
+      "a": "It stays on the record. Messages are attributed to the person, and deactivating an account removes access without deleting the history, because a conversation about a customer is part of that customer's file."
+    },
+    {
+      "q": "Does the audit log slow the platform down?",
+      "a": "No. Entries are written alongside the change they describe rather than in a separate pass, and the log is designed to be read in filtered slices rather than scanned in full."
+    }
+  ]
+}

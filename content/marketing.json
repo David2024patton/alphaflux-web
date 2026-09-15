@@ -1,0 +1,110 @@
+{
+  "slug": "marketing",
+  "nav": "Marketing and growth",
+  "group": "Modules",
+  "crumb": "Marketing and growth",
+  "title": "Territory planning, social and review marketing",
+  "desc": "Plan where to grow on a map with real demographic data, schedule social posts, collect reviews at the right moment, and see which channel produced the revenue.",
+  "h1": "Decide where to grow, then prove it worked",
+  "standfirst": "Most marketing tools stop at the message. This one starts a step earlier, with the map and the numbers that tell you which area is worth the drive, and finishes with the revenue the campaign actually produced.",
+  "chips": ["Map based planning", "Reviews at the right moment", "Attribution to revenue"],
+  "sections": [
+    {
+      "kind": "features",
+      "title": "The growth work, in one place",
+      "lede": "Finding customers, keeping them, and knowing which channel paid for itself.",
+      "items": [
+        { "icon": "i-map", "title": "Territory planning", "text": "Draw the areas you want to work in, save each one with its own notes and pursuit status, and see at a glance which are prospects and which are earning." },
+        { "icon": "i-globe", "title": "Demographics on the map", "text": "Population, income, age, housing and education for any area you draw, so a decision about coverage is made on data rather than on a drive past." },
+        { "icon": "i-megaphone", "title": "Social scheduling", "text": "Connect your accounts, write a post once, schedule it, and keep a calendar of what is going out and when." },
+        { "icon": "i-bell", "title": "Reviews at the right moment", "text": "Ask for a review minutes after a completed visit rather than days later, when the customer can still remember the technician's name." },
+        { "icon": "i-chart", "title": "Attribution to revenue", "text": "Which campaign, channel or referral produced the jobs, and what those jobs were worth, out of the same records as the invoices." },
+        { "icon": "i-sitemap", "title": "Your public presence", "text": "Landing pages and a booking entry point that feed directly into the schedule, with availability answered from real capacity." }
+      ]
+    },
+    {
+      "kind": "split",
+      "title": "Most marketing decisions should be made on a map",
+      "lede": "Where a service business grows is a geographic question, and it is usually answered by intuition and a long drive.",
+      "body": [
+        "Draw an area on the map and the platform returns the demographic picture for it: how many households, what they earn, how old they are, whether they own or rent. Compare two candidate areas side by side and the decision stops being a feeling.",
+        "Layer that against where the work already is and the answer gets sharper still. An area adjacent to your densest cluster is cheaper to serve than one across the county, and the platform shows both the opportunity and the drive.",
+        "Each saved area carries a pursuit status and its own notes, so a plan that spans a year does not live in one person's head. It lives on a map that anyone with permission can open."
+      ],
+      "items": [
+        { "icon": "i-pin", "title": "Areas and zones", "text": "Saved service areas, target areas and zones, drawn directly on the map and reused for routing, capacity and pricing." },
+        { "icon": "i-globe", "title": "Real demographic data", "text": "Census and mapping data served through the platform, so no third party script follows your customers around the internet." },
+        { "icon": "i-chart", "title": "Density and drive time", "text": "See where jobs cluster and what adding an area would cost in travel, because revenue per mile is the number that decides whether growth is real." },
+        { "icon": "i-clock", "title": "A plan with dates", "text": "Each area carries where it is in the pursuit, so a quarterly review is a look at the map rather than a reconstruction." }
+      ]
+    },
+    {
+      "kind": "list",
+      "title": "Everything the module reports on",
+      "lede": "Attribution only means something if it reaches the money. These are the links the platform already has.",
+      "items": [
+        {
+          "title": "Lead source and campaign",
+          "text": "Every account records where it came from and which campaign touched it, as two separate facts rather than as one field that has to serve both purposes."
+        },
+        {
+          "title": "Booked by",
+          "text": "Whether a person, an agent or an import created the work, so the value of automation is measurable rather than asserted."
+        },
+        {
+          "title": "Revenue by source",
+          "text": "Revenue counted from the invoices on accounts a channel produced, over a date range you choose."
+        },
+        {
+          "title": "Referrals",
+          "text": "Referred accounts record who referred them, so a customer who sends business is visible and can be thanked."
+        },
+        {
+          "title": "Cost per acquisition",
+          "text": "Enter what a channel costs and the platform reports what it returned, which is the only comparison that settles an argument about marketing spend."
+        }
+      ]
+    },
+    {
+      "kind": "statement",
+      "text": "Marketing that cannot be traced to an invoice is a hobby with a budget."
+    },
+    {
+      "kind": "table",
+      "title": "Marketing by plan",
+      "cols": ["", "Free", "Starter", "Growth", "Scale and above"],
+      "rows": [
+        ["Contacts you can market to", "20", "250", "1,000", "5,000 and above"],
+        ["Review requests", "no", "yes", "yes", "yes"],
+        ["Social scheduling", "no", "Basic", "yes", "yes"],
+        ["Territory planning map", "no", "no", "yes", "yes"],
+        ["Demographic data", "no", "no", "yes", "yes"],
+        ["Attribution reporting", "no", "Basic", "yes", "yes"],
+        ["Landing pages and online booking", "no", "no", "yes", "yes"],
+        ["Multi location campaigns", "no", "no", "no", "yes"]
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do I need a separate email tool as well?",
+      "a": "No. Email marketing is a module in the same platform, so a campaign audience can be a segment of your real customer records and a reply lands on the account timeline. Running both is what most companies are trying to stop doing."
+    },
+    {
+      "q": "Where does the demographic data come from?",
+      "a": "Public census and mapping data, served through the platform rather than loaded from a third party in your browser. That keeps the customer experience clean and means nothing about your customers is shared with an advertising network."
+    },
+    {
+      "q": "Can reviews be requested automatically?",
+      "a": "Yes. A completed job is the trigger, and the request goes out within minutes rather than days. That timing is the single biggest factor in whether a customer actually leaves a review."
+    },
+    {
+      "q": "Does this replace my website?",
+      "a": "It gives you landing pages and an online booking entry point that are wired to real availability, which is what most service company websites fail at. A company that wants to keep its existing site can keep it and use these for campaigns."
+    },
+    {
+      "q": "How many social accounts can I connect?",
+      "a": "The larger plans connect multiple accounts across platforms, each with its own calendar, and support scheduling ahead. Publishing and scheduling are managed from the same place as everything else."
+    }
+  ]
+}

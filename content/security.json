@@ -1,0 +1,117 @@
+{
+  "slug": "security",
+  "nav": "Security",
+  "group": "Platform",
+  "crumb": "Security",
+  "title": "Security, access and data ownership",
+  "desc": "How AlphaFlux handles authentication, credentials, company isolation, audit and AI safety, and where your data physically sits.",
+  "h1": "Access you can explain to someone who asks",
+  "standfirst": "Security questions are usually answered with adjectives. Here are the actual mechanisms, including the ones that are inconvenient.",
+  "chips": ["No stored passwords", "Credentials never returned", "Full audit trail"],
+  "sections": [
+    {
+      "kind": "list",
+      "title": "How signing in works",
+      "lede": "The largest single cause of account compromise is a password reused somewhere else. The most reliable fix is not to have one.",
+      "items": [
+        {
+          "title": "Email or text one time codes",
+          "text": "A person signs in by receiving a short lived code. There is no password to reuse, to forget, to share or to find in a breach dump, because there is no password."
+        },
+        {
+          "title": "Codes that expire and limit attempts",
+          "text": "A code is valid for a short window, is stored only as a hash, allows a small number of attempts, and cannot be requested again immediately. Guessing is not a realistic path."
+        },
+        {
+          "title": "Sign in that does not reveal who has an account",
+          "text": "An unrecognised address receives the same response as a recognised one, so the sign in page cannot be used to enumerate your customers or your staff."
+        },
+        {
+          "title": "Server side sessions that rotate",
+          "text": "A session is a server side record rather than a token the browser holds data in. It rotates on sign in, is destroyed on sign out, and can be invalidated centrally."
+        },
+        {
+          "title": "Rate limiting on the way in",
+          "text": "Repeated failed attempts from one source are slowed and then refused, which is what turns a brute force attempt into a nuisance rather than an incident."
+        }
+      ]
+    },
+    {
+      "kind": "split",
+      "title": "Credentials are treated as radioactive",
+      "lede": "The dangerous data in a platform like this is not the customer list. It is the keys that can move money and send messages.",
+      "body": [
+        "Carrier credentials and provider tokens are write only after they are stored. They are never returned by the interface, and they are stripped out of the responses that echo them back, because several providers hand your own credential straight back to you in a response body and a naive proxy would pass that on.",
+        "Keys that agents use are stored only as a hash and are displayed exactly once, at the moment they are created. If a key is lost, it is replaced, not recovered, because a system that can show you a key again is a system an attacker can ask the same question of.",
+        "The same rule applies on the way out. When the platform calls a provider, credentials travel in headers the provider expects and are never placed in a URL where they would end up in a log.",
+        "Every action taken with a key is recorded against the account that owns it, so a compromised key has a name, a scope and a timestamp rather than an unknown blast radius."
+      ],
+      "items": [
+        { "icon": "i-lock", "title": "Write only secrets", "text": "Stored and usable, never readable back to a person or an API caller." },
+        { "icon": "i-shield", "title": "Scrubbed responses", "text": "Upstream replies that contain your own credentials have them removed before the reply reaches you." },
+        { "icon": "i-terminal", "title": "Hashed API keys", "text": "Shown once at creation and stored as a hash. Revoking is immediate and auditable." },
+        { "icon": "i-note", "title": "Every key has a name", "text": "An action is attributable to the credential and to the account that issued it." }
+      ]
+    },
+    {
+      "kind": "features",
+      "title": "Company isolation",
+      "lede": "Multi-tenant software earns trust by being specific about what separates one company from another, and by not relying on the interface to enforce it.",
+      "items": [
+        { "icon": "i-layers", "title": "Scope on every record", "text": "Every record carries the company it belongs to, and every request is resolved to a company before it reaches the data. There is no code path that returns a record outside your scope." },
+        { "icon": "i-lock", "title": "Enforced on the server", "text": "Isolation is a property of the query rather than of the screen. Hiding a button is not a security control and this platform does not use it as one." },
+        { "icon": "i-database", "title": "Separable storage", "text": "A dedicated store per company is a configuration rather than a rewrite, because every data access goes through one internal interface. Organisations that require physical separation can have it." },
+        { "icon": "i-users", "title": "Departments within a company", "text": "A role scoped to a district cannot reach another district, which matters when the same company runs locations that should not see each other's customers." },
+        { "icon": "i-shield", "title": "Transport security", "text": "All traffic is encrypted in transit with automatically renewed certificates, and the application follows a restrictive security header policy including a content security policy that prevents third party scripts from running in your session." },
+        { "icon": "i-check", "title": "Protected inbound callbacks", "text": "Requests the platform receives from carriers and providers are verified before they are acted on, so a forged callback cannot create a job or move money." }
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Where your data physically sits, and who can see it",
+      "body": [
+        "AlphaFlux runs on infrastructure the operator controls rather than on a shared public cloud, which changes the answer to a question more customers are asking: who else has this.",
+        "The short version is that your records are yours. They are not sold, not shared with advertisers, and not used to train anything. No third party script runs inside your session, because the interface serves everything it needs from the platform itself rather than loading it from an advertising or analytics network.",
+        "Backups are encrypted before they leave the machine that holds them. Where geographic separation is used for resilience, what travels is an encrypted artifact rather than a readable export.",
+        "Export is available at any time, in structured formats, without asking permission. A platform that makes leaving difficult is telling you what it thinks of you."
+      ]
+    },
+    {
+      "kind": "statement",
+      "text": "The right question is not whether the vendor says secure. It is who can see your customers, and what stops them."
+    },
+    {
+      "kind": "features",
+      "title": "Rules for the AI features specifically",
+      "lede": "Agent access is the newest risk surface in business software, and it deserves specific answers rather than being folded into general security language.",
+      "items": [
+        { "icon": "i-lock", "title": "No path to the database", "text": "Agents act through the same validated operations your software uses. There is no route from a model to an arbitrary query." },
+        { "icon": "i-eye", "title": "Nothing sensitive in a prompt", "text": "Agents receive the context they need to act. Payment details, carrier credentials and full customer records are not put in front of a model." },
+        { "icon": "i-check", "title": "Consequential actions need a person", "text": "Merging accounts, changing prices and bulk sending are presented as proposals for confirmation rather than performed on the model's own judgment." },
+        { "icon": "i-note", "title": "Attributed and reversible", "text": "Every agent action is recorded with its actor, so an automation that misbehaves is identified and stopped rather than argued about." }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can you see my customer data?",
+      "a": "The platform operator runs the infrastructure and can administer it. What that means in practice is governed by the agreement you have with the operator, and the platform supports running on infrastructure you control if that is the answer you need."
+    },
+    {
+      "q": "Is my data used to train AI models?",
+      "a": "No. Your records are not used to train anything. Where AI features run against a model, they receive the specific context required for the task, and the platform deliberately keeps customer identifying records and credentials out of that context."
+    },
+    {
+      "q": "What happens if someone leaves the company?",
+      "a": "Their access is removed, their sessions are destroyed, and anything they did remains attributed to them in the audit trail. Nothing they wrote is deleted, because a note about a customer is part of that customer's file."
+    },
+    {
+      "q": "Do you use third party analytics on the platform?",
+      "a": "No third party script runs inside a signed in session. The interface loads nothing from outside the platform, which is enforced by a content security policy rather than by a promise."
+    },
+    {
+      "q": "Is there a compliance certification?",
+      "a": "The platform is designed to the practices described on this page: least privilege, hashed credentials, full audit, encrypted transport and encrypted backups. Organisations with a specific regulatory requirement should raise it, because the architecture supports dedicated storage and regional hosting where that is what a rule demands."
+    }
+  ]
+}

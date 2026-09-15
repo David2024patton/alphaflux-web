@@ -1,4 +1,5 @@
-﻿__pycache__/
-*.pyc
-.DS_Store
-Thumbs.db
+node_modules/
+.verify/
+verify-out/
+backup/
+assets/fonts/css.txt

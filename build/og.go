@@ -1,0 +1,158 @@
+package main
+
+import (
+	"fmt"
+	"os"
+	"path/filepath"
+	"strings"
+)
+
+/* Open Graph cards.
+
+   One designed card per page rather than a screenshot of the hero at the wrong
+   ratio. The generator writes a small HTML source per page into assets/og/ and
+   scripts/make-og.sh renders each to a 1200x630 PNG with headless Chrome. The
+   PNGs are committed, so the site build needs no browser.
+*/
+
+const ogWidth = 1200
+const ogHeight = 630
+
+func writeOGSources() []string {
+	dir := filepath.Join("assets", "og")
+	if err := os.MkdirAll(dir, 0o755); err != nil {
+		fail("create og dir: " + err.Error())
+	}
+
+	// Clear the sources first so a renamed or removed page cannot leave a card
+	// behind. Only .html sources are removed here; the PNGs are produced by
+	// scripts/make-og.sh and pruned against this list by the caller.
+	old, _ := filepath.Glob(filepath.Join(dir, "*.html"))
+	for _, f := range old {
+		_ = os.Remove(f)
+	}
+
+	var names []string
+	for slug, p := range bySlug {
+		name := slug
+		if slug == "index" {
+			name = "home"
+		}
+		if err := os.WriteFile(filepath.Join(dir, name+".html"), []byte(ogHTML(p)), 0o644); err != nil {
+			fail("write og source: " + err.Error())
+		}
+		names = append(names, filepath.ToSlash(filepath.Join(dir, name+".html")))
+		names = append(names, filepath.ToSlash(filepath.Join(dir, name+".png")))
+	}
+	return names
+}
+
+func ogHTML(p *Page) string {
+	groupLabel := group(p.Slug)
+	if groupLabel == "" {
+		groupLabel = "Platform"
+	}
+	title := p.H1
+	// The card is a fixed 1200x630 with a hard title budget. Trim rather than
+	// let a long headline overflow the composition.
+	if len(title) > 96 {
+		title = title[:93] + "..."
+	}
+
+	var b strings.Builder
+	b.WriteString("<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n")
+	b.WriteString("<title>" + esc(p.Title) + "</title>\n")
+	b.WriteString(`<style>
+@font-face{font-family:"Archivo";font-weight:100 900;font-display:block;src:url("../fonts/archivo-latin.woff2") format("woff2");}
+@font-face{font-family:"Plex";font-weight:400;font-display:block;src:url("../fonts/plexmono-400-latin.woff2") format("woff2");}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:` + fmt.Sprint(ogWidth) + `px;height:` + fmt.Sprint(ogHeight) + `px;overflow:hidden}
+body{background:#0a1220;color:#e9eef6;font-family:"Archivo",system-ui,sans-serif;position:relative;
+  display:flex;flex-direction:column;justify-content:space-between;padding:64px 72px}
+.grain{position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(rgba(121,176,246,.055) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(121,176,246,.055) 1px,transparent 1px);
+  background-size:48px 48px}
+.glow{position:absolute;width:760px;height:760px;right:-300px;top:-360px;border-radius:50%;
+  background:radial-gradient(circle,rgba(47,208,240,.17),rgba(47,208,240,0) 62%)}
+.top,.bottom{position:relative;display:flex;align-items:center;justify-content:space-between}
+.mark{display:flex;align-items:center;gap:14px}
+.mark svg{width:40px;height:40px}
+.word{font-size:30px;font-weight:600;letter-spacing:-.012em}
+.group{font-family:"Plex",monospace;font-size:19px;color:#8798b4;letter-spacing:.01em}
+h1{position:relative;font-size:66px;line-height:1.07;letter-spacing:-.024em;font-weight:600;max-width:20ch}
+h1.small{font-size:54px}
+.bottom{border-top:1px solid #1e2b44;padding-top:26px;align-items:baseline}
+.url{font-family:"Plex",monospace;font-size:21px;color:#79b0f6}
+.note{font-size:21px;color:#8798b4;max-width:56ch}
+.stop{width:14px;height:14px;border-radius:50%;background:#2fd0f0;box-shadow:0 0 0 7px rgba(47,208,240,.16)}
+</style>
+</head>
+<body>
+<div class="grain"></div><div class="glow"></div>
+<div class="top">
+  <div class="mark">` + brandMark() + `<span class="word">AlphaFlux</span></div>
+  <div class="group">` + esc(groupLabel) + `</div>
+</div>
+<h1` + smallIf(title) + `>` + esc(title) + `</h1>
+<div class="bottom">
+  <span class="url">alphaflux.net</span>
+  <span class="note">` + esc(bottomNote(p)) + `</span>
+  <span class="stop"></span>
+</div>
+</body>
+</html>
+`)
+	return b.String()
+}
+
+func smallIf(title string) string {
+	if len(title) > 52 {
+		return ` class="small"`
+	}
+	return ""
+}
+
+func bottomNote(p *Page) string {
+	switch p.Slug {
+	case "pricing":
+		return "Free forever to start"
+	case "white-label":
+		return "Your brand, your domain, your customers"
+	case "programs":
+		return "Free for nonprofits. 30% off for service members"
+	case "index":
+		return "One platform instead of five"
+	case "ai-agents":
+		return "Scoped keys, not passwords"
+	case "developers":
+		return "REST, command line and agent access"
+	}
+	return "One platform for the phone, the field, the money and the marketing"
+}
+
+func renderReadme() string {
+	var b strings.Builder
+	b.WriteString("# alphaflux-web\n\n")
+	b.WriteString("The marketing site at `alphaflux.net`. Static HTML served by nginx, generated by a Go program in this repository.\n\n")
+	b.WriteString("## How it is built\n\n")
+	b.WriteString("```bash\ngo run ./build\n```\n\n")
+	b.WriteString("That reads `content/*.json` and writes the pages to the repository root, plus `sitemap.xml`, `robots.txt`, `llms.txt` and `llms-full.txt`. ")
+	b.WriteString("The generated HTML is committed, so the container build needs no Go toolchain and the served site is plain static files.\n\n")
+	b.WriteString("## Layout\n\n")
+	b.WriteString("| Path | What it is |\n|---|---|\n")
+	b.WriteString("| `content/*.json` | One file per page. The source of truth for all copy |\n")
+	b.WriteString("| `build/` | The generator. Go, standard library only |\n")
+	b.WriteString("| `assets/site.css` | The token layer and every component |\n")
+	b.WriteString("| `assets/fonts.css`, `assets/fonts/` | Self-hosted faces, Latin and Latin Extended subsets |\n")
+	b.WriteString("| `assets/icons.svg` | The icon sprite. Every icon is referenced by id from content |\n")
+	b.WriteString("| `assets/og/` | Open Graph card sources, rendered to PNG by `scripts/make-og.sh` |\n")
+	b.WriteString("| `*.html`, `sitemap.xml`, `robots.txt`, `llms.txt` | Generated. Edit the content or the generator, not these |\n")
+	b.WriteString("| `default.conf` | nginx: clean URLs via `try_files`, cache policy, admin path passthrough |\n\n")
+	b.WriteString("## Adding a page\n\n")
+	b.WriteString("1. Add a `content/<slug>.json` file.\n")
+	b.WriteString("2. Add it to the matching group in `Site` in `build/main.go` so it appears in the rail, the footer and the sitemap.\n")
+	b.WriteString("3. Run `go run ./build`.\n\n")
+	b.WriteString("The build fails on a rail entry with no page, a duplicate slug, or an icon referenced in content that is not in the sprite.\n")
+	return b.String()
+}

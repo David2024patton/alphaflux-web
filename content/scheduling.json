@@ -1,0 +1,116 @@
+{
+  "slug": "scheduling",
+  "nav": "Scheduling and agreements",
+  "group": "Modules",
+  "crumb": "Scheduling and agreements",
+  "title": "Capacity aware scheduling and recurring agreements",
+  "desc": "Book against real capacity so a day cannot be oversold. Recurring service agreements generate their own visits for the whole term and produce recurring revenue you can trust.",
+  "h1": "Fill the calendar without overselling the day",
+  "standfirst": "Booking that checks the real limits of the day before it confirms, and recurring agreements that generate their own visits for the whole term without anyone remembering to renew them.",
+  "chips": ["Real capacity", "Recurring visits", "No double booking"],
+  "sections": [
+    {
+      "kind": "split",
+      "title": "Capacity is the limit nobody can see until it is broken",
+      "lede": "Most companies discover they oversold a day when a technician calls in from the road. Booking against a rule instead of a feeling is what stops it.",
+      "body": [
+        "Every booking is checked against the capacity rules that apply to it before it is confirmed. The rules can be set at the office level, the area level or the individual technician level, and per weekday, because Tuesday is rarely Saturday.",
+        "When two rules apply, the more specific one wins, and the narrower limit is checked as well as the wider one. A technician with a light day inside a busy area still has a personal limit, and the platform checks both rather than picking one.",
+        "A booking that does not fit is refused with the reason named, and the platform offers the next day that does fit. Overriding it is possible, and the override is recorded with who did it, because a person sometimes genuinely knows better than the rule."
+      ],
+      "items": [
+        { "icon": "i-gauge", "title": "Limits that match reality", "text": "Jobs, minutes or both, at office, area or technician level, set per day of the week." },
+        { "icon": "i-pin", "title": "Areas, not guesswork", "text": "Service areas are grouped from postcodes, so coverage and capacity are expressed the way the business already describes itself." },
+        { "icon": "i-calendar", "title": "Availability on request", "text": "Ask what a given day can still take and get an answer, which is what makes online booking and agent booking safe." },
+        { "icon": "i-check", "title": "Overrides are visible", "text": "A forced booking is allowed, recorded and flagged, so the exception is documented rather than quietly absorbed." }
+      ]
+    },
+    {
+      "kind": "features",
+      "title": "Recurring work, handled properly",
+      "lede": "Recurring service is the backbone of a service business and the part most software handles worst.",
+      "items": [
+        { "icon": "i-repeat", "title": "Agreements that generate visits", "text": "Define a frequency and a term and the platform creates every visit for the term, each with its own date, price and technician." },
+        { "icon": "i-calendar", "title": "Dates that stay honest", "text": "A visit on the 31st stays on the 31st, and clamps sensibly in a short month rather than drifting forward forever." },
+        { "icon": "i-receipt", "title": "Recurring revenue you can trust", "text": "Monthly recurring revenue is calculated from the actual charges on the agreement, not from a projection or a guess." },
+        { "icon": "i-clock", "title": "Changes without damage", "text": "Moving a schedule cancels and regenerates future visits and leaves completed work exactly where it was." },
+        { "icon": "i-bell", "title": "Reminders that go out", "text": "Upcoming visits trigger a confirmation before the technician is dispatched, so a wasted trip becomes a rebooked one." },
+        { "icon": "i-chart", "title": "A book you can read", "text": "One view of the recurring book: how many agreements, what they are worth a month, and which ones are up for renewal." }
+      ],
+      "more": { "title": "See billing and payments", "href": "/billing" }
+    },
+    {
+      "kind": "list",
+      "title": "How a booking is checked",
+      "lede": "The order the platform works through when something is being put on the calendar, whether by a person, a customer or an agent.",
+      "items": [
+        {
+          "title": "Does this area accept work",
+          "text": "The address is resolved to a service area. A postcode outside every area you cover is declined at the point of booking rather than after a technician is dispatched."
+        },
+        {
+          "title": "Is there capacity that day",
+          "text": "The technician's limit, the area's limit and the office's limit are all checked. The most specific rule wins, and the tighter constraint applies."
+        },
+        {
+          "title": "Does the technician fit the work",
+          "text": "Skills and certifications are checked, so a job that requires a particular licence does not land on someone who does not hold it."
+        },
+        {
+          "title": "Is the travel realistic",
+          "text": "The location is checked against the rest of that technician's day, so the schedule does not contain a stop that is physically impossible."
+        },
+        {
+          "title": "Is it confirmed or proposed",
+          "text": "A booking that fits is confirmed and the customer is notified. One that does not is declined with the reason and the nearest day that works."
+        }
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "The appointment is the promise, the visit is the work",
+      "body": [
+        "A recurring agreement is not a list of dates in a spreadsheet. It is an agreement with a term, a frequency, a price and a start date, and the platform derives every visit from it.",
+        "That distinction matters when something changes. Because each visit knows which agreement produced it and which visit number it is, regenerating a schedule is safe to run twice, and a visit that has already been completed is never disturbed by a change to the future.",
+        "It also means the money and the work cannot drift apart. The recurring revenue a plan reports comes from the same agreements that generate the visits, so the number on the dashboard and the work on the calendar are the same fact."
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "Scheduling by plan",
+      "cols": ["", "Free", "Starter", "Growth and above"],
+      "rows": [
+        ["Job booking", "yes", "yes", "yes"],
+        ["Service areas", "1", "2", "5 and above"],
+        ["Capacity rules", "no", "yes", "yes"],
+        ["Availability lookup", "no", "yes", "yes"],
+        ["Service agreements", "no", "yes", "yes"],
+        ["Automated visit generation", "no", "yes", "yes"],
+        ["Appointment reminders", "no", "yes", "yes"],
+        ["Recurring revenue reporting", "no", "yes", "yes"]
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "Can customers book themselves?",
+      "a": "Yes. Because availability is a real answer rather than a calendar someone maintains by hand, a customer facing booking page can only offer slots that genuinely exist, which removes the confirmation round trip entirely."
+    },
+    {
+      "q": "What if I need to squeeze in an emergency?",
+      "a": "Force it. The platform will tell you the day is over its limit, and if you proceed it books the job and records that the limit was overridden and by whom. Emergencies happen, and the platform is built to accommodate them without losing the record."
+    },
+    {
+      "q": "How does a change to an agreement affect visits already done?",
+      "a": "It does not touch them. Completed and past work is left exactly as it is. Only future visits that have not happened are cancelled and regenerated under the new schedule."
+    },
+    {
+      "q": "Can different services have different frequencies?",
+      "a": "Yes, each agreement carries its own service and frequency. A company can run quarterly pest treatments on one agreement and a monthly maintenance contract on another for the same customer."
+    },
+    {
+      "q": "What time zone are appointments in?",
+      "a": "Times are stored unambiguously and displayed in the company's local time, so a business operating across states sees its own day rather than a server's."
+    }
+  ]
+}
