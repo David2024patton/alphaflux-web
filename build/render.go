@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"strconv"
 	"strings"
 )
 
@@ -736,9 +737,14 @@ func orderStrip(s Section) string {
 	b.WriteString(`<div class="order-head">` + "\n")
 	b.WriteString(`<span class="order-id">JOB-24188</span>` + "\n")
 	b.WriteString(`<span class="chip chip-ok"><span class="chip-dot"></span>Capacity cleared</span>` + "\n")
-	b.WriteString(`<span class="order-meta">Quarterly treatment. Technician, truck 4. Zone, North Spokane.</span>` + "\n")
+	// Kept short on purpose. In the hero this panel sits in a five-twelfths
+	// column, so a long sentence in the head wraps to four lines and the header
+	// ends up taller than the stages it is describing.
+	b.WriteString(`<span class="order-meta">Quarterly treatment, truck 4</span>` + "\n")
 	b.WriteString("</div>\n")
-	b.WriteString(`<ol class="order-track">` + "\n")
+	// The column count is carried in the markup so the stylesheet can size each
+	// track for the number of stages it actually holds.
+	b.WriteString(`<ol class="order-track cols-` + strconv.Itoa(len(stages)) + `">` + "\n")
 	for i, st := range stages {
 		state := "todo"
 		if i == 0 {

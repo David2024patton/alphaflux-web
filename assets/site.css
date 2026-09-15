@@ -881,19 +881,42 @@ table.data .cell-strong { color: var(--foreground); font-weight: var(--weight-me
 }
 .order-id { font-family: var(--font-mono); font-size: var(--text-label); color: var(--foreground); }
 .order-meta { font-size: var(--text-label); color: var(--muted-foreground); }
+/* The track sizes itself against the PANEL, not the window, because in the hero
+   the panel only gets a five-twelfths column. A fixed minimum per stage made the
+   four stages need 480px inside a 278 to 430px panel, so the last stages were
+   clipped behind a horizontal scroll on every normal desktop width. The stages
+   now share whatever width the panel has, and fall to two rows when four will
+   not comfortably fit. */
+.order-strip { container-type: inline-size; }
+
 .order-track {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(7.5rem, 1fr);
-  overflow-x: auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   list-style: none;
 }
 .order-track li {
   position: relative;
   padding: var(--space-4);
   border-inline-start: 1px solid var(--border);
+  border-block-start: 1px solid var(--border);
 }
-.order-track li:first-child { border-inline-start: 0; }
+.order-track li:nth-child(odd) { border-inline-start: 0; }
+.order-track li:nth-child(-n + 2) { border-block-start: 0; }
+
+/* One row once the panel is genuinely wide enough for the stages it holds. The
+   column count comes from the markup, so a four stage track and a five stage
+   track each get a layout they fit in rather than one wrapping awkwardly. */
+@container (min-width: 30rem) {
+  .order-track.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@container (min-width: 38rem) {
+  .order-track.cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+@container (min-width: 30rem) {
+  .order-track li { border-block-start: 0; }
+  .order-track li:nth-child(odd) { border-inline-start: 1px solid var(--border); }
+  .order-track li:first-child { border-inline-start: 0; }
+}
 .order-track .stage {
   font-size: var(--text-label); color: var(--muted-foreground);
 }
@@ -907,19 +930,10 @@ table.data .cell-strong { color: var(--foreground); font-weight: var(--weight-me
 .order-track li[data-state="now"] .stage { color: var(--foreground); font-weight: var(--weight-medium); }
 .order-track li[data-state="now"] .at { color: var(--primary); }
 
-/* On a phone the track wraps to two per row instead of scrolling sideways.
-   Every stage stays visible, which is the entire point of the component: a
-   strip you have to drag to read is a strip that hides the outcome. */
-@media (max-width: 47.99rem) {
-  .order-track {
-    grid-auto-flow: row;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    overflow-x: visible;
-  }
-  .order-track li { border-block-start: 1px solid var(--border); }
-  .order-track li:nth-child(-n + 2) { border-block-start: 0; }
-  .order-track li:nth-child(odd) { border-inline-start: 0; }
-}
+/* Nothing extra for small screens: the base two column layout above is the
+   narrow layout, and the container queries upgrade it when the panel is wide.
+   Every stage is visible at every width, which is the point of the component.
+   A strip you have to drag sideways is a strip that hides the outcome. */
 
 /* --- 19. ROUTE LINE (brand mark, drawn from a dispatch route) ------------ */
 
