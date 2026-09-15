@@ -49,7 +49,7 @@ func renderPage(p *Page) string {
 	b.WriteString(footer())
 	b.WriteString("</div>\n</div>\n")
 	b.WriteString(drawer())
-	b.WriteString(`<script src="/assets/site.js" defer></script>` + "\n")
+	b.WriteString(`<script src="/assets/site.js?v=` + assetVersion + `" defer></script>` + "\n")
 	b.WriteString("</body>\n</html>\n")
 	return b.String()
 }
@@ -62,7 +62,7 @@ func render404() string {
 	b.WriteString("<title>Page not found. AlphaFlux</title>\n")
 	b.WriteString(`<meta name="robots" content="noindex">` + "\n")
 	b.WriteString(`<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">` + "\n")
-	b.WriteString(`<link rel="stylesheet" href="/assets/site.css">` + "\n")
+	b.WriteString(`<link rel="stylesheet" href="/assets/site.css?v=` + assetVersion + `">` + "\n")
 	b.WriteString(themeScript())
 	b.WriteString("</head>\n<body>\n")
 	b.WriteString(skipLink())
@@ -130,8 +130,8 @@ func metaBlock(p *Page, path string) string {
 	// Fonts, self hosted. Only the two faces used above the fold are preloaded.
 	b.WriteString(`<link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>` + "\n")
 	b.WriteString(`<link rel="preload" href="/assets/fonts/plexmono-400-latin.woff2" as="font" type="font/woff2" crossorigin>` + "\n")
-	b.WriteString(`<link rel="stylesheet" href="/assets/fonts.css">` + "\n")
-	b.WriteString(`<link rel="stylesheet" href="/assets/site.css">` + "\n")
+	b.WriteString(`<link rel="stylesheet" href="/assets/fonts.css?v=` + assetVersion + `">` + "\n")
+	b.WriteString(`<link rel="stylesheet" href="/assets/site.css?v=` + assetVersion + `">` + "\n")
 	b.WriteString(themeScript())
 	b.WriteString(jsonLD(p, canonical))
 

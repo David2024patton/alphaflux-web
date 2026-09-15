@@ -10,6 +10,8 @@
 package main
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -236,6 +238,10 @@ func main() {
 	checkIcons()
 	checkLinks()
 
+	// Hashed before anything is written, because every page embeds it in the
+	// stylesheet and script URLs.
+	assetVersion = computeAssetVersion()
+
 	written := 0
 	var produced []string
 	for slug, p := range bySlug {
@@ -266,7 +272,7 @@ func main() {
 	write("llms.txt", renderLLMs())
 	write("llms-full.txt", renderLLMsFull())
 
-	fmt.Printf("AlphaFlux site build %s\n", buildVer)
+	fmt.Printf("AlphaFlux site build %s  (assets %s)\n", buildVer, assetVersion)
 	fmt.Printf("  %d pages written, plus sitemap.xml, robots.txt, llms.txt\n", written)
 }
 
@@ -442,6 +448,29 @@ func pruneStale(produced []string) {
 	if removed > 0 {
 		fmt.Printf("  %d stale page(s) removed\n", removed)
 	}
+}
+
+// assetVersion is a short content hash of the stylesheet and the script, used
+// as a query string so a returning visitor can never run new markup against a
+// cached stylesheet. The filenames are stable and the served cache is an hour,
+// so without this a deploy can leave a browser rendering the previous CSS: the
+// page looks broken in ways that are impossible to reproduce on the server.
+var assetVersion string
+
+func computeAssetVersion() string {
+	h := sha256.New()
+	for _, f := range []string{
+		filepath.Join("assets", "site.css"),
+		filepath.Join("assets", "site.js"),
+		filepath.Join("assets", "fonts.css"),
+	} {
+		b, err := os.ReadFile(f)
+		if err != nil {
+			fail("read " + f + ": " + err.Error())
+		}
+		h.Write(b)
+	}
+	return hex.EncodeToString(h.Sum(nil))[:10]
 }
 
 func write(name, body string) {
