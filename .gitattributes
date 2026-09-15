@@ -1,0 +1,8 @@
+# Generated pages are written with LF by the Go generator. Without this, Git
+# converts them to CRLF on checkout on Windows and every rebuild reports the
+# whole site as modified.
+* text=auto eol=lf
+
+*.png binary
+*.woff2 binary
+*.jpg binary

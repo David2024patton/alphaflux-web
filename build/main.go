@@ -426,6 +426,10 @@ func pruneStale(produced []string) {
 		}
 	}
 
+	// Sorted, because pages are collected while ranging a map and Go randomises
+	// that order. An unsorted manifest changes on every run and makes the build
+	// look dirty when nothing has changed.
+	sort.Strings(produced)
 	raw, _ := json.MarshalIndent(produced, "", "  ")
 	_ = os.WriteFile(manifestName, append(raw, '\n'), 0o644)
 	if removed > 0 {
