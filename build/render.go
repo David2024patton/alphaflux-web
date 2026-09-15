@@ -922,6 +922,10 @@ func footer() string {
 	b.WriteString("</div>\n")
 	b.WriteString(`<div class="footer-note">` + "\n")
 	b.WriteString(`<span>AlphaFlux. Built and hosted by the companies that use it.</span>` + "\n")
+	// The build stamp is on every page so a deploy is visible from the outside
+	// without opening the console or asking the server. The product does the
+	// same thing for the same reason.
+	b.WriteString(`<span class="ident">build ` + buildVer + `.1</span>` + "\n")
 	b.WriteString(`<span><a href="/sitemap">Site map</a> and <a href="/llms.txt">llms.txt</a> for machines.</span>` + "\n")
 	b.WriteString("</div>\n</div></footer>\n")
 	return b.String()
