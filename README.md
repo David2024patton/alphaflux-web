@@ -23,6 +23,37 @@ That reads `content/*.json` and writes the pages to the repository root, plus `s
 | `*.html`, `sitemap.xml`, `robots.txt`, `llms.txt` | Generated. Edit the content or the generator, not these |
 | `default.conf` | nginx: clean URLs via `try_files`, cache policy, admin path passthrough |
 
+## How it deploys
+
+Committing to `main` updates alphaflux.net. Nothing is built by hand and nothing is copied to the server.
+
+```
+git push origin main
+  -> GitHub webhook fires on push
+  -> https://dash.alphaflux.net/api/deploy/<app token>
+  -> Dokploy clones the repo and builds the Dockerfile
+  -> swarm service alphaflux-web-qjojtn is updated
+  -> Traefik serves it at alphaflux.net
+```
+
+Settings in Dokploy that must not drift. All three have been wrong before and all three are
+silent when they are:
+
+| Setting | Value | Why |
+|---|---|---|
+| `buildType` | `dockerfile` | The default is nixpacks, which does not know about this Dockerfile |
+| `dockerfile` | `Dockerfile` | |
+| `buildPath` | `/` | |
+| `autoDeploy` | `true` | Without it the webhook is ignored |
+
+Routing lives outside Dokploy, in `/etc/dokploy/traefik/dynamic/alphaflux-web.yml` on the server.
+That file names the swarm service, and Dokploy appends a suffix to the service name it creates,
+so the file says `alphaflux-web-qjojtn`. **If the Dokploy app is ever deleted and recreated the
+suffix changes and that file has to be updated**, or the site will 404 at the edge while the
+container runs perfectly. The console works the same way as `alphaflux-login-xsqq9t`.
+
+To find the current service name: `docker service ls | grep alphaflux-web`.
+
 ## Adding a page
 
 1. Add a `content/<slug>.json` file.
