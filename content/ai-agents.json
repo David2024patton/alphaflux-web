@@ -24,7 +24,7 @@
         { "icon": "i-calendar", "title": "Capacity aware", "text": "A booking is checked against real capacity before it is confirmed, so an agent cannot oversell a day." },
         { "icon": "i-message", "title": "Escalation that works", "text": "Emergencies are routed to a person immediately, and a solicitor gets a scripted answer rather than a technician's time." }
       ],
-      "more": { "title": "See the phone module", "href": "/phone-and-messaging" }
+      "more": { "title": "See the phone module", "href": "/calls-and-messaging" }
     },
     {
       "kind": "list",

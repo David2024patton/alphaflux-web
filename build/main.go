@@ -59,7 +59,7 @@ var Site = []NavGroup{
 			"Run the whole platform under your own brand, your own domain and your own customers."},
 	}},
 	{Title: "Modules", Items: []NavItem{
-		{"phone-and-messaging", "Phone and messaging", "i-phone",
+		{"calls-and-messaging", "Phone and messaging", "i-phone",
 			"Numbers, calls, texts, voicemail, call handling and an AI receptionist that answers before the second ring."},
 		{"field-operations", "Field operations", "i-clipboard",
 			"Jobs, technicians, dispatch, day routes, proof of work and a technician app that works without signal."},
@@ -341,11 +341,18 @@ func checkLinks() {
 		fail("internal links with no destination:\n  " + strings.Join(bad, "\n  "))
 	}
 
-	// A page slug that shadows a passthrough path would be unreachable in
-	// production because nginx forwards that prefix to the product.
+	// A page slug that shadows a passthrough path is unreachable in production.
+	// nginx matches these with `location ^~`, which is a PREFIX match, so the
+	// collision is not limited to an exact name: /phone forwards everything
+	// beginning with /phone, and a page called phone-and-messaging is served by
+	// the console instead, which answers 404. Checking only for equality missed
+	// exactly that case, so the check is on the prefix.
 	for slug := range bySlug {
-		if passthrough[slug] {
-			fail("page slug collides with a proxied path in nginx: /" + slug)
+		for p := range passthrough {
+			if strings.HasPrefix(slug, p) {
+				fail("page slug " + slug + " begins with the proxied prefix /" + p +
+					", so nginx would forward it to the console instead of serving it")
+			}
 		}
 	}
 }

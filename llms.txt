@@ -15,7 +15,7 @@ A machine-readable API reference is published at https://alphaflux.net/api/opena
 
 ## Modules
 
-- [Phone and messaging](https://alphaflux.net/phone-and-messaging): Numbers, calls, texts, voicemail, call handling and an AI receptionist that answers before the second ring.
+- [Phone and messaging](https://alphaflux.net/calls-and-messaging): Numbers, calls, texts, voicemail, call handling and an AI receptionist that answers before the second ring.
 - [Field operations](https://alphaflux.net/field-operations): Jobs, technicians, dispatch, day routes, proof of work and a technician app that works without signal.
 - [Fleet and dispatch](https://alphaflux.net/fleet): Orders on a live map, a board your dispatcher can actually run, geofences, ETAs and customer tracking links.
 - [Scheduling and agreements](https://alphaflux.net/scheduling): Capacity-aware booking and recurring service agreements that generate their own visits and real MRR.

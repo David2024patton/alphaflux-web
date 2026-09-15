@@ -572,7 +572,7 @@ That is an enterprise conversation. Custom modules follow the same contract as t
 
 # Every call answered, every text logged, nothing typed twice
 
-URL: https://alphaflux.net/phone-and-messaging
+URL: https://alphaflux.net/calls-and-messaging
 Section: Modules
 
 Your existing numbers on your own carrier account, with call handling per number, a voicemail inbox that reads, and a receptionist that answers before the second ring.

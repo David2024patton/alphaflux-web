@@ -4,7 +4,7 @@ const { chromium } = await import('playwright');
 
 const BASE = process.argv[2] || 'http://127.0.0.1:8099';
 const PAGES = ['index','pricing','fleet','inventory','field-operations','email-marketing',
-               'ai-agents','modules','programs','industries','white-label','developers','sitemap','security','team','platform','crm','billing','marketing','analytics','scheduling','phone-and-messaging'];
+               'ai-agents','modules','programs','industries','white-label','developers','sitemap','security','team','platform','crm','billing','marketing','analytics','scheduling','calls-and-messaging'];
 const WIDTHS = [320, 375, 414, 768, 834, 1024, 1280, 1920];
 
 const b = await chromium.launch();
