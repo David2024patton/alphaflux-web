@@ -207,6 +207,11 @@ func main() {
 	}
 
 	for _, f := range files {
+		// Files beginning with an underscore are configuration, not pages.
+		// _status.json holds build status and is read separately.
+		if strings.HasPrefix(filepath.Base(f), "_") {
+			continue
+		}
 		raw, err := os.ReadFile(f)
 		if err != nil {
 			fail("read " + f + ": " + err.Error())
@@ -261,8 +266,10 @@ func main() {
 	write("llms.txt", renderLLMs())
 	write("llms-full.txt", renderLLMsFull())
 	write("README.md", renderReadme())
+	write("BUILD-MANIFEST.md", renderManifest())
 	produced = append(produced, writeOGSources()...)
 	produced = append(produced, "sitemap.xml", "robots.txt", "llms.txt", "llms-full.txt")
+	produced = append(produced, manifestNames()...)
 
 	// Remove pages the previous run wrote that this one does not, so a renamed
 	// or deleted page cannot linger and be served. A manifest is what makes

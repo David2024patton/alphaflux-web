@@ -1,0 +1,147 @@
+{
+  "_comment": "Build status for everything the site claims. The site is the feature spec; this file is the honest answer to 'is it built yet'. The build reads this and writes BUILD-MANIFEST.md. Edit here, never in the generated manifest. Statuses: live = works today, partial = some of it works, planned = designed or promised, not built, na = a page or policy, not a feature.",
+
+  "pages": {
+    "index": "partial",
+    "platform": "live",
+    "ai-agents": "partial",
+    "modules": "na",
+    "security": "partial",
+    "white-label": "planned",
+
+    "calls-and-messaging": "live",
+    "field-operations": "partial",
+    "fleet": "planned",
+    "scheduling": "partial",
+    "crm": "live",
+    "inventory": "partial",
+    "billing": "partial",
+    "email-marketing": "partial",
+    "marketing": "partial",
+    "team": "live",
+    "analytics": "live",
+
+    "pricing": "na",
+    "industries": "na",
+    "programs": "na",
+    "developers": "partial",
+    "sitemap": "na"
+  },
+
+  "sections": {
+    "calls-and-messaging/Numbers you control": "live",
+    "calls-and-messaging/Texting that belongs to the account": "live",
+    "calls-and-messaging/Call handling per number": "live",
+    "calls-and-messaging/A receptionist that books": "live",
+    "calls-and-messaging/A voicemail inbox that reads": "live",
+    "calls-and-messaging/Missed call text back": "live",
+
+    "field-operations/Jobs with a real record": "live",
+    "field-operations/A dispatch map": "live",
+    "field-operations/Day routes that make sense": "live",
+    "field-operations/Proof of work": "planned",
+    "field-operations/Technicians as real people": "live",
+    "field-operations/Check in and out": "live",
+    "field-operations/Offline that recovers": "planned",
+
+    "scheduling/Capacity is the limit nobody can see until it is broken": "live",
+    "scheduling/Recurring work, handled properly": "live",
+    "scheduling/Appointment reminders": "planned",
+
+    "inventory/Inventory is included on the free plan, permanently": "live",
+    "inventory/Chemical and controlled stock, signed in and out": "partial",
+    "inventory/Assets as well as consumables": "planned",
+    "inventory/Import and export": "partial",
+
+    "billing/The money side, end to end": "partial",
+    "billing/A payment that can vanish is a payment nobody can audit": "live",
+    "billing/Card payments": "planned",
+
+    "email-marketing/What the module covers": "partial",
+    "email-marketing/Deliverability is the whole game": "partial",
+    "email-marketing/Sequences worth having on day one": "planned",
+
+    "marketing/The growth work, in one place": "partial",
+    "marketing/Most marketing decisions should be made on a map": "live",
+    "marketing/Everything the module reports on": "partial",
+
+    "team/Working together without a second tool": "live",
+    "team/Roles, departments and what each person can reach": "live",
+    "team/An audit trail, not a log file": "live",
+
+    "analytics/What the owner's view shows": "live",
+    "analytics/An advisor that has read your numbers before it speaks": "live",
+    "analytics/The reports the platform produces": "partial",
+
+    "developers/The REST API": "live",
+    "developers/The command line": "live",
+    "developers/The agent protocol server": "live",
+    "developers/Webhooks and callbacks": "planned",
+
+    "security/Email or text one time codes": "live",
+    "security/Credentials are treated as radioactive": "live",
+    "security/Company isolation": "live",
+    "security/Export is available at any time": "planned",
+    "security/Single sign on against your own directory": "planned",
+
+    "ai-agents/The receptionist answers before a person has to": "live",
+    "ai-agents/What an agent can do on day one": "partial",
+    "ai-agents/How the access actually works": "live",
+    "ai-agents/Guardrails, stated plainly": "partial",
+    "ai-agents/Bring your own model": "planned"
+  },
+
+  "items": {
+    "ai-agents/Scoped keys": "live",
+    "ai-agents/A command line that speaks JSON": "live",
+    "ai-agents/An MCP server": "live",
+    "ai-agents/Attribution on every action": "live",
+    "ai-agents/Preview and confirm": "planned",
+    "ai-agents/Autopilot, if you want it": "partial",
+
+    "team/Team chat": "live",
+    "team/Mentions and notifications": "live",
+    "team/Departments": "live",
+    "team/Custom roles": "live",
+    "team/Single sign on": "planned",
+
+    "analytics/Custom reports": "planned",
+    "analytics/Scheduled delivery of reports": "planned",
+
+    "marketing/Review requests": "planned",
+    "marketing/Reviews at the right moment": "planned",
+    "marketing/Landing pages and online booking": "planned",
+    "marketing/Social scheduling": "live",
+
+    "email-marketing/Campaigns": "planned",
+    "email-marketing/Sequences and automations": "planned",
+    "email-marketing/A visual builder": "planned",
+    "email-marketing/Lists and segments": "partial",
+    "email-marketing/A unified inbox": "live",
+
+    "billing/Payments against an account": "live",
+    "billing/Invoices from the work": "live",
+    "billing/Voided, never deleted": "live",
+    "billing/Recurring billing": "live",
+    "billing/Usage billing": "partial",
+    "billing/Overdue, visible": "live",
+
+    "inventory/Sign in, sign out": "partial",
+    "inventory/Usage on the job": "planned",
+    "inventory/Safety data to hand": "planned",
+    "inventory/Barcode and QR scanning": "planned",
+    "inventory/Asset service schedules": "planned"
+  },
+
+  "engine": {
+    "_comment": "The AI inference layer. See docs/ai-engine.md. Not yet built as a separate service; AI features currently each talk to the local llama.cpp endpoint directly.",
+    "status": "partial",
+    "notes": [
+      "Local llama.cpp endpoint works and backs the advisor and the in-platform assistant",
+      "No per-tenant provider configuration yet: no bring your own key",
+      "No provider catalogue: the models.dev registry is identified but not consumed",
+      "No central resolution order (tenant key, then platform key, then local)",
+      "No token metering for the invoice, and no policy that meters without gating"
+    ]
+  }
+}
