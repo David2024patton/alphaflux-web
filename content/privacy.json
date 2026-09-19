@@ -54,9 +54,10 @@
     },
     {
       "kind": "prose",
-      "title": "Cookies and analytics",
+      "title": "Cookies and tracking",
       "body": [
-        "We use the minimum needed to stay signed in and to keep the site secure. We measure site usage in aggregate to see which pages are read and which are not, and we do not use that measurement to follow you to other websites.",
+        "There is no third party analytics on this site. No advertising network, no tag manager and no cross site tracking pixel runs here, and the only script the public pages load is our own. That is why this page can make the claim at all: there is nothing to disclose.",
+        "We use cookies only to keep you signed in and to keep the site secure. Our servers keep ordinary request logs for security and for fixing faults, which record things like the address a request came from and the page asked for. Those logs are used to run and protect the service, not to build a profile of you and not to advertise to you.",
         "You can block cookies in your browser and the public pages of this site will still work. Blocking them will make signing in and the platform itself unusable, because sessions depend on them."
       ]
     },

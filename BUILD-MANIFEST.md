@@ -999,7 +999,7 @@ This site is built to be read by software as well as by people. These are the fi
 ### Who we share it with  
 **PLANNED**
 
-### Cookies and analytics  
+### Cookies and tracking  
 **PLANNED**
 
 ### How long we keep it  
