@@ -10,7 +10,7 @@ Statuses: **LIVE** works today, **PARTIAL** some of it works, **PLANNED** design
 |---|---|
 | LIVE | 5 |
 | PARTIAL | 10 |
-| PLANNED | 2 |
+| PLANNED | 4 |
 | N/A | 5 |
 
 ---
@@ -979,18 +979,109 @@ This site is built to be read by software as well as by people. These are the fi
 - [ ] **Structured data** (N/A) Every page publishes structured data describing the organisation, the breadcrumb trail, and where relevant the product, the plans and the questions...
 - [ ] **The API specification** (N/A) A machine readable description of the platform's own interface, for developers and for agents. Issued with an API key.
 
+## Privacy  
+`/privacy`  **PLANNED**
+
+> Written to be read rather than to be survived. If something here is unclear, ask and we will rewrite it.
+
+### Who we are  
+**PLANNED**
+
+### What we collect  
+**PLANNED**
+
+### What we do not collect  
+**PLANNED**
+
+### Why we use it  
+**PLANNED**
+
+### Who we share it with  
+**PLANNED**
+
+### Cookies and analytics  
+**PLANNED**
+
+### How long we keep it  
+**PLANNED**
+
+### Security  
+**PLANNED**
+
+### Your choices and your rights  
+**PLANNED**
+
+### Where your data sits  
+**PLANNED**
+
+### Children  
+**PLANNED**
+
+### Changes to this policy  
+**PLANNED**
+
+### Contact  
+**PLANNED**
+
+## Terms  
+`/terms`  **PLANNED**
+
+> The whole thing is short on purpose. The parts people usually bury are the parts written most directly here.
+
+### Agreement  
+**PLANNED**
+
+### Accounts and access  
+**PLANNED**
+
+### Plans, billing and the free tier  
+**PLANNED**
+
+### Acceptable use  
+**PLANNED**
+
+### Your data and what you own  
+**PLANNED**
+
+### White label and reselling  
+**PLANNED**
+
+### Our intellectual property  
+**PLANNED**
+
+### Service availability and support  
+**PLANNED**
+
+### Third party services  
+**PLANNED**
+
+### Disclaimers  
+**PLANNED**
+
+### Limitation of liability  
+**PLANNED**
+
+### Suspension and termination  
+**PLANNED**
+
+### Changes to these terms  
+**PLANNED**
+
+### Contact  
+**PLANNED**
+
 ---
 
 ## Totals
 
 | Level | LIVE | PARTIAL | PLANNED |
 |---|---|---|---|
-| Sections | 32 | 39 | 11 |
+| Sections | 32 | 39 | 38 |
 | Features | 132 | 109 | 50 |
 
 ## Status file coverage
 
-- Pages listed: 22 of 22
+- Pages listed: 22 of 24
 - Section overrides: 49
 - Feature overrides: 33
 

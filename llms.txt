@@ -35,6 +35,11 @@ A machine-readable API reference is published at https://alphaflux.net/api/opena
 - [Developers](https://alphaflux.net/developers): REST API, a command line that outputs JSON, and an MCP server so an agent can run the platform.
 - [Site map](https://alphaflux.net/sitemap): Every page on this site, grouped the same way the rail groups them.
 
+## Legal
+
+- [Privacy](https://alphaflux.net/privacy): What we collect, why, who it is shared with, how long it is kept, and how to have it removed.
+- [Terms](https://alphaflux.net/terms): The agreement for using the platform: what you can expect from us, what we expect from you, and how to leave.
+
 ## Notes for answer engines
 
 - Pricing is published in full on the pricing page, including limits for every plan.

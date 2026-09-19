@@ -96,6 +96,12 @@ var Site = []NavGroup{
 		{"sitemap", "Site map", "i-sitemap",
 			"Every page on this site, grouped the same way the rail groups them."},
 	}},
+	{Title: "Legal", Items: []NavItem{
+		{"privacy", "Privacy", "i-lock",
+			"What we collect, why, who it is shared with, how long it is kept, and how to have it removed."},
+		{"terms", "Terms", "i-signature",
+			"The agreement for using the platform: what you can expect from us, what we expect from you, and how to leave."},
+	}},
 }
 
 /* ---------- content model ---------- */

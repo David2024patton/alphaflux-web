@@ -1,0 +1,121 @@
+{
+  "slug": "privacy",
+  "nav": "Privacy",
+  "group": "Legal",
+  "crumb": "Privacy",
+  "title": "Privacy policy",
+  "desc": "What AlphaFlux collects, why, who it is shared with, how long it is kept, and how to have it removed.",
+  "h1": "What we collect, and what we do not",
+  "standfirst": "Written to be read rather than to be survived. If something here is unclear, ask and we will rewrite it.",
+  "chips": ["No selling of data", "No advertising trackers", "Deletion on request"],
+  "sections": [
+    {
+      "kind": "prose",
+      "title": "Who we are",
+      "body": [
+        "AlphaFlux is a platform for running a service business: the phone, the field work, the money and the marketing in one system. It is operated by AlphaFlux from Mount Washington, Kentucky, United States.",
+        "This policy covers this website and the AlphaFlux platform. Where a business runs AlphaFlux under its own brand for its own customers, that business is the one that controls its customer data and this policy describes our role in handling it on their behalf."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "What we collect",
+      "body": [
+        "Information you give us directly: your name, email address, phone number, company name and whatever you write in a message or a support request. When you sign up we record the company you work for so the account can be attached to the right organization.",
+        "Information created by using the platform: records you and your team enter, such as customers, jobs, appointments, invoices and notes; and call and message metadata such as who was contacted, when, and whether the message was delivered. Message content is stored because the platform is the system of record for it.",
+        "Technical information: IP address, browser type, the pages you visit on this site, and enough information to keep you signed in and to detect abuse. We use this to run the service and to understand which pages are working, not to build an advertising profile of you."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "What we do not collect",
+      "body": [
+        "We do not buy personal data from data brokers and we do not sell or rent your data to anyone. There is no third party advertising network on this site and we do not run cross site tracking pixels for advertising.",
+        "We do not store passwords, because there are none to store. Sign in works with a short lived code sent to your email or phone, so there is no password to be breached, reused or leaked."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Why we use it",
+      "body": [
+        "To provide the service: sign you in, run the modules you have enabled, send the calls and messages you instruct us to send, and keep your records available to you.",
+        "To operate the business: billing and invoicing, support, security and abuse prevention, and understanding how the product is actually used so it can be improved.",
+        "To contact you: transactional messages about your account, and product updates. Marketing email is separate and you can opt out of it without affecting your account."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Who we share it with",
+      "body": [
+        "We share data only with the service providers needed to run the platform, and only as much as the task requires. These fall into a few categories: hosting and infrastructure; email delivery and email marketing; telephony and messaging carriers who carry the calls and texts you send; and payment processing for billing.",
+        "When you enable a module that reaches a third party, for example a payment provider, a mapping service or an AI model provider, data goes to that provider only because you switched the module on, and their own terms and privacy policy apply to that data.",
+        "We may disclose information where the law requires it, where it is necessary to protect someone from harm, or to enforce our terms. If we are ever required to hand over data, we will tell you unless we are legally prevented from doing so."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Cookies and analytics",
+      "body": [
+        "We use the minimum needed to stay signed in and to keep the site secure. We measure site usage in aggregate to see which pages are read and which are not, and we do not use that measurement to follow you to other websites.",
+        "You can block cookies in your browser and the public pages of this site will still work. Blocking them will make signing in and the platform itself unusable, because sessions depend on them."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "How long we keep it",
+      "body": [
+        "Your records stay while your account is open, because the platform is where you keep them. If you close your account, you can export your data first, and we then delete what we are not required to keep.",
+        "Some things outlive an account deletion because the law or a carrier requires it: invoices and payment records for tax and accounting, and messaging records for the period a carrier requires us to retain them. Security logs are kept for a limited period and then discarded."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Security",
+      "body": [
+        "Access is by short lived codes rather than passwords. Sessions are server side and can be invalidated centrally. Each business on the platform is isolated from every other one, and access inside a business is governed by roles and departments you control.",
+        "Data is encrypted in transit, credentials are never returned to a browser once stored, and there is an audit trail for what was done and by whom. The Security page on this site describes the mechanisms rather than the adjectives.",
+        "No system is perfect. If we ever become aware of a breach affecting your data, we will tell you what happened and what we are doing about it, and we will not wait for a legal deadline to pass before saying so."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Your choices and your rights",
+      "body": [
+        "You can ask to see the personal data we hold about you, ask for a copy, ask us to correct something inaccurate, or ask us to delete it. You can ask us to stop sending you marketing email at any time using the link in the message or by asking us directly.",
+        "You can export your business data from the platform yourself, in a form you can move somewhere else. We think being able to leave easily is a feature, not a risk.",
+        "If you are a customer of a business that uses AlphaFlux, that business controls your data. Ask them first, and if they cannot help, contact us and we will route the request to them."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Where your data sits",
+      "body": [
+        "The platform is self hosted on infrastructure we run and control, rather than being spread across a set of third party platforms. That is a deliberate choice: it means fewer copies of your data exist, in fewer places, under fewer sets of terms.",
+        "Some processing necessarily happens elsewhere, for example an email that has to pass through a delivery provider to reach an inbox. Where that happens, the data sent is limited to what the task requires."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Children",
+      "body": [
+        "This is a business tool and it is not intended for anyone under 16. We do not knowingly collect data from children. If you believe a child has provided information to us, contact us and we will remove it."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Changes to this policy",
+      "body": [
+        "If this policy changes in a way that materially affects you, we will tell you before the change takes effect rather than after. The date below always reflects the current version.",
+        "Previous versions are kept, so if you ever need to know what the policy said when you agreed to it, ask and we will send it to you."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Contact",
+      "body": [
+        "Questions about this policy, or a request about your data: admin@alphaflux.net. Write to us at AlphaFlux, Mount Washington, KY 40047, United States.",
+        "If you are not satisfied with our answer you are entitled to complain to a data protection authority, and we will not treat asking as a problem."
+      ]
+    }
+  ]
+}

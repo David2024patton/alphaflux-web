@@ -35,6 +35,8 @@
   "assets/og/platform.png",
   "assets/og/pricing.html",
   "assets/og/pricing.png",
+  "assets/og/privacy.html",
+  "assets/og/privacy.png",
   "assets/og/programs.html",
   "assets/og/programs.png",
   "assets/og/scheduling.html",
@@ -45,6 +47,8 @@
   "assets/og/sitemap.png",
   "assets/og/team.html",
   "assets/og/team.png",
+  "assets/og/terms.html",
+  "assets/og/terms.png",
   "assets/og/white-label.html",
   "assets/og/white-label.png",
   "billing.html",
@@ -63,6 +67,7 @@
   "modules.html",
   "platform.html",
   "pricing.html",
+  "privacy.html",
   "programs.html",
   "robots.txt",
   "scheduling.html",
@@ -70,5 +75,6 @@
   "sitemap.html",
   "sitemap.xml",
   "team.html",
+  "terms.html",
   "white-label.html"
 ]

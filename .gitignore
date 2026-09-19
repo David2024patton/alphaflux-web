@@ -3,3 +3,12 @@ node_modules/
 verify-out/
 backup/
 assets/fonts/css.txt
+
+# Credentials: never commit these, they belong in an env file or the vault.
+.env
+.env.*
+*.env
+!*.env.example
+mail.env
+creds.env
+*credentials*.json

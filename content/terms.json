@@ -1,0 +1,129 @@
+{
+  "slug": "terms",
+  "nav": "Terms",
+  "group": "Legal",
+  "crumb": "Terms",
+  "title": "Terms of use",
+  "desc": "The agreement for using AlphaFlux: what you can expect from us, what we expect from you, and what happens if either side wants out.",
+  "h1": "The agreement, in plain language",
+  "standfirst": "The whole thing is short on purpose. The parts people usually bury are the parts written most directly here.",
+  "chips": ["Free tier is genuinely free", "Your data stays yours", "Leave whenever you like"],
+  "sections": [
+    {
+      "kind": "prose",
+      "title": "Agreement",
+      "body": [
+        "These terms are the agreement between you and AlphaFlux for the use of this website and the AlphaFlux platform. By using either, you accept them. If you are accepting on behalf of a company, you confirm you are allowed to do that.",
+        "If you do not accept these terms, the remedy is simple: do not use the platform, and if you already are, export your data and close the account. We would rather you left cleanly than stayed reluctantly."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Accounts and access",
+      "body": [
+        "There are no passwords. You sign in with a short lived code sent to your email address or phone number, so keeping that address and number current and secure is your responsibility.",
+        "You are responsible for what happens through your account and for the access you grant your own team. Roles, departments and permissions exist so that you can limit what each person sees, and we strongly suggest you use them.",
+        "You must be at least 18 to hold an account, and the information you give us must be accurate enough that we can reach you and bill you correctly."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Plans, billing and the free tier",
+      "body": [
+        "There is a free tier that is free for real, not free for a fortnight. It is limited in the ways the Pricing page describes, and those limits are the only catch. We do not require a card to start.",
+        "Paid plans are billed in advance. If a payment fails we will tell you and give you a reasonable opportunity to fix it rather than switching your service off without warning.",
+        "Usage based charges, where a module works that way, are billed for what was actually used. Prices can change, and if they change for a plan you are on we will tell you before it takes effect, so you can decide instead of discovering it on a statement."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Acceptable use",
+      "body": [
+        "Do not use the platform to send messages that are unlawful, or that break the rules of the carriers who deliver them. That includes messaging people who have not agreed to hear from you, which is both illegal in many places and the fastest way to have your numbers blocked.",
+        "Do not use it to break the law, to infringe anyone's rights, to transmit malware, or to attempt to access another business's data. Do not probe or attack the platform or the infrastructure it runs on.",
+        "Do not use it to send anything deceptive, including spoofing a sender identity you are not entitled to use. Where a campaign must be registered with carriers before it can be sent, registering it is your responsibility and we will not knowingly bypass that."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Your data and what you own",
+      "body": [
+        "Your business data is yours. Customer records, jobs, invoices, messages, notes and everything else you put into the platform belong to you, not to us. We claim no ownership over it and no right to use it for our own purposes.",
+        "You can export it whenever you like, in a usable form. If you leave, you take it with you, and we delete the rest as the privacy policy describes.",
+        "You are responsible for having the right to store the data you put in, including any consent you need from the people you message."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "White label and reselling",
+      "body": [
+        "On the white label plan you may run the platform under your own brand for your own customers. That permission covers presentation, and it does not transfer ownership of the platform itself.",
+        "You are responsible for your own customers, for the terms you give them, and for the data you hold about them. Where you act as the business in front of the customer, you are the one they will ask, so your own terms and privacy policy need to be in order."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Our intellectual property",
+      "body": [
+        "The platform, this website and the code and design behind them belong to us. These terms give you the right to use the platform, not to copy, resell or reverse engineer it, except where the law says otherwise.",
+        "The marks and names of the businesses that use the platform, and of their own customers, stay with their owners."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Service availability and support",
+      "body": [
+        "We work to keep the platform up, and we tell you what we are doing about it when it is not. We do not promise a specific uptime percentage in these terms, and if a plan ever carries a formal availability commitment it will be stated in writing on that plan rather than implied here.",
+        "Support is provided in the way described on the Pricing page for your plan. Reports of a problem are treated as information worth having, not as complaints to be managed."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Third party services",
+      "body": [
+        "The platform connects to third parties to do its work: carriers that deliver your calls and texts, providers that deliver your email, payment processors, mapping services and AI model providers among them.",
+        "Their outages, their policy decisions and their pricing are outside our control. Where a third party changes something that affects you, we will tell you and look for another route, but we cannot promise a provider will never change its mind."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Disclaimers",
+      "body": [
+        "The platform is provided as it is. We do not promise it will be uninterrupted or free of error, and we do not promise that using it will produce a particular commercial result.",
+        "That said, we would rather fix a problem than defend one. If something is broken, tell us and we will work on it."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Limitation of liability",
+      "body": [
+        "To the fullest extent the law allows, AlphaFlux is not liable for indirect or consequential losses, lost profits, lost data where you held the only other copy, or losses arising from a third party service changing or failing.",
+        "Where liability cannot be excluded, it is limited to the amount you paid us in the twelve months before the event giving rise to it. Nothing here limits liability that cannot be limited by law."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Suspension and termination",
+      "body": [
+        "You can leave at any time, and we would rather you exported your data first. We can suspend or end an account if it is used to break the law, to harm someone, to attack the platform or to send messages to people who did not agree to receive them.",
+        "Where the situation is not urgent, we will raise it with you first. Where it is urgent, for example the platform is being used to defraud people, we will act first and explain immediately afterwards."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Changes to these terms",
+      "body": [
+        "We may update these terms. If a change materially affects you we will tell you before it takes effect, and continuing to use the platform afterwards means accepting the revised version.",
+        "The date below always reflects the version currently in force.",
+        "Governing law: these terms are governed by the laws of the Commonwealth of Kentucky, United States, and any dispute will be heard in the courts there."
+      ]
+    },
+    {
+      "kind": "prose",
+      "title": "Contact",
+      "body": [
+        "Questions about these terms: admin@alphaflux.net. AlphaFlux, Mount Washington, KY 40047, United States."
+      ]
+    }
+  ]
+}
