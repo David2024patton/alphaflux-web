@@ -12,3 +12,4 @@ assets/fonts/css.txt
 mail.env
 creds.env
 *credentials*.json
+build.exe
