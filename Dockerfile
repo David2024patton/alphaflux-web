@@ -4,7 +4,13 @@
 # Generating at build time would mean carrying Go and the generator into the
 # image for a result that is byte identical to what is already in the tree.
 
-FROM nginx:1.27-alpine
+# Base image pinned to the exact patch tag per the pin-at-deploy-time policy
+# (see /home/server/RUNBOOK.md). Verified 2026-10-23: nginx:1.27.5-alpine
+# resolves to the same digest as the floating nginx:1.27-alpine did
+# (sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10),
+# so this pin is a no-op for current behavior. The next bump is a deliberate
+# edit: change the tag here, rebuild, and verify.
+FROM nginx:1.27.5-alpine
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 
