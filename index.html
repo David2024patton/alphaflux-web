@@ -3,588 +3,288 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AlphaFlux: one system to run a service business</title>
-<meta name="description" content="Phone, field operations, dispatch, CRM, inventory, billing and email marketing in one self-hosted platform. Free plan permanently, and AI agents can run it with a scoped key.">
-<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
-<link rel="canonical" href="https://alphaflux.net/">
-<meta property="og:site_name" content="AlphaFlux">
+<title>AlphaFlux: Coming Soon</title>
+<meta name="description" content="AlphaFlux is coming soon. Your whole business on one platform: AI receptionist, business phone, CRM, scheduling, field tech app, inventory, billing and more. Run it yourself, or let AI run it for you. Free plan, $0 forever.">
+<meta property="og:title" content="AlphaFlux: Coming Soon">
+<meta property="og:description" content="Your whole business. One platform. Run it yourself, or let AI run it for you. A sneak peek at what is coming.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="AlphaFlux: one system to run a service business">
-<meta property="og:description" content="Phone, field operations, dispatch, CRM, inventory, billing and email marketing in one self-hosted platform. Free plan permanently, and AI agents can run it with a scoped key.">
 <meta property="og:url" content="https://alphaflux.net/">
 <meta property="og:image" content="https://alphaflux.net/assets/og/home.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0a1220" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#04070d">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
-<link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/plexmono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/fonts.css?v=f6791390bb">
-<link rel="stylesheet" href="/assets/site.css?v=f6791390bb">
-<script>
-(function(){try{var s=localStorage.getItem("af-theme");var d=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.setAttribute("data-theme",s||d);}catch(e){}})();
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@id": "https://alphaflux.net/#org",
-      "@type": "Organization",
-      "description": "A self-hosted, modular operations platform for service businesses, driver accessible by AI agents.",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://alphaflux.net/assets/apple-touch-icon.png"
-      },
-      "name": "AlphaFlux",
-      "url": "https://alphaflux.net/"
-    },
-    {
-      "@id": "https://alphaflux.net/#website",
-      "@type": "WebSite",
-      "name": "AlphaFlux",
-      "publisher": {
-        "@id": "https://alphaflux.net/#org"
-      },
-      "url": "https://alphaflux.net/"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It is free permanently. Twenty customers, one location, one user, one phone number, 100 marketing emails a month and the inventory module are yours for as long as you want them. There is no card on file and no expiry date. Companies move up when their workload outgrows those limits, and when they do, everything they have already entered comes with them."
-          },
-          "name": "Is the free plan really free, or is it a trial?"
-        },
-        {
-          "@type": "Question",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A location is a base you operate from: a city, an office or a service area. If a company works out of one town, that is one location and everything fits on the free plan. A company running crews in three states needs three, which is what the paid plans are for."
-          },
-          "name": "What does one location mean?"
-        },
-        {
-          "@type": "Question",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. AlphaFlux runs on infrastructure the platform provider hosts and keeps running, and every module works in a browser on a laptop, a tablet or a phone. The technician view installs to a phone home screen like an app and keeps working when the signal drops."
-          },
-          "name": "Do I need to install anything?"
-        },
-        {
-          "@type": "Question",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It can be trusted with exactly as much as you give it. An agent authenticates with a scoped key, so it can only reach the modules and the operations that key names. Every action it takes is written to the audit trail and to the account timeline, attributed to the agent rather than to a person."
-          },
-          "name": "Can an AI really be trusted to run parts of this?"
-        },
-        {
-          "@type": "Question",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It is yours and it exports. Customer records, jobs, invoices and payment history come out in standard formats, including a full JSON export through the API. Nothing is held hostage and nothing is deleted without an explicit request."
-          },
-          "name": "What happens to my data if I leave?"
-        },
-        {
-          "@type": "Question",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, and branches are modelled properly rather than treated as a naming convention. Each location has its own staff, its own schedule, its own capacity rules and its own stock. Roles can be scoped to a location, so a dispatcher in one district cannot see or change another."
-          },
-          "name": "Does AlphaFlux work for a company with more than one branch?"
-        }
-      ]
-    }
-  ]
-}
-</script>
+<link rel="stylesheet" href="/assets/fonts.css">
+<style>
+  :root{
+    --bg:#04070d;
+    --panel:rgba(6,14,24,.88);
+    --panel-2:rgba(10,22,38,.92);
+    --line:rgba(64,178,255,.45);
+    --line-soft:rgba(64,178,255,.25);
+    --ink:#f2f7fc;
+    --dim:#a9bfd4;
+    --cyan:#2fb9ff;
+    --cyan-2:#59d2ff;
+    --red:#ff4d5e;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(900px 620px at 12% -6%, rgba(24,120,220,.34), transparent 62%),
+      radial-gradient(820px 560px at 88% -4%, rgba(255,60,84,.20), transparent 60%),
+      radial-gradient(1100px 800px at 50% 116%, rgba(16,84,180,.30), transparent 64%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+    min-height:100vh;
+    padding:26px 16px 40px;
+  }
+  .net{position:fixed; inset:0; width:100%; height:100%; opacity:.5; pointer-events:none; z-index:0}
+  .poster{
+    position:relative; z-index:1;
+    max-width:1060px; margin:0 auto;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:52px 46px 30px;
+    box-shadow:0 0 0 1px rgba(0,0,0,.4), 0 24px 80px rgba(0,0,0,.55), 0 0 90px rgba(30,130,255,.12) inset;
+  }
+  .soon{
+    display:table; margin:0 auto 26px;
+    font-size:13px; font-weight:700; letter-spacing:.42em; text-indent:.42em;
+    color:var(--cyan-2);
+    border:1px solid var(--line); border-radius:999px;
+    padding:9px 20px 9px 24px;
+    background:rgba(20,90,160,.16);
+  }
+  h1{
+    margin:0; text-align:center;
+    font-size:clamp(58px, 11vw, 118px);
+    font-weight:800; letter-spacing:-.01em; line-height:.98;
+  }
+  h1 .flux{
+    background:linear-gradient(92deg, #3ec2ff 10%, #7fe0ff 55%, #2f9dff 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .rule{
+    width:min(430px, 72%); height:4px; margin:20px auto 26px; border-radius:2px;
+    background:linear-gradient(90deg, var(--cyan) 0%, #bfe9ff 48%, var(--red) 100%);
+  }
+  .tagline{margin:0; text-align:center; font-size:clamp(24px, 4.4vw, 40px); font-weight:700}
+  .sub{
+    margin:14px 0 0; text-align:center;
+    font-size:clamp(12px, 2vw, 16px); font-weight:600;
+    letter-spacing:.34em; text-indent:.34em; color:var(--cyan-2);
+  }
+  .peek{
+    margin:18px auto 0; max-width:560px; text-align:center;
+    color:var(--dim); font-size:16.5px; line-height:1.55;
+  }
+  h2{
+    margin:44px 0 18px; text-align:center;
+    font-size:15px; font-weight:700; letter-spacing:.4em; text-indent:.4em; color:var(--ink);
+  }
+  .ways{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  .way{
+    background:var(--panel-2); border:1px solid var(--line-soft); border-radius:10px;
+    padding:17px 10px; text-align:center;
+    font-size:19px; font-weight:700; letter-spacing:.14em;
+  }
+  .works{margin:30px auto 0; max-width:640px; text-align:center}
+  .works strong{display:block; font-size:21px; line-height:1.35}
+  .works span{color:var(--dim); font-size:16px}
+  .tiles{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px}
+  .tile{
+    background:var(--panel-2); border:1px solid var(--line-soft); border-radius:12px;
+    padding:22px 10px 18px; text-align:center;
+  }
+  .tile svg{width:38px; height:38px; stroke:var(--cyan-2); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round}
+  .tile p{margin:11px 0 0; font-size:16.5px; font-weight:600}
+  .bar{
+    margin-top:14px; background:var(--panel-2);
+    border:1px solid var(--line-soft); border-left:4px solid var(--cyan);
+    border-radius:10px; padding:18px 22px;
+  }
+  .bar h3{margin:0 0 6px; font-size:18.5px}
+  .bar p{margin:0; color:var(--dim); font-size:16px; line-height:1.55}
+  .free{
+    margin-top:30px; background:var(--panel-2);
+    border:1px solid var(--line-soft); border-radius:12px; padding:22px 26px 20px;
+  }
+  .free h3{margin:0; font-size:18px; letter-spacing:.06em}
+  .free h3 em{font-style:normal; color:var(--cyan-2); margin-left:10px}
+  .free ul{
+    list-style:none; margin:16px 0 2px; padding:0;
+    display:grid; grid-template-columns:1fr 1fr; gap:9px 30px;
+  }
+  .free li{font-size:16.5px; font-weight:600}
+  .free li::before{content:"\2713"; color:var(--cyan-2); font-weight:800; margin-right:9px}
+  .strip{
+    margin-top:14px; background:var(--panel-2);
+    border:1px solid var(--line-soft); border-radius:12px;
+    display:grid; grid-template-columns:1fr 1fr;
+  }
+  .strip div{padding:18px 14px; text-align:center}
+  .strip div + div{border-left:1px solid var(--line-soft)}
+  .strip h3{margin:0; font-size:16.5px; letter-spacing:.18em}
+  .strip p{margin:5px 0 0; color:var(--dim); font-size:15px}
+  footer{
+    margin-top:34px; padding-top:20px; border-top:1px solid var(--line-soft);
+    display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap;
+  }
+  footer .addr{font-size:19px; font-weight:800}
+  footer .vet{
+    font-size:12.5px; font-weight:700; letter-spacing:.3em; color:var(--cyan-2);
+  }
+  @media (max-width:760px){
+    .poster{padding:38px 20px 24px}
+    .tiles{grid-template-columns:1fr 1fr}
+    footer{justify-content:center; text-align:center}
+  }
+  @media (max-width:430px){
+    .free ul{grid-template-columns:1fr}
+    .strip{grid-template-columns:1fr}
+    .strip div + div{border-left:none; border-top:1px solid var(--line-soft)}
+  }
+</style>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<div class="shell">
-<aside class="rail" aria-label="Site sections">
-<div class="rail-inner">
-<a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a>
-<nav class="rail-nav" aria-label="All sections">
-<div class="rail-group">
-<h2 class="rail-group-title">Platform</h2>
-<ul class="rail-list">
-<li><a class="rail-link" href="/" aria-current="page"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
-<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
-<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
-<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
-<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
-<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
-</ul>
-</div>
-<div class="rail-group">
-<h2 class="rail-group-title">Modules</h2>
-<ul class="rail-list">
-<li><a class="rail-link" href="/calls-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
-<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
-<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
-<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
-<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
-<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
-<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
-<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
-<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
-<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
-<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
-</ul>
-</div>
-<div class="rail-group">
-<h2 class="rail-group-title">Company</h2>
-<ul class="rail-list">
-<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
-<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
-<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
-<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
-<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
-</ul>
-</div>
-<div class="rail-group">
-<h2 class="rail-group-title">Legal</h2>
-<ul class="rail-list">
-<li><a class="rail-link" href="/privacy"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-lock"></use></svg><span>Privacy</span></a></li>
-<li><a class="rail-link" href="/terms"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-signature"></use></svg><span>Terms</span></a></li>
-</ul>
-</div>
-</nav>
-<div class="rail-foot">
-<a class="btn btn-primary" href="/login">Sign in</a>
-<a class="btn btn-secondary" href="/pricing">Start free</a>
-</div>
-</div>
-</aside>
-<div class="main">
-<header class="topbar">
-<button class="nav-toggle" type="button" data-drawer-open aria-expanded="false" aria-label="Open menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-menu"></use></svg></button>
-<a class="topbar-brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg></a>
-<span class="topbar-spacer"></span>
-<div class="topbar-actions">
-<button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch colour theme"><svg class="i-sun" aria-hidden="true"><use href="/assets/icons.svg#i-sun"></use></svg><svg class="i-moon" aria-hidden="true"><use href="/assets/icons.svg#i-moon"></use></svg></button>
-<a class="btn btn-ghost btn-sm" href="/login">Sign in</a>
-<a class="btn btn-primary btn-sm" href="/pricing">Start free</a>
-</div>
-</header>
-<main id="main">
-<section class="section section-flush" id="top"><div class="wrap">
-<div class="split">
-<div class="stack-lg">
-<div class="eyebrow-line"><span class="chip"><span class="chip-dot"></span>Free plan, permanently</span><span class="chip"><span class="chip-dot"></span>Self-hosted</span><span class="chip"><span class="chip-dot"></span>Agent-manageable</span></div>
-<h1 class="display">One system to run the phone, the field, the money and the marketing</h1>
-<p class="standfirst">A customer calls. The call is logged, the address is geocoded, the job is booked against real capacity, the technician is routed, the proof is captured, the invoice goes out and the follow-up email writes itself. All of that is one record moving through one platform.</p>
-<div class="prose">
-<p>Most service companies run a phone system, a field service tool, a CRM, an email tool and a spreadsheet, then pay someone to keep the five of them in agreement. AlphaFlux is the alternative: every module reads and writes the same customer, the same job and the same money.</p>
-</div>
-<div class="btn-row">
-<a class="btn btn-primary btn-lg" href="/login">Create a free account</a>
-</div>
-</div>
-<div class="stack-lg">
-<div class="order-strip" data-order-strip>
-<div class="order-head">
-<span class="order-id">JOB-24188</span>
-<span class="chip chip-ok"><span class="chip-dot"></span>Capacity cleared</span>
-<span class="order-meta">Quarterly treatment, truck 4</span>
-</div>
-<ol class="order-track cols-4">
-<li data-state="now">
-<span class="stage">Scheduled</span>
-<span class="at">06:40</span>
-</li>
-<li data-state="todo">
-<span class="stage">Dispatched</span>
-<span class="at">07:05</span>
-</li>
-<li data-state="todo">
-<span class="stage">On site</span>
-<span class="at">07:52</span>
-</li>
-<li data-state="todo">
-<span class="stage">Complete</span>
-<span class="at">08:31</span>
-</li>
-</ol>
-</div>
-<p class="small muted">Every job carries its own record: customer, technician, route, proof, payment and notes. Open it once and you see all of it.</p>
-</div>
-</div></div></section>
-<section class="section"><div class="wrap">
-<div class="section-head">
-<h2>Three numbers that describe the shape of it</h2>
-</div>
-<div class="figures">
-<div class="figure">
-<div class="value numeric">1</div>
-<p class="caption">One platform in place of a phone system, a field service tool, a CRM, an email tool and a spreadsheet.</p>
-</div>
-<div class="figure">
-<div class="value numeric">20<span class="unit">customers</span></div>
-<p class="caption">What the free plan covers, at one location, permanently and without a card.</p>
-</div>
-<div class="figure">
-<div class="value numeric">3<span class="unit">ways in</span></div>
-<p class="caption">Anything you can do on screen you can also do over the API or hand to an AI agent with a scoped key.</p>
-</div>
-</div>
-</div></section>
-<section class="section"><div class="wrap"><div class="split">
-<div class="stack-lg">
-<h2>Five systems means five copies of the same customer</h2>
-<p class="standfirst">The phone system knows the number. The field tool knows the address. The CRM knows the deal. The email tool knows the list. Nobody knows the whole story.</p>
-<div class="prose">
-<p>That fragmentation is expensive in a way that is easy to miss. Someone becomes a full time translator between systems. Jobs get booked against capacity nobody can see. A customer who moved is still getting mail at the old address in one tool and not another. A technician arrives without knowing the account is ninety days overdue.</p>
-<p>AlphaFlux keeps one record and lets every module work on it. The dispatcher, the technician, the office manager and the owner are all looking at the same customer, in the same state, at the same time.</p>
-</div>
-<a class="link-more" href="/platform">See how the platform is put together<svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-arrow"></use></svg></a>
-</div>
-<div class="stack-lg">
-<ul class="grid grid-3" style="list-style:none">
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg></span>
-<h3>One customer record</h3>
-<p>Created by the phone call, enriched by the job, billed by the agreement, emailed by the campaign. Never duplicated.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-route"></use></svg></span>
-<h3>One definition of capacity</h3>
-<p>A booking is checked against real capacity before it is confirmed, so the schedule cannot be oversold by a person or by an agent.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg></span>
-<h3>One version of the money</h3>
-<p>Payments, invoices, recurring agreements and commissions all read from the same ledger, in integer cents.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-note"></use></svg></span>
-<h3>One timeline per account</h3>
-<p>Calls, texts, emails, notes, AI activity and payments in a single chronological feed.</p>
-</li>
-</ul>
-</div>
-</div></div></section>
-<section class="section" id="modules"><div class="wrap">
-<div class="section-head">
-<h2>Eleven modules, one login</h2>
-<p class="lede">Each module can be switched on or off per company. You only see and only pay for what you actually use, and adding one never means migrating your data.</p>
-</div>
-<ul class="module-grid">
-<li><a class="module-card" href="/calls-and-messaging">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg></span>
-<h3>Phone and messaging</h3>
-<p>Numbers, calls, texts, voicemail, call handling and an AI receptionist that answers before the second ring.</p>
-</a></li>
-<li><a class="module-card" href="/field-operations">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg></span>
-<h3>Field operations</h3>
-<p>Jobs, technicians, dispatch, day routes, proof of work and a technician app that works without signal.</p>
-</a></li>
-<li><a class="module-card" href="/fleet">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg></span>
-<h3>Fleet and dispatch</h3>
-<p>Orders on a live map, a board your dispatcher can actually run, geofences, ETAs and customer tracking links.</p>
-</a></li>
-<li><a class="module-card" href="/scheduling">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg></span>
-<h3>Scheduling and agreements</h3>
-<p>Capacity-aware booking and recurring service agreements that generate their own visits and real MRR.</p>
-</a></li>
-<li><a class="module-card" href="/crm">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg></span>
-<h3>CRM and sales</h3>
-<p>Every contact, every stage, every note, and who sold it, with commission splits that total to the cent.</p>
-</a></li>
-<li><a class="module-card" href="/inventory">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg></span>
-<h3>Inventory and assets</h3>
-<p>Stock across trucks, units, storage and branches, with sign in and sign out and a chain of custody.</p>
-</a></li>
-<li><a class="module-card" href="/billing">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg></span>
-<h3>Billing and payments</h3>
-<p>Invoices, payments, voids, usage billing and a recurring-revenue number that survives an audit.</p>
-</a></li>
-<li><a class="module-card" href="/email-marketing">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg></span>
-<h3>Email marketing</h3>
-<p>Campaigns, sequences and a unified inbox that sends from your own domain, with deliverability handled.</p>
-</a></li>
-<li><a class="module-card" href="/marketing">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg></span>
-<h3>Marketing and growth</h3>
-<p>Service areas, demographics, social scheduling, review requests and attribution down to the campaign.</p>
-</a></li>
-<li><a class="module-card" href="/team">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg></span>
-<h3>Team and collaboration</h3>
-<p>Team chat, an account timeline, mentions, roles and departments that keep districts from seeing each other.</p>
-</a></li>
-<li><a class="module-card" href="/analytics">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg></span>
-<h3>Reports and analytics</h3>
-<p>The numbers an owner actually reads, and an advisor that turns them into a plan.</p>
-</a></li>
-</ul>
-</div></section>
-<section class="section"><div class="wrap">
-<div class="section-head">
-<h2>A job is a record, not a text message</h2>
-<p class="lede">The order strip below is the same object every module works on. The dispatcher moves it, the technician moves it, an agent can move it, and the customer sees the result.</p>
-</div>
-<div class="order-strip" data-order-strip>
-<div class="order-head">
-<span class="order-id">JOB-24188</span>
-<span class="chip chip-ok"><span class="chip-dot"></span>Capacity cleared</span>
-<span class="order-meta">Quarterly treatment, truck 4</span>
-</div>
-<ol class="order-track cols-4">
-<li data-state="now">
-<span class="stage">Scheduled</span>
-<span class="at">06:40</span>
-</li>
-<li data-state="todo">
-<span class="stage">Dispatched</span>
-<span class="at">07:05</span>
-</li>
-<li data-state="todo">
-<span class="stage">On site</span>
-<span class="at">07:52</span>
-</li>
-<li data-state="todo">
-<span class="stage">Complete</span>
-<span class="at">08:31</span>
-</li>
-</ol>
-</div>
-<p class="small muted" style="margin-block-start:var(--space-4)">Status changes are checked by the server, not by the screen. A move that is not allowed is refused and the allowed moves are named, so a drag on a board can never invent a state.</p>
-</div></section>
-<section class="section"><div class="wrap"><div class="split split-flip">
-<div class="stack-lg">
-<h2>Your agents get a key, not your password</h2>
-<p class="standfirst">AlphaFlux was built assuming a machine will do a growing share of the work. Every capability is an interface first, and a screen second.</p>
-<div class="prose">
-<p>Issue a scoped API key and an agent can book jobs, send texts, run billing, chase overdue accounts or write back to the account timeline, and it can only do the things that key allows. Turn a key off and the agent stops, without a password ever changing hands.</p>
-<p>The receptionist answers the phone before a person does. The assistant answers a technician&#39;s question about a treatment. Autopilot lets an agent keep a company&#39;s configuration tidy. Every action is attributed, so you can always tell what a machine did and what a person did.</p>
-</div>
-<a class="link-more" href="/ai-agents">How agents connect<svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-arrow"></use></svg></a>
-</div>
-<div class="stack-lg">
-<ul class="grid grid-3" style="list-style:none">
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg></span>
-<h3>Scoped keys</h3>
-<p>Read and write, per module. A key inherits exactly the permissions of the account that owns it.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-terminal"></use></svg></span>
-<h3>A command line that speaks JSON</h3>
-<p>Every command outputs JSON, so it pipes into a script or straight into another agent turn.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-plug"></use></svg></span>
-<h3>An MCP server</h3>
-<p>Point any agent client at it and the whole platform becomes a set of tools it can call.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-note"></use></svg></span>
-<h3>Attribution on every action</h3>
-<p>Notes and sales record whether a person, an agent or an import did the work.</p>
-</li>
-</ul>
-</div>
-</div></div></section>
-<section class="section"><div class="wrap">
-<div class="section-head">
-<h2>Built for the way the work actually arrives</h2>
-<p class="lede">Nobody calls at a convenient time, and nothing in a service business stays still. The platform assumes both.</p>
-</div>
-<ul class="grid grid-3" style="list-style:none">
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg></span>
-<h3>The phone answers itself</h3>
-<p>An AI receptionist handles the call, books against real capacity and hands a human the rest. Missed calls get a text back automatically.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg></span>
-<h3>Recurring work runs itself</h3>
-<p>Agreements generate their own visits for the length of the term. Monthly recurring revenue is calculated from the actual charges, not from a guess.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg></span>
-<h3>Stock follows the truck</h3>
-<p>Inventory is not one warehouse. It is trucks, storage units, mobile units and branches, with sign in and sign out and a record of who has what.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg></span>
-<h3>Dispatch is a map and a board</h3>
-<p>See every job and every technician live, drag work between stages, sequence a day route, and let the customer watch their technician arrive.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg></span>
-<h3>Email marketing from your own domain</h3>
-<p>Campaigns, sequences and a unified inbox, sent from your domain with the authentication records handled for you.</p>
-</li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg></span>
-<h3>Your data stays on your machine</h3>
-<p>Self-hosted, per company isolation, and an audit trail on every change. Nothing is sold, shared or used to train anything.</p>
-</li>
-</ul>
-</div></section>
-<section class="section"><div class="wrap">
-<div class="statement"><p>You should not have to buy five products, and then buy a person to hold them together.</p></div>
-</div></section>
-<section class="section"><div class="wrap">
-<div class="section-head">
-<h2>What the free plan covers, and what moves you up</h2>
-<p class="lede">The free plan is a real plan, not a trial. It is free permanently, and it is designed for someone running the business out of a truck.</p>
-</div>
-<div class="table-scroll" role="region" aria-label="What the free plan covers, and what moves you up, scrolls horizontally" tabindex="0"><table class="data">
-<caption>The free plan is a real plan, not a trial. It is free permanently, and it is designed for someone running the business out of a truck.</caption>
-<thead><tr><th scope="col"></th><th scope="col">Free</th><th scope="col">Starter</th><th scope="col">Growth</th><th scope="col">Scale</th></tr></thead>
-<tbody>
-<tr><th scope="row">Price</th><td><span class="cell-strong">Free forever</span></td><td>$49 per month</td><td>$149 per month</td><td>$399 per month</td></tr>
-<tr><th scope="row">Customers</th><td>20</td><td>250</td><td>1,000</td><td>5,000</td></tr>
-<tr><th scope="row">Locations</th><td>1</td><td>2</td><td>5</td><td>15</td></tr>
-<tr><th scope="row">Users</th><td>1</td><td>3</td><td>10</td><td>25</td></tr>
-<tr><th scope="row">Marketing emails</th><td>100 per month</td><td>2,000 per month</td><td>10,000 per month</td><td>50,000 per month</td></tr>
-<tr><th scope="row">Phone numbers</th><td>1</td><td>2</td><td>5</td><td>25</td></tr>
-<tr><th scope="row">Inventory and custody</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">Agreements and invoicing</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">Dispatch board and routing</th><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">AI receptionist</th><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">Live fleet map</th><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">API, CLI and agent access</th><td><span class="no">Not included</span></td><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-</tbody></table></div>
-<p class="small muted" style="margin-block-start:var(--space-4)">Limits are per company. Moving up a plan keeps every record you already have.</p>
-</div></section>
-<section class="section"><div class="wrap">
-<div class="section-head">
-<h2>Start in an afternoon, not a quarter</h2>
-</div>
-<ol class="steps">
-<li><h3>Create the account</h3><p>An email address is the whole signup. No card, no sales call, no implementation fee. The free plan is available immediately.</p></li>
-<li><h3>Bring in what you already have</h3><p>Import customers and inventory from a spreadsheet, or connect an existing field service account and read it live while you decide what to move.</p></li>
-<li><h3>Turn on the modules you want</h3><p>Start with the phone and the schedule. Add dispatch, fleet, marketing or agent access when the work needs it.</p></li>
-</ol>
-</div></section>
-<section class="section" id="faq">
-<div class="wrap"><div class="split">
-<div><h2>Questions people ask before signing up</h2></div>
-<div class="faq">
-<details><summary>Is the free plan really free, or is it a trial?</summary><div class="answer"><p>It is free permanently. Twenty customers, one location, one user, one phone number, 100 marketing emails a month and the inventory module are yours for as long as you want them. There is no card on file and no expiry date. Companies move up when their workload outgrows those limits, and when they do, everything they have already entered comes with them.</p></div></details>
-<details><summary>What does one location mean?</summary><div class="answer"><p>A location is a base you operate from: a city, an office or a service area. If a company works out of one town, that is one location and everything fits on the free plan. A company running crews in three states needs three, which is what the paid plans are for.</p></div></details>
-<details><summary>Do I need to install anything?</summary><div class="answer"><p>No. AlphaFlux runs on infrastructure the platform provider hosts and keeps running, and every module works in a browser on a laptop, a tablet or a phone. The technician view installs to a phone home screen like an app and keeps working when the signal drops.</p></div></details>
-<details><summary>Can an AI really be trusted to run parts of this?</summary><div class="answer"><p>It can be trusted with exactly as much as you give it. An agent authenticates with a scoped key, so it can only reach the modules and the operations that key names. Every action it takes is written to the audit trail and to the account timeline, attributed to the agent rather than to a person.</p></div></details>
-<details><summary>What happens to my data if I leave?</summary><div class="answer"><p>It is yours and it exports. Customer records, jobs, invoices and payment history come out in standard formats, including a full JSON export through the API. Nothing is held hostage and nothing is deleted without an explicit request.</p></div></details>
-<details><summary>Does AlphaFlux work for a company with more than one branch?</summary><div class="answer"><p>Yes, and branches are modelled properly rather than treated as a naming convention. Each location has its own staff, its own schedule, its own capacity rules and its own stock. Roles can be scoped to a location, so a dispatcher in one district cannot see or change another.</p></div></details>
-</div>
-</div></div></section>
+<svg class="net" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 1200 800">
+  <g stroke="rgba(70,170,255,.35)" stroke-width="1">
+    <line x1="80" y1="90" x2="300" y2="180"/><line x1="300" y1="180" x2="520" y2="90"/>
+    <line x1="520" y1="90" x2="760" y2="200"/><line x1="760" y1="200" x2="1060" y2="110"/>
+    <line x1="300" y1="180" x2="430" y2="380"/><line x1="430" y1="380" x2="760" y2="200"/>
+    <line x1="430" y1="380" x2="680" y2="470"/><line x1="680" y1="470" x2="760" y2="200"/>
+    <line x1="680" y1="470" x2="1010" y2="420"/><line x1="1010" y1="420" x2="1060" y2="110"/>
+    <line x1="140" y1="560" x2="430" y2="380"/><line x1="140" y1="560" x2="420" y2="700"/>
+    <line x1="420" y1="700" x2="680" y2="470"/><line x1="420" y1="700" x2="880" y2="690"/>
+    <line x1="880" y1="690" x2="1010" y2="420"/><line x1="80" y1="90" x2="140" y2="560"/>
+  </g>
+  <g fill="#6fd6ff">
+    <circle cx="80" cy="90" r="3"/><circle cx="300" cy="180" r="3.5"/><circle cx="520" cy="90" r="3"/>
+    <circle cx="760" cy="200" r="3.5"/><circle cx="1060" cy="110" r="3"/><circle cx="430" cy="380" r="3.5"/>
+    <circle cx="680" cy="470" r="3"/><circle cx="1010" cy="420" r="3.5"/><circle cx="140" cy="560" r="3"/>
+    <circle cx="420" cy="700" r="3"/><circle cx="880" cy="690" r="3"/>
+  </g>
+  <g fill="#ff5b6a"><circle cx="1060" cy="110" r="3"/><circle cx="880" cy="690" r="2.6"/></g>
+</svg>
+
+<main class="poster">
+  <p class="soon">COMING SOON</p>
+  <h1>Alpha<span class="flux">Flux</span></h1>
+  <div class="rule" aria-hidden="true"></div>
+  <p class="tagline">Your whole business. One platform.</p>
+  <p class="sub">RUN IT YOURSELF, OR LET AI RUN IT FOR YOU</p>
+  <p class="peek">The doors are not open yet. This is a sneak peek at the platform being built for service businesses, so you can see what is coming before it launches.</p>
+
+  <h2>FOUR WAYS IN</h2>
+  <div class="ways">
+    <div class="way">WEB APP</div>
+    <div class="way">API</div>
+    <div class="way">MCP</div>
+    <div class="way">CLI</div>
+  </div>
+  <p class="works">
+    <strong>Works with ChatGPT, Claude<br>and every major AI harness</strong>
+    <span>Your AI assistant can run the whole platform.</span>
+  </p>
+
+  <h2>EVERYTHING YOUR BUSINESS RUNS ON</h2>
+  <div class="tiles">
+    <div class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13a8 8 0 0 1 16 0"/><rect x="2.5" y="13" width="4" height="6.5" rx="1.6"/><rect x="17.5" y="13" width="4" height="6.5" rx="1.6"/><path d="M19.5 19.5c0 1.4-1.6 2-3.7 2"/></svg>
+      <p>AI Receptionist</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><line x1="10.5" y1="18.6" x2="13.5" y2="18.6"/></svg>
+      <p>Business Phone</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H4l2.3-2.9A8 8 0 1 1 21 12z"/><line x1="8.5" y1="12" x2="8.6" y2="12"/><line x1="12" y1="12" x2="12.1" y2="12"/><line x1="15.5" y1="12" x2="15.6" y2="12"/></svg>
+      <p>Texting &amp; SMS</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.6-3 2.8-4.5 5.5-4.5s4.9 1.5 5.5 4.5"/><circle cx="16.8" cy="9.2" r="2.6"/><path d="M16 15.2c2.3.2 3.9 1.6 4.4 4.1"/></svg>
+      <p>CRM</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/><line x1="8" y1="3" x2="8" y2="6.4"/><line x1="16" y1="3" x2="16" y2="6.4"/><path d="M9 15.4l2.1 2.1 3.9-4"/></svg>
+      <p>Scheduling</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5S5 15.6 5 10a7 7 0 0 1 14 0c0 5.6-7 11.5-7 11.5z"/><circle cx="12" cy="10" r="2.6"/></svg>
+      <p>Field Tech App</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8L12 3.8 20.5 8v8L12 20.2 3.5 16z"/><path d="M3.5 8L12 12.2 20.5 8"/><line x1="12" y1="12.2" x2="12" y2="20.2"/></svg>
+      <p>Inventory</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="6.5" y1="15" x2="10.5" y2="15"/></svg>
+      <p>Billing &amp; Payments</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg>
+      <p>Email</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="2.6"/><circle cx="17.5" cy="5.5" r="2.6"/><circle cx="17.5" cy="18.5" r="2.6"/><line x1="8.4" y1="10.8" x2="15.2" y2="6.8"/><line x1="8.4" y1="13.2" x2="15.2" y2="17.2"/></svg>
+      <p>Social Media</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2.5L4.5 13.5H11L9.8 21.5 18.5 10.5H12z"/></svg>
+      <p>Automations</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="3.5" width="13" height="17" rx="1"/><line x1="9.3" y1="7.5" x2="11" y2="7.5"/><line x1="13" y1="7.5" x2="14.7" y2="7.5"/><line x1="9.3" y1="11.5" x2="11" y2="11.5"/><line x1="13" y1="11.5" x2="14.7" y2="11.5"/><line x1="9.3" y1="15.5" x2="11" y2="15.5"/><path d="M10.5 20.5v-3h3v3"/></svg>
+      <p>Agency Tools</p>
+    </div>
+  </div>
+
+  <div class="bar">
+    <h3>Payments, your way</h3>
+    <p>Run payments through us, or bring your own keys. Field Services connects with your own FieldRoutes key, and your data flows right in.</p>
+  </div>
+  <div class="bar">
+    <h3>Your site, your number</h3>
+    <p>Drag and drop website builder with your own domain, or let AI build it for you on paid plans. Port your number in, or take one of ours.</p>
+  </div>
+  <div class="bar">
+    <h3>More than software</h3>
+    <p>Tech routing, texting and time cards, finance connections for tax time, a veteran benefits section, plus funding and contract education for owners.</p>
+  </div>
+
+  <section class="free" aria-label="Free plan">
+    <h3>THE FREE PLAN: WHAT YOU GET <em>$0 FOREVER</em></h3>
+    <ul>
+      <li>CRM</li>
+      <li>1 location</li>
+      <li>Basic scheduling</li>
+      <li>20 customers</li>
+      <li>Basic invoicing</li>
+      <li>20 inventory items</li>
+      <li>Free for life</li>
+      <li>2 users</li>
+    </ul>
+  </section>
+
+  <div class="strip">
+    <div>
+      <h3>PAID PLANS</h3>
+      <p>More power as you grow.</p>
+    </div>
+    <div>
+      <h3>WHITE LABEL</h3>
+      <p>Your brand, our engine.</p>
+    </div>
+  </div>
+
+  <footer>
+    <span class="addr">alphaflux.net</span>
+    <span class="vet">VETERAN OWNED &nbsp;&bull;&nbsp; BUILT IN KENTUCKY</span>
+  </footer>
 </main>
-<section class="band"><div class="wrap"><div class="split">
-<div class="stack-lg">
-<h2>Start on the free plan</h2>
-<p>Twenty customers, one location, every core module, free permanently. Move up when the work outgrows it.</p>
-</div>
-<div class="btn-row" style="align-self:center">
-<a class="btn btn-primary btn-lg" href="/login">Create a free account</a>
-<a class="btn btn-secondary btn-lg" href="/pricing">See what each plan includes</a>
-</div>
-</div></div></section>
-<footer class="footer"><div class="wrap">
-<div class="footer-cols">
-<div><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><p class="small muted" style="margin-block-start:var(--space-4);max-inline-size:34ch">One platform for the phone, the field, the money and the marketing, driven by you or by your agents.</p></div>
-<div><h2>Platform</h2><ul>
-<li><a href="/">Overview</a></li>
-<li><a href="/platform">How it works</a></li>
-<li><a href="/ai-agents">AI agents</a></li>
-<li><a href="/modules">All modules</a></li>
-<li><a href="/security">Security</a></li>
-<li><a href="/white-label">White label</a></li>
-</ul></div>
-<div><h2>Modules</h2><ul>
-<li><a href="/calls-and-messaging">Phone and messaging</a></li>
-<li><a href="/field-operations">Field operations</a></li>
-<li><a href="/fleet">Fleet and dispatch</a></li>
-<li><a href="/scheduling">Scheduling and agreements</a></li>
-<li><a href="/crm">CRM and sales</a></li>
-<li><a href="/inventory">Inventory and assets</a></li>
-<li><a href="/billing">Billing and payments</a></li>
-<li><a href="/email-marketing">Email marketing</a></li>
-<li><a href="/marketing">Marketing and growth</a></li>
-<li><a href="/team">Team and collaboration</a></li>
-<li><a href="/analytics">Reports and analytics</a></li>
-</ul></div>
-<div><h2>Company</h2><ul>
-<li><a href="/pricing">Pricing</a></li>
-<li><a href="/industries">Industries</a></li>
-<li><a href="/programs">Community programs</a></li>
-<li><a href="/developers">Developers</a></li>
-<li><a href="/sitemap">Site map</a></li>
-</ul></div>
-<div><h2>Legal</h2><ul>
-<li><a href="/privacy">Privacy</a></li>
-<li><a href="/terms">Terms</a></li>
-</ul></div>
-</div>
-<div class="footer-note">
-<span>AlphaFlux. Built and hosted by the companies that use it.</span>
-<span class="ident">build 26.09.15.1</span>
-<span><a href="/sitemap">Site map</a> and <a href="/llms.txt">llms.txt</a> for machines.</span>
-</div>
-</div></footer>
-</div>
-</div>
-<div class="drawer" data-drawer data-open="false" aria-hidden="true" role="dialog" aria-label="Site sections">
-<div class="drawer-scrim" data-drawer-scrim></div>
-<div class="drawer-panel">
-<div class="drawer-head"><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><button class="nav-toggle" type="button" data-drawer-close aria-label="Close menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-close"></use></svg></button></div>
-<div class="rail-group"><h2 class="rail-group-title">Platform</h2><ul class="rail-list">
-<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
-<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
-<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
-<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
-<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
-<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
-</ul></div>
-<div class="rail-group"><h2 class="rail-group-title">Modules</h2><ul class="rail-list">
-<li><a class="rail-link" href="/calls-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
-<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
-<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
-<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
-<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
-<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
-<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
-<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
-<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
-<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
-<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
-</ul></div>
-<div class="rail-group"><h2 class="rail-group-title">Company</h2><ul class="rail-list">
-<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
-<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
-<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
-<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
-<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
-</ul></div>
-<div class="rail-group"><h2 class="rail-group-title">Legal</h2><ul class="rail-list">
-<li><a class="rail-link" href="/privacy"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-lock"></use></svg><span>Privacy</span></a></li>
-<li><a class="rail-link" href="/terms"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-signature"></use></svg><span>Terms</span></a></li>
-</ul></div>
-</div>
-</div>
-<script src="/assets/site.js?v=f6791390bb" defer></script>
 </body>
 </html>
