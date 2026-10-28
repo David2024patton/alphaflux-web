@@ -21,7 +21,7 @@ RULES:
 -->
 # STATUS: AlphaFlux Web (alphaflux.net)
 
-## As of 2026-10-20
+## As of 2026-10-28
 
 ## Proven state
 - Static generator shipped: go run ./build renders content/*.json into committed HTML plus sitemap.xml, robots.txt, llms.txt, and llms-full.txt (proof: README.md, build/; TODO T-0.1)
@@ -31,6 +31,7 @@ RULES:
 - Self-hosted fonts and icon sprite, no third party font or icon calls (proof: assets/fonts.css, assets/fonts/, assets/icons.svg; TODO T-0.5)
 - Page truth today, from BUILD-MANIFEST.md: 5 pages LIVE, 10 PARTIAL, 4 PLANNED, 5 N/A (proof: BUILD-MANIFEST.md)
 - Repo standard files complete in this repo, with instruction headers (proof: commits 4844b61 to 54fb444, 2026-10-20)
+- Home page is a hand-built coming soon sneak peek (2026-10-28, David's order), modeled on the AlphaFlux poster: coming soon banner, module tile grid, four ways in, free plan box. Deliberate exception to the generator: content/index.json is unchanged and stays the relaunch source; the previous generated index is backed up at backup/index.full-2026-10-28.html (proof: index.html commit cb1ace8; backup commit 722d063)
 
 ## In flight
 - Phase 2: the ten PARTIAL pages being finished to LIVE, one at a time (TODO Phase 2)
