@@ -1,423 +1,397 @@
-<!doctype html>
-<html lang="en" data-theme="dark">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Capacity aware scheduling and recurring agreements</title>
 <meta name="description" content="Book against real capacity so a day cannot be oversold. Recurring service agreements generate their own visits for the whole term and produce recurring revenue you can trust.">
-<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
-<link rel="canonical" href="https://alphaflux.net/scheduling">
-<meta property="og:site_name" content="AlphaFlux">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="AlphaFlux">
 <meta property="og:title" content="Capacity aware scheduling and recurring agreements">
 <meta property="og:description" content="Book against real capacity so a day cannot be oversold. Recurring service agreements generate their own visits for the whole term and produce recurring revenue you can trust.">
-<meta property="og:url" content="https://alphaflux.net/scheduling">
-<meta property="og:image" content="https://alphaflux.net/assets/og/scheduling.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0a1220" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
-<link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/plexmono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/fonts.css?v=f6791390bb">
-<link rel="stylesheet" href="/assets/site.css?v=f6791390bb">
-<script>
-(function(){try{var s=localStorage.getItem("af-theme");var d=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.setAttribute("data-theme",s||d);}catch(e){}})();
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@id": "https://alphaflux.net/#org",
-      "@type": "Organization",
-      "description": "A self-hosted, modular operations platform for service businesses, driver accessible by AI agents.",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://alphaflux.net/assets/apple-touch-icon.png"
-      },
-      "name": "AlphaFlux",
-      "url": "https://alphaflux.net/"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "item": "https://alphaflux.net/",
-          "name": "Overview",
-          "position": 1
-        },
-        {
-          "@type": "ListItem",
-          "name": "Modules",
-          "position": 2
-        },
-        {
-          "@type": "ListItem",
-          "item": "https://alphaflux.net/scheduling",
-          "name": "Scheduling and agreements",
-          "position": 3
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Because availability is a real answer rather than a calendar someone maintains by hand, a customer facing booking page can only offer slots that genuinely exist, which removes the confirmation round trip entirely."
-          },
-          "name": "Can customers book themselves?"
-        },
-        {
-          "@type": "Question",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Force it. The platform will tell you the day is over its limit, and if you proceed it books the job and records that the limit was overridden and by whom. Emergencies happen, and the platform is built to accommodate them without losing the record."
-          },
-          "name": "What if I need to squeeze in an emergency?"
-        },
-        {
-          "@type": "Question",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It does not touch them. Completed and past work is left exactly as it is. Only future visits that have not happened are cancelled and regenerated under the new schedule."
-          },
-          "name": "How does a change to an agreement affect visits already done?"
-        },
-        {
-          "@type": "Question",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, each agreement carries its own service and frequency. A company can run quarterly pest treatments on one agreement and a monthly maintenance contract on another for the same customer."
-          },
-          "name": "Can different services have different frequencies?"
-        },
-        {
-          "@type": "Question",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Times are stored unambiguously and displayed in the company's local time, so a business operating across states sees its own day rather than a server's."
-          },
-          "name": "What time zone are appointments in?"
-        }
-      ]
-    }
-  ]
-}
-</script>
+<meta name="theme-color" content="#FFD23F">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    background: linear-gradient(180deg, #FFD23F 0%, #FFCE1F 55%, #FFC400 100%);
+    color:#111;
+    min-height:100vh;
+  }
+  a { text-decoration:none; color:inherit; }
+  .wrap { max-width:1240px; margin:0 auto; padding:0 20px; }
+  a:focus-visible, .pill:focus-visible {
+    outline:3px solid #111;
+    outline-offset:3px;
+    border-radius:12px;
+  }
+  .bottomnav a:focus-visible { outline-color:#E10600; }
+  .skip { position:absolute; left:-9999px; top:0; background:#111; color:#fff; padding:12px 20px; border-radius:0 0 12px 0; font-weight:800; z-index:50; }
+  .skip:focus { left:0; }
+  .topbar { display:flex; align-items:center; justify-content:space-between; padding:18px 0 6px; gap:16px; }
+  .wordmark { font-size:30px; font-weight:900; letter-spacing:-0.5px; color:#111; line-height:1; padding:6px 0; }
+  .wordmark .dot { color:#E10600; }
+  .toplinks { display:flex; gap:6px; font-size:16px; font-weight:700; }
+  .toplinks a { opacity:.85; padding:12px 12px; border-radius:10px; display:inline-flex; align-items:center; min-height:44px; }
+  .toplinks a:hover { opacity:1; }
+  .signin-pill { background:#111; color:#fff; font-weight:800; font-size:15px; padding:11px 22px; border-radius:999px; box-shadow:0 4px 0 rgba(0,0,0,.18); display:inline-flex; align-items:center; min-height:44px; }
+  .pills { display:flex; gap:10px; padding:14px 0 20px; overflow-x:auto; scrollbar-width:none; }
+  .pills::-webkit-scrollbar { display:none; }
+  .pill { display:inline-flex; align-items:center; gap:8px; white-space:nowrap; background:#fff; color:#111; font-weight:800; font-size:15px; padding:11px 20px; border-radius:999px; box-shadow:0 3px 8px rgba(0,0,0,.12); min-height:44px; }
+  .pill svg { width:18px; height:18px; flex:0 0 auto; }
+  .ptitle { padding:24px 0 0; }
+  .ptitle .eyebrow { font-size:14px; font-weight:900; letter-spacing:1.6px; text-transform:uppercase; color:#7a5b00; margin-bottom:10px; }
+  .ptitle h1 { font-size:48px; font-weight:900; letter-spacing:-0.5px; line-height:1.05; }
+  .ptitle p.lede { margin-top:10px; font-size:18px; line-height:1.45; max-width:640px; color:#2b2b2b; font-family:Arial, sans-serif; }
+  .band { margin-top:24px; border-radius:24px; overflow:hidden; height:190px; box-shadow:0 10px 22px rgba(0,0,0,.18); background:#111; }
+  .band img { width:100%; height:100%; object-fit:cover; display:block; }
+  .card { background:#fff; border-radius:26px; padding:30px 28px; box-shadow:0 8px 18px rgba(0,0,0,.12); margin-top:22px; }
+  .card h2 { font-size:26px; font-weight:900; line-height:1.2; margin-bottom:14px; }
+  .card h3 { font-size:19px; font-weight:900; line-height:1.3; margin:22px 0 8px; }
+  .card h3:first-child, .card h2:first-child { margin-top:0; }
+  .card h4, .card h5, .card h6 { font-size:16px; font-weight:900; margin:18px 0 6px; }
+  .card p, .card li, .card td, .card th, .card blockquote, .card details { font-family:Arial, sans-serif; font-size:16px; line-height:1.6; color:#222; }
+  .card p { margin:0 0 12px; }
+  .card ul, .card ol { padding-left:22px; margin:0 0 12px; }
+  .card li { margin-bottom:6px; }
+  .card a { color:#B00500; text-decoration:underline; text-underline-offset:3px; font-weight:700; }
+  .card a.btn { display:inline-flex; align-items:center; justify-content:center; background:#111; color:#fff; font-weight:900; font-size:16px; padding:14px 26px; border-radius:999px; min-height:48px; box-shadow:0 4px 0 rgba(0,0,0,.18); text-decoration:none; margin:6px 10px 6px 0; font-family:"Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif; }
+  .card a.btn.red { background:#E10600; }
+  .tablewrap { overflow-x:auto; margin:0 0 12px; }
+  .card table { border-collapse:collapse; width:100%; }
+  .card .tablewrap table { width:auto; min-width:100%; }
+  .card th, .card td { border:1px solid #ddd; padding:10px 12px; text-align:left; vertical-align:top; }
+  .card th { background:#FFF6D8; font-family:"Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif; font-weight:800; font-size:15px; color:#111; }
+  .card blockquote { border-left:4px solid #E10600; padding-left:16px; margin:0 0 12px; }
+  .card code { font-family:Menlo, Consolas, monospace; font-size:14px; background:#FFF3C4; padding:1px 5px; border-radius:6px; }
+  .card pre { background:#111; color:#fff; padding:16px; border-radius:14px; overflow-x:auto; margin:0 0 12px; }
+  .card pre code { background:transparent; color:inherit; padding:0; font-size:13.5px; }
+  .card img { max-width:100%; height:auto; border-radius:14px; }
+  .card details { margin:0 0 10px; }
+  .card summary { font-family:"Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif; font-weight:800; color:#111; cursor:pointer; padding:6px 0; }
+  .cta { margin-top:26px; background:#111; color:#fff; border-radius:24px; padding:30px; box-shadow:0 10px 22px rgba(0,0,0,.20); }
+  .cta h2, .cta .t { font-size:25px; font-weight:900; line-height:1.25; margin-bottom:8px; }
+  .cta p { font-family:Arial, sans-serif; font-size:16px; line-height:1.55; color:#EDEDED; margin:0 0 12px; }
+  .cta ul, .cta ol { padding-left:22px; margin:0 0 12px; font-family:Arial, sans-serif; font-size:16px; line-height:1.55; color:#EDEDED; }
+  .cta a.btn { display:inline-flex; align-items:center; justify-content:center; background:#FFD23F; color:#111; font-size:16px; font-weight:900; padding:14px 30px; border-radius:999px; box-shadow:0 4px 0 rgba(0,0,0,.35); min-height:48px; margin:6px 10px 6px 0; font-family:"Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif; }
+  .cta a:not(.btn) { color:#FFD23F; text-decoration:underline; text-underline-offset:3px; font-weight:700; }
+  footer { margin:48px 0 30px; background:#fff; border-radius:24px; padding:28px 30px; box-shadow:0 6px 14px rgba(0,0,0,.10); }
+  footer h2 { font-size:17px; font-weight:900; margin-bottom:8px; }
+  footer p.about { font-family:Arial, sans-serif; font-size:15px; line-height:1.55; color:#333; max-width:760px; }
+  .footlinks { display:flex; flex-wrap:wrap; gap:4px 10px; margin-top:12px; font-size:14px; font-weight:700; }
+  .footlinks a { padding:10px 8px; border-radius:8px; display:inline-flex; align-items:center; min-height:44px; }
+  .copy { margin-top:10px; font-size:13px; color:#666; font-family:Arial, sans-serif; }
+  .bottomnav { display:none; }
+  @media (max-width:760px) {
+    body { padding-bottom:96px; }
+    .toplinks { display:none; }
+    .wordmark { font-size:25px; }
+    .ptitle { padding-top:16px; }
+    .ptitle h1 { font-size:34px; }
+    .ptitle p.lede { font-size:16px; }
+    .band { height:130px; border-radius:20px; }
+    .card { padding:24px 20px; border-radius:22px; }
+    .card h2 { font-size:22px; }
+    .cta { padding:24px; }
+    .cta h2, .cta .t { font-size:21px; }
+    .bottomnav { display:flex; position:fixed; left:0; right:0; bottom:0; background:#fff; box-shadow:0 -4px 18px rgba(0,0,0,.18); padding:6px 6px calc(8px + env(safe-area-inset-bottom)); justify-content:space-around; z-index:10; }
+    .bottomnav a { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; font-size:11px; font-weight:800; color:#555; min-height:48px; min-width:64px; padding:4px 8px; border-radius:12px; }
+    .bottomnav a svg { width:24px; height:24px; }
+    .bottomnav a.on { color:#111; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior:auto; }
+  }
+</style>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<div class="shell">
-<aside class="rail" aria-label="Site sections">
-<div class="rail-inner">
-<a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a>
-<nav class="rail-nav" aria-label="All sections">
-<div class="rail-group">
-<h2 class="rail-group-title">Platform</h2>
-<ul class="rail-list">
-<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
-<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
-<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
-<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
-<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
-<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
-</ul>
-</div>
-<div class="rail-group">
-<h2 class="rail-group-title">Modules</h2>
-<ul class="rail-list">
-<li><a class="rail-link" href="/calls-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
-<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
-<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
-<li><a class="rail-link" href="/scheduling" aria-current="page"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
-<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
-<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
-<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
-<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
-<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
-<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
-<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
-</ul>
-</div>
-<div class="rail-group">
-<h2 class="rail-group-title">Company</h2>
-<ul class="rail-list">
-<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
-<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
-<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
-<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
-<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
-</ul>
-</div>
-<div class="rail-group">
-<h2 class="rail-group-title">Legal</h2>
-<ul class="rail-list">
-<li><a class="rail-link" href="/privacy"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-lock"></use></svg><span>Privacy</span></a></li>
-<li><a class="rail-link" href="/terms"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-signature"></use></svg><span>Terms</span></a></li>
-</ul>
-</div>
-</nav>
-<div class="rail-foot">
-<a class="btn btn-primary" href="/login">Sign in</a>
-<a class="btn btn-secondary" href="/pricing">Start free</a>
-</div>
-</div>
-</aside>
-<div class="main">
-<header class="topbar">
-<button class="nav-toggle" type="button" data-drawer-open aria-expanded="false" aria-label="Open menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-menu"></use></svg></button>
-<a class="topbar-brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg></a>
-<nav class="crumbs" aria-label="Breadcrumb"><ol>
-<li><a href="/">Overview</a></li>
-<li><span class="sep" aria-hidden="true">/</span><span>Modules</span></li>
-<li><span class="sep" aria-hidden="true">/</span><span aria-current="page">Scheduling and agreements</span></li>
-</ol></nav>
-<span class="topbar-spacer"></span>
-<div class="topbar-actions">
-<button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch colour theme"><svg class="i-sun" aria-hidden="true"><use href="/assets/icons.svg#i-sun"></use></svg><svg class="i-moon" aria-hidden="true"><use href="/assets/icons.svg#i-moon"></use></svg></button>
-<a class="btn btn-ghost btn-sm" href="/login">Sign in</a>
-<a class="btn btn-primary btn-sm" href="/pricing">Start free</a>
-</div>
-</header>
-<main id="main">
+<a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
-<header class="page-head">
-<div class="eyebrow-line">
-<span class="chip"><span class="chip-dot"></span>Real capacity</span>
-<span class="chip"><span class="chip-dot"></span>Recurring visits</span>
-<span class="chip"><span class="chip-dot"></span>No double booking</span>
-</div>
-<h1>Fill the calendar without overselling the day</h1>
-<p class="standfirst">Booking that checks the real limits of the day before it confirms, and recurring agreements that generate their own visits for the whole term without anyone remembering to renew them.</p>
-</header>
-</div>
-<section class="section"><div class="wrap"><div class="split">
-<div class="stack-lg">
+  <header class="topbar">
+    <a class="wordmark" href="/" aria-label="AlphaFlux home">AlphaFlux<span class="dot" aria-hidden="true">.</span></a>
+    <nav class="toplinks" aria-label="Primary">
+      <a href="/#run">Products</a><a href="/#setup">Setup</a><a href="/#grow">Grow</a><a href="/pricing">Pricing</a><a href="/#help">Support</a>
+    </nav>
+    <a class="signin-pill" href="/signin">Sign In</a>
+  </header>
+
+  <nav class="pills" aria-label="Browse by category">
+    <a class="pill" href="/#rows"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>All</a>
+    <a class="pill" href="/#run"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Run the day</a>
+    <a class="pill" href="/#setup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>Get set up</a>
+    <a class="pill" href="/#grow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Grow</a>
+    <a class="pill" href="/#help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Help</a>
+  </nav>
+
+  <main id="main">
+    <section class="ptitle" aria-labelledby="page-heading">
+      <p class="eyebrow">Real capacity · Recurring visits · No double booking</p>
+      <h1 id="page-heading">Fill the calendar without overselling the day</h1>
+      <p class="lede">Booking that checks the real limits of the day before it confirms, and recurring agreements that generate their own visits for the whole term without anyone remembering to renew them.</p>
+    </section>
+<section class="card">
 <h2>Capacity is the limit nobody can see until it is broken</h2>
-<p class="standfirst">Most companies discover they oversold a day when a technician calls in from the road. Booking against a rule instead of a feeling is what stops it.</p>
-<div class="prose">
+
+
+<p>Most companies discover they oversold a day when a technician calls in from the road. Booking against a rule instead of a feeling is what stops it.</p>
+
+
 <p>Every booking is checked against the capacity rules that apply to it before it is confirmed. The rules can be set at the office level, the area level or the individual technician level, and per weekday, because Tuesday is rarely Saturday.</p>
+
+
 <p>When two rules apply, the more specific one wins, and the narrower limit is checked as well as the wider one. A technician with a light day inside a busy area still has a personal limit, and the platform checks both rather than picking one.</p>
+
+
 <p>A booking that does not fit is refused with the reason named, and the platform offers the next day that does fit. Overriding it is possible, and the override is recorded with who did it, because a person sometimes genuinely knows better than the rule.</p>
-</div>
-</div>
-<div class="stack-lg">
-<ul class="grid grid-3" style="list-style:none">
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-gauge"></use></svg></span>
+
+
+
+
+
+
+<ul>
+<li>
+
 <h3>Limits that match reality</h3>
+
 <p>Jobs, minutes or both, at office, area or technician level, set per day of the week.</p>
+
 </li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-pin"></use></svg></span>
+
+<li>
+
 <h3>Areas, not guesswork</h3>
+
 <p>Service areas are grouped from postcodes, so coverage and capacity are expressed the way the business already describes itself.</p>
+
 </li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-calendar"></use></svg></span>
+
+<li>
+
 <h3>Availability on request</h3>
+
 <p>Ask what a given day can still take and get an answer, which is what makes online booking and agent booking safe.</p>
+
 </li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-check"></use></svg></span>
+
+<li>
+
 <h3>Overrides are visible</h3>
+
 <p>A forced booking is allowed, recorded and flagged, so the exception is documented rather than quietly absorbed.</p>
+
 </li>
+
 </ul>
-</div>
-</div></div></section>
-<section class="section"><div class="wrap">
-<div class="section-head">
+
+
+
+
+
+</section>
+<section class="card">
 <h2>Recurring work, handled properly</h2>
-<p class="lede">Recurring service is the backbone of a service business and the part most software handles worst.</p>
-</div>
-<ul class="grid grid-3" style="list-style:none">
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg></span>
+
+
+<p>Recurring service is the backbone of a service business and the part most software handles worst.</p>
+
+
+
+
+<ul>
+<li>
+
 <h3>Agreements that generate visits</h3>
+
 <p>Define a frequency and a term and the platform creates every visit for the term, each with its own date, price and technician.</p>
+
 </li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-calendar"></use></svg></span>
+
+<li>
+
 <h3>Dates that stay honest</h3>
+
 <p>A visit on the 31st stays on the 31st, and clamps sensibly in a short month rather than drifting forward forever.</p>
+
 </li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg></span>
+
+<li>
+
 <h3>Recurring revenue you can trust</h3>
+
 <p>Monthly recurring revenue is calculated from the actual charges on the agreement, not from a projection or a guess.</p>
+
 </li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clock"></use></svg></span>
+
+<li>
+
 <h3>Changes without damage</h3>
+
 <p>Moving a schedule cancels and regenerates future visits and leaves completed work exactly where it was.</p>
+
 </li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-bell"></use></svg></span>
+
+<li>
+
 <h3>Reminders that go out</h3>
+
 <p>Upcoming visits trigger a confirmation before the technician is dispatched, so a wasted trip becomes a rebooked one.</p>
+
 </li>
-<li class="item">
-<span class="item-icon"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg></span>
+
+<li>
+
 <h3>A book you can read</h3>
+
 <p>One view of the recurring book: how many agreements, what they are worth a month, and which ones are up for renewal.</p>
+
 </li>
+
 </ul>
-</div></section>
-<section class="section"><div class="wrap">
-<div class="section-head">
+
+
+
+</section>
+<section class="card">
 <h2>How a booking is checked</h2>
-<p class="lede">The order the platform works through when something is being put on the calendar, whether by a person, a customer or an agent.</p>
-</div>
-<dl class="spec-list">
+
+
+<p>The order the platform works through when something is being put on the calendar, whether by a person, a customer or an agent.</p>
+
+
+
+
 <li><dt>Does this area accept work</dt><dd>The address is resolved to a service area. A postcode outside every area you cover is declined at the point of booking rather than after a technician is dispatched.</dd></li>
-<li><dt>Is there capacity that day</dt><dd>The technician&#39;s limit, the area&#39;s limit and the office&#39;s limit are all checked. The most specific rule wins, and the tighter constraint applies.</dd></li>
+
+
+<li><dt>Is there capacity that day</dt><dd>The technician's limit, the area's limit and the office's limit are all checked. The most specific rule wins, and the tighter constraint applies.</dd></li>
+
+
 <li><dt>Does the technician fit the work</dt><dd>Skills and certifications are checked, so a job that requires a particular licence does not land on someone who does not hold it.</dd></li>
-<li><dt>Is the travel realistic</dt><dd>The location is checked against the rest of that technician&#39;s day, so the schedule does not contain a stop that is physically impossible.</dd></li>
+
+
+<li><dt>Is the travel realistic</dt><dd>The location is checked against the rest of that technician's day, so the schedule does not contain a stop that is physically impossible.</dd></li>
+
+
 <li><dt>Is it confirmed or proposed</dt><dd>A booking that fits is confirmed and the customer is notified. One that does not is declined with the reason and the nearest day that works.</dd></li>
-</dl>
-</div></section>
-<section class="section"><div class="wrap">
-<div class="section-head">
+
+
+
+
+
+</section>
+<section class="card">
 <h2>The appointment is the promise, the visit is the work</h2>
-</div>
-<div class="prose stack-lg">
+
+
+
+
 <p>A recurring agreement is not a list of dates in a spreadsheet. It is an agreement with a term, a frequency, a price and a start date, and the platform derives every visit from it.</p>
+
+
 <p>That distinction matters when something changes. Because each visit knows which agreement produced it and which visit number it is, regenerating a schedule is safe to run twice, and a visit that has already been completed is never disturbed by a change to the future.</p>
+
+
 <p>It also means the money and the work cannot drift apart. The recurring revenue a plan reports comes from the same agreements that generate the visits, so the number on the dashboard and the work on the calendar are the same fact.</p>
-</div>
-</div></section>
-<section class="section"><div class="wrap">
-<div class="section-head">
+
+
+
+
+
+</section>
+<section class="card">
 <h2>Scheduling by plan</h2>
-</div>
-<div class="table-scroll" role="region" aria-label="Scheduling by plan, scrolls horizontally" tabindex="0"><table class="data">
+
+
+
+
+<div class="tablewrap"><table>
 <caption></caption>
-<thead><tr><th scope="col"></th><th scope="col">Free</th><th scope="col">Starter</th><th scope="col">Growth and above</th></tr></thead>
+
+<thead><tr><th></th><th>Free</th><th>Starter</th><th>Growth and above</th></tr></thead>
+
 <tbody>
-<tr><th scope="row">Job booking</th><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">Service areas</th><td>1</td><td>2</td><td>5 and above</td></tr>
-<tr><th scope="row">Capacity rules</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">Availability lookup</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">Service agreements</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">Automated visit generation</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">Appointment reminders</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-<tr><th scope="row">Recurring revenue reporting</th><td><span class="no">Not included</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-</tbody></table></div>
-</div></section>
-<section class="section" id="faq">
-<div class="wrap"><div class="split">
-<div><h2>Questions people ask before signing up</h2></div>
-<div class="faq">
-<details><summary>Can customers book themselves?</summary><div class="answer"><p>Yes. Because availability is a real answer rather than a calendar someone maintains by hand, a customer facing booking page can only offer slots that genuinely exist, which removes the confirmation round trip entirely.</p></div></details>
-<details><summary>What if I need to squeeze in an emergency?</summary><div class="answer"><p>Force it. The platform will tell you the day is over its limit, and if you proceed it books the job and records that the limit was overridden and by whom. Emergencies happen, and the platform is built to accommodate them without losing the record.</p></div></details>
-<details><summary>How does a change to an agreement affect visits already done?</summary><div class="answer"><p>It does not touch them. Completed and past work is left exactly as it is. Only future visits that have not happened are cancelled and regenerated under the new schedule.</p></div></details>
-<details><summary>Can different services have different frequencies?</summary><div class="answer"><p>Yes, each agreement carries its own service and frequency. A company can run quarterly pest treatments on one agreement and a monthly maintenance contract on another for the same customer.</p></div></details>
-<details><summary>What time zone are appointments in?</summary><div class="answer"><p>Times are stored unambiguously and displayed in the company&#39;s local time, so a business operating across states sees its own day rather than a server&#39;s.</p></div></details>
+<tr><th>Job booking</th><td><p>Yes</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr>
+
+<tr><th>Service areas</th><td>1</td><td>2</td><td>5 and above</td></tr>
+
+<tr><th>Capacity rules</th><td><p>Not included</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr>
+
+<tr><th>Availability lookup</th><td><p>Not included</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr>
+
+<tr><th>Service agreements</th><td><p>Not included</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr>
+
+<tr><th>Automated visit generation</th><td><p>Not included</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr>
+
+<tr><th>Appointment reminders</th><td><p>Not included</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr>
+
+<tr><th>Recurring revenue reporting</th><td><p>Not included</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr>
+
+</tbody></table>
+
+
 </div>
-</div></div></section>
-</main>
-<section class="band"><div class="wrap"><div class="split">
-<div class="stack-lg">
+</section>
+<section class="card">
+<h2>Questions people ask before signing up</h2>
+
+
+<details><summary>Can customers book themselves?</summary><p>Yes. Because availability is a real answer rather than a calendar someone maintains by hand, a customer facing booking page can only offer slots that genuinely exist, which removes the confirmation round trip entirely.</p></details>
+
+
+<details><summary>What if I need to squeeze in an emergency?</summary><p>Force it. The platform will tell you the day is over its limit, and if you proceed it books the job and records that the limit was overridden and by whom. Emergencies happen, and the platform is built to accommodate them without losing the record.</p></details>
+
+
+<details><summary>How does a change to an agreement affect visits already done?</summary><p>It does not touch them. Completed and past work is left exactly as it is. Only future visits that have not happened are cancelled and regenerated under the new schedule.</p></details>
+
+
+<details><summary>Can different services have different frequencies?</summary><p>Yes, each agreement carries its own service and frequency. A company can run quarterly pest treatments on one agreement and a monthly maintenance contract on another for the same customer.</p></details>
+
+
+<details><summary>What time zone are appointments in?</summary><p>Times are stored unambiguously and displayed in the company's local time, so a business operating across states sees its own day rather than a server's.</p></details>
+
+
+
+
+
+</section>
+<section class="cta">
 <h2>Start on the free plan</h2>
+
+
 <p>Twenty customers, one location, every core module, free permanently. Move up when the work outgrows it.</p>
+
+
+
+
+<a href="/login" class="btn">Create a free account</a>
+
+
+<a href="/pricing" class="btn">See what each plan includes</a>
+
+
+
+
+
+</section>
+  </main>
+  <footer>
+    <h2>What AlphaFlux does</h2>
+    <p class="about">AlphaFlux is the front office for service businesses. It answers your phones around the clock, captures every lead, books jobs onto your schedule, sends invoices and takes payments, and keeps your crew and your customers in the loop, so no call, lead, or job slips through the cracks. AlphaFlux plans are monthly subscriptions, and annual billing lowers the per-month price.</p>
+    <nav class="footlinks" aria-label="Footer">
+      <a href="/#run">Products</a><a href="/#setup">Setup</a><a href="/#grow">Grow</a><a href="/pricing">Pricing</a><a href="/#help">Support</a><a href="/signin">Sign In</a>
+    </nav>
+    <p class="copy">© 2026 AlphaFlux. All rights reserved.</p>
+  </footer>
+
 </div>
-<div class="btn-row" style="align-self:center">
-<a class="btn btn-primary btn-lg" href="/login">Create a free account</a>
-<a class="btn btn-secondary btn-lg" href="/pricing">See what each plan includes</a>
-</div>
-</div></div></section>
-<footer class="footer"><div class="wrap">
-<div class="footer-cols">
-<div><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><p class="small muted" style="margin-block-start:var(--space-4);max-inline-size:34ch">One platform for the phone, the field, the money and the marketing, driven by you or by your agents.</p></div>
-<div><h2>Platform</h2><ul>
-<li><a href="/">Overview</a></li>
-<li><a href="/platform">How it works</a></li>
-<li><a href="/ai-agents">AI agents</a></li>
-<li><a href="/modules">All modules</a></li>
-<li><a href="/security">Security</a></li>
-<li><a href="/white-label">White label</a></li>
-</ul></div>
-<div><h2>Modules</h2><ul>
-<li><a href="/calls-and-messaging">Phone and messaging</a></li>
-<li><a href="/field-operations">Field operations</a></li>
-<li><a href="/fleet">Fleet and dispatch</a></li>
-<li><a href="/scheduling">Scheduling and agreements</a></li>
-<li><a href="/crm">CRM and sales</a></li>
-<li><a href="/inventory">Inventory and assets</a></li>
-<li><a href="/billing">Billing and payments</a></li>
-<li><a href="/email-marketing">Email marketing</a></li>
-<li><a href="/marketing">Marketing and growth</a></li>
-<li><a href="/team">Team and collaboration</a></li>
-<li><a href="/analytics">Reports and analytics</a></li>
-</ul></div>
-<div><h2>Company</h2><ul>
-<li><a href="/pricing">Pricing</a></li>
-<li><a href="/industries">Industries</a></li>
-<li><a href="/programs">Community programs</a></li>
-<li><a href="/developers">Developers</a></li>
-<li><a href="/sitemap">Site map</a></li>
-</ul></div>
-<div><h2>Legal</h2><ul>
-<li><a href="/privacy">Privacy</a></li>
-<li><a href="/terms">Terms</a></li>
-</ul></div>
-</div>
-<div class="footer-note">
-<span>AlphaFlux. Built and hosted by the companies that use it.</span>
-<span class="ident">build 26.09.15.1</span>
-<span><a href="/sitemap">Site map</a> and <a href="/llms.txt">llms.txt</a> for machines.</span>
-</div>
-</div></footer>
-</div>
-</div>
-<div class="drawer" data-drawer data-open="false" aria-hidden="true" role="dialog" aria-label="Site sections">
-<div class="drawer-scrim" data-drawer-scrim></div>
-<div class="drawer-panel">
-<div class="drawer-head"><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none"><circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.5" opacity=".35"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" opacity=".6"/><path d="M12 12 19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.75" fill="currentColor"/></svg><span class="brand-name">AlphaFlux</span></a><button class="nav-toggle" type="button" data-drawer-close aria-label="Close menu"><svg aria-hidden="true"><use href="/assets/icons.svg#i-close"></use></svg></button></div>
-<div class="rail-group"><h2 class="rail-group-title">Platform</h2><ul class="rail-list">
-<li><a class="rail-link" href="/"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-layers"></use></svg><span>Overview</span></a></li>
-<li><a class="rail-link" href="/platform"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-grid"></use></svg><span>How it works</span></a></li>
-<li><a class="rail-link" href="/ai-agents"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-spark"></use></svg><span>AI agents</span></a></li>
-<li><a class="rail-link" href="/modules"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>All modules</span></a></li>
-<li><a class="rail-link" href="/security"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-shield"></use></svg><span>Security</span></a></li>
-<li><a class="rail-link" href="/white-label"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-tag"></use></svg><span>White label</span></a></li>
-</ul></div>
-<div class="rail-group"><h2 class="rail-group-title">Modules</h2><ul class="rail-list">
-<li><a class="rail-link" href="/calls-and-messaging"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-phone"></use></svg><span>Phone and messaging</span></a></li>
-<li><a class="rail-link" href="/field-operations"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-clipboard"></use></svg><span>Field operations</span></a></li>
-<li><a class="rail-link" href="/fleet"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-truck"></use></svg><span>Fleet and dispatch</span></a></li>
-<li><a class="rail-link" href="/scheduling"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-repeat"></use></svg><span>Scheduling and agreements</span></a></li>
-<li><a class="rail-link" href="/crm"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-users"></use></svg><span>CRM and sales</span></a></li>
-<li><a class="rail-link" href="/inventory"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-box"></use></svg><span>Inventory and assets</span></a></li>
-<li><a class="rail-link" href="/billing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-receipt"></use></svg><span>Billing and payments</span></a></li>
-<li><a class="rail-link" href="/email-marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-mail"></use></svg><span>Email marketing</span></a></li>
-<li><a class="rail-link" href="/marketing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-megaphone"></use></svg><span>Marketing and growth</span></a></li>
-<li><a class="rail-link" href="/team"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chat"></use></svg><span>Team and collaboration</span></a></li>
-<li><a class="rail-link" href="/analytics"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-chart"></use></svg><span>Reports and analytics</span></a></li>
-</ul></div>
-<div class="rail-group"><h2 class="rail-group-title">Company</h2><ul class="rail-list">
-<li><a class="rail-link" href="/pricing"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-card"></use></svg><span>Pricing</span></a></li>
-<li><a class="rail-link" href="/industries"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-building"></use></svg><span>Industries</span></a></li>
-<li><a class="rail-link" href="/programs"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-heart"></use></svg><span>Community programs</span></a></li>
-<li><a class="rail-link" href="/developers"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-code"></use></svg><span>Developers</span></a></li>
-<li><a class="rail-link" href="/sitemap"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-sitemap"></use></svg><span>Site map</span></a></li>
-</ul></div>
-<div class="rail-group"><h2 class="rail-group-title">Legal</h2><ul class="rail-list">
-<li><a class="rail-link" href="/privacy"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-lock"></use></svg><span>Privacy</span></a></li>
-<li><a class="rail-link" href="/terms"><svg aria-hidden="true" focusable="false"><use href="/assets/icons.svg#i-signature"></use></svg><span>Terms</span></a></li>
-</ul></div>
-</div>
-</div>
-<script src="/assets/site.js?v=f6791390bb" defer></script>
+<nav class="bottomnav" aria-label="Mobile">
+  <a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+  <a href="/#rows"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Browse</a>
+  <a href="/pricing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>Pricing</a>
+  <a href="/signin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Sign In</a>
+</nav>
+
 </body>
 </html>
