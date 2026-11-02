@@ -21,7 +21,7 @@
   }
   a { text-decoration:none; color:inherit; }
   .wrap { max-width:1240px; margin:0 auto; padding:0 20px; }
-  a:focus-visible, .pill:focus-visible {
+  a:focus-visible {
     outline:3px solid #111;
     outline-offset:3px;
     border-radius:12px;
@@ -29,6 +29,14 @@
   .bottomnav a:focus-visible { outline-color:#E10600; }
   .skip { position:absolute; left:-9999px; top:0; background:#111; color:#fff; padding:12px 20px; border-radius:0 0 12px 0; font-weight:800; z-index:50; }
   .skip:focus { left:0; }
+  /* Room app bar: rooms are little apps (back, room name, sign in), sticky at the top */
+  .appbar { position:sticky; top:0; z-index:30; background:#FFD23F; border-bottom:2px solid rgba(17,17,17,.14); box-shadow:0 4px 14px rgba(0,0,0,.10); }
+  .appbar-in { max-width:1240px; margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:12px; }
+  .appback { display:inline-flex; align-items:center; gap:6px; font-weight:800; font-size:15px; color:#111; min-height:40px; padding:6px 10px 6px 2px; border-radius:10px; }
+  .appback svg { width:18px; height:18px; flex:0 0 auto; }
+  .appname { font-size:19px; font-weight:900; letter-spacing:-0.3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .appsignin { margin-left:auto; background:#111; color:#fff; font-weight:800; font-size:14px; padding:9px 18px; border-radius:999px; box-shadow:0 3px 0 rgba(0,0,0,.18); display:inline-flex; align-items:center; min-height:40px; white-space:nowrap; }
+  .appbar a:focus-visible { outline:3px solid #111; outline-offset:2px; }
   .topbar { display:flex; align-items:center; justify-content:space-between; padding:18px 0 6px; gap:16px; }
   .wordmark { font-size:30px; font-weight:900; letter-spacing:-0.5px; color:#111; line-height:1; padding:6px 0; }
   .wordmark .dot { color:#E10600; }
@@ -36,10 +44,6 @@
   .toplinks a { opacity:.85; padding:12px 12px; border-radius:10px; display:inline-flex; align-items:center; min-height:44px; }
   .toplinks a:hover { opacity:1; }
   .signin-pill { background:#111; color:#fff; font-weight:800; font-size:15px; padding:11px 22px; border-radius:999px; box-shadow:0 4px 0 rgba(0,0,0,.18); display:inline-flex; align-items:center; min-height:44px; }
-  .pills { display:flex; gap:10px; padding:14px 0 20px; overflow-x:auto; scrollbar-width:none; }
-  .pills::-webkit-scrollbar { display:none; }
-  .pill { display:inline-flex; align-items:center; gap:8px; white-space:nowrap; background:#fff; color:#111; font-weight:800; font-size:15px; padding:11px 20px; border-radius:999px; box-shadow:0 3px 8px rgba(0,0,0,.12); min-height:44px; }
-  .pill svg { width:18px; height:18px; flex:0 0 auto; }
   .ptitle { padding:24px 0 0; }
   .ptitle .eyebrow { font-size:14px; font-weight:900; letter-spacing:1.6px; text-transform:uppercase; color:#7a5b00; margin-bottom:10px; }
   .ptitle h1 { font-size:48px; font-weight:900; letter-spacing:-0.5px; line-height:1.05; }
@@ -85,14 +89,15 @@
   .bottomnav { display:none; }
   @media (max-width:760px) {
     body { padding-bottom:calc(66px + env(safe-area-inset-bottom)); }
+    .appbar-in { padding:8px 14px; gap:10px; }
+    .appname { font-size:17px; }
+    .appback { font-size:14px; }
+    .appsignin { font-size:13.5px; padding:8px 15px; }
     .wrap { padding:0 14px; }
     .toplinks { display:none; }
     .topbar { padding:12px 0 2px; }
     .wordmark { font-size:23px; }
     .signin-pill { font-size:13.5px; padding:9px 16px; min-height:40px; }
-    .pills { gap:8px; padding:10px 0 12px; }
-    .pill { font-size:13px; padding:8px 13px; min-height:40px; gap:6px; }
-    .pill svg { width:15px; height:15px; }
     .ptitle { padding-top:10px; }
     .ptitle .eyebrow { font-size:11.5px; letter-spacing:1.2px; margin-bottom:6px; }
     .ptitle h1 { font-size:26px; }
@@ -114,7 +119,7 @@
     .footlinks { margin-top:8px; }
     .footlinks a { min-height:40px; padding:8px 6px; font-size:13px; }
     .copy { font-size:12px; margin-top:8px; }
-    .bottomnav { display:flex; position:fixed; left:0; right:0; bottom:0; background:#fff; box-shadow:0 -4px 18px rgba(0,0,0,.18); padding:5px 6px calc(6px + env(safe-area-inset-bottom)); justify-content:space-around; z-index:10; }
+    .bottomnav { display:flex; position:fixed; left:0; right:0; bottom:0; background:#fff; border-top:2px solid rgba(17,17,17,.16); box-shadow:0 -8px 24px rgba(0,0,0,.20); padding:5px 6px calc(6px + env(safe-area-inset-bottom)); justify-content:space-around; z-index:10; }
     .bottomnav a { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; font-size:10.5px; font-weight:800; color:#555; min-height:42px; min-width:56px; padding:3px 6px; border-radius:12px; }
     .bottomnav a svg { width:20px; height:20px; }
     .bottomnav a.on { color:#111; }
@@ -126,22 +131,14 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<header class="appbar">
+  <div class="appbar-in">
+    <a class="appback" href="/" aria-label="Back to the AlphaFlux home page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Back</a>
+    <span class="appname">Security</span>
+    <a class="appsignin" href="/signin">Sign In</a>
+  </div>
+</header>
 <div class="wrap">
-  <header class="topbar">
-    <a class="wordmark" href="/" aria-label="AlphaFlux home">AlphaFlux<span class="dot" aria-hidden="true">.</span></a>
-    <nav class="toplinks" aria-label="Primary">
-      <a href="/#run">Products</a><a href="/#setup">Setup</a><a href="/#grow">Grow</a><a href="/pricing">Pricing</a><a href="/#help">Support</a>
-    </nav>
-    <a class="signin-pill" href="/signin">Sign In</a>
-  </header>
-
-  <nav class="pills" aria-label="Browse by category">
-    <a class="pill" href="/#rows"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>All</a>
-    <a class="pill" href="/#run"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Run the day</a>
-    <a class="pill" href="/#setup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>Get set up</a>
-    <a class="pill" href="/#grow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Grow</a>
-    <a class="pill" href="/#help"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Help</a>
-  </nav>
 
   <main id="main">
     <section class="ptitle" aria-labelledby="page-heading">
