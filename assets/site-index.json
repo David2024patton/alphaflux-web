@@ -1,0 +1,478 @@
+{
+ "chunks": [
+  {
+   "href": "/crm",
+   "label": "CRM and Leads",
+   "h": "What the customer record holds",
+   "t": "Everything about one account in one place, because the alternative is four places that disagree. Contacts and accounts: People and the companies or properties they belong to, with multiple sites under one account where that is how the relationship works. A pipeline that reflects your sales: Lead, contacted, quoted, won or lost, with the stages and values that make sense for how you actually sell. One timeline per account: Calls, texts, emails, notes, jobs, invoices, payments and changes in a single chronological feed. Notes with mentions: Write a note on an account and mention a colleague or another account. The mention becomes a notification, not a message that gets lost. Tags that are a system: A shared tag vocabulary with colour and category, applied in bulk, so accounts can be filtered the same way by everyone. Duplicates found and merged: The platform proposes merges when a phone nu"
+  },
+  {
+   "href": "/crm",
+   "label": "CRM and Leads",
+   "h": "Teams, territories and who can see what",
+   "t": "Selling and servicing a large account is rarely one person's job. The record supports the whole team without everyone seeing everything. Account teams: Attach the people who work on an account with a role on that account: who sells it, who services it, who handles the billing, who is the escalation point. Each one is named on the record rather than inferred from who happened to touch it last. Territories and assignment: Define territories by area, postcode or service line and let an account be assigned automatically when it arrives, so a new lead lands with the right person without a manual sorting step. Roles that scope access: A role is a set of permissions. Scoped to a territory or a district, it means a salesperson sees their own patch and a manager sees all of it, and neither has to be maintained by hand. Sharing on the account: An account can be shared with specific people or a who"
+  },
+  {
+   "href": "/crm",
+   "label": "CRM and Leads",
+   "h": "Who sold it, and who gets paid for it",
+   "t": "Three different people can be responsible for one sale, and collapsing them into a single owner column is how commission disputes start. AlphaFlux records three separate roles on an account. Who sold it, which is the person owed commission. Who services it, which is the technician or team who keeps it. And who booked it, which distinguishes a lead that came from a person from one that came from an agent or an import. Splits are recorded in basis points and must total exactly one hundred percent before they can be saved. A split that does not add up is not a rounding problem to be tolerated, it is a commission error waiting to be discovered at the worst moment. Attribution history is append-only. When ownership changes, the previous entry is superseded rather than overwritten, so a payout made in March can still be explained in September, and revenue an agent generated stays separable fro"
+  },
+  {
+   "href": "/crm",
+   "label": "CRM and Leads",
+   "h": "CRM and Leads",
+   "t": "If two systems know a customer, one of them is wrong and you will find out at the worst possible time."
+  },
+  {
+   "href": "/crm",
+   "label": "CRM and Leads",
+   "h": "Question: Do I have to move my contacts in from somewhere else?",
+   "t": "You can import from a spreadsheet, or connect an existing field service account and read it live while you decide what to move. Many companies run both for a period, which is a deliberate option rather than a leap of faith."
+  },
+  {
+   "href": "/crm",
+   "label": "CRM and Leads",
+   "h": "Question: What happens if two people create the same customer?",
+   "t": "The platform notices and proposes a merge, showing which signal linked the two records, whether that was a shared phone number, a shared email or the same name and address. Nothing merges automatically, and a merge can be reversed if it turns out to be wrong."
+  },
+  {
+   "href": "/crm",
+   "label": "CRM and Leads",
+   "h": "Question: Can I see an account's whole history in one place?",
+   "t": "Yes. The account timeline mixes calls, texts, emails, notes, jobs, payments and agent activity in one chronological feed, with filtering so a support question can be answered without reading a year of unrelated activity."
+  },
+  {
+   "href": "/crm",
+   "label": "CRM and Leads",
+   "h": "Question: How does commission work for a team sale?",
+   "t": "Splits are recorded per person in basis points and must total one hundred percent. Payouts are computed from those splits and snapshotted, so a rate change in the future does not silently rewrite what someone was owed in the past."
+  },
+  {
+   "href": "/crm",
+   "label": "CRM and Leads",
+   "h": "Question: Does the CRM know about field work?",
+   "t": "It is the same record. A job booked by a technician or an agent appears on the account timeline, and a customer's job history is visible from the account without switching modules."
+  },
+  {
+   "href": "/bookings",
+   "label": "Bookings and Schedule",
+   "h": "Jobs booked onto your schedule",
+   "t": "AlphaFlux answers your phones, captures your leads, and books your jobs while you are out doing the work. A booking lands on the same schedule your crew works from, against the customer record the call came into."
+  },
+  {
+   "href": "/bookings",
+   "label": "Bookings and Schedule",
+   "h": "Recurring visits run themselves",
+   "t": "Recurring service agreements generate their own visits for the whole term, so repeat work appears on the schedule on its own and produces recurring revenue you can trust."
+  },
+  {
+   "href": "/bookings",
+   "label": "Bookings and Schedule",
+   "h": "One front office",
+   "t": "Every part of AlphaFlux runs on the same front office: phones answered, leads captured, jobs booked, invoices sent. Nothing lives in a separate list that can disagree with the rest."
+  },
+  {
+   "href": "/invoices",
+   "label": "Invoices and Payments",
+   "h": "Raised from the work",
+   "t": "An invoice in AlphaFlux comes from the job that was booked and done, not from a separate list typed up later. Payments are voided rather than deleted, so the record stays honest."
+  },
+  {
+   "href": "/invoices",
+   "label": "Invoices and Payments",
+   "h": "Recurring revenue you can trust",
+   "t": "Usage billing and recurring agreements feed one recurring revenue number, built from the same records as the invoices themselves."
+  },
+  {
+   "href": "/invoices",
+   "label": "Invoices and Payments",
+   "h": "One front office",
+   "t": "Every part of AlphaFlux runs on the same front office: phones answered, leads captured, jobs booked, invoices sent. Nothing lives in a separate list that can disagree with the rest."
+  },
+  {
+   "href": "/inventory",
+   "label": "Inventory",
+   "h": "Inventory is included on the free plan, permanently",
+   "t": "Most platforms treat stock as an enterprise feature. A one person operation with a van full of parts needs it just as much as a depot does, so it is not gated. Every account gets items, movements, locations and low stock alerts at no cost, whether there is one technician or two hundred. What grows with the plan is scale, not capability: how many locations you can define, how much movement history you keep, and how far the reporting reaches. The point is that the record starts on day one. A company that tracks its stock from the first van never has to reconstruct a year of purchases later, and never has to run an inventory count to find out what it owns. Items and stock levels: Parts, products and consumables with SKU, quantity on hand, reorder point, unit and cost. Locations that match reality: Trucks, vans, storage units, rented bays, depots, yards and branches, each with its own stock "
+  },
+  {
+   "href": "/inventory",
+   "label": "Inventory",
+   "h": "Chemical and controlled stock, signed in and out",
+   "t": "Some things in a van are not ordinary stock. They are regulated, they have a usage rate, they must be accounted for, and an inspector may ask. AlphaFlux tracks them the way they are actually used. A container is signed in when it is received, assigned to a technician or a location, and signed out when it is used or returned. The record shows who had it, when they took it, where it went and what remains. That record is what turns a difficult conversation into a report. Usage per technician, usage per service, what was applied at a customer's property, and what is currently unaccounted for are all available as views rather than as an afternoon with a clipboard. The same mechanism handles any stock that needs a chain of custody: calibrated instruments, keys, PPE, high value tools, controlled parts, and anything else where knowing that it left the building is not enough. Sign in, sign out: A"
+  },
+  {
+   "href": "/inventory",
+   "label": "Inventory",
+   "h": "Built for operations that do not fit one building",
+   "t": "The same records serve a sole trader with a van and an operation with units in every time zone. These are the arrangements the module is designed around. Technician and vehicle stock: Every truck holds its own position, so the question where is that part is answered by naming the part rather than by ringing three technicians. A technician's stock moves when the job consumes it, not when someone remembers to update a sheet. Storage units and rented bays: A rented storage locker is a location like any other. It can hold stock, it can be transferred to and from, and it can be counted without an afternoon of driving to it and writing things down. Mobile and self contained units: Self contained units that move between sites, whether that is a mobile workshop, a solar powered field unit, a trailer or a container, are tracked as both an asset and a location. The unit has a position, a custodian"
+  },
+  {
+   "href": "/inventory",
+   "label": "Inventory",
+   "h": "Day to day, it stays simple",
+   "t": "A stock system only works if a technician will actually use it from a driveway. Everything here is designed to take seconds. Adjust in two taps: Search or scan, enter the quantity, pick a reason. Add a note if it needs one. Scan instead of type: Barcodes and QR codes read from the phone camera, which is what turns a stock take from a weekend into an hour. Consumed by the job: Parts used on a job are drawn down automatically when the job closes, and appear on the invoice from the same entry. Transfer between places: Move stock from depot to truck to site, with a record at each end and an in transit state so nothing is ever in two places. Counts that reconcile: Run a count on one location, see the variance against the system, and post the adjustment with a reason. Import and export: Bring a supplier price list or an existing spreadsheet in, and take the whole register out in a structured f"
+  },
+  {
+   "href": "/inventory",
+   "label": "Inventory",
+   "h": "Inventory",
+   "t": "Nobody ever lost money knowing exactly what was in the truck and who took it out."
+  },
+  {
+   "href": "/inventory",
+   "label": "Inventory",
+   "h": "Inventory by plan",
+   "t": "Inventory is free on the free plan. The paid plans lift the number of locations and how far back the movement history goes."
+  },
+  {
+   "href": "/inventory",
+   "label": "Inventory",
+   "h": "Question: Is inventory really free?",
+   "t": "Yes, on every plan including the free one. Items, movements, sign in and sign out, scanning and low stock alerts are all included. What a plan changes is how many locations you can define and how long you keep movement history."
+  },
+  {
+   "href": "/inventory",
+   "label": "Inventory",
+   "h": "Question: How do I track chemicals across several technicians?",
+   "t": "Each container is signed in when it is received and assigned to a technician or a location. When it is used, the amount consumed is recorded against the job, which leaves a per technician usage record and a per property application record. A reconciliation view shows anything that moved without a matching reason."
+  },
+  {
+   "href": "/inventory",
+   "label": "Inventory",
+   "h": "Question: Can I track stock that lives on a vehicle that moves between sites?",
+   "t": "Yes. A mobile unit is treated as both an asset and a location, so it has a position, a custodian and its own contents, and all three move together. That covers mobile workshops, trailers, containers and remote units."
+  },
+  {
+   "href": "/inventory",
+   "label": "Inventory",
+   "h": "Question: I run more than one company. Can I see all their stock together?",
+   "t": "Yes. Stock is scoped to a company, and an operator with access to several can see a consolidated position across all of them while each company's records stay separate."
+  },
+  {
+   "href": "/inventory",
+   "label": "Inventory",
+   "h": "Question: Does it handle stock in a truck being consumed by a job?",
+   "t": "Yes. When a job is closed, the parts and consumables used are drawn from the technician's stock and carried onto the invoice. The technician does not enter the same information twice."
+  },
+  {
+   "href": "/team-app",
+   "label": "Team App",
+   "h": "Chat on the account timeline",
+   "t": "Team chat sits on one timeline per account, with mentions that notify and an audit trail on every change. Roles and departments keep districts separate."
+  },
+  {
+   "href": "/team-app",
+   "label": "Team App",
+   "h": "Built for the field",
+   "t": "The technician view keeps working when the signal does not, with jobs, check in and out, and proof of work for the day."
+  },
+  {
+   "href": "/team-app",
+   "label": "Team App",
+   "h": "One front office",
+   "t": "Every part of AlphaFlux runs on the same front office: phones answered, leads captured, jobs booked, invoices sent. Nothing lives in a separate list that can disagree with the rest."
+  },
+  {
+   "href": "/setup",
+   "label": "Business Setup Walkthrough",
+   "h": "The walkthrough",
+   "t": "Step 1: Pick a plan: Start free, or pick the plan that fits your crew. See the plans . Step 2: Import your customers: Bring the customer list you already keep. How importing works . Step 3: Connect your tools: Hook up the tools you already use. See connections . Step 4: Go live: Work the checklist, then your front office is on. Open the checklist ."
+  },
+  {
+   "href": "/setup",
+   "label": "Business Setup Walkthrough",
+   "h": "Setup help exists",
+   "t": "Setup is a walkthrough, not a homework assignment. Each step says what to do and why, in order, and the help center covers the same ground whenever you get stuck."
+  },
+  {
+   "href": "/import",
+   "label": "Import Your Customers",
+   "h": "Your list becomes your records",
+   "t": "Import the customers you already have and they land on the one shared customer record: the same account the call comes into, the job is booked against, and the invoice is raised for."
+  },
+  {
+   "href": "/import",
+   "label": "Import Your Customers",
+   "h": "Part of setup",
+   "t": "Importing is step two of the setup walkthrough, after picking a plan and before connecting your tools and going live."
+  },
+  {
+   "href": "/import",
+   "label": "Import Your Customers",
+   "h": "One front office",
+   "t": "Every part of AlphaFlux runs on the same front office: phones answered, leads captured, jobs booked, invoices sent. Nothing lives in a separate list that can disagree with the rest."
+  },
+  {
+   "href": "/connect",
+   "label": "Connect Your Tools",
+   "h": "Three ways to drive it",
+   "t": "A documented REST API with a machine readable specification, a command line that prints JSON, and an agent protocol server. Drive AlphaFlux from your own tools, your scripts, or your agents."
+  },
+  {
+   "href": "/connect",
+   "label": "Connect Your Tools",
+   "h": "Webhooks",
+   "t": "Webhooks fire for everything the platform does, so the tools you already run hear about calls, bookings, and payments as they happen."
+  },
+  {
+   "href": "/connect",
+   "label": "Connect Your Tools",
+   "h": "One front office",
+   "t": "Every part of AlphaFlux runs on the same front office: phones answered, leads captured, jobs booked, invoices sent. Nothing lives in a separate list that can disagree with the rest."
+  },
+  {
+   "href": "/go-live",
+   "label": "Go Live Checklist",
+   "h": "The checklist",
+   "t": "Pick your plan. Free is a fine place to start. See plans . Run the setup walkthrough. Open it . Import your customers. How importing works . Connect your tools. See connections . Go live: phones answered, leads captured, jobs booked, invoices sent."
+  },
+  {
+   "href": "/go-live",
+   "label": "Go Live Checklist",
+   "h": "One front office",
+   "t": "Every part of AlphaFlux runs on the same front office: phones answered, leads captured, jobs booked, invoices sent. Nothing lives in a separate list that can disagree with the rest."
+  },
+  {
+   "href": "/social",
+   "label": "Social Posts",
+   "h": "Plan and schedule",
+   "t": "Plan where to grow and schedule social posts from the same place you run the rest of the front office, instead of a separate tool with a separate login."
+  },
+  {
+   "href": "/social",
+   "label": "Social Posts",
+   "h": "Judge it by revenue",
+   "t": "Posts are not the point. Revenue is. AlphaFlux shows which channel produced the revenue, so you can do more of what works."
+  },
+  {
+   "href": "/social",
+   "label": "Social Posts",
+   "h": "One front office",
+   "t": "Every part of AlphaFlux runs on the same front office: phones answered, leads captured, jobs booked, invoices sent. Nothing lives in a separate list that can disagree with the rest."
+  },
+  {
+   "href": "/ads",
+   "label": "Lead Ads",
+   "h": "Leads land on the record",
+   "t": "When an ad brings someone in, the lead is captured on the same customer record the phone system and the schedule point at, ready to be booked like any other job."
+  },
+  {
+   "href": "/ads",
+   "label": "Lead Ads",
+   "h": "Judge ads by revenue",
+   "t": "See which channel produced the revenue. An ad that books jobs beats an ad that only gets clicks."
+  },
+  {
+   "href": "/ads",
+   "label": "Lead Ads",
+   "h": "One front office",
+   "t": "Every part of AlphaFlux runs on the same front office: phones answered, leads captured, jobs booked, invoices sent. Nothing lives in a separate list that can disagree with the rest."
+  },
+  {
+   "href": "/reviews",
+   "label": "Reviews",
+   "h": "Ask at the right moment",
+   "t": "The same front office that books the job and sends the invoice is what asks for the review, so the request goes out while the work is fresh in the customer's mind."
+  },
+  {
+   "href": "/reviews",
+   "label": "Reviews",
+   "h": "One front office",
+   "t": "Every part of AlphaFlux runs on the same front office: phones answered, leads captured, jobs booked, invoices sent. Nothing lives in a separate list that can disagree with the rest."
+  },
+  {
+   "href": "/websites",
+   "label": "Website and Funnels",
+   "h": "More than a brochure",
+   "t": "A module is a view onto records the platform was already keeping. Your website works the same way: a visitor who asks for service becomes a lead on the customer record, not a message in a forgotten inbox."
+  },
+  {
+   "href": "/websites",
+   "label": "Website and Funnels",
+   "h": "Funnels that end in a booking",
+   "t": "A funnel's job is the same as the phone system's job: capture the lead and book the job. Both end on the same schedule."
+  },
+  {
+   "href": "/websites",
+   "label": "Website and Funnels",
+   "h": "One front office",
+   "t": "Every part of AlphaFlux runs on the same front office: phones answered, leads captured, jobs booked, invoices sent. Nothing lives in a separate list that can disagree with the rest."
+  },
+  {
+   "href": "/marketplace",
+   "label": "Marketplace",
+   "h": "Buy it built",
+   "t": "Pick a ready-made website or funnel instead of starting from a blank page. What you buy is built for service businesses and the way they actually book work."
+  },
+  {
+   "href": "/marketplace",
+   "label": "Marketplace",
+   "h": "Connected from day one",
+   "t": "What you buy plugs into the same front office: phones answered, leads captured, jobs booked, invoices sent."
+  },
+  {
+   "href": "/help",
+   "label": "Help Center",
+   "h": "Guides",
+   "t": "Business setup walkthrough : the four steps, in order. Go live checklist : the last steps before you are on. Video tutorials : see how it works. Pricing : every plan, side by side."
+  },
+  {
+   "href": "/help",
+   "label": "Help Center",
+   "h": "Already a customer?",
+   "t": "Sign in to your console to run your front office, or to check your account."
+  },
+  {
+   "href": "/tutorials",
+   "label": "Video Tutorials",
+   "h": "Watch the setup",
+   "t": "The tutorials walk the same steps as the setup walkthrough: pick a plan, import your customers, connect your tools, and go live."
+  },
+  {
+   "href": "/tutorials",
+   "label": "Video Tutorials",
+   "h": "Watch the day run",
+   "t": "See the front office at work: phones answered, leads captured, jobs booked, and invoices sent."
+  },
+  {
+   "href": "/pricing",
+   "label": "Pricing",
+   "h": "Plans at a glance",
+   "t": "AlphaFlux pricing has five plans. Free is $0 per month, free for life. Starter is $69 per month, or $55 per month billed annually. Growth is $150 per month, or $120 billed annually. Pro is $289 per month, or $231 billed annually, and adds the AI receptionist. Scale is $420 per month, or $336 billed annually. You do not have to buy a plan: modules can be added one at a time on the Free plan."
+  },
+  {
+   "href": "/pricing",
+   "label": "Pricing",
+   "h": "Free",
+   "t": "Price: $0 per month, free for life. Try it out per month Free for life CRM Basic scheduling Basic invoicing 1 location, 20 customers, 20 inventory items, 2 users"
+  },
+  {
+   "href": "/pricing",
+   "label": "Pricing",
+   "h": "Starter",
+   "t": "Price: $69 per month, or $55 per month billed annually. For new businesses per month Phone system (1 number) Texting Scheduling + online booking Billing and invoicing Inventory core 1 location, 250 customers, 500 inventory items, 3 users 14-day free trial"
+  },
+  {
+   "href": "/pricing",
+   "label": "Pricing",
+   "h": "Growth",
+   "t": "Price: $150 per month, or $120 per month billed annually. For growing teams per month Everything in Starter Socials publishing + inbox Marketing automation (win-back, review requests, missed-call text-back) Field service (dispatch, routes, tech app, truck stock) Workflows 3 locations, 1,500 customers, 3,000 inventory items, 10 users 14-day free trial"
+  },
+  {
+   "href": "/pricing",
+   "label": "Pricing",
+   "h": "Pro",
+   "t": "Price: $289 per month, or $231 per month billed annually. For busy shops per month Everything in Growth AI receptionist (500 min/mo) API access Serial/lot tracking Advanced permissions 10 locations, 10,000 customers, 25,000 inventory items, 25 users 14-day free trial"
+  },
+  {
+   "href": "/pricing",
+   "label": "Pricing",
+   "h": "Scale",
+   "t": "Price: $420 per month, or $336 per month billed annually. For multi-crew operations per month Everything in Pro Unlimited locations, customers, and inventory Onboarding package included 50 users 14-day free trial"
+  },
+  {
+   "href": "/pricing",
+   "label": "Pricing",
+   "h": "You do not have to buy a plan",
+   "t": "Start on the Free plan and add only the modules you need, one at a time. Add a module when the work calls for it, and skip the rest. Phones CRM and Leads Bookings Invoices Inventory Team App Social Posts Ads Reviews Websites and Funnels Email Marketing"
+  },
+  {
+   "href": "/about",
+   "label": "About",
+   "h": "Who it is for",
+   "t": "Pest control, plumbing, HVAC, roofing, cleaning, landscaping, security patrol, solar and mobile units, logistics, construction, manufacturing, and nonprofits."
+  },
+  {
+   "href": "/contact",
+   "label": "Contact",
+   "h": "New to AlphaFlux",
+   "t": "The fastest way to reach us is to start. A free account puts you on the platform, and the setup walkthrough takes it from there."
+  },
+  {
+   "href": "/contact",
+   "label": "Contact",
+   "h": "Already a customer",
+   "t": "Sign in to your console to run your front office or check your account."
+  },
+  {
+   "href": "/calls-and-messaging",
+   "label": "AI Phone Answering",
+   "h": "The whole phone system, not just a dialler",
+   "t": "A phone system that does not connect to the job it produced is a phone system that costs you a re-typing job every day. Numbers you control: Bring the numbers your customers already know, or buy new ones by area code. Each number gets its own behaviour. Texting that belongs to the account: Every inbound and outbound message lands on the customer timeline, not in a separate handset. Call handling per number: Greeting, ring through target, business hours and an after hours rule, configured per number rather than once for the whole company. A receptionist that books: The AI answers first, checks real capacity and puts the job on the schedule. Emergencies go straight to a person. A voicemail inbox that reads: Recordings, playback and transcripts in the console, with an unread count so nothing sits unheard for a week. Missed call text back: A missed call triggers a text within seconds, which "
+  },
+  {
+   "href": "/calls-and-messaging",
+   "label": "AI Phone Answering",
+   "h": "How a call is handled, decision by decision",
+   "t": "Every number carries its own rule set. Here is the order the platform works through when the phone rings. Answer: The call is answered immediately, so the caller never hears a ring they can hang up on. Receptionist or person: If the number has an AI receptionist attached, it is dialled first with a fifteen second window. If it does not answer, the human chain runs as if the AI had never been there. If the AI does answer, nobody's phone rings. Inside or outside hours: Business hours are set per number and per day. Inside hours the call rings through to the right person. Outside hours it follows the after hours rule you chose. The after hours rule: Three options per number: take a voicemail, forward to a number such as an answering service, or end the call politely. Which one is right depends on the business, so it is a setting rather than an assumption. Voicemail and text back: When a voi"
+  },
+  {
+   "href": "/calls-and-messaging",
+   "label": "AI Phone Answering",
+   "h": "The receptionist does the parts you would rather not staff",
+   "t": "Answering the phone at nine at night is expensive to staff and cheap to automate, as long as it is done properly. It identifies the caller, works out which office serves the address, checks whether the service described is one you offer, and books the visit against real capacity. It takes the details, leaves a complete record, and hands over to a person for anything that needs judgement. It is bounded by the same rules your staff are: the service areas you actually cover, the capacity your technicians actually have, and a list of things it must never do. It does not quote a price that is not on your list, and it does not promise an exact arrival time. The script lives inside AlphaFlux and is versioned, so changing how your business answers the phone is an edit rather than a ticket to a vendor. Right office, first time: The address is resolved against the areas each office covers before a"
+  },
+  {
+   "href": "/calls-and-messaging",
+   "label": "AI Phone Answering",
+   "h": "Messaging done to carrier standards",
+   "t": "Business texting has rules. The platform handles the registration and the compliance so messages arrive. Brand and campaign registration: The registration work that carriers require before application to person messaging is supported in the console, with the status of each registration visible rather than hidden. Opt out handling: A customer who replies to stop is suppressed from future sends automatically. That applies equally to a person sending and to an agent sending. Message logging on the account: Every message in and out is recorded against the customer timeline, with the number it came from and the person or agent who sent it. Deliverability signals: Failed and undelivered messages are surfaced rather than silently dropped, because a text that never arrived is worse than one never sent. More than one sender identity: Alphanumeric sender identifiers, short codes and messaging serv"
+  },
+  {
+   "href": "/calls-and-messaging",
+   "label": "AI Phone Answering",
+   "h": "AI Phone Answering",
+   "t": "A missed call is a lead that has already decided to call you. It should almost never be lost."
+  },
+  {
+   "href": "/calls-and-messaging",
+   "label": "AI Phone Answering",
+   "h": "Question: Do I have to port my numbers?",
+   "t": "No, and in most cases you should not. You can connect the carrier account you already have so your existing numbers keep working and stay yours. Porting is only needed if you want the number managed under a different carrier account."
+  },
+  {
+   "href": "/calls-and-messaging",
+   "label": "AI Phone Answering",
+   "h": "Question: Can the AI receptionist take a payment?",
+   "t": "It does not take card details on a call, and that is deliberate. It can book the work, take the details and leave a record, and payment is collected through the normal invoicing route where the customer has a receipt and you have a record."
+  },
+  {
+   "href": "/calls-and-messaging",
+   "label": "AI Phone Answering",
+   "h": "Question: What happens if the AI does not understand the caller?",
+   "t": "It hands over. If it cannot place the call in one of the categories it handles, or if the caller asks for a person, or if it is an emergency, the call moves to a human by the rule you set for that number."
+  },
+  {
+   "href": "/calls-and-messaging",
+   "label": "AI Phone Answering",
+   "h": "Question: Can I listen to calls later?",
+   "t": "Recordings and transcriptions are available on the plans that include them, attached to the customer account rather than sitting in a separate call list."
+  },
+  {
+   "href": "/calls-and-messaging",
+   "label": "AI Phone Answering",
+   "h": "Question: Does this work for a company with several offices?",
+   "t": "Each office can have its own numbers and its own call handling, and the receptionist resolves callers to the correct office by address. A central number can also route by the caller's location."
+  },
+  {
+   "href": "/waitlist",
+   "label": "AlphaVision",
+   "h": "AlphaVision",
+   "t": "AlphaVision is the AlphaFlux product line for TVs and big screens: the streaming style tile home screen this very site is modelled on. It is not on sale yet; join the waitlist on this site to hear when it opens."
+  },
+  {
+   "href": "https://cortex.alphaflux.net",
+   "label": "Cortex",
+   "h": "Cortex",
+   "t": "Cortex is the AlphaFlux knowledge brain: it stores a business's documents, pages and records as connected nodes with search across all of it, at cortex.alphaflux.net."
+  },
+  {
+   "href": "https://critic.alphaflux.net",
+   "label": "Critic",
+   "h": "Critic",
+   "t": "Critic is the AlphaFlux quality workbench: work is checked by a panel of critics before it is allowed in, at critic.alphaflux.net."
+  }
+ ]
+}
