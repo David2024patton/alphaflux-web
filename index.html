@@ -53,8 +53,14 @@
 
   /* Desktop hero: taller panel, wide panoramic art, text anchored low so the scene shows above it */
   @media (min-width:761px) {
-    .hero { min-height:540px; display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; }
+    .hero { height:clamp(430px, calc(100svh - 148px), 620px); display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; }
     .hero-bg { object-position:50% 45%; }
+  }
+  @media (min-width:761px) and (max-height:660px) {
+    .hero { padding:24px 30px 26px; }
+    .hero .kicker { margin-bottom:10px; }
+    .hero h1 { font-size:34px; }
+    .hero p { font-size:16px; margin:10px 0 16px; }
   }
   .hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.14) 34%, rgba(0,0,0,.42) 66%, rgba(0,0,0,.80) 100%); }
   .hero .kicker { display:inline-block; background:#FFD23F; color:#111; font-size:13px; font-weight:900; letter-spacing:1.2px; padding:6px 14px; border-radius:999px; margin-bottom:18px; text-transform:uppercase; position:relative; z-index:1; }
@@ -89,6 +95,41 @@
   footer { margin:42px 0 26px; padding:10px 0 4px; text-align:center; }
   .copy { font-size:13px; color:rgba(17,17,17,.72); font-family:Arial, sans-serif; }
 
+  /* Row scroll controls */
+  .rowhead { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; }
+  .rowhead h2 { margin-bottom:0; }
+  .rowbtns { display:flex; gap:8px; flex:0 0 auto; }
+  .rowbtn { width:42px; height:42px; border:0; border-radius:50%; background:#fff; color:#111; box-shadow:0 3px 8px rgba(0,0,0,.16); display:inline-flex; align-items:center; justify-content:center; cursor:pointer; }
+  .rowbtn svg { width:20px; height:20px; }
+  .rowbtn.off { opacity:.30; pointer-events:none; }
+  .strip img { -webkit-user-drag:none; user-drag:none; }
+  .strip { -webkit-user-select:none; user-select:none; }
+  @media (hover:hover) and (pointer:fine) {
+    .strip { cursor:grab; }
+    .strip.dragging { cursor:grabbing; }
+  }
+  .strip.dragging { scroll-behavior:auto; }
+
+  /* Quick view popup */
+  .qv { position:fixed; inset:0; z-index:60; display:flex; align-items:center; justify-content:center; padding:20px; }
+  .qv[hidden] { display:none; }
+  .qv-back { position:absolute; inset:0; background:rgba(12,9,24,.68); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
+  .qv-card { position:relative; width:min(560px, 100%); max-height:calc(100svh - 40px); overflow-y:auto; background:#fff; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.35); animation:qvin .16s ease-out; }
+  @keyframes qvin { from { transform:scale(.96) translateY(8px); opacity:0; } to { transform:scale(1) translateY(0); opacity:1; } }
+  .qv-media { position:relative; height:230px; background:#111; }
+  .qv-media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  .qv-x { position:absolute; top:12px; right:12px; z-index:2; width:40px; height:40px; border:0; border-radius:50%; background:rgba(17,17,17,.85); color:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; }
+  .qv-x svg { width:18px; height:18px; }
+  .qv-body { padding:22px 24px 24px; }
+  .qv-body h3 { font-size:24px; font-weight:900; line-height:1.15; }
+  .qv-body p { margin-top:10px; font-family:Arial, sans-serif; font-size:15.5px; line-height:1.55; color:#333; }
+  .qv-points { list-style:none; margin-top:14px; display:grid; gap:9px; }
+  .qv-points li { display:flex; gap:10px; align-items:flex-start; font-size:15px; font-weight:700; line-height:1.35; }
+  .qv-points svg { width:19px; height:19px; flex:0 0 auto; margin-top:1px; color:#E10600; }
+  .qv-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:20px; }
+  .qv-go { display:inline-flex; align-items:center; background:#E10600; color:#fff; font-size:16px; font-weight:900; padding:13px 26px; border-radius:999px; box-shadow:0 4px 0 rgba(0,0,0,.25); min-height:44px; }
+  .qv-close2 { background:none; border:0; font:inherit; font-size:15px; font-weight:800; color:#555; padding:12px 10px; cursor:pointer; min-height:44px; }
+
   /* Bottom nav (phone only) */
   .bottomnav { display:none; }
   @media (max-width:760px) {
@@ -112,6 +153,15 @@
     .hero-btn3 { padding:9px 16px; font-size:13.5px; min-height:42px; }
     .row { margin-top:22px; scroll-margin-top:118px; }
     .row h2 { font-size:19px; margin-bottom:9px; }
+    .rowhead { margin-bottom:9px; }
+    .rowhead h2 { margin-bottom:0; }
+    .rowbtn { width:36px; height:36px; }
+    .rowbtn svg { width:17px; height:17px; }
+    .qv { padding:0; align-items:flex-end; }
+    .qv-card { width:100%; max-height:calc(100svh - 24px); border-radius:24px 24px 0 0; }
+    .qv-media { height:180px; }
+    .qv-body { padding:18px 18px 20px; }
+    .qv-body h3 { font-size:21px; }
     .strip { gap:10px; padding:4px 2px 22px; }
     .tile { width:141px; }
     .poster { height:84px; border-radius:17px; }
@@ -129,6 +179,7 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior:auto; }
     .strip { scroll-behavior:auto; }
+    .qv-card { animation:none; }
   }
 </style>
 </head>
@@ -169,7 +220,7 @@
   <main id="main">
     <div id="rows">
     <section class="row" id="run" aria-labelledby="run-heading">
-      <h2 id="run-heading">Run the day</h2>
+      <div class="rowhead"><h2 id="run-heading">Run the day</h2><div class="rowbtns"><button type="button" class="rowbtn prev" aria-label="Scroll Run the day left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="15 18 9 12 15 6"/></svg></button><button type="button" class="rowbtn next" aria-label="Scroll Run the day right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></button></div></div>
       <div class="strip">
         <a class="tile" href="/phones"><span class="poster"><img src="assets/phones.jpg" alt=""><span class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="lab">AI Phone Answering</span></span></span></a>
         <a class="tile" href="/crm"><span class="poster"><img src="assets/crm.jpg" alt=""><span class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="lab">CRM and Leads</span></span></span></a>
@@ -181,7 +232,7 @@
     </section>
 
     <section class="row" id="setup" aria-labelledby="setup-heading">
-      <h2 id="setup-heading">Get set up</h2>
+      <div class="rowhead"><h2 id="setup-heading">Get set up</h2><div class="rowbtns"><button type="button" class="rowbtn prev" aria-label="Scroll Get set up left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="15 18 9 12 15 6"/></svg></button><button type="button" class="rowbtn next" aria-label="Scroll Get set up right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></button></div></div>
       <div class="strip">
         <a class="tile" href="/setup"><span class="poster"><img src="assets/setup.jpg" alt=""><span class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg><span class="lab">Business Setup Walkthrough</span></span></span></a>
         <a class="tile" href="/import"><span class="poster"><img src="assets/import.jpg" alt=""><span class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg><span class="lab">Import Your Customers</span></span></span></a>
@@ -192,7 +243,7 @@
     </section>
 
     <section class="row" id="grow" aria-labelledby="grow-heading">
-      <h2 id="grow-heading">Grow the business</h2>
+      <div class="rowhead"><h2 id="grow-heading">Grow the business</h2><div class="rowbtns"><button type="button" class="rowbtn prev" aria-label="Scroll Grow the business left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="15 18 9 12 15 6"/></svg></button><button type="button" class="rowbtn next" aria-label="Scroll Grow the business right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></button></div></div>
       <div class="strip">
         <a class="tile" href="/social"><span class="poster"><img src="assets/social.jpg" alt=""><span class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><span class="lab">Social Posts</span></span></span></a>
         <a class="tile" href="/ads"><span class="poster"><img src="assets/ads.jpg" alt=""><span class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><span class="lab">Lead Ads</span></span></span></a>
@@ -203,7 +254,7 @@
     </section>
 
     <section class="row" id="help" aria-labelledby="help-heading">
-      <h2 id="help-heading">Help and company</h2>
+      <div class="rowhead"><h2 id="help-heading">Help and company</h2><div class="rowbtns"><button type="button" class="rowbtn prev" aria-label="Scroll Help and company left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="15 18 9 12 15 6"/></svg></button><button type="button" class="rowbtn next" aria-label="Scroll Help and company right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></button></div></div>
       <div class="strip">
         <a class="tile" href="/help"><span class="poster"><img src="assets/help.jpg" alt=""><span class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span class="lab">Help Center</span></span></span></a>
         <a class="tile" href="/tutorials"><span class="poster"><img src="assets/tutorials.jpg" alt=""><span class="cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg><span class="lab">Video Tutorials</span></span></span></a>
@@ -218,6 +269,20 @@
   <footer>
     <p class="copy">© 2026 AlphaFlux. All rights reserved.</p>
   </footer>
+</div>
+
+
+<div class="qv" id="quickview" hidden role="dialog" aria-modal="true" aria-labelledby="qv-title">
+  <div class="qv-back" data-close></div>
+  <div class="qv-card">
+    <div class="qv-media"><img id="qv-img" alt=""><button type="button" class="qv-x" data-close aria-label="Close quick view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <div class="qv-body">
+      <h3 id="qv-title"></h3>
+      <p id="qv-sum"></p>
+      <ul class="qv-points" id="qv-points"></ul>
+      <div class="qv-actions"><a class="qv-go" id="qv-go" href="#">See full details</a><button type="button" class="qv-close2" data-close>Close</button></div>
+    </div>
+  </div>
 </div>
 
 <nav class="bottomnav" aria-label="Mobile">
@@ -248,6 +313,283 @@
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
       if (history.replaceState) { history.replaceState(null, '', '#' + id); }
+    });
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var QUICK = {
+  "/phones": {
+    "title": "AI Phone Answering",
+    "img": "assets/phones.jpg",
+    "points": [],
+    "sum": "AlphaFlux answers your phones around the clock, captures every lead, and books jobs onto your schedule, so no call, lead, or job slips through the cracks."
+  },
+  "/crm": {
+    "title": "CRM and Leads",
+    "img": "assets/crm.jpg",
+    "points": [
+      "What the customer record holds",
+      "Teams, territories and who can see what",
+      "Who sold it, and who gets paid for it"
+    ],
+    "sum": "Every contact, every stage, one timeline per account, account teams and territories, and sales attribution with commission splits that add up exactly."
+  },
+  "/bookings": {
+    "title": "Bookings and Schedule",
+    "img": "assets/bookings.jpg",
+    "points": [
+      "Jobs booked onto your schedule",
+      "Recurring visits run themselves"
+    ],
+    "sum": "AlphaFlux bookings and schedule: book against real capacity so a day cannot be oversold, with recurring visits that generate themselves."
+  },
+  "/invoices": {
+    "title": "Invoices and Payments",
+    "img": "assets/invoices.jpg",
+    "points": [
+      "Raised from the work",
+      "Recurring revenue you can trust"
+    ],
+    "sum": "AlphaFlux invoices and payments: invoices raised from the work that was done, and a recurring revenue number that survives an audit."
+  },
+  "/inventory": {
+    "title": "Inventory",
+    "img": "assets/inventory.jpg",
+    "points": [
+      "Inventory is included on the free plan, permanently",
+      "Chemical and controlled stock, signed in and out",
+      "Built for operations that do not fit one building"
+    ],
+    "sum": "Stock that follows the truck. Free inventory on every account, chemical sign in and sign out, and custody across trucks, storage units, mobile units, depots and branches."
+  },
+  "/team-app": {
+    "title": "Team App",
+    "img": "assets/team-app.jpg",
+    "points": [
+      "Chat on the account timeline",
+      "Built for the field"
+    ],
+    "sum": "The AlphaFlux team app: team chat, one timeline per account, mentions that notify, and a technician view that keeps working when the signal does not."
+  },
+  "/setup": {
+    "title": "Business Setup Walkthrough",
+    "img": "assets/setup.jpg",
+    "points": [
+      "The walkthrough",
+      "Setup help exists"
+    ],
+    "sum": "The AlphaFlux setup walkthrough: pick a plan, import your customers, connect your tools, and go live, one step at a time."
+  },
+  "/import": {
+    "title": "Import Your Customers",
+    "img": "assets/import.jpg",
+    "points": [
+      "Your list becomes your records",
+      "Part of setup"
+    ],
+    "sum": "Import your customers into AlphaFlux: your existing list becomes the same customer record your phones, schedule, and invoices point at."
+  },
+  "/phone-number": {
+    "title": "Pick Your Phone Number",
+    "img": "assets/phone-number.jpg",
+    "points": [],
+    "sum": "Pick the phone number your AlphaFlux front office answers on. It is one of the steps in getting set up."
+  },
+  "/connect": {
+    "title": "Connect Your Tools",
+    "img": "assets/connect.jpg",
+    "points": [
+      "Three ways to drive it",
+      "Webhooks"
+    ],
+    "sum": "Connect your tools to AlphaFlux: a documented REST API, a command line that prints JSON, an agent protocol server, and webhooks."
+  },
+  "/go-live": {
+    "title": "Go Live Checklist",
+    "img": "assets/go-live.jpg",
+    "points": [
+      "The checklist"
+    ],
+    "sum": "The AlphaFlux go live checklist: plan picked, customers imported, tools connected, and your front office answering."
+  },
+  "/social": {
+    "title": "Social Posts",
+    "img": "assets/social.jpg",
+    "points": [
+      "Plan and schedule",
+      "Judge it by revenue"
+    ],
+    "sum": "AlphaFlux social posts: schedule posts ahead of time and see which channel produced the revenue."
+  },
+  "/ads": {
+    "title": "Lead Ads",
+    "img": "assets/ads.jpg",
+    "points": [
+      "Leads land on the record",
+      "Judge ads by revenue"
+    ],
+    "sum": "AlphaFlux lead ads: every lead captured on the customer record, and channels judged by the revenue they produce."
+  },
+  "/reviews": {
+    "title": "Reviews",
+    "img": "assets/reviews.jpg",
+    "points": [
+      "Ask at the right moment"
+    ],
+    "sum": "AlphaFlux reviews: collect reviews at the right moment, right after the work that earned them."
+  },
+  "/websites": {
+    "title": "Website and Funnels",
+    "img": "assets/websites.jpg",
+    "points": [
+      "More than a brochure",
+      "Funnels that end in a booking"
+    ],
+    "sum": "AlphaFlux websites and funnels: a site that captures leads into the same record your phones and schedule already use."
+  },
+  "/marketplace": {
+    "title": "Marketplace",
+    "img": "assets/marketplace.jpg",
+    "points": [
+      "Buy it built",
+      "Connected from day one"
+    ],
+    "sum": "The AlphaFlux marketplace: ready-made websites and funnels for service businesses, connected to your front office."
+  },
+  "/help": {
+    "title": "Help Center",
+    "img": "assets/help.jpg",
+    "points": [
+      "Guides",
+      "Already a customer?"
+    ],
+    "sum": "The AlphaFlux help center: the setup walkthrough, the go live checklist, video tutorials, and the way to reach us."
+  },
+  "/tutorials": {
+    "title": "Video Tutorials",
+    "img": "assets/tutorials.jpg",
+    "points": [
+      "Watch the setup",
+      "Watch the day run"
+    ],
+    "sum": "AlphaFlux video tutorials: see how it works, from setup to running the day."
+  },
+  "/pricing": {
+    "title": "Pricing",
+    "img": "assets/pricing.jpg",
+    "points": [],
+    "sum": "AlphaFlux pricing: five monthly plans from Free to Scale, plus white label. Every plan runs on the same front office: phones answered, leads captured, jobs booked, invoices sent.",
+    "cta": "See plans and pricing"
+  },
+  "/about": {
+    "title": "About",
+    "img": "assets/about.jpg",
+    "points": [
+      "Who it is for"
+    ],
+    "sum": "About AlphaFlux: the front office for service businesses. Phones answered, leads captured, jobs booked, invoices sent."
+  },
+  "/contact": {
+    "title": "Contact",
+    "img": "assets/contact.jpg",
+    "points": [
+      "New to AlphaFlux",
+      "Already a customer"
+    ],
+    "sum": "Contact AlphaFlux: new accounts start at signup, and customers sign in to the console."
+  }
+};
+  var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg>';
+
+  document.querySelectorAll('.row').forEach(function (row) {
+    var strip = row.querySelector('.strip');
+    if (!strip) { return; }
+    var prev = row.querySelector('.rowbtn.prev');
+    var next = row.querySelector('.rowbtn.next');
+    function edges() {
+      var max = strip.scrollWidth - strip.clientWidth - 2;
+      if (prev && next && max <= 0) { prev.style.display = 'none'; next.style.display = 'none'; return; }
+      if (prev) { prev.classList.toggle('off', strip.scrollLeft <= 2); }
+      if (next) { next.classList.toggle('off', strip.scrollLeft >= max); }
+    }
+    function go(dir) { strip.scrollBy({ left: dir * Math.max(280, strip.clientWidth * 0.8), behavior: 'smooth' }); }
+    if (prev) { prev.addEventListener('click', function () { go(-1); }); }
+    if (next) { next.addEventListener('click', function () { go(1); }); }
+    strip.addEventListener('scroll', edges, { passive: true });
+    window.addEventListener('resize', edges);
+    edges();
+
+    var down = false, pid = null, startX = 0, startL = 0, moved = 0;
+    strip.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0) { return; }
+      e.preventDefault();
+      down = true; pid = e.pointerId; moved = 0; startX = e.clientX; startL = strip.scrollLeft;
+    });
+    strip.addEventListener('pointermove', function (e) {
+      if (!down) { return; }
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) {
+        if (!moved) { try { strip.setPointerCapture(pid); } catch (err) {} strip.classList.add('dragging'); }
+        moved = Math.abs(dx);
+        strip.scrollLeft = startL - dx;
+      }
+    });
+    function endDrag() { down = false; setTimeout(function () { strip.classList.remove('dragging'); }, 0); }
+    strip.addEventListener('pointerup', endDrag);
+    strip.addEventListener('pointercancel', endDrag);
+    strip.addEventListener('click', function (e) {
+      if (moved > 4) { e.preventDefault(); e.stopPropagation(); moved = 0; }
+    }, true);
+  });
+
+  var qv = document.getElementById('quickview');
+  var qvImg = document.getElementById('qv-img');
+  var qvTitle = document.getElementById('qv-title');
+  var qvSum = document.getElementById('qv-sum');
+  var qvPoints = document.getElementById('qv-points');
+  var qvGo = document.getElementById('qv-go');
+  var lastFocus = null;
+  function openQV(data, href) {
+    qvImg.src = data.img;
+    qvTitle.textContent = data.title;
+    qvSum.textContent = data.sum;
+    qvPoints.innerHTML = '';
+    (data.points || []).forEach(function (pt) {
+      var li = document.createElement('li');
+      li.innerHTML = CHECK + '<span></span>';
+      li.querySelector('span').textContent = pt;
+      qvPoints.appendChild(li);
+    });
+    qvGo.href = href;
+    qvGo.textContent = data.cta || 'See full details';
+    lastFocus = document.activeElement;
+    qv.hidden = false;
+    document.documentElement.style.overflow = 'hidden';
+    var x = qv.querySelector('.qv-x');
+    if (x) { x.focus(); }
+  }
+  function closeQV() {
+    qv.hidden = true;
+    document.documentElement.style.overflow = '';
+    if (lastFocus && lastFocus.focus) { lastFocus.focus(); }
+  }
+  qv.addEventListener('click', function (e) {
+    if (e.target === qv || (e.target.closest && e.target.closest('[data-close]'))) { closeQV(); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !qv.hidden) { closeQV(); }
+  });
+  document.querySelectorAll('a.tile').forEach(function (tile) {
+    tile.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) { return; }
+      var href = tile.getAttribute('href');
+      var data = QUICK[href];
+      if (!data) { return; }
+      e.preventDefault();
+      openQV(data, href);
     });
   });
 })();
