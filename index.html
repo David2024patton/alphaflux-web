@@ -431,7 +431,7 @@
         <p id="qv-sum"></p>
         <ul class="qv-points" id="qv-points"></ul>
       </div>
-      <div class="qv-actions"><button type="button" class="qv-more" id="qv-more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>More info</button><a class="qv-go" id="qv-go" href="#">See full details</a><button type="button" class="qv-close2" data-close>Close</button></div>
+      <div class="qv-actions"><button type="button" class="qv-more" id="qv-more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>More info</button><button type="button" class="qv-close2" data-close>Close</button></div>
     </div>
   </div>
 </div>
@@ -449,7 +449,7 @@
         <p class="dv-status" id="dv-status"></p>
         <div class="dv-cards" id="dv-cards"></div>
       </div>
-      <div class="dv-actions"><a class="qv-go" id="dv-go" href="#">See full details</a><button type="button" class="qv-close2" data-close-dv>Back</button></div>
+      <div class="dv-actions"><button type="button" class="qv-close2" data-close-dv>Back</button></div>
     </div>
   </div>
 </div>
@@ -524,7 +524,8 @@
     "img": "assets/phones.jpg",
     "points": [],
     "sum": "AlphaFlux answers your phones around the clock, captures every lead, and books jobs onto your schedule, so no call, lead, or job slips through the cracks.",
-    "deep": false
+    "deep": true,
+    "fetch": "/calls-and-messaging"
   },
   "/crm": {
     "title": "CRM and Leads",
@@ -603,7 +604,8 @@
     "img": "assets/phone-number.jpg",
     "points": [],
     "sum": "Pick the phone number your AlphaFlux front office answers on. It is one of the steps in getting set up.",
-    "deep": false
+    "deep": true,
+    "fetch": "/calls-and-messaging"
   },
   "/connect": {
     "title": "Connect Your Tools",
@@ -769,7 +771,6 @@
   var qvTitle = document.getElementById('qv-title');
   var qvSum = document.getElementById('qv-sum');
   var qvPoints = document.getElementById('qv-points');
-  var qvGo = document.getElementById('qv-go');
   var lastFocus = null;
   function openQV(data, href) {
     qvImg.src = data.img;
@@ -782,8 +783,6 @@
       li.querySelector('span').textContent = pt;
       qvPoints.appendChild(li);
     });
-    qvGo.href = href;
-    qvGo.textContent = data.cta || 'See full details';
     curData = data; curHref = href;
     if (qvMore) { qvMore.style.display = data.deep ? '' : 'none'; }
     lastFocus = document.activeElement;
@@ -826,7 +825,6 @@
   var dvLead = document.getElementById('dv-lead');
   var dvStatus = document.getElementById('dv-status');
   var dvCards = document.getElementById('dv-cards');
-  var dvGo = document.getElementById('dv-go');
   var qvMore = document.getElementById('qv-more');
   var dvCache = {};
   var curData = null, curHref = null;
@@ -916,16 +914,16 @@
     if (!curData || !curHref) { return; }
     dvImg.src = curData.img;
     dvTitle.textContent = curData.title;
-    dvGo.href = curHref;
     dvH1.textContent = ''; dvLead.textContent = ''; dvCards.innerHTML = '';
     dvStatus.textContent = 'Loading the full story...';
     dv.hidden = false; dvOpen = true;
     var x = dv.querySelector('.qv-x'); if (x) { x.focus(); }
-    if (dvCache[curHref]) { dvStatus.textContent = ''; renderDV(dvCache[curHref]); return; }
-    fetch(curHref, { credentials: 'same-origin' }).then(function (r) { return r.text(); }).then(function (htmlText) {
+    var furl = curData.fetch || curHref;
+    if (dvCache[furl]) { dvStatus.textContent = ''; renderDV(dvCache[furl]); return; }
+    fetch(furl, { credentials: 'same-origin' }).then(function (r) { return r.text(); }).then(function (htmlText) {
       var data = buildCards(new DOMParser().parseFromString(htmlText, 'text/html'));
       if (!data) { throw new Error('no cards'); }
-      dvCache[curHref] = data;
+      dvCache[furl] = data;
       dvStatus.textContent = '';
       renderDV(data);
     }).catch(function () {
@@ -1013,9 +1011,6 @@
         });
         links.appendChild(qb);
       }
-      var a = document.createElement('a');
-      a.href = chunk.href; a.textContent = 'See full details';
-      links.appendChild(a);
       div.appendChild(links);
     }
     chatMsgs.appendChild(div);
@@ -1026,7 +1021,7 @@
     if (t.length <= 380) { return t; }
     var cut = t.slice(0, 380);
     var stop = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf(' '));
-    return cut.slice(0, stop + 1).trim() + ' More in the full details below.';
+    return cut.slice(0, stop + 1).trim() + ' Tap More info below for the whole story.';
   }
   function answerFor(q) {
     if (!chatIndex || !chatIndex.length) { return null; }
