@@ -163,6 +163,12 @@
     .qv-media { height:180px; }
     .qv-body { padding:18px 18px 20px; }
     .qv-body h3 { font-size:21px; }
+    .dv { padding:0; align-items:flex-end; }
+    .dv-card { width:100%; max-height:calc(100svh - 12px); border-radius:24px 24px 0 0; }
+    .dv-media { height:180px; }
+    .dv-body { padding:18px 18px 20px; }
+    .dv-body h3 { font-size:22px; }
+    .dv-sec { padding:15px 16px; }
     .strip { gap:10px; padding:4px 2px 22px; }
     .tile { width:141px; }
     .poster { height:84px; border-radius:17px; }
@@ -181,7 +187,35 @@
     html { scroll-behavior:auto; }
     .strip { scroll-behavior:auto; }
     .qv-card { animation:none; }
+    .dv-card { animation:none; }
   }
+  .qv-more { display:inline-flex; align-items:center; gap:8px; background:#111; color:#fff; border:0; font:inherit; font-size:15px; font-weight:800; padding:13px 22px; border-radius:999px; box-shadow:0 4px 0 rgba(0,0,0,.25); cursor:pointer; min-height:44px; }
+  .qv-more svg { width:16px; height:16px; }
+
+  /* Deep view (the bigger window) */
+  .dv { position:fixed; inset:0; z-index:70; display:flex; align-items:center; justify-content:center; padding:18px; }
+  .dv[hidden] { display:none; }
+  .dv-back { position:absolute; inset:0; background:rgba(12,9,24,.72); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
+  .dv-card { position:relative; width:min(880px, 100%); max-height:calc(100svh - 36px); overflow-y:auto; background:#fff; border-radius:26px; box-shadow:0 24px 60px rgba(0,0,0,.35); animation:qvin .16s ease-out; }
+  .dv-media { position:relative; height:250px; background:#111; }
+  .dv-media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  .dv-body { padding:24px 28px 26px; }
+  .dv-body h3 { font-size:27px; font-weight:900; line-height:1.15; }
+  .dv-h1 { margin-top:6px; font-size:16.5px; font-weight:800; line-height:1.35; color:#444; }
+  .dv-lead { margin-top:10px; font-family:Arial, sans-serif; font-size:16px; line-height:1.55; color:#333; }
+  .dv-status { margin-top:16px; font-family:Arial, sans-serif; font-size:15px; color:#666; }
+  .dv-cards { display:grid; gap:14px; margin-top:18px; }
+  .dv-sec { background:#FFFBEB; border:1px solid rgba(17,17,17,.07); border-radius:18px; padding:18px 20px; }
+  .dv-sec h4 { font-size:18px; font-weight:900; line-height:1.25; }
+  .dv-sec h5 { font-size:15px; font-weight:900; margin-top:12px; }
+  .dv-sec p { font-family:Arial, sans-serif; font-size:15px; line-height:1.55; color:#333; margin-top:8px; }
+  .dv-sec ul { margin:8px 0 0 18px; font-family:Arial, sans-serif; font-size:15px; line-height:1.5; color:#333; display:grid; gap:5px; }
+  .dv-sec details { margin-top:10px; border-top:1px solid rgba(17,17,17,.09); padding-top:10px; }
+  .dv-sec summary { font-weight:800; font-size:15px; cursor:pointer; }
+  .dv-sec details p { margin-top:6px; }
+  .dv-quote { background:#fff; border-left:5px solid #E10600; }
+  .dv-quote p { font-size:16.5px; font-weight:700; color:#111; line-height:1.45; }
+  .dv-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:22px; }
 </style>
 </head>
 <body>
@@ -293,7 +327,23 @@
       <h3 id="qv-title"></h3>
       <p id="qv-sum"></p>
       <ul class="qv-points" id="qv-points"></ul>
-      <div class="qv-actions"><a class="qv-go" id="qv-go" href="#">See full details</a><button type="button" class="qv-close2" data-close>Close</button></div>
+      <div class="qv-actions"><button type="button" class="qv-more" id="qv-more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>More info</button><a class="qv-go" id="qv-go" href="#">See full details</a><button type="button" class="qv-close2" data-close>Close</button></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="dv" id="deepview" hidden role="dialog" aria-modal="true" aria-labelledby="dv-title">
+  <div class="dv-back" data-close-dv></div>
+  <div class="dv-card">
+    <div class="dv-media"><img id="dv-img" alt=""><button type="button" class="qv-x" data-close-dv aria-label="Back to quick view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <div class="dv-body">
+      <h3 id="dv-title"></h3>
+      <p class="dv-h1" id="dv-h1"></p>
+      <p class="dv-lead" id="dv-lead"></p>
+      <p class="dv-status" id="dv-status"></p>
+      <div class="dv-cards" id="dv-cards"></div>
+      <div class="dv-actions"><a class="qv-go" id="dv-go" href="#">See full details</a><button type="button" class="qv-close2" data-close-dv>Back</button></div>
     </div>
   </div>
 </div>
@@ -338,7 +388,8 @@
     "title": "AI Phone Answering",
     "img": "assets/phones.jpg",
     "points": [],
-    "sum": "AlphaFlux answers your phones around the clock, captures every lead, and books jobs onto your schedule, so no call, lead, or job slips through the cracks."
+    "sum": "AlphaFlux answers your phones around the clock, captures every lead, and books jobs onto your schedule, so no call, lead, or job slips through the cracks.",
+    "deep": false
   },
   "/crm": {
     "title": "CRM and Leads",
@@ -348,7 +399,8 @@
       "Teams, territories and who can see what",
       "Who sold it, and who gets paid for it"
     ],
-    "sum": "Every contact, every stage, one timeline per account, account teams and territories, and sales attribution with commission splits that add up exactly."
+    "sum": "Every contact, every stage, one timeline per account, account teams and territories, and sales attribution with commission splits that add up exactly.",
+    "deep": true
   },
   "/bookings": {
     "title": "Bookings and Schedule",
@@ -357,7 +409,8 @@
       "Jobs booked onto your schedule",
       "Recurring visits run themselves"
     ],
-    "sum": "AlphaFlux bookings and schedule: book against real capacity so a day cannot be oversold, with recurring visits that generate themselves."
+    "sum": "AlphaFlux bookings and schedule: book against real capacity so a day cannot be oversold, with recurring visits that generate themselves.",
+    "deep": true
   },
   "/invoices": {
     "title": "Invoices and Payments",
@@ -366,7 +419,8 @@
       "Raised from the work",
       "Recurring revenue you can trust"
     ],
-    "sum": "AlphaFlux invoices and payments: invoices raised from the work that was done, and a recurring revenue number that survives an audit."
+    "sum": "AlphaFlux invoices and payments: invoices raised from the work that was done, and a recurring revenue number that survives an audit.",
+    "deep": true
   },
   "/inventory": {
     "title": "Inventory",
@@ -376,7 +430,8 @@
       "Chemical and controlled stock, signed in and out",
       "Built for operations that do not fit one building"
     ],
-    "sum": "Stock that follows the truck. Free inventory on every account, chemical sign in and sign out, and custody across trucks, storage units, mobile units, depots and branches."
+    "sum": "Stock that follows the truck. Free inventory on every account, chemical sign in and sign out, and custody across trucks, storage units, mobile units, depots and branches.",
+    "deep": true
   },
   "/team-app": {
     "title": "Team App",
@@ -385,7 +440,8 @@
       "Chat on the account timeline",
       "Built for the field"
     ],
-    "sum": "The AlphaFlux team app: team chat, one timeline per account, mentions that notify, and a technician view that keeps working when the signal does not."
+    "sum": "The AlphaFlux team app: team chat, one timeline per account, mentions that notify, and a technician view that keeps working when the signal does not.",
+    "deep": true
   },
   "/setup": {
     "title": "Business Setup Walkthrough",
@@ -394,7 +450,8 @@
       "The walkthrough",
       "Setup help exists"
     ],
-    "sum": "The AlphaFlux setup walkthrough: pick a plan, import your customers, connect your tools, and go live, one step at a time."
+    "sum": "The AlphaFlux setup walkthrough: pick a plan, import your customers, connect your tools, and go live, one step at a time.",
+    "deep": true
   },
   "/import": {
     "title": "Import Your Customers",
@@ -403,13 +460,15 @@
       "Your list becomes your records",
       "Part of setup"
     ],
-    "sum": "Import your customers into AlphaFlux: your existing list becomes the same customer record your phones, schedule, and invoices point at."
+    "sum": "Import your customers into AlphaFlux: your existing list becomes the same customer record your phones, schedule, and invoices point at.",
+    "deep": true
   },
   "/phone-number": {
     "title": "Pick Your Phone Number",
     "img": "assets/phone-number.jpg",
     "points": [],
-    "sum": "Pick the phone number your AlphaFlux front office answers on. It is one of the steps in getting set up."
+    "sum": "Pick the phone number your AlphaFlux front office answers on. It is one of the steps in getting set up.",
+    "deep": false
   },
   "/connect": {
     "title": "Connect Your Tools",
@@ -418,7 +477,8 @@
       "Three ways to drive it",
       "Webhooks"
     ],
-    "sum": "Connect your tools to AlphaFlux: a documented REST API, a command line that prints JSON, an agent protocol server, and webhooks."
+    "sum": "Connect your tools to AlphaFlux: a documented REST API, a command line that prints JSON, an agent protocol server, and webhooks.",
+    "deep": true
   },
   "/go-live": {
     "title": "Go Live Checklist",
@@ -426,7 +486,8 @@
     "points": [
       "The checklist"
     ],
-    "sum": "The AlphaFlux go live checklist: plan picked, customers imported, tools connected, and your front office answering."
+    "sum": "The AlphaFlux go live checklist: plan picked, customers imported, tools connected, and your front office answering.",
+    "deep": true
   },
   "/social": {
     "title": "Social Posts",
@@ -435,7 +496,8 @@
       "Plan and schedule",
       "Judge it by revenue"
     ],
-    "sum": "AlphaFlux social posts: schedule posts ahead of time and see which channel produced the revenue."
+    "sum": "AlphaFlux social posts: schedule posts ahead of time and see which channel produced the revenue.",
+    "deep": true
   },
   "/ads": {
     "title": "Lead Ads",
@@ -444,7 +506,8 @@
       "Leads land on the record",
       "Judge ads by revenue"
     ],
-    "sum": "AlphaFlux lead ads: every lead captured on the customer record, and channels judged by the revenue they produce."
+    "sum": "AlphaFlux lead ads: every lead captured on the customer record, and channels judged by the revenue they produce.",
+    "deep": true
   },
   "/reviews": {
     "title": "Reviews",
@@ -452,7 +515,8 @@
     "points": [
       "Ask at the right moment"
     ],
-    "sum": "AlphaFlux reviews: collect reviews at the right moment, right after the work that earned them."
+    "sum": "AlphaFlux reviews: collect reviews at the right moment, right after the work that earned them.",
+    "deep": true
   },
   "/websites": {
     "title": "Website and Funnels",
@@ -461,7 +525,8 @@
       "More than a brochure",
       "Funnels that end in a booking"
     ],
-    "sum": "AlphaFlux websites and funnels: a site that captures leads into the same record your phones and schedule already use."
+    "sum": "AlphaFlux websites and funnels: a site that captures leads into the same record your phones and schedule already use.",
+    "deep": true
   },
   "/marketplace": {
     "title": "Marketplace",
@@ -470,7 +535,8 @@
       "Buy it built",
       "Connected from day one"
     ],
-    "sum": "The AlphaFlux marketplace: ready-made websites and funnels for service businesses, connected to your front office."
+    "sum": "The AlphaFlux marketplace: ready-made websites and funnels for service businesses, connected to your front office.",
+    "deep": true
   },
   "/help": {
     "title": "Help Center",
@@ -479,7 +545,8 @@
       "Guides",
       "Already a customer?"
     ],
-    "sum": "The AlphaFlux help center: the setup walkthrough, the go live checklist, video tutorials, and the way to reach us."
+    "sum": "The AlphaFlux help center: the setup walkthrough, the go live checklist, video tutorials, and the way to reach us.",
+    "deep": true
   },
   "/tutorials": {
     "title": "Video Tutorials",
@@ -488,14 +555,16 @@
       "Watch the setup",
       "Watch the day run"
     ],
-    "sum": "AlphaFlux video tutorials: see how it works, from setup to running the day."
+    "sum": "AlphaFlux video tutorials: see how it works, from setup to running the day.",
+    "deep": true
   },
   "/pricing": {
     "title": "Pricing",
     "img": "assets/pricing.jpg",
     "points": [],
     "sum": "AlphaFlux pricing: five monthly plans from Free to Scale, plus white label. Every plan runs on the same front office: phones answered, leads captured, jobs booked, invoices sent.",
-    "cta": "See plans and pricing"
+    "cta": "See plans and pricing",
+    "deep": true
   },
   "/about": {
     "title": "About",
@@ -503,7 +572,8 @@
     "points": [
       "Who it is for"
     ],
-    "sum": "About AlphaFlux: the front office for service businesses. Phones answered, leads captured, jobs booked, invoices sent."
+    "sum": "About AlphaFlux: the front office for service businesses. Phones answered, leads captured, jobs booked, invoices sent.",
+    "deep": true
   },
   "/contact": {
     "title": "Contact",
@@ -512,9 +582,10 @@
       "New to AlphaFlux",
       "Already a customer"
     ],
-    "sum": "Contact AlphaFlux: new accounts start at signup, and customers sign in to the console."
+    "sum": "Contact AlphaFlux: new accounts start at signup, and customers sign in to the console.",
+    "deep": true
   }
-};
+}
   var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg>';
 
   document.querySelectorAll('.row').forEach(function (row) {
@@ -578,6 +649,8 @@
     });
     qvGo.href = href;
     qvGo.textContent = data.cta || 'See full details';
+    curData = data; curHref = href;
+    if (qvMore) { qvMore.style.display = data.deep ? '' : 'none'; }
     lastFocus = document.activeElement;
     qv.hidden = false;
     document.documentElement.style.overflow = 'hidden';
@@ -593,7 +666,9 @@
     if (e.target === qv || (e.target.closest && e.target.closest('[data-close]'))) { closeQV(); }
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !qv.hidden) { closeQV(); }
+    if (e.key !== 'Escape') { return; }
+    if (dvOpen) { closeDV(); }
+    else if (!qv.hidden) { closeQV(); }
   });
   document.querySelectorAll('a.tile').forEach(function (tile) {
     tile.addEventListener('click', function (e) {
@@ -604,6 +679,131 @@
       e.preventDefault();
       openQV(data, href);
     });
+  });
+
+  /* Deep view: the bigger window, filled live from the real page */
+  var dv = document.getElementById('deepview');
+  var dvImg = document.getElementById('dv-img');
+  var dvTitle = document.getElementById('dv-title');
+  var dvH1 = document.getElementById('dv-h1');
+  var dvLead = document.getElementById('dv-lead');
+  var dvStatus = document.getElementById('dv-status');
+  var dvCards = document.getElementById('dv-cards');
+  var dvGo = document.getElementById('dv-go');
+  var qvMore = document.getElementById('qv-more');
+  var dvCache = {};
+  var curData = null, curHref = null;
+  var dvOpen = false;
+
+  function txt(el) { return el ? el.textContent.replace(/\s+/g, ' ').trim() : ''; }
+  function addP(parent, text) { var p = document.createElement('p'); p.textContent = text; parent.appendChild(p); return p; }
+
+  function buildCards(doc) {
+    var main = doc.querySelector('main');
+    if (!main) { return null; }
+    var out = { h1: txt(main.querySelector('h1')), lead: '', cards: [] };
+    out.lead = txt(main.querySelector('.lede'));
+    main.querySelectorAll('section.card').forEach(function (sec) {
+      var title = txt(sec.querySelector('h2'));
+      if (title === 'Start on the free plan' || title === 'What AlphaFlux does') { return; }
+      var card = { title: title, blocks: [] };
+      var ul = null;
+      sec.querySelectorAll('p, li, details, h3').forEach(function (node) {
+        if (node.closest('table')) { return; }
+        if (node.tagName === 'LI') {
+          var lh = node.querySelector('h3');
+          if (lh) {
+            var ps = [];
+            node.querySelectorAll('p').forEach(function (pp) { ps.push(txt(pp)); });
+            card.blocks.push({ t: 'spec', h: txt(lh), text: ps.join(' ') });
+            ul = null; return;
+          }
+          var dt = node.querySelector('dt');
+          if (dt) {
+            var ds = [];
+            node.querySelectorAll('dd').forEach(function (dd) { ds.push(txt(dd)); });
+            card.blocks.push({ t: 'spec', h: txt(dt), text: ds.join(' ') });
+            ul = null; return;
+          }
+          var st = node.querySelector(':scope > strong');
+          if (st) {
+            var lt = txt(node); var stt = txt(st);
+            var rest = lt.indexOf(stt) === 0 ? lt.slice(stt.length).trim() : '';
+            if (rest) { card.blocks.push({ t: 'spec', h: stt, text: rest }); ul = null; return; }
+          }
+        }
+        if ((node.tagName === 'H3' || node.tagName === 'P') && node.closest('li')) { return; }
+        if (node.tagName === 'H3') { card.blocks.push({ t: 'h', text: txt(node) }); ul = null; return; }
+        if (node.tagName === 'DETAILS') {
+          var a = [];
+          node.querySelectorAll('p').forEach(function (pp) { a.push(txt(pp)); });
+          card.blocks.push({ t: 'faq', q: txt(node.querySelector('summary')), a: a.join(' ') });
+          ul = null; return;
+        }
+        if (node.closest('details')) { return; }
+        if (node.tagName === 'LI') {
+          if (!ul) { ul = { t: 'ul', items: [] }; card.blocks.push(ul); }
+          ul.items.push(txt(node)); return;
+        }
+        ul = null;
+        var text = txt(node);
+        if (text) { card.blocks.push({ t: 'p', text: text }); }
+      });
+      card.blocks = card.blocks.slice(0, 16);
+      if (card.blocks.length) { out.cards.push(card); }
+    });
+    out.cards = out.cards.slice(0, 7);
+    return out.cards.length ? out : null;
+  }
+
+  function renderDV(data) {
+    dvCards.innerHTML = '';
+    dvH1.textContent = data.h1 && data.h1 !== dvTitle.textContent ? data.h1 : '';
+    dvLead.textContent = data.lead || '';
+    data.cards.forEach(function (card) {
+      var sec = document.createElement('section');
+      sec.className = 'dv-sec' + (card.title ? '' : ' dv-quote');
+      if (card.title) { var h = document.createElement('h4'); h.textContent = card.title; sec.appendChild(h); }
+      card.blocks.forEach(function (b) {
+        if (b.t === 'h') { var h5 = document.createElement('h5'); h5.textContent = b.text; sec.appendChild(h5); return; }
+        if (b.t === 'spec') { var sh = document.createElement('h5'); sh.textContent = b.h; sec.appendChild(sh); addP(sec, b.text); return; }
+        if (b.t === 'ul') { var ulEl = document.createElement('ul'); b.items.forEach(function (it) { var li = document.createElement('li'); li.textContent = it; ulEl.appendChild(li); }); sec.appendChild(ulEl); return; }
+        if (b.t === 'faq') { var d = document.createElement('details'); var sm = document.createElement('summary'); sm.textContent = b.q; d.appendChild(sm); addP(d, b.a); sec.appendChild(d); return; }
+        addP(sec, b.text);
+      });
+      dvCards.appendChild(sec);
+    });
+  }
+
+  function openDV() {
+    if (!curData || !curHref) { return; }
+    dvImg.src = curData.img;
+    dvTitle.textContent = curData.title;
+    dvGo.href = curHref;
+    dvH1.textContent = ''; dvLead.textContent = ''; dvCards.innerHTML = '';
+    dvStatus.textContent = 'Loading the full story...';
+    dv.hidden = false; dvOpen = true;
+    var x = dv.querySelector('.qv-x'); if (x) { x.focus(); }
+    if (dvCache[curHref]) { dvStatus.textContent = ''; renderDV(dvCache[curHref]); return; }
+    fetch(curHref, { credentials: 'same-origin' }).then(function (r) { return r.text(); }).then(function (htmlText) {
+      var data = buildCards(new DOMParser().parseFromString(htmlText, 'text/html'));
+      if (!data) { throw new Error('no cards'); }
+      dvCache[curHref] = data;
+      dvStatus.textContent = '';
+      renderDV(data);
+    }).catch(function () {
+      dvStatus.textContent = '';
+      dvLead.textContent = curData.sum;
+      dvCards.innerHTML = '';
+    });
+  }
+  function closeDV() {
+    dv.hidden = true; dvOpen = false;
+    if (qvMore) { qvMore.focus(); }
+  }
+  if (qvMore) { qvMore.addEventListener('click', openDV); }
+  dv.addEventListener('click', function (e) {
+    if (e.target === dv || (e.target.closest && e.target.closest('[data-close-dv]'))) { closeDV(); }
   });
 })();
 </script>
