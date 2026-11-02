@@ -308,6 +308,16 @@
     .help-panel { bottom:150px; left:12px; }
     .chat { right:12px; left:12px; width:auto; bottom:150px; height:min(66svh, 580px); }
   }
+
+  /* The agent's avatar (blonde, headset, Sunny Pop yellow) */
+  .fab-agent { padding:0 20px 0 9px; }
+  .fab-agent img { width:40px; height:40px; border-radius:50%; object-fit:cover; border:2px solid #FFD23F; display:block; }
+  .chat-ava { width:46px; height:46px; border-radius:50%; object-fit:cover; border:2px solid #FFD23F; flex:0 0 auto; display:block; }
+  .msg { position:relative; }
+  .msg.bot { margin-left:36px; }
+  .msg.bot::before { content:""; position:absolute; left:-36px; top:0; width:29px; height:29px; border-radius:50%; background:url("assets/agent.jpg") center / cover no-repeat; border:2px solid #fff; box-shadow:0 2px 6px rgba(0,0,0,.22); }
+  .chat-follow-cap { padding:10px 14px 0; font-size:11.5px; font-weight:800; letter-spacing:.6px; color:#999; text-transform:uppercase; }
+  .chat-chips button.fu-more { background:#111; color:#fff; border-color:#111; }
 </style>
 </head>
 <body>
@@ -457,19 +467,16 @@
   <p class="help-state" id="help-state">View: Normal</p>
 </div>
 
-<button type="button" class="fab-agent" id="agent-fab" aria-label="Ask AlphaFlux a question" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Ask</button>
+<button type="button" class="fab-agent" id="agent-fab" aria-label="Ask AlphaFlux a question" aria-expanded="false"><img src="assets/agent.jpg" alt="">Ask</button>
 <div class="chat" id="chat" hidden role="dialog" aria-modal="false" aria-labelledby="chat-title">
   <div class="chat-head">
+    <img class="chat-ava" src="assets/agent.jpg" alt="">
     <div><h3 id="chat-title">Ask AlphaFlux</h3><p>Answers come from this site's own pages, so they stay current with every update, package, feature and plan.</p></div>
     <button type="button" class="chat-x" id="chat-x" aria-label="Close chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   </div>
   <div class="chat-msgs" id="chat-msgs"></div>
-  <div class="chat-chips" id="chat-chips">
-    <button type="button">How much does it cost?</button>
-    <button type="button">Can it answer my phones?</button>
-    <button type="button">Does it book jobs?</button>
-    <button type="button">How do I bring my customers in?</button>
-  </div>
+  <div class="chat-follow-cap" id="chat-follow-cap">Try asking</div>
+  <div class="chat-chips" id="chat-chips"></div>
   <form class="chat-in" id="chat-form">
     <input id="chat-input" type="text" autocomplete="off" placeholder="Ask about AlphaFlux..." aria-label="Ask about AlphaFlux">
     <button type="submit">Send</button>
@@ -971,7 +978,7 @@
   var chatIndex = null;
   var chatGreeted = false;
   var STOP = {};
-  'a an the and or of to in on for with is it its can do does how what when where which who you your my me i we our this that are be have has from at by as'.split(' ').forEach(function (w) { STOP[w] = 1; });
+  'a an the and or of to in on for with is it its can do does how what when where which who you your my me i we our this that are be have has from at by as tell'.split(' ').forEach(function (w) { STOP[w] = 1; });
   function openChat() {
     chat.hidden = false; chatOpen = true; agentFab.setAttribute('aria-expanded', 'true');
     if (!chatGreeted) {
@@ -1001,7 +1008,6 @@
         var qb = document.createElement('button');
         qb.type = 'button'; qb.textContent = 'Quick view';
         qb.addEventListener('click', function () {
-          closeChat();
           var t = document.querySelector('a.tile[href="' + tileHref + '"]');
           if (t) { t.click(); }
         });
@@ -1024,13 +1030,19 @@
   }
   function answerFor(q) {
     if (!chatIndex || !chatIndex.length) { return null; }
-    var terms = q.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(function (w) { return w.length > 2 && !STOP[w]; });
-    if (!terms.length) { return null; }
+    var ql = q.toLowerCase();
+    var terms = ql.replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(function (w) { return w.length > 2 && !STOP[w]; });
+    var wantAbout = /\bcompan(y|ies)\b/.test(ql) || /what is this|who are you|what is alphaflux|about alphaflux/.test(ql);
+    var wantHelp = ql.indexOf('help') !== -1 && ql.indexOf('business') !== -1;
+    if (!terms.length && !wantAbout && !wantHelp) { return null; }
     var best = null, bestScore = 0;
     chatIndex.forEach(function (c) {
       var hay = (c.label + ' ' + c.h).toLowerCase();
       var body = c.t.toLowerCase();
       var score = 0;
+      if (wantAbout && c.label === 'About AlphaFlux') { score += 5; }
+      if (wantHelp && c.h === 'How AlphaFlux helps your business') { score += 8; }
+      if (terms.indexOf('business') !== -1 && c.h === 'How AlphaFlux helps your business') { score += 3; }
       terms.forEach(function (t) {
         if (hay.indexOf(t) !== -1) { score += 3; }
         var n = body.split(t).length - 1;
@@ -1040,22 +1052,79 @@
       });
       if (score > bestScore) { bestScore = score; best = c; }
     });
-    return bestScore >= 4 ? best : null;
+    return bestScore >= 4 || ((wantAbout || wantHelp) && bestScore >= 3) ? best : null;
   }
   function ask(q) {
     q = (q || '').trim();
     if (!q) { return; }
     addMsg('me', q);
     var chunk = answerFor(q);
-    if (chunk) { addMsg('bot', trimAnswer(chunk.t), chunk); }
+    if (chunk) { addMsg('bot', trimAnswer(chunk.t), chunk); renderFollow(chunk); }
     else {
       addMsg('bot', 'I could not find that on the site yet. The big topics are pricing and plans, the AI phone answering, bookings, and the CRM. Try one of those words, or tap a tile and hit More info for the full story.');
+      renderFollow(null);
     }
   }
   chatForm.addEventListener('submit', function (e) { e.preventDefault(); var v = chatInput.value; chatInput.value = ''; ask(v); });
-  document.getElementById('chat-chips').querySelectorAll('button').forEach(function (b) {
-    b.addEventListener('click', function () { ask(b.textContent); });
-  });
+  /* Follow-up area at the bottom of the chat: More info on what she just
+     said, plus related topics. Windows open behind her; she stays in front. */
+  var chatChips = document.getElementById('chat-chips');
+  var followCap = document.getElementById('chat-follow-cap');
+  var STARTERS = ['How much does it cost?', 'Can it answer my phones?', 'Does it book jobs?', 'How do I bring my customers in?'];
+  function words(str) { return str.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(function (w) { return w.length > 3 && !STOP[w]; }); }
+  function openBehind(chunk, deep) {
+    var tileHref = chunk.href === '/calls-and-messaging' ? '/phones' : chunk.href;
+    var data = QUICK[tileHref];
+    if (!data) { window.location.href = chunk.href; return; }
+    openQV(data, tileHref);
+    if (deep && data.deep) { openDV(); }
+  }
+  function presentTopic(c, meText) {
+    addMsg('me', meText);
+    addMsg('bot', trimAnswer(c.t), c);
+    renderFollow(c);
+  }
+  function chip(label, fn, cls) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    if (cls) { b.className = cls; }
+    b.textContent = label;
+    b.addEventListener('click', fn);
+    chatChips.appendChild(b);
+  }
+  function renderFollow(chunk) {
+    chatChips.innerHTML = '';
+    if (!chunk) {
+      followCap.textContent = 'Try asking';
+      STARTERS.forEach(function (q) { chip(q, function () { ask(q); }); });
+      return;
+    }
+    followCap.textContent = 'Keep going';
+    chip('More info: ' + chunk.label, function () { openBehind(chunk, true); }, 'fu-more');
+    if (!chatIndex) { return; }
+    var base = words(chunk.label + ' ' + chunk.h);
+    var scored = [];
+    chatIndex.forEach(function (c) {
+      if (c === chunk) { return; }
+      var sc = 0;
+      if (c.href === chunk.href) { sc += 4; }
+      words(c.label + ' ' + c.h).forEach(function (w) { if (base.indexOf(w) !== -1) { sc += 2; } });
+      if (sc > 0) { scored.push({ c: c, sc: sc }); }
+    });
+    scored.sort(function (a, b) { return b.sc - a.sc; });
+    var used = {};
+    scored.slice(0, 6).forEach(function (it) {
+      if (Object.keys(used).length >= 3) { return; }
+      var key = it.c.href + '|' + it.c.h;
+      if (used[key]) { return; }
+      used[key] = 1;
+      var c = it.c;
+      var label = c.href === chunk.href ? c.h : c.label;
+      if (label.length > 36) { label = label.slice(0, 34) + '..'; }
+      chip(label, function () { presentTopic(c, 'Tell me about ' + label); });
+    });
+  }
+  renderFollow(null);
 })();
 </script>
 

@@ -457,6 +457,18 @@
    "t": "Each office can have its own numbers and its own call handling, and the receptionist resolves callers to the correct office by address. A central number can also route by the caller's location."
   },
   {
+   "href": "/about",
+   "label": "About AlphaFlux",
+   "h": "What this company is",
+   "t": "AlphaFlux is the front office for service businesses. It answers your phones around the clock, captures every lead, books jobs onto your schedule, sends invoices and takes payments, and keeps your crew and your customers in the loop, so no call, lead, or job slips through the cracks. It is built for service businesses: pest control, plumbing, HVAC, roofing, cleaning, landscaping, security patrol, solar and mobile units, logistics, construction, manufacturing, and nonprofits."
+  },
+  {
+   "href": "/about",
+   "label": "About AlphaFlux",
+   "h": "How AlphaFlux helps your business",
+   "t": "AlphaFlux answers your phones, captures your leads, and books your jobs while you are out doing the work. The phones, the schedule, the customer record, the invoices and the crew app all point at the same account, so nothing slips through the cracks and nobody types the same thing twice. You can start on the free plan: twenty customers, one location, every core module, free permanently, and move up when the work outgrows it."
+  },
+  {
    "href": "/waitlist",
    "label": "AlphaVision",
    "h": "AlphaVision",
