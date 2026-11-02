@@ -176,7 +176,7 @@ def main():
                     "href": "/pricing",
                     "label": "Pricing",
                     "h": "Plans at a glance",
-                    "t": "AlphaFlux pricing has five plans. Free is $0 per month, free for life. Starter is $69 per month, or $55 per month billed annually. Growth is $150 per month, or $120 billed annually. Pro is $289 per month, or $231 billed annually, and adds the AI receptionist. Scale is $420 per month, or $336 billed annually. You do not have to buy a plan: modules can be added one at a time on the Free plan.",
+                    "t": "AlphaFlux pricing has six plans. Free is $0 per month, free for life. Solo is $19 per month, or $15 per month billed annually. Starter is $69 per month, or $55 per month billed annually. Growth is $150 per month, or $120 billed annually. Pro is $300 per month, or $240 billed annually, and adds the AI receptionist. Scale is $420 per month, or $336 billed annually. White label comes in three sizes: $999, $1,773, or $2,999 per month. You do not have to buy a plan: modules can be added one at a time on the Free plan.",
                 },
             )
             break

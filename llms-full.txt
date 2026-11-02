@@ -475,7 +475,7 @@ The platform is designed to the practices described on this page: least privileg
 URL: https://alphaflux.net/white-label
 Section: Platform
 
-Five thousand a month buys the entire platform with every limit lifted, under your brand, on your domain, with the right to sell it to your own customers as your own product.
+White label comes in three sizes: $999, $1,773, or $2,999 a month. Each one buys the entire platform with every limit lifted, under your brand, on your domain, with the right to sell it to your own customers as your own product.
 
 ## What it is, plainly
 
@@ -1709,7 +1709,7 @@ Price: Custom
 
 ### White label
 
-Price: $5,000 per month
+Price: $999, $1,773, or $2,999 per month
 
 - Everything: Unlimited
 - Your branding: Yes
