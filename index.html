@@ -96,21 +96,40 @@
   /* Bottom nav (phone only) */
   .bottomnav { display:none; }
   @media (max-width:760px) {
-    body { padding-bottom:96px; }
+    body { padding-bottom:calc(66px + env(safe-area-inset-bottom)); }
+    .wrap { padding:0 14px; }
     .toplinks { display:none; }
-    .wordmark { font-size:25px; }
-    .hero { padding:28px 22px 32px; border-radius:24px; }
-    .hero h1 { font-size:32px; }
-    .hero p { font-size:16px; }
-    .hero-btn { padding:14px 30px; font-size:17px; }
-    .hero-btn2 { padding:12px 22px; font-size:15px; }
-    .tile { width:216px; }
-    .poster { height:124px; border-radius:20px; }
-    .cap { padding:10px 12px; }
-    .cap .lab { font-size:15px; }
-    .bottomnav { display:flex; position:fixed; left:0; right:0; bottom:0; background:#fff; box-shadow:0 -4px 18px rgba(0,0,0,.18); padding:6px 6px calc(8px + env(safe-area-inset-bottom)); justify-content:space-around; z-index:10; }
-    .bottomnav a { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; font-size:11px; font-weight:800; color:#555; min-height:48px; min-width:64px; padding:4px 8px; border-radius:12px; }
-    .bottomnav a svg { width:24px; height:24px; }
+    .topbar { padding:12px 0 2px; }
+    .wordmark { font-size:23px; }
+    .signin-pill { font-size:13.5px; padding:9px 16px; min-height:40px; }
+    .pills { gap:8px; padding:10px 0 12px; }
+    .pill { font-size:13px; padding:8px 13px; min-height:40px; gap:6px; }
+    .pill svg { width:15px; height:15px; }
+    .hero { padding:16px 15px 18px; border-radius:22px; }
+    .hero .kicker { font-size:11px; padding:5px 11px; margin-bottom:8px; letter-spacing:1px; }
+    .hero h1 { font-size:24px; line-height:1.08; }
+    .hero p { font-size:13.5px; line-height:1.4; margin:8px 0 12px; }
+    .hero-actions { gap:9px; }
+    .hero-btn { padding:11px 22px; font-size:15px; min-height:42px; box-shadow:0 4px 0 rgba(0,0,0,.35); }
+    .hero-btn2 { padding:9px 16px; font-size:13.5px; min-height:42px; gap:7px; }
+    .hero-btn2 svg { width:15px; height:15px; }
+    .row { margin-top:22px; }
+    .row h2 { font-size:19px; margin-bottom:9px; }
+    .strip { gap:11px; padding:2px 2px 8px; }
+    .tile { width:160px; }
+    .poster { height:92px; border-radius:17px; }
+    .cap { padding:7px 9px; gap:6px; }
+    .cap svg { width:17px; height:17px; }
+    .cap .lab { font-size:12.5px; }
+    footer { margin:30px 0 20px; padding:18px; border-radius:20px; }
+    footer h2 { font-size:15.5px; margin-bottom:6px; }
+    footer p.about { font-size:13.5px; line-height:1.5; }
+    .footlinks { margin-top:8px; }
+    .footlinks a { min-height:40px; padding:8px 6px; font-size:13px; }
+    .copy { font-size:12px; margin-top:8px; }
+    .bottomnav { display:flex; position:fixed; left:0; right:0; bottom:0; background:#fff; box-shadow:0 -4px 18px rgba(0,0,0,.18); padding:5px 6px calc(6px + env(safe-area-inset-bottom)); justify-content:space-around; z-index:10; }
+    .bottomnav a { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; font-size:10.5px; font-weight:800; color:#555; min-height:42px; min-width:56px; padding:3px 6px; border-radius:12px; }
+    .bottomnav a svg { width:20px; height:20px; }
     .bottomnav a.on { color:#111; }
   }
 
