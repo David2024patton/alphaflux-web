@@ -318,6 +318,15 @@
   .msg.bot::before { content:""; position:absolute; left:-36px; top:0; width:29px; height:29px; border-radius:50%; background:url("assets/agent.jpg") center / cover no-repeat; border:2px solid #fff; box-shadow:0 2px 6px rgba(0,0,0,.22); }
   .chat-follow-cap { padding:10px 14px 0; font-size:11.5px; font-weight:800; letter-spacing:.6px; color:#999; text-transform:uppercase; }
   .chat-chips button.fu-more { background:#111; color:#fff; border-color:#111; }
+
+  .m-links button.listen-btn svg { width:15px; height:15px; }
+  .m-links button.listen-btn { gap:6px; }
+  .m-links button.listen-btn.on { background:#111; color:#fff; border-color:#111; }
+  .voice-toggle { margin-top:12px; width:100%; display:flex; justify-content:space-between; align-items:center; gap:10px; font:inherit; font-size:14px; font-weight:800; padding:11px 14px; border-radius:999px; border:2px solid rgba(17,17,17,.14); background:#fff; color:#111; cursor:pointer; min-height:44px; }
+  .voice-toggle .vt-state { color:#E10600; font-weight:900; }
+  .voice-toggle.on { background:#111; color:#fff; border-color:#111; }
+  .voice-toggle.on .vt-state { color:#FFD23F; }
+  .voice-toggle[disabled] { opacity:.45; cursor:default; }
 </style>
 </head>
 <body>
@@ -465,6 +474,8 @@
     <button type="button" data-view-set="lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Bigger</button>
   </div>
   <p class="help-state" id="help-state">View: Normal</p>
+  <button type="button" class="voice-toggle" id="voice-toggle" aria-pressed="false"><span>Read her answers out loud</span><span class="vt-state">Off</span></button>
+  <p>Uses your device voice for now. Her real voice arrives next.</p>
 </div>
 
 <button type="button" class="fab-agent" id="agent-fab" aria-label="Ask AlphaFlux a question" aria-expanded="false"><img src="assets/agent.jpg" alt="">Ask</button>
@@ -988,9 +999,80 @@
       fetch('assets/site-index.json').then(function (r) { return r.json(); }).then(function (d) { chatIndex = d.chunks || []; }).catch(function () { chatIndex = []; });
     }
   }
-  function closeChat() { chat.hidden = true; chatOpen = false; agentFab.setAttribute('aria-expanded', 'false'); agentFab.focus(); }
+  function closeChat() { stopSpeak(); chat.hidden = true; chatOpen = false; agentFab.setAttribute('aria-expanded', 'false'); agentFab.focus(); }
   agentFab.addEventListener('click', function () { if (chatOpen) { closeChat(); } else { openChat(); } });
   document.getElementById('chat-x').addEventListener('click', closeChat);
+  /* Her voice, stage 1: the visitor's own browser voice. Stage 2 swaps
+     speakText() to server-made audio in her real voice; nothing else moves. */
+  var synth = ('speechSynthesis' in window) ? window.speechSynthesis : null;
+  var voiceAuto = false;
+  try { voiceAuto = localStorage.getItem('af-voice-auto') === '1'; } catch (e) {}
+  var speakingBtn = null;
+  function pickVoice() {
+    if (!synth) { return null; }
+    var vs = synth.getVoices();
+    var prefs = ['zira', 'samantha', 'aria', 'jenny', 'google us english', 'karen', 'moira', 'tessa', 'female'];
+    for (var i = 0; i < prefs.length; i++) {
+      for (var j = 0; j < vs.length; j++) {
+        if (vs[j].name.toLowerCase().indexOf(prefs[i]) !== -1 && vs[j].lang.indexOf('en') === 0) { return vs[j]; }
+      }
+    }
+    for (var k = 0; k < vs.length; k++) { if (vs[k].lang && vs[k].lang.indexOf('en') === 0) { return vs[k]; } }
+    return vs[0] || null;
+  }
+  function setBtn(btn, on) {
+    btn.classList.toggle('on', on);
+    btn.querySelector('span').textContent = on ? 'Stop' : 'Listen';
+  }
+  function stopSpeak() {
+    if (synth) { synth.cancel(); }
+    if (speakingBtn) { setBtn(speakingBtn, false); speakingBtn = null; }
+  }
+  function speakText(text, btn) {
+    if (!synth) { return; }
+    if (btn && speakingBtn === btn) { stopSpeak(); return; }
+    stopSpeak();
+    var u = new SpeechSynthesisUtterance(text);
+    var v = pickVoice();
+    if (v) { u.voice = v; }
+    u.lang = 'en-US';
+    u.rate = 1;
+    if (btn) {
+      speakingBtn = btn;
+      setBtn(btn, true);
+      u.onend = function () { if (speakingBtn === btn) { setBtn(btn, false); speakingBtn = null; } };
+      u.onerror = u.onend;
+    }
+    synth.speak(u);
+  }
+  function maybeSpeak(div) {
+    if (voiceAuto && div && div._speakText) {
+      var lb = div.querySelector('.listen-btn');
+      if (lb) { speakText(div._speakText, lb); }
+    }
+  }
+  var voiceToggle = document.getElementById('voice-toggle');
+  function paintVoiceToggle() {
+    if (!voiceToggle) { return; }
+    voiceToggle.classList.toggle('on', voiceAuto);
+    voiceToggle.setAttribute('aria-pressed', voiceAuto ? 'true' : 'false');
+    voiceToggle.querySelector('.vt-state').textContent = voiceAuto ? 'On' : 'Off';
+  }
+  if (voiceToggle) {
+    if (!synth) {
+      voiceToggle.disabled = true;
+      voiceToggle.querySelector('.vt-state').textContent = 'No voice';
+    } else {
+      paintVoiceToggle();
+      voiceToggle.addEventListener('click', function () {
+        voiceAuto = !voiceAuto;
+        try { localStorage.setItem('af-voice-auto', voiceAuto ? '1' : '0'); } catch (e) {}
+        if (!voiceAuto) { stopSpeak(); }
+        paintVoiceToggle();
+      });
+    }
+  }
+
   function addMsg(who, text, chunk) {
     var div = document.createElement('div');
     div.className = 'msg ' + who;
@@ -998,11 +1080,21 @@
     var body = document.createElement('span');
     body.textContent = text;
     div.appendChild(body);
-    if (chunk) {
+    if (who === 'bot') {
+      div._speakText = chunk ? (chunk.label + '. ' + chunk.t) : text;
       var links = document.createElement('div');
       links.className = 'm-links';
-      var tileHref = chunk.href === '/calls-and-messaging' ? '/phones' : chunk.href;
-      if (QUICK[tileHref]) {
+      if (synth) {
+        var lb = document.createElement('button');
+        lb.type = 'button';
+        lb.className = 'listen-btn';
+        lb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9.5 9.5 0 0 1 0 13"/></svg><span>Listen</span>';
+        lb.setAttribute('aria-label', 'Listen to this answer');
+        (function (d, b) { b.addEventListener('click', function () { speakText(d._speakText, b); }); })(div, lb);
+        links.appendChild(lb);
+      }
+      var tileHref = chunk ? (chunk.href === '/calls-and-messaging' ? '/phones' : chunk.href) : null;
+      if (chunk && QUICK[tileHref]) {
         var qb = document.createElement('button');
         qb.type = 'button'; qb.textContent = 'Quick view';
         qb.addEventListener('click', function () {
@@ -1054,7 +1146,7 @@
     if (!q) { return; }
     addMsg('me', q);
     var chunk = answerFor(q);
-    if (chunk) { addMsg('bot', trimAnswer(chunk.t), chunk); renderFollow(chunk); }
+    if (chunk) { var mAns = addMsg('bot', trimAnswer(chunk.t), chunk); renderFollow(chunk); maybeSpeak(mAns); }
     else {
       addMsg('bot', 'I could not find that on the site yet. The big topics are pricing and plans, the AI phone answering, bookings, and the CRM. Try one of those words, or tap a tile and hit More info for the full story.');
       renderFollow(null);
@@ -1076,8 +1168,9 @@
   }
   function presentTopic(c, meText) {
     addMsg('me', meText);
-    addMsg('bot', trimAnswer(c.t), c);
+    var mTop = addMsg('bot', trimAnswer(c.t), c);
     renderFollow(c);
+    maybeSpeak(mTop);
   }
   function chip(label, fn, cls) {
     var b = document.createElement('button');
