@@ -115,19 +115,20 @@
   .qv { position:fixed; inset:0; z-index:60; display:flex; align-items:center; justify-content:center; padding:20px; }
   .qv[hidden] { display:none; }
   .qv-back { position:absolute; inset:0; background:rgba(12,9,24,.68); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
-  .qv-card { position:relative; width:min(560px, 100%); max-height:calc(100svh - 40px); overflow-y:auto; background:#fff; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.35); animation:qvin .16s ease-out; }
+  .qv-card { position:relative; display:flex; flex-direction:column; width:min(560px, 100%); max-height:calc(100svh - 40px); overflow:hidden; background:#fff; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.35); animation:qvin .16s ease-out; }
   @keyframes qvin { from { transform:scale(.96) translateY(8px); opacity:0; } to { transform:scale(1) translateY(0); opacity:1; } }
-  .qv-media { position:relative; height:230px; background:#111; }
+  .qv-media { position:relative; flex:0 1 auto; min-height:120px; height:230px; background:#111; }
   .qv-media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
   .qv-x { position:absolute; top:12px; right:12px; z-index:2; width:40px; height:40px; border:0; border-radius:50%; background:rgba(17,17,17,.85); color:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; }
   .qv-x svg { width:18px; height:18px; }
-  .qv-body { padding:22px 24px 24px; }
+  .qv-body { display:flex; flex-direction:column; flex:1 1 auto; min-height:0; }
+  .qv-mid { flex:1 1 auto; min-height:0; overflow-y:auto; padding:22px 24px 6px; scrollbar-width:thin; scrollbar-color:#E10600 transparent; }
   .qv-body h3 { font-size:24px; font-weight:900; line-height:1.15; }
   .qv-body p { margin-top:10px; font-family:Arial, sans-serif; font-size:15.5px; line-height:1.55; color:#333; }
   .qv-points { list-style:none; margin-top:14px; display:grid; gap:9px; }
   .qv-points li { display:flex; gap:10px; align-items:flex-start; font-size:15px; font-weight:700; line-height:1.35; }
   .qv-points svg { width:19px; height:19px; flex:0 0 auto; margin-top:1px; color:#E10600; }
-  .qv-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:20px; }
+  .qv-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; flex:0 0 auto; padding:14px 24px 22px; }
   .qv-go { display:inline-flex; align-items:center; background:#E10600; color:#fff; font-size:16px; font-weight:900; padding:13px 26px; border-radius:999px; box-shadow:0 4px 0 rgba(0,0,0,.25); min-height:44px; }
   .qv-close2 { background:none; border:0; font:inherit; font-size:15px; font-weight:800; color:#555; padding:12px 10px; cursor:pointer; min-height:44px; }
 
@@ -160,13 +161,15 @@
     .rowbtn svg { width:17px; height:17px; }
     .qv { padding:0; align-items:flex-end; }
     .qv-card { width:100%; max-height:calc(100svh - 24px); border-radius:24px 24px 0 0; }
-    .qv-media { height:180px; }
-    .qv-body { padding:18px 18px 20px; }
+    .qv-media { height:180px; min-height:96px; }
+    .qv-mid { padding:18px 18px 4px; }
+    .qv-actions { padding:12px 18px 18px; }
     .qv-body h3 { font-size:21px; }
     .dv { padding:0; align-items:flex-end; }
     .dv-card { width:100%; max-height:calc(100svh - 12px); border-radius:24px 24px 0 0; }
-    .dv-media { height:180px; }
-    .dv-body { padding:18px 18px 20px; }
+    .dv-media { height:180px; min-height:96px; }
+    .dv-mid { padding:18px 18px 4px; }
+    .dv-actions { padding:12px 18px 18px; }
     .dv-body h3 { font-size:22px; }
     .dv-sec { padding:15px 16px; }
     .strip { gap:10px; padding:4px 2px 22px; }
@@ -196,10 +199,11 @@
   .dv { position:fixed; inset:0; z-index:70; display:flex; align-items:center; justify-content:center; padding:18px; }
   .dv[hidden] { display:none; }
   .dv-back { position:absolute; inset:0; background:rgba(12,9,24,.72); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
-  .dv-card { position:relative; width:min(880px, 100%); max-height:calc(100svh - 36px); overflow-y:auto; background:#fff; border-radius:26px; box-shadow:0 24px 60px rgba(0,0,0,.35); animation:qvin .16s ease-out; }
-  .dv-media { position:relative; height:250px; background:#111; }
+  .dv-card { position:relative; display:flex; flex-direction:column; width:min(880px, 100%); max-height:calc(100svh - 36px); overflow:hidden; background:#fff; border-radius:26px; box-shadow:0 24px 60px rgba(0,0,0,.35); animation:qvin .16s ease-out; }
+  .dv-media { position:relative; flex:0 1 auto; min-height:120px; height:250px; background:#111; }
   .dv-media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
-  .dv-body { padding:24px 28px 26px; }
+  .dv-body { display:flex; flex-direction:column; flex:1 1 auto; min-height:0; }
+  .dv-mid { flex:1 1 auto; min-height:0; overflow-y:auto; padding:24px 28px 8px; scrollbar-width:thin; scrollbar-color:#E10600 transparent; }
   .dv-body h3 { font-size:27px; font-weight:900; line-height:1.15; }
   .dv-h1 { margin-top:6px; font-size:16.5px; font-weight:800; line-height:1.35; color:#444; }
   .dv-lead { margin-top:10px; font-family:Arial, sans-serif; font-size:16px; line-height:1.55; color:#333; }
@@ -215,7 +219,12 @@
   .dv-sec details p { margin-top:6px; }
   .dv-quote { background:#fff; border-left:5px solid #E10600; }
   .dv-quote p { font-size:16.5px; font-weight:700; color:#111; line-height:1.45; }
-  .dv-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:22px; }
+  .dv-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; flex:0 0 auto; padding:14px 28px 24px; }
+  /* Sunny Pop scrollbar for the popup middle areas: a chunky red pill floating on a clear track, never the default gray bar. */
+  .qv-mid::-webkit-scrollbar, .dv-mid::-webkit-scrollbar { width:14px; }
+  .qv-mid::-webkit-scrollbar-track, .dv-mid::-webkit-scrollbar-track { background:transparent; }
+  .qv-mid::-webkit-scrollbar-thumb, .dv-mid::-webkit-scrollbar-thumb { background-color:#E10600; border-radius:999px; border:3px solid #fff; background-clip:padding-box; }
+  .qv-mid::-webkit-scrollbar-thumb:hover, .dv-mid::-webkit-scrollbar-thumb:hover { background-color:#B00500; }
 </style>
 </head>
 <body>
@@ -324,9 +333,11 @@
   <div class="qv-card">
     <div class="qv-media"><img id="qv-img" alt=""><button type="button" class="qv-x" data-close aria-label="Close quick view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
     <div class="qv-body">
-      <h3 id="qv-title"></h3>
-      <p id="qv-sum"></p>
-      <ul class="qv-points" id="qv-points"></ul>
+      <div class="qv-mid">
+        <h3 id="qv-title"></h3>
+        <p id="qv-sum"></p>
+        <ul class="qv-points" id="qv-points"></ul>
+      </div>
       <div class="qv-actions"><button type="button" class="qv-more" id="qv-more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>More info</button><a class="qv-go" id="qv-go" href="#">See full details</a><button type="button" class="qv-close2" data-close>Close</button></div>
     </div>
   </div>
@@ -338,11 +349,13 @@
   <div class="dv-card">
     <div class="dv-media"><img id="dv-img" alt=""><button type="button" class="qv-x" data-close-dv aria-label="Back to quick view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
     <div class="dv-body">
-      <h3 id="dv-title"></h3>
-      <p class="dv-h1" id="dv-h1"></p>
-      <p class="dv-lead" id="dv-lead"></p>
-      <p class="dv-status" id="dv-status"></p>
-      <div class="dv-cards" id="dv-cards"></div>
+      <div class="dv-mid">
+        <h3 id="dv-title"></h3>
+        <p class="dv-h1" id="dv-h1"></p>
+        <p class="dv-lead" id="dv-lead"></p>
+        <p class="dv-status" id="dv-status"></p>
+        <div class="dv-cards" id="dv-cards"></div>
+      </div>
       <div class="dv-actions"><a class="qv-go" id="dv-go" href="#">See full details</a><button type="button" class="qv-close2" data-close-dv>Back</button></div>
     </div>
   </div>
