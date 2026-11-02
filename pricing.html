@@ -64,7 +64,7 @@
   .band img { width:100%; height:100%; object-fit:cover; display:block; }
 
   /* Billing toggle */
-  .toggle { display:flex; justify-content:center; margin-top:30px; }
+  .toggle { display:flex; justify-content:center; margin-top:30px; position:sticky; top:62px; z-index:25; }
   .toggle-inner { display:inline-flex; background:#fff; border-radius:999px; padding:5px; box-shadow:0 4px 12px rgba(0,0,0,.14); gap:4px; }
   .toggle button { border:0; cursor:pointer; font:inherit; font-weight:800; font-size:16px; padding:11px 26px; border-radius:999px; background:transparent; color:#111; min-height:44px; display:inline-flex; align-items:center; gap:8px; }
   .toggle button.active { background:#111; color:#fff; }
@@ -98,6 +98,25 @@
   /* Small note */
   .note { text-align:center; font-family:Arial, sans-serif; font-size:14px; color:#3d3d3d; margin-top:22px; }
 
+
+  /* A la carte band */
+  .alacarte { margin-top:26px; background:#fff; border-radius:26px; padding:30px 28px; box-shadow:0 8px 18px rgba(0,0,0,.12); }
+  .alacarte h2 { font-size:24px; font-weight:900; }
+  .alacarte p { margin-top:8px; font-family:Arial, sans-serif; font-size:16px; line-height:1.5; color:#2b2b2b; max-width:640px; }
+  .modchips { display:flex; flex-wrap:wrap; gap:9px; margin:18px 0 22px; list-style:none; }
+  .modchips li { background:#FFF3C4; border:2px solid #111; border-radius:999px; padding:8px 15px; font-weight:800; font-size:14.5px; }
+  .alacarte-btn { display:inline-flex; align-items:center; justify-content:center; background:#E10600; color:#fff; font-weight:900; font-size:16px; padding:14px 30px; border-radius:999px; min-height:48px; box-shadow:0 4px 0 rgba(0,0,0,.25); }
+
+  /* What's included expanders */
+  .whats { margin-top:10px; background:transparent; border:0; font:inherit; font-weight:800; font-size:14.5px; color:#111; cursor:pointer; display:inline-flex; align-items:center; gap:7px; padding:8px 6px; min-height:40px; border-radius:8px; }
+  .whats::after { content:""; border-left:5px solid transparent; border-right:5px solid transparent; border-top:6px solid #111; transition:transform .15s ease; }
+  .whats[aria-expanded="true"]::after { transform:rotate(180deg); }
+  .whats:focus-visible { outline:3px solid #111; outline-offset:2px; }
+  .inc { margin-top:4px; }
+  .inc ul { list-style:none; }
+  .inc li { font-family:Arial, sans-serif; font-size:14px; line-height:1.45; color:#222; padding:8px 0 8px 24px; position:relative; border-top:1px solid #eee; }
+  .inc li::before { content:""; position:absolute; left:2px; top:13px; width:8px; height:8px; border-radius:50%; background:#FFD23F; border:2px solid #111; }
+
   /* Footer */
   footer { margin:48px 0 30px; background:#fff; border-radius:24px; padding:28px 30px; box-shadow:0 6px 14px rgba(0,0,0,.10); }
   footer h2 { font-size:17px; font-weight:900; margin-bottom:8px; }
@@ -123,7 +142,7 @@
     .ptitle h1 { font-size:27px; }
     .ptitle p { font-size:14.5px; margin-top:7px; line-height:1.4; }
     .band { height:92px; margin-top:14px; border-radius:18px; }
-    .toggle { margin-top:18px; }
+    .toggle { margin-top:18px; top:58px; }
     .toggle-inner { padding:4px; }
     .toggle button { padding:9px 17px; font-size:14px; min-height:42px; }
     .plans { gap:12px; margin-top:18px; }
@@ -144,6 +163,14 @@
     .wl .s { font-size:13.5px; }
     .wl-btn { padding:10px 20px; font-size:14px; min-height:42px; }
     .note { font-size:12.5px; margin-top:14px; }
+    .alacarte { padding:20px 18px; border-radius:20px; margin-top:18px; }
+    .alacarte h2 { font-size:20px; }
+    .alacarte p { font-size:14.5px; }
+    .modchips { gap:7px; margin:14px 0 18px; }
+    .modchips li { font-size:13px; padding:7px 12px; }
+    .alacarte-btn { padding:11px 24px; font-size:14.5px; min-height:42px; }
+    .whats { font-size:13.5px; }
+    .inc li { font-size:13.5px; }
     footer { margin:30px 0 20px; padding:18px; border-radius:20px; }
     footer h2 { font-size:15.5px; margin-bottom:6px; }
     footer p.about { font-size:13.5px; line-height:1.5; }
@@ -195,7 +222,17 @@
         <p class="aud">Try it out</p>
         <div class="price"><span class="cur">$</span><span class="amount" data-monthly="0" data-annual="0">0</span></div>
         <p class="perlabel">per month</p>
-        <div class="btnwrap"><a class="plan-btn" href="/signup">Start with Free</a></div>
+        <div class="btnwrap"><a class="plan-btn" href="/signup">Start with Free</a>
+        <button type="button" class="whats" aria-expanded="false" aria-controls="inc-free">What's included</button>
+        <div class="inc" id="inc-free" hidden>
+          <ul>
+            <li>Free for life</li>
+            <li>CRM</li>
+            <li>Basic scheduling</li>
+            <li>Basic invoicing</li>
+            <li>1 location, 20 customers, 20 inventory items, 2 users</li>
+          </ul>
+        </div></div>
       </section>
 
       <section class="plan" aria-labelledby="plan-starter">
@@ -203,7 +240,19 @@
         <p class="aud">For new businesses</p>
         <div class="price"><span class="cur">$</span><span class="amount" data-monthly="69" data-annual="55">69</span></div>
         <p class="perlabel" data-monthly-label="per month" data-annual-label="per month, billed annually">per month</p>
-        <div class="btnwrap"><a class="plan-btn" href="/signup">Start with Starter</a></div>
+        <div class="btnwrap"><a class="plan-btn" href="/signup">Start with Starter</a>
+        <button type="button" class="whats" aria-expanded="false" aria-controls="inc-starter">What's included</button>
+        <div class="inc" id="inc-starter" hidden>
+          <ul>
+            <li>Phone system (1 number)</li>
+            <li>Texting</li>
+            <li>Scheduling + online booking</li>
+            <li>Billing and invoicing</li>
+            <li>Inventory core</li>
+            <li>1 location, 250 customers, 500 inventory items, 3 users</li>
+            <li>14-day free trial</li>
+          </ul>
+        </div></div>
       </section>
 
       <section class="plan pop" aria-labelledby="plan-growth">
@@ -212,7 +261,19 @@
         <p class="aud">For growing teams</p>
         <div class="price"><span class="cur">$</span><span class="amount" data-monthly="150" data-annual="120">150</span></div>
         <p class="perlabel" data-monthly-label="per month" data-annual-label="per month, billed annually">per month</p>
-        <div class="btnwrap"><a class="plan-btn" href="/signup">Start with Growth</a></div>
+        <div class="btnwrap"><a class="plan-btn" href="/signup">Start with Growth</a>
+        <button type="button" class="whats" aria-expanded="false" aria-controls="inc-growth">What's included</button>
+        <div class="inc" id="inc-growth" hidden>
+          <ul>
+            <li>Everything in Starter</li>
+            <li>Socials publishing + inbox</li>
+            <li>Marketing automation (win-back, review requests, missed-call text-back)</li>
+            <li>Field service (dispatch, routes, tech app, truck stock)</li>
+            <li>Workflows</li>
+            <li>3 locations, 1,500 customers, 3,000 inventory items, 10 users</li>
+            <li>14-day free trial</li>
+          </ul>
+        </div></div>
       </section>
 
       <section class="plan" aria-labelledby="plan-pro">
@@ -220,7 +281,19 @@
         <p class="aud">For busy shops</p>
         <div class="price"><span class="cur">$</span><span class="amount" data-monthly="289" data-annual="231">289</span></div>
         <p class="perlabel" data-monthly-label="per month" data-annual-label="per month, billed annually">per month</p>
-        <div class="btnwrap"><a class="plan-btn" href="/signup">Start with Pro</a></div>
+        <div class="btnwrap"><a class="plan-btn" href="/signup">Start with Pro</a>
+        <button type="button" class="whats" aria-expanded="false" aria-controls="inc-pro">What's included</button>
+        <div class="inc" id="inc-pro" hidden>
+          <ul>
+            <li>Everything in Growth</li>
+            <li>AI receptionist (500 min/mo)</li>
+            <li>API access</li>
+            <li>Serial/lot tracking</li>
+            <li>Advanced permissions</li>
+            <li>10 locations, 10,000 customers, 25,000 inventory items, 25 users</li>
+            <li>14-day free trial</li>
+          </ul>
+        </div></div>
       </section>
 
       <section class="plan" aria-labelledby="plan-scale">
@@ -228,9 +301,38 @@
         <p class="aud">For multi-crew operations</p>
         <div class="price"><span class="cur">$</span><span class="amount" data-monthly="420" data-annual="336">420</span></div>
         <p class="perlabel" data-monthly-label="per month" data-annual-label="per month, billed annually">per month</p>
-        <div class="btnwrap"><a class="plan-btn" href="/signup">Start with Scale</a></div>
+        <div class="btnwrap"><a class="plan-btn" href="/signup">Start with Scale</a>
+        <button type="button" class="whats" aria-expanded="false" aria-controls="inc-scale">What's included</button>
+        <div class="inc" id="inc-scale" hidden>
+          <ul>
+            <li>Everything in Pro</li>
+            <li>Unlimited locations, customers, and inventory</li>
+            <li>Onboarding package included</li>
+            <li>50 users</li>
+            <li>14-day free trial</li>
+          </ul>
+        </div></div>
       </section>
     </div>
+
+    <section class="alacarte" aria-labelledby="alacarte-heading">
+      <h2 id="alacarte-heading">You do not have to buy a plan</h2>
+      <p>Start on the Free plan and add only the modules you need, one at a time. Add a module when the work calls for it, and skip the rest.</p>
+      <ul class="modchips">
+        <li>Phones</li>
+        <li>CRM and Leads</li>
+        <li>Bookings</li>
+        <li>Invoices</li>
+        <li>Inventory</li>
+        <li>Team App</li>
+        <li>Social Posts</li>
+        <li>Ads</li>
+        <li>Reviews</li>
+        <li>Websites and Funnels</li>
+        <li>Email Marketing</li>
+      </ul>
+      <a class="alacarte-btn" href="/waitlist">Join the Waitlist</a>
+    </section>
 
     <p class="shared">Every plan runs on the same front office: phones answered, leads captured, jobs booked, invoices sent.</p>
 
@@ -282,6 +384,19 @@
   }
   btnM.addEventListener('click', function () { setPeriod(false); });
   btnA.addEventListener('click', function () { setPeriod(true); });
+})();
+</script>
+<script>
+(function () {
+  var btns = document.querySelectorAll('.whats');
+  Array.prototype.forEach.call(btns, function (b) {
+    b.addEventListener('click', function () {
+      var panel = document.getElementById(b.getAttribute('aria-controls'));
+      var open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', String(!open));
+      if (panel) { panel.hidden = open; }
+    });
+  });
 })();
 </script>
 </body>
