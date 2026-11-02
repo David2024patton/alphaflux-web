@@ -783,6 +783,15 @@
   var qvSum = document.getElementById('qv-sum');
   var qvPoints = document.getElementById('qv-points');
   var lastFocus = null;
+  /* The open app lives in the address bar (#app=/crm, #app=/crm/info),
+     so a refresh, a bookmark or a shared link reopens the same popup. */
+  function setAppHash(href, deep) {
+    try { history.replaceState(null, '', '#app=' + href + (deep ? '/info' : '')); } catch (e) {}
+  }
+  function clearAppHash() {
+    try { history.replaceState(null, '', window.location.pathname + window.location.search); }
+    catch (e) { try { history.replaceState(null, '', '#'); } catch (e2) {} }
+  }
   function openQV(data, href) {
     qvImg.src = data.img;
     qvTitle.textContent = data.title;
@@ -801,8 +810,10 @@
     document.documentElement.style.overflow = 'hidden';
     var x = qv.querySelector('.qv-x');
     if (x) { x.focus(); }
+    setAppHash(href, false);
   }
   function closeQV() {
+    clearAppHash();
     qv.hidden = true;
     document.documentElement.style.overflow = '';
     if (lastFocus && lastFocus.focus) { lastFocus.focus(); }
@@ -928,6 +939,7 @@
     dvH1.textContent = ''; dvLead.textContent = ''; dvCards.innerHTML = '';
     dvStatus.textContent = 'Loading the full story...';
     dv.hidden = false; dvOpen = true;
+    setAppHash(curHref, true);
     var x = dv.querySelector('.qv-x'); if (x) { x.focus(); }
     var furl = curData.fetch || curHref;
     if (dvCache[furl]) { dvStatus.textContent = ''; renderDV(dvCache[furl]); return; }
@@ -945,6 +957,7 @@
   }
   function closeDV() {
     dv.hidden = true; dvOpen = false;
+    if (curHref) { setAppHash(curHref, false); }
     if (qvMore) { qvMore.focus(); }
   }
   if (qvMore) { qvMore.addEventListener('click', openDV); }
@@ -1213,6 +1226,17 @@
     });
   }
   renderFollow(null);
+  (function restoreApp() {
+    var h = window.location.hash || '';
+    if (h.indexOf('#app=') !== 0) { return; }
+    var rest = h.slice(5);
+    var deep = false;
+    if (rest.slice(-5) === '/info') { deep = true; rest = rest.slice(0, -5); }
+    var data = QUICK[rest];
+    if (!data) { return; }
+    openQV(data, rest);
+    if (deep && data.deep) { openDV(); }
+  })();
 })();
 </script>
 
