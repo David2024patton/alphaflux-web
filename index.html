@@ -1125,7 +1125,8 @@
   function trimAnswer(t) {
     if (t.length <= 380) { return t; }
     var cut = t.slice(0, 380);
-    var stop = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf(' '));
+    var dot = cut.lastIndexOf('. ');
+    var stop = dot >= 200 ? dot : cut.lastIndexOf(' ');
     return cut.slice(0, stop + 1).trim() + ' Tap More info below for the whole story.';
   }
   function answerFor(q) {
