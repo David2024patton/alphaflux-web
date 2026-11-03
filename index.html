@@ -169,14 +169,12 @@
     .rowhead h2 { margin-bottom:0; }
     .rowbtn { width:36px; height:36px; }
     .rowbtn svg { width:17px; height:17px; }
-    .qv { padding:0; align-items:flex-end; }
-    .qv-card { width:100%; max-height:calc(100svh - 24px); border-radius:24px 24px 0 0; }
+    .qv { padding:0; align-items:flex-start; }
+    .qv-card { width:100%; max-height:calc(100svh - 24px); border-radius:0 0 24px 24px; }
     .qv-media { height:180px; min-height:96px; }
     .qv-mid { padding:18px 18px 4px; }
     .qv-actions { padding:12px 18px 18px; }
     .qv-body h3 { font-size:21px; }
-    .dv { padding:0; align-items:flex-end; }
-    .dv-card { width:100%; max-height:calc(100svh - 12px); border-radius:24px 24px 0 0; }
     .dv-media { height:180px; min-height:96px; }
     .dv-mid { padding:18px 18px 4px; }
     .dv-actions { padding:12px 18px 18px; }
@@ -272,6 +270,15 @@
     html[data-view="sm"] .tile { width:118px; }
     html[data-view="sm"] .poster { height:70px; }
     html[data-view="sm"] .cap .lab { font-size:11px; }
+  }
+
+  /* Phone deep view anchors to the top of the screen, same as the
+     quick view. These rules must live AFTER the .dv base rules:
+     the deep view base CSS sits below the first phone block, so
+     overrides placed in that block lose the cascade, never apply. */
+  @media (max-width:760px) {
+    .dv { padding:0; align-items:flex-start; }
+    .dv-card { width:100%; max-height:calc(100svh - 12px); border-radius:0 0 24px 24px; }
   }
 
   /* Floating help box (bottom left) */
@@ -811,6 +818,25 @@
     catch (e) { try { history.replaceState(null, '', '#'); } catch (e2) {} }
   }
   function chatVisible() { var c = document.getElementById('chat'); return !!(c && !c.hidden); }
+  /* Phone browser bars make a plain inset:0 overlay sit on the
+     layout viewport, which sits lower than the screen the user
+     actually sees, so the card lands jammed at the bottom. Fit both
+     popup overlays to the visual viewport instead, the same fix the
+     chat panel uses: the overlay box IS the visible screen, so the
+     card centers on it and its top stays in reach. */
+  function fitOverlay(el) {
+    var vv = window.visualViewport;
+    if (!vv || !el) { return; }
+    el.style.top = vv.offsetTop + 'px';
+    el.style.left = vv.offsetLeft + 'px';
+    el.style.width = vv.width + 'px';
+    el.style.height = vv.height + 'px';
+  }
+  function fitPopups() { fitOverlay(qv); fitOverlay(dv); }
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', fitPopups);
+    window.visualViewport.addEventListener('scroll', fitPopups);
+  }
   function openQV(data, href) {
     qv.classList.toggle('over', chatVisible());
     qvImg.src = data.img;
@@ -826,7 +852,7 @@
     curData = data; curHref = href;
     if (qvMore) { qvMore.style.display = data.deep ? '' : 'none'; }
     lastFocus = document.activeElement;
-    qv.hidden = false;
+    qv.hidden = false; fitOverlay(qv);
     document.documentElement.style.overflow = 'hidden';
     var x = qv.querySelector('.qv-x');
     if (x) { x.focus(); }
@@ -962,7 +988,7 @@
     dvH1.textContent = ''; dvLead.textContent = ''; dvCards.innerHTML = '';
     dvStatus.textContent = 'Loading the full story...';
     dv.classList.toggle('over', chatVisible());
-    dv.hidden = false; dvOpen = true;
+    dv.hidden = false; dvOpen = true; fitOverlay(dv);
     setAppHash(curHref, true);
     var x = dv.querySelector('.qv-x'); if (x) { x.focus(); }
     var furl = curData.fetch || curHref;
