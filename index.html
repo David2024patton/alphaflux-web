@@ -278,7 +278,7 @@
   /* Ask AlphaFlux agent (bottom right) */
   .fab-agent { position:fixed; right:18px; bottom:18px; z-index:80; display:inline-flex; align-items:center; gap:9px; height:56px; padding:0 22px; border:0; border-radius:999px; background:#111; color:#fff; font:inherit; font-size:16px; font-weight:900; cursor:pointer; box-shadow:0 10px 26px rgba(0,0,0,.3); }
   .fab-agent svg { width:22px; height:22px; }
-  .chat { position:fixed; right:18px; bottom:86px; z-index:81; width:min(386px, calc(100vw - 24px)); height:min(580px, calc(100svh - 108px)); background:#fff; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.35); display:flex; flex-direction:column; overflow:hidden; }
+  .chat { position:fixed; right:18px; bottom:18px; z-index:81; width:min(560px, calc(100vw - 24px)); height:min(760px, calc(100svh - 36px)); background:#fff; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.35); display:flex; flex-direction:column; overflow:hidden; }
   .chat[hidden] { display:none; }
   .chat-head { display:flex; align-items:flex-start; gap:10px; padding:16px 18px 12px; border-bottom:1px solid rgba(17,17,17,.08); }
   .chat-head h3 { font-size:19px; font-weight:900; }
@@ -306,7 +306,7 @@
     .fab-help { bottom:84px; left:12px; }
     .fab-agent { bottom:84px; right:12px; }
     .help-panel { bottom:150px; left:12px; }
-    .chat { right:12px; left:12px; width:auto; bottom:150px; height:min(66svh, 580px); }
+    .chat { right:12px; left:12px; width:auto; bottom:76px; height:min(78svh, 700px); }
   }
 
   /* The agent's avatar (blonde, headset, Sunny Pop yellow) */
@@ -475,7 +475,7 @@
   </div>
   <p class="help-state" id="help-state">View: Normal</p>
   <button type="button" class="voice-toggle" id="voice-toggle" aria-pressed="false"><span>Read her answers out loud</span><span class="vt-state">Off</span></button>
-  <p>Uses your device voice for now. Her real voice arrives next.</p>
+  <p>She speaks in her own voice, made on our own system. If it cannot load, your device voice steps in.</p>
 </div>
 
 <button type="button" class="fab-agent" id="agent-fab" aria-label="Ask AlphaFlux a question" aria-expanded="false"><img src="assets/agent.jpg" alt="">Ask</button>
@@ -1003,6 +1003,7 @@
   'a an the and or of to in on for with is it its can do does how what when where which who you your my me i we our this that are be have has from at by as tell'.split(' ').forEach(function (w) { STOP[w] = 1; });
   function openChat() {
     chat.hidden = false; chatOpen = true; agentFab.setAttribute('aria-expanded', 'true');
+    agentFab.style.display = 'none'; /* the open box covers the Ask button */
     if (!chatGreeted) {
       chatGreeted = true;
       addMsg('bot', 'Ask me anything about AlphaFlux: prices, plans, phones, booking, the products. I answer from this site\'s own pages, so what I tell you matches what the site says today.');
@@ -1012,15 +1013,20 @@
       fetch('assets/site-index.json').then(function (r) { return r.json(); }).then(function (d) { chatIndex = d.chunks || []; }).catch(function () { chatIndex = []; });
     }
   }
-  function closeChat() { stopSpeak(); chat.hidden = true; chatOpen = false; agentFab.setAttribute('aria-expanded', 'false'); agentFab.focus(); }
+  function closeChat() { stopSpeak(); chat.hidden = true; chatOpen = false; agentFab.setAttribute('aria-expanded', 'false'); agentFab.style.display = ''; agentFab.focus(); }
   agentFab.addEventListener('click', function () { if (chatOpen) { closeChat(); } else { openChat(); } });
   document.getElementById('chat-x').addEventListener('click', closeChat);
-  /* Her voice, stage 1: the visitor's own browser voice. Stage 2 swaps
-     speakText() to server-made audio in her real voice; nothing else moves. */
+  /* Her voice: server-made audio in her real voice (Kokoro af_heart,
+     served by our own /voice/speak, cached per answer). Playback runs
+     sentence by sentence so she starts talking as soon as the first
+     sentence lands. The visitor's device voice is only a fallback for
+     when the server audio cannot load. */
   var synth = ('speechSynthesis' in window) ? window.speechSynthesis : null;
   var voiceAuto = false;
   try { voiceAuto = localStorage.getItem('af-voice-auto') === '1'; } catch (e) {}
   var speakingBtn = null;
+  var playSeq = 0;      /* bumped on every stop; stale playback chains die */
+  var liveAudio = null; /* the Audio element currently playing */
   function pickVoice() {
     if (!synth) { return null; }
     var vs = synth.getVoices();
@@ -1038,25 +1044,86 @@
     btn.querySelector('span').textContent = on ? 'Stop' : 'Listen';
   }
   function stopSpeak() {
+    playSeq++;
+    if (liveAudio) { try { liveAudio.pause(); } catch (e) {} liveAudio = null; }
     if (synth) { synth.cancel(); }
     if (speakingBtn) { setBtn(speakingBtn, false); speakingBtn = null; }
   }
-  function speakText(text, btn) {
-    if (!synth) { return; }
-    if (btn && speakingBtn === btn) { stopSpeak(); return; }
-    stopSpeak();
+  function synthSpeak(text, btn) {
+    if (!synth) {
+      if (btn && speakingBtn === btn) { setBtn(btn, false); speakingBtn = null; }
+      return;
+    }
     var u = new SpeechSynthesisUtterance(text);
     var v = pickVoice();
     if (v) { u.voice = v; }
     u.lang = 'en-US';
     u.rate = 1;
     if (btn) {
-      speakingBtn = btn;
-      setBtn(btn, true);
       u.onend = function () { if (speakingBtn === btn) { setBtn(btn, false); speakingBtn = null; } };
       u.onerror = u.onend;
     }
     synth.speak(u);
+  }
+  function sentencesOf(text) {
+    var parts = text.replace(/\s+/g, ' ').split(/(?<=[.!?])\s+/);
+    var out = [];
+    parts.forEach(function (p) {
+      p = p.trim();
+      if (!p) { return; }
+      if (out.length && out[out.length - 1].length + p.length < 240) { out[out.length - 1] += ' ' + p; }
+      else { out.push(p); }
+    });
+    return out.length ? out : [text];
+  }
+  function fetchVoice(text) {
+    return fetch('/voice/speak', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text })
+    }).then(function (r) {
+      if (!r.ok) { throw new Error('voice ' + r.status); }
+      return r.blob();
+    }).then(function (b) { return URL.createObjectURL(b); });
+  }
+  function speakText(text, btn) {
+    if (btn && speakingBtn === btn) { stopSpeak(); return; }
+    stopSpeak();
+    var seq = playSeq;
+    if (btn) { speakingBtn = btn; setBtn(btn, true); }
+    var chunks = sentencesOf(text);
+    var idx = 0;
+    var nextUrl = fetchVoice(chunks[0]);
+    function playNext() {
+      if (seq !== playSeq) { return; }
+      if (idx >= chunks.length) {
+        if (btn && speakingBtn === btn) { setBtn(btn, false); speakingBtn = null; }
+        return;
+      }
+      var mine = nextUrl;
+      idx++;
+      if (idx < chunks.length) { nextUrl = fetchVoice(chunks[idx]); }
+      mine.then(function (url) {
+        if (seq !== playSeq) { return; }
+        var a = new Audio(url);
+        liveAudio = a;
+        a.onended = function () {
+          URL.revokeObjectURL(url);
+          if (liveAudio === a) { liveAudio = null; }
+          playNext();
+        };
+        a.onerror = a.onended;
+        var p = a.play();
+        if (p && p.catch) {
+          p.catch(function () { if (seq === playSeq) { synthSpeak(text, btn); } });
+        }
+      }).catch(function () {
+        /* Server voice unreachable: the device voice takes the whole
+           answer from the top, so nothing is ever half-heard. */
+        if (seq === playSeq) { synthSpeak(text, btn); }
+      });
+    }
+    playNext();
   }
   function maybeSpeak(div) {
     if (voiceAuto && div && div._speakText) {
@@ -1072,18 +1139,13 @@
     voiceToggle.querySelector('.vt-state').textContent = voiceAuto ? 'On' : 'Off';
   }
   if (voiceToggle) {
-    if (!synth) {
-      voiceToggle.disabled = true;
-      voiceToggle.querySelector('.vt-state').textContent = 'No voice';
-    } else {
+    paintVoiceToggle();
+    voiceToggle.addEventListener('click', function () {
+      voiceAuto = !voiceAuto;
+      try { localStorage.setItem('af-voice-auto', voiceAuto ? '1' : '0'); } catch (e) {}
+      if (!voiceAuto) { stopSpeak(); }
       paintVoiceToggle();
-      voiceToggle.addEventListener('click', function () {
-        voiceAuto = !voiceAuto;
-        try { localStorage.setItem('af-voice-auto', voiceAuto ? '1' : '0'); } catch (e) {}
-        if (!voiceAuto) { stopSpeak(); }
-        paintVoiceToggle();
-      });
-    }
+    });
   }
 
   function addMsg(who, text, chunk) {
@@ -1097,15 +1159,13 @@
       div._speakText = chunk ? (chunk.label + '. ' + chunk.t) : text;
       var links = document.createElement('div');
       links.className = 'm-links';
-      if (synth) {
-        var lb = document.createElement('button');
-        lb.type = 'button';
-        lb.className = 'listen-btn';
-        lb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9.5 9.5 0 0 1 0 13"/></svg><span>Listen</span>';
-        lb.setAttribute('aria-label', 'Listen to this answer');
-        (function (d, b) { b.addEventListener('click', function () { speakText(d._speakText, b); }); })(div, lb);
-        links.appendChild(lb);
-      }
+      var lb = document.createElement('button');
+      lb.type = 'button';
+      lb.className = 'listen-btn';
+      lb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9.5 9.5 0 0 1 0 13"/></svg><span>Listen</span>';
+      lb.setAttribute('aria-label', 'Listen to this answer');
+      (function (d, b) { b.addEventListener('click', function () { speakText(d._speakText, b); }); })(div, lb);
+      links.appendChild(lb);
       var tileHref = chunk ? (chunk.href === '/calls-and-messaging' ? '/phones' : chunk.href) : null;
       if (chunk && QUICK[tileHref]) {
         var qb = document.createElement('button');
