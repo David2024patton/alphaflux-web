@@ -1260,7 +1260,14 @@
       return 'Hi there, I am Flo. Ask me about pricing and plans, the AI phone answering, bookings, or the CRM, and I will pull the answer straight from the site. Or tap More info on any tile for the full story.';
     }
     var g = st.replace(/ there$/, '');
-    if (/^(hi|hello|hey|howdy|hiya|yo|greetings)$/.test(g)) {
+    if (/^(hi|hello|hey|howdy|hiya|yo|sup|wassup|greetings|whats up|what's up)$/.test(g)) {
+      return 'Hi there, I am Flo. Ask me about pricing and plans, the AI phone answering, bookings, or the CRM, and I will pull the answer straight from the site. Or tap More info on any tile for the full story.';
+    }
+    if (/^(how are you|how's it going|hows it going|how is it going|how do you feel)$/.test(st)) {
+      return 'Doing great, thank you. I am Flo. Ask me about pricing and plans, the AI phone answering, bookings, or the CRM, and I will pull the answer straight from the site.';
+    }
+    var words = st.split(/\s+/);
+    if (words.length <= 3 && /^(hi|hello|hey|sup|wassup|yo|howdy|hiya)$/.test(words[0])) {
       return 'Hi there, I am Flo. Ask me about pricing and plans, the AI phone answering, bookings, or the CRM, and I will pull the answer straight from the site. Or tap More info on any tile for the full story.';
     }
     if (st === 'help') {
