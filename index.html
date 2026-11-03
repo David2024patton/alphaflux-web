@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
 <title>AlphaFlux: AI Phone Answering, Leads, Bookings and Payments for Service Businesses</title>
 <meta name="description" content="AlphaFlux is the front office for service businesses. It answers your phones, captures every lead, books jobs onto your schedule, sends invoices and takes payments, and keeps your crew and your customers in the loop.">
 <meta property="og:type" content="website">
@@ -278,7 +278,7 @@
   /* Ask AlphaFlux agent (bottom right) */
   .fab-agent { position:fixed; right:18px; bottom:18px; z-index:80; display:inline-flex; align-items:center; gap:9px; height:56px; padding:0 22px; border:0; border-radius:999px; background:#111; color:#fff; font:inherit; font-size:16px; font-weight:900; cursor:pointer; box-shadow:0 10px 26px rgba(0,0,0,.3); }
   .fab-agent svg { width:22px; height:22px; }
-  .chat { position:fixed; right:18px; bottom:18px; z-index:81; width:min(560px, calc(100vw - 24px)); height:min(760px, calc(100svh - 36px)); background:#fff; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.35); display:flex; flex-direction:column; overflow:hidden; }
+  .chat { position:fixed; right:18px; bottom:18px; z-index:81; width:min(560px, calc(100vw - 24px)); height:min(760px, calc(100dvh - 36px)); background:#fff; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.35); display:flex; flex-direction:column; overflow:hidden; }
   .chat[hidden] { display:none; }
   .chat-head { display:flex; align-items:flex-start; gap:10px; padding:16px 18px 12px; border-bottom:1px solid rgba(17,17,17,.08); }
   .chat-head h3 { font-size:19px; font-weight:900; }
@@ -306,7 +306,7 @@
     .fab-help { bottom:84px; left:12px; }
     .fab-agent { bottom:84px; right:12px; }
     .help-panel { bottom:150px; left:12px; }
-    .chat { right:12px; left:12px; width:auto; bottom:76px; height:min(78svh, 700px); }
+    .chat { right:12px; left:12px; width:auto; bottom:76px; height:min(78dvh, 700px); }
   }
 
   /* The agent's avatar (blonde, headset, Sunny Pop yellow) */
@@ -1001,19 +1001,42 @@
   var chatGreeted = false;
   var STOP = {};
   'a an the and or of to in on for with is it its can do does how what when where which who you your my me i we our this that are be have has from at by as tell'.split(' ').forEach(function (w) { STOP[w] = 1; });
+  /* Keep the box inside the visible screen. On phones the keyboard
+     and the browser bars shrink the visible area without shrinking
+     the layout the CSS measures, so a tall fixed box runs off the
+     top and takes its close button with it. While the box is open,
+     size and place it from the visual viewport instead. */
+  function fitChat() {
+    if (!chatOpen) { return; }
+    var vv = window.visualViewport;
+    if (!vv) { return; }
+    var phone = window.innerWidth <= 760;
+    var bottomPad = phone ? 76 : 18;
+    var wanted = phone ? 700 : 760;
+    var h = Math.max(260, Math.min(wanted, vv.height - bottomPad - 10));
+    chat.style.height = h + 'px';
+    chat.style.bottom = 'auto';
+    chat.style.top = (vv.offsetTop + vv.height - bottomPad - h) + 'px';
+  }
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', fitChat);
+    window.visualViewport.addEventListener('scroll', fitChat);
+  }
   function openChat() {
     chat.hidden = false; chatOpen = true; agentFab.setAttribute('aria-expanded', 'true');
     agentFab.style.display = 'none'; /* the open box covers the Ask button */
+    fitChat();
     if (!chatGreeted) {
       chatGreeted = true;
       addMsg('bot', 'Ask me anything about AlphaFlux: prices, plans, phones, booking, the products. I answer from this site\'s own pages, so what I tell you matches what the site says today.');
     }
+    chatMsgs.scrollTop = 0;
     chatInput.focus();
     if (!chatIndex) {
       fetch('assets/site-index.json').then(function (r) { return r.json(); }).then(function (d) { chatIndex = d.chunks || []; }).catch(function () { chatIndex = []; });
     }
   }
-  function closeChat() { stopSpeak(); chat.hidden = true; chatOpen = false; agentFab.setAttribute('aria-expanded', 'false'); agentFab.style.display = ''; agentFab.focus(); }
+  function closeChat() { stopSpeak(); chat.hidden = true; chatOpen = false; agentFab.setAttribute('aria-expanded', 'false'); agentFab.style.display = ''; chat.style.height = ''; chat.style.top = ''; chat.style.bottom = ''; agentFab.focus(); }
   agentFab.addEventListener('click', function () { if (chatOpen) { closeChat(); } else { openChat(); } });
   document.getElementById('chat-x').addEventListener('click', closeChat);
   /* Her voice: server-made audio in her real voice (Kokoro af_heart,
