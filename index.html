@@ -122,6 +122,7 @@
 
   /* Quick view popup */
   .qv { position:fixed; inset:0; z-index:60; display:flex; align-items:center; justify-content:center; padding:20px; }
+  .qv.over { z-index:85; }
   .qv[hidden] { display:none; }
   .qv-back { position:absolute; inset:0; background:rgba(12,9,24,.68); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
   .qv-card { position:relative; display:flex; flex-direction:column; width:min(560px, 100%); max-height:calc(100svh - 40px); overflow:hidden; background:#fff; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.35); animation:qvin .16s ease-out; }
@@ -206,6 +207,7 @@
 
   /* Deep view (the bigger window) */
   .dv { position:fixed; inset:0; z-index:70; display:flex; align-items:center; justify-content:center; padding:18px; }
+  .dv.over { z-index:86; }
   .dv[hidden] { display:none; }
   .dv-back { position:absolute; inset:0; background:rgba(12,9,24,.72); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
   .dv-card { position:relative; display:flex; flex-direction:column; width:min(880px, 100%); max-height:calc(100svh - 36px); overflow:hidden; background:#fff; border-radius:26px; box-shadow:0 24px 60px rgba(0,0,0,.35); animation:qvin .16s ease-out; }
@@ -808,7 +810,9 @@
     try { history.replaceState(null, '', window.location.pathname + window.location.search); }
     catch (e) { try { history.replaceState(null, '', '#'); } catch (e2) {} }
   }
+  function chatVisible() { var c = document.getElementById('chat'); return !!(c && !c.hidden); }
   function openQV(data, href) {
+    qv.classList.toggle('over', chatVisible());
     qvImg.src = data.img;
     qvTitle.textContent = data.title;
     qvSum.textContent = data.sum;
@@ -830,6 +834,7 @@
   }
   function closeQV() {
     clearAppHash();
+    qv.classList.remove('over');
     qv.hidden = true;
     document.documentElement.style.overflow = '';
     if (lastFocus && lastFocus.focus) { lastFocus.focus(); }
@@ -839,7 +844,9 @@
   });
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') { return; }
-    if (chatOpen) { closeChat(); }
+    if (dvOpen && dv.classList.contains('over')) { closeDV(); }
+    else if (!qv.hidden && qv.classList.contains('over')) { closeQV(); }
+    else if (chatOpen) { closeChat(); }
     else if (helpOpen) { closeHelp(); }
     else if (dvOpen) { closeDV(); }
     else if (!qv.hidden) { closeQV(); }
@@ -954,6 +961,7 @@
     dvTitle.textContent = curData.title;
     dvH1.textContent = ''; dvLead.textContent = ''; dvCards.innerHTML = '';
     dvStatus.textContent = 'Loading the full story...';
+    dv.classList.toggle('over', chatVisible());
     dv.hidden = false; dvOpen = true;
     setAppHash(curHref, true);
     var x = dv.querySelector('.qv-x'); if (x) { x.focus(); }
@@ -972,6 +980,7 @@
     });
   }
   function closeDV() {
+    dv.classList.remove('over');
     dv.hidden = true; dvOpen = false;
     if (curHref) { setAppHash(curHref, false); }
     if (qvMore) { qvMore.focus(); }

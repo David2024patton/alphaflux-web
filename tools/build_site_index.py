@@ -126,8 +126,10 @@ def section_chunks(href, label, main):
                     continue
                 walk(c, in_li or c.tag == "li", in_table)
 
-        walk(sec)
         if "plan" in sec.attrs.get("class", "").split():
+            # Plan cards scrape dirty through the generic walk (audience
+            # line, per-month label, button text), so build the chunk from
+            # the structured pieces: one price line plus the feature list.
             amt = sec.first(cls="amount")
             if amt:
                 annual = amt.attrs.get("data-annual", "")
@@ -137,7 +139,16 @@ def section_chunks(href, label, main):
                     price = f"Price: ${amt.text()} per month, or ${annual} per month billed annually"
                 else:
                     price = f"Price: ${amt.text()} per month"
-                blocks.insert(0, price + ".")
+                feats = [li.text() for li in sec.find_all("li") if li.text()]
+                if "free for life" in price:
+                    feats = [f for f in feats if f.lower() != "free for life"]
+                blocks = [price + "."]
+                if feats:
+                    blocks.append("Includes: " + ", ".join(feats) + ".")
+            else:
+                walk(sec)
+        else:
+            walk(sec)
         body = " ".join(b for b in blocks if b).strip()
         if body:
             chunks.append({"href": href, "label": label, "h": heading or label, "t": body[:900]})
