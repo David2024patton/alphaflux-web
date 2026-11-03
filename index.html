@@ -1251,10 +1251,38 @@
     });
     return bestScore >= 4 || ((wantAbout || wantHelp) && bestScore >= 3) ? best : null;
   }
+  /* People talk to her like a person, so greetings and small talk get a
+     human answer, not the not-found line. Whole-message matches only, so a
+     real question that starts with "hi" still gets a real answer. */
+  function smallTalk(q) {
+    var st = q.toLowerCase().replace(/[!?.,]+$/g, '').trim().replace(/ flo$/, '');
+    if (/^(good morning|good afternoon|good evening)$/.test(st)) {
+      return 'Hi there, I am Flo. Ask me about pricing and plans, the AI phone answering, bookings, or the CRM, and I will pull the answer straight from the site. Or tap More info on any tile for the full story.';
+    }
+    var g = st.replace(/ there$/, '');
+    if (/^(hi|hello|hey|howdy|hiya|yo|greetings)$/.test(g)) {
+      return 'Hi there, I am Flo. Ask me about pricing and plans, the AI phone answering, bookings, or the CRM, and I will pull the answer straight from the site. Or tap More info on any tile for the full story.';
+    }
+    if (st === 'help') {
+      return 'Of course. Ask me about pricing and plans, the AI phone answering, bookings, or the CRM. You can also tap a tile, then More info, for the full story on any part of AlphaFlux.';
+    }
+    if (/^(thanks|thank you|thx|ty)$/.test(st)) {
+      return 'You are welcome. If anything else comes up, I am right here around the clock.';
+    }
+    if (/^(bye|goodbye|see you|see ya|good night)$/.test(st)) {
+      return 'Bye for now. I am here around the clock if anything comes up.';
+    }
+    if (/^(who are you|what is your name|your name)$/.test(st)) {
+      return 'I am Flo, the AlphaFlux helper. I answer questions about the product straight from this site: pricing, phones, bookings, the CRM, and the rest. Ask me one and I will show you.';
+    }
+    return null;
+  }
   function ask(q) {
     q = (q || '').trim();
     if (!q) { return; }
     addMsg('me', q);
+    var st = smallTalk(q);
+    if (st) { addMsg('bot', st); renderFollow(null); return; }
     var chunk = answerFor(q);
     if (chunk) { var mAns = addMsg('bot', trimAnswer(chunk.t), chunk); renderFollow(chunk); maybeSpeak(mAns); }
     else {
