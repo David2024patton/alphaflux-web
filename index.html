@@ -169,8 +169,8 @@
     .rowhead h2 { margin-bottom:0; }
     .rowbtn { width:36px; height:36px; }
     .rowbtn svg { width:17px; height:17px; }
-    .qv { padding:0; align-items:flex-start; }
-    .qv-card { width:100%; max-height:calc(100svh - 24px); border-radius:0 0 24px 24px; }
+    .qv { padding:12px; align-items:center; }
+    .qv-card { width:100%; max-height:100%; border-radius:24px; }
     .qv-media { height:180px; min-height:96px; }
     .qv-mid { padding:18px 18px 4px; }
     .qv-actions { padding:12px 18px 18px; }
@@ -235,6 +235,31 @@
   .qv-mid::-webkit-scrollbar-thumb, .dv-mid::-webkit-scrollbar-thumb { background-color:#E10600; border-radius:999px; border:3px solid #fff; background-clip:padding-box; }
   .qv-mid::-webkit-scrollbar-thumb:hover, .dv-mid::-webkit-scrollbar-thumb:hover { background-color:#B00500; }
 
+  /* Form view: a real form inside a popup, so filling something out
+     never loads a separate page. The waitlist form lives here; it
+     posts to the same /waitlist address the standalone page uses. */
+  .fv { position:fixed; inset:0; z-index:75; display:flex; align-items:center; justify-content:center; padding:18px; }
+  .fv.over { z-index:88; }
+  .fv[hidden] { display:none; }
+  .fv-back { position:absolute; inset:0; background:rgba(12,9,24,.72); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
+  .fv-card { position:relative; display:flex; flex-direction:column; width:min(520px, 100%); max-height:calc(100svh - 36px); overflow:hidden; background:#fff; border-radius:26px; box-shadow:0 24px 60px rgba(0,0,0,.35); animation:qvin .16s ease-out; }
+  .fv-head { display:flex; align-items:center; gap:10px; padding:20px 22px 0; }
+  .fv-head h3 { font-size:22px; font-weight:900; line-height:1.15; }
+  .fv-head .qv-x { position:static; flex:0 0 auto; margin-left:auto; background:rgba(17,17,17,.85); }
+  .fv-form { overflow-y:auto; min-height:0; padding:6px 22px 22px; scrollbar-width:thin; scrollbar-color:#E10600 transparent; }
+  .fv-form::-webkit-scrollbar { width:14px; }
+  .fv-form::-webkit-scrollbar-track { background:transparent; }
+  .fv-form::-webkit-scrollbar-thumb { background-color:#E10600; border-radius:999px; border:3px solid #fff; background-clip:padding-box; }
+  .fv-note { font-family:Arial, sans-serif; font-size:15px; line-height:1.55; color:#333; margin-top:8px; }
+  .fv-form label { display:block; font-size:13px; font-weight:800; margin:16px 0 6px; }
+  .fv-form input { width:100%; font:inherit; font-size:16px; padding:12px 14px; border:2px solid rgba(17,17,17,.35); border-radius:14px; background:#fff; color:#111; }
+  .fv-form input:focus { outline:3px solid rgba(225,6,0,.35); border-color:#111; }
+  .fv-status { font-family:Arial, sans-serif; font-size:14.5px; line-height:1.5; color:#333; margin-top:14px; }
+  .fv-status:empty { margin-top:0; }
+  .fv-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:20px; }
+  .fv-done { padding:6px 22px 22px; }
+  .fv-done p { font-family:Arial, sans-serif; font-size:15.5px; line-height:1.55; color:#333; margin-top:8px; }
+
   /* Short windows: shrink the popup pictures so more of the words fit */
   @media (max-height:740px) {
     .qv-media { height:148px; }
@@ -272,13 +297,17 @@
     html[data-view="sm"] .cap .lab { font-size:11px; }
   }
 
-  /* Phone deep view anchors to the top of the screen, same as the
-     quick view. These rules must live AFTER the .dv base rules:
-     the deep view base CSS sits below the first phone block, so
-     overrides placed in that block lose the cascade, never apply. */
+  /* Phone popups sit centered in the visible screen (David's call,
+     2026-11-04, superseding the top anchored pass): fitOverlay sizes
+     each overlay to the visual viewport, and the card centers inside
+     it. These rules must live AFTER the .dv base rules: the deep
+     view base CSS sits below the first phone block, so overrides
+     placed in that block lose the cascade, never apply. */
   @media (max-width:760px) {
-    .dv { padding:0; align-items:flex-start; }
-    .dv-card { width:100%; max-height:calc(100svh - 12px); border-radius:0 0 24px 24px; }
+    .dv { padding:12px; align-items:center; }
+    .dv-card { width:100%; max-height:100%; border-radius:26px; }
+    .fv { padding:12px; }
+    .fv-card { max-height:100%; }
   }
 
   /* Floating help box (bottom left) */
@@ -465,7 +494,7 @@
         <p id="qv-sum"></p>
         <ul class="qv-points" id="qv-points"></ul>
       </div>
-      <div class="qv-actions"><button type="button" class="qv-more" id="qv-more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>More info</button><button type="button" class="qv-close2" data-close>Close</button></div>
+      <div class="qv-actions"><button type="button" class="qv-go" id="qv-go" hidden></button><button type="button" class="qv-more" id="qv-more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>More info</button><button type="button" class="qv-close2" data-close>Close</button></div>
     </div>
   </div>
 </div>
@@ -484,6 +513,31 @@
         <div class="dv-cards" id="dv-cards"></div>
       </div>
       <div class="dv-actions"><button type="button" class="qv-close2" data-close-dv>Back</button></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="fv" id="formview" hidden role="dialog" aria-modal="true" aria-labelledby="fv-title">
+  <div class="fv-back" data-close-fv></div>
+  <div class="fv-card">
+    <div class="fv-head"><h3 id="fv-title">Join the AlphaFlux waitlist</h3><button type="button" class="qv-x" data-close-fv aria-label="Close the waitlist form"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <form class="fv-form" id="fv-form" method="post" action="/waitlist">
+      <p class="fv-note">AlphaFlux is onboarding business owners for the AI-native home services platform. Leave your details and we will reach out.</p>
+      <label for="fv-name">Name</label>
+      <input id="fv-name" name="name" required autocomplete="name">
+      <label for="fv-email">Email</label>
+      <input id="fv-email" name="email" type="email" required autocomplete="email">
+      <label for="fv-company">Company</label>
+      <input id="fv-company" name="company" required autocomplete="organization">
+      <label for="fv-phone">Phone (optional)</label>
+      <input id="fv-phone" name="phone" type="tel" autocomplete="tel">
+      <p class="fv-status" id="fv-status" role="status"></p>
+      <div class="fv-actions"><button type="submit" class="qv-go fv-submit">Join the waitlist</button><button type="button" class="qv-close2" data-close-fv>Close</button></div>
+    </form>
+    <div class="fv-done" id="fv-done" hidden>
+      <p id="fv-done-text"></p>
+      <div class="fv-actions"><button type="button" class="qv-go" data-close-fv>Done</button></div>
     </div>
   </div>
 </div>
@@ -757,6 +811,72 @@
     ],
     "sum": "Contact AlphaFlux: new accounts start at signup, and customers sign in to the console.",
     "deep": true
+  },
+  "/signin": {
+    "title": "Sign In",
+    "img": "assets/hero.jpg",
+    "points": [
+      "Calls, leads, bookings, invoices, and your crew",
+      "All on the same record"
+    ],
+    "sum": "Your front office is behind one door. Sign in to run your front office: calls, leads, bookings, invoices, and your crew, all on the same record.",
+    "deep": true,
+    "go": { "label": "Continue to sign in", "href": "/login" }
+  },
+  "/signup": {
+    "title": "Get Started",
+    "img": "assets/setup.jpg",
+    "points": [
+      "Pick a plan: Free to Scale, plus white label",
+      "AlphaFlux sets up your front office",
+      "Go live: phones answered, leads captured, jobs booked"
+    ],
+    "sum": "Registration is not open yet. Join the waitlist and we will reach out when your spot opens. Start with a free account and move up when the work outgrows it.",
+    "deep": true,
+    "go": { "label": "Join the Waitlist", "pop": "waitlist" }
+  },
+  "/waitlist": {
+    "title": "AlphaVision",
+    "img": "assets/prod-vision.jpg",
+    "points": [
+      "The streaming style tile home screen, for TVs and big screens",
+      "Not on sale yet"
+    ],
+    "sum": "AlphaVision is the AlphaFlux product line for TVs and big screens: the streaming style tile home screen this very site is modelled on. It is not on sale yet; join the waitlist on this site to hear when it opens.",
+    "deep": false,
+    "go": { "label": "Join the Waitlist", "pop": "waitlist" }
+  },
+  "/": {
+    "title": "AlphaFlux",
+    "img": "assets/hero-wide.jpg",
+    "points": [
+      "Every call answered",
+      "Every job booked",
+      "Start with a free account"
+    ],
+    "sum": "AlphaFlux answers your phones, captures your leads, and books your jobs while you are out doing the work. You are already on the AlphaFlux home page.",
+    "deep": false
+  },
+  "https://cortex.alphaflux.net": {
+    "title": "Cortex",
+    "img": "assets/prod-cortex.jpg",
+    "points": [
+      "Documents, pages and records as connected nodes",
+      "Search across all of it"
+    ],
+    "sum": "Cortex is the AlphaFlux knowledge brain: it stores a business's documents, pages and records as connected nodes with search across all of it.",
+    "deep": false,
+    "go": { "label": "Visit Cortex", "href": "https://cortex.alphaflux.net" }
+  },
+  "https://critic.alphaflux.net": {
+    "title": "Critic",
+    "img": "assets/prod-critic.jpg",
+    "points": [
+      "Checked by a panel of critics before it is allowed in"
+    ],
+    "sum": "Critic is the AlphaFlux quality workbench: work is checked by a panel of critics before it is allowed in.",
+    "deep": false,
+    "go": { "label": "Visit Critic", "href": "https://critic.alphaflux.net" }
   }
 };
   var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg>';
@@ -807,6 +927,8 @@
   var qvTitle = document.getElementById('qv-title');
   var qvSum = document.getElementById('qv-sum');
   var qvPoints = document.getElementById('qv-points');
+  var qvGo = document.getElementById('qv-go');
+  var curGo = null;
   var lastFocus = null;
   /* The open app lives in the address bar (#app=/crm, #app=/crm/info),
      so a refresh, a bookmark or a shared link reopens the same popup. */
@@ -832,7 +954,7 @@
     el.style.width = vv.width + 'px';
     el.style.height = vv.height + 'px';
   }
-  function fitPopups() { fitOverlay(qv); fitOverlay(dv); }
+  function fitPopups() { fitOverlay(qv); fitOverlay(dv); fitOverlay(fv); }
   if (window.visualViewport) {
     window.visualViewport.addEventListener('resize', fitPopups);
     window.visualViewport.addEventListener('scroll', fitPopups);
@@ -851,6 +973,11 @@
     });
     curData = data; curHref = href;
     if (qvMore) { qvMore.style.display = data.deep ? '' : 'none'; }
+    curGo = data.go || null;
+    if (qvGo) {
+      if (curGo) { qvGo.textContent = curGo.label; qvGo.hidden = false; }
+      else { qvGo.hidden = true; }
+    }
     lastFocus = document.activeElement;
     qv.hidden = false; fitOverlay(qv);
     document.documentElement.style.overflow = 'hidden';
@@ -868,9 +995,17 @@
   qv.addEventListener('click', function (e) {
     if (e.target === qv || (e.target.closest && e.target.closest('[data-close]'))) { closeQV(); }
   });
+  /* The quick view's main action button: either a door (sign in,
+     visiting a sister product) or another popup (the waitlist form). */
+  if (qvGo) { qvGo.addEventListener('click', function () {
+    if (!curGo) { return; }
+    if (curGo.pop === 'waitlist') { openFV(); return; }
+    if (curGo.href) { window.location.href = curGo.href; }
+  }); }
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') { return; }
-    if (dvOpen && dv.classList.contains('over')) { closeDV(); }
+    if (fvOpen) { closeFV(); }
+    else if (dvOpen && dv.classList.contains('over')) { closeDV(); }
     else if (!qv.hidden && qv.classList.contains('over')) { closeQV(); }
     else if (chatOpen) { closeChat(); }
     else if (helpOpen) { closeHelp(); }
@@ -887,6 +1022,30 @@
       openQV(data, href);
     });
   });
+  /* Every other link on the home page routes through the popups too:
+     hero buttons, the sign in pill, the bottom nav. Hash links keep
+     their scroll behavior, tiles keep their own handler above, and
+     the product doors (/login, /console, /api) still leave for the
+     console app itself. */
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented) { return; }
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) { return; }
+    var a = e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a || a.classList.contains('tile')) { return; }
+    var href = a.getAttribute('href');
+    if (!href || href.charAt(0) === '#') { return; }
+    var url;
+    try { url = new URL(href, window.location.href); } catch (err) { return; }
+    if (url.origin !== window.location.origin) {
+      if (QUICK[href]) { e.preventDefault(); openQV(QUICK[href], href); }
+      return;
+    }
+    var path = url.pathname;
+    if (path === '/login' || path.indexOf('/console') === 0 || path.indexOf('/api') === 0) { return; }
+    e.preventDefault();
+    if (path === '/' && a.closest('.bottomnav')) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    routeHref(path, a);
+  });
 
   /* Deep view: the bigger window, filled live from the real page */
   var dv = document.getElementById('deepview');
@@ -900,6 +1059,7 @@
   var dvCache = {};
   var curData = null, curHref = null;
   var dvOpen = false;
+  var dvStandalone = false;
 
   function txt(el) { return el ? el.textContent.replace(/\s+/g, ' ').trim() : ''; }
   function addP(parent, text) { var p = document.createElement('p'); p.textContent = text; parent.appendChild(p); return p; }
@@ -958,7 +1118,43 @@
       card.blocks = card.blocks.slice(0, 16);
       if (card.blocks.length) { out.cards.push(card); }
     });
-    out.cards = out.cards.slice(0, 7);
+    /* Pages with their own section shapes (pricing is the one today)
+       get a second pass, so their More info window shows the real
+       content instead of falling back to the summary line. */
+    if (!out.cards.length) {
+      main.querySelectorAll('section.plan, section.alacarte, section.wl').forEach(function (sec) {
+        var card = { title: '', blocks: [] };
+        if (sec.classList.contains('plan')) {
+          var name = txt(sec.querySelector('h2'));
+          var amt = sec.querySelector('.amount');
+          card.title = name;
+          if (amt) {
+            var mo = amt.getAttribute('data-monthly');
+            var an = amt.getAttribute('data-annual');
+            card.title = name + ': $' + mo + ' per month';
+            if (an && an !== mo) { card.title += ', or $' + an + ' per month billed annually'; }
+          }
+          var aud = txt(sec.querySelector('.aud'));
+          if (aud) { card.blocks.push({ t: 'p', text: aud }); }
+          var items = [];
+          sec.querySelectorAll('.inc li').forEach(function (li) { items.push(txt(li)); });
+          if (items.length) { card.blocks.push({ t: 'ul', items: items }); }
+        } else if (sec.classList.contains('alacarte')) {
+          card.title = txt(sec.querySelector('h2'));
+          var ap = txt(sec.querySelector('p'));
+          if (ap) { card.blocks.push({ t: 'p', text: ap }); }
+          var mods = [];
+          sec.querySelectorAll('.modchips li').forEach(function (li) { mods.push(txt(li)); });
+          if (mods.length) { card.blocks.push({ t: 'ul', items: mods }); }
+        } else {
+          card.title = txt(sec.querySelector('.t'));
+          var wp = txt(sec.querySelector('.s'));
+          if (wp) { card.blocks.push({ t: 'p', text: wp }); }
+        }
+        if (card.title && card.blocks.length) { out.cards.push(card); }
+      });
+    }
+    out.cards = out.cards.slice(0, 9);
     return out.cards.length ? out : null;
   }
 
@@ -1008,12 +1204,81 @@
   function closeDV() {
     dv.classList.remove('over');
     dv.hidden = true; dvOpen = false;
+    if (dvStandalone) { dvStandalone = false; clearAppHash(); return; }
     if (curHref) { setAppHash(curHref, false); }
     if (qvMore) { qvMore.focus(); }
+  }
+  /* A page with no quick view of its own still opens as a popup:
+     the deep view on its own, filled from the real page. */
+  function openPageDV(href, titleHint) {
+    curData = { title: titleHint || 'More info', img: 'assets/hero.jpg', sum: '', points: [], deep: true, fetch: href };
+    curHref = href;
+    dvStandalone = true;
+    openDV();
+  }
+  /* One router for every tap that names a page: a quick view when
+     the page has one, the waitlist form popup for /waitlist, and a
+     standalone deep view for any other page. Nothing on this home
+     page loads a separate page in the normal way. */
+  function routeHref(path, anchor) {
+    if (path === '/waitlist') { openFV(); return; }
+    var data = QUICK[path];
+    if (data) { openQV(data, path); return; }
+    openPageDV(path, anchor ? anchor.textContent.replace(/\s+/g, ' ').trim() : '');
   }
   if (qvMore) { qvMore.addEventListener('click', openDV); }
   dv.addEventListener('click', function (e) {
     if (e.target === dv || (e.target.closest && e.target.closest('[data-close-dv]'))) { closeDV(); }
+  });
+
+  /* Form view: the waitlist form as a popup. The console refuses to
+     be framed (X-Frame-Options: DENY), so the popup carries the same
+     form with the same fields and posts to the same /waitlist
+     address the standalone page posts to. */
+  var fv = document.getElementById('formview');
+  var fvForm = document.getElementById('fv-form');
+  var fvStatus = document.getElementById('fv-status');
+  var fvDone = document.getElementById('fv-done');
+  var fvDoneText = document.getElementById('fv-done-text');
+  var fvOpen = false;
+  function openFV() {
+    fv.classList.toggle('over', chatVisible());
+    fv.hidden = false; fvOpen = true; fitOverlay(fv);
+    document.documentElement.style.overflow = 'hidden';
+  }
+  function closeFV() {
+    fv.classList.remove('over');
+    fv.hidden = true; fvOpen = false;
+    if (qv.hidden && !dvOpen) { document.documentElement.style.overflow = ''; }
+  }
+  fv.addEventListener('click', function (e) {
+    if (e.target === fv || (e.target.closest && e.target.closest('[data-close-fv]'))) { closeFV(); }
+  });
+  fvForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = fvForm.querySelector('.fv-submit');
+    btn.disabled = true;
+    fvStatus.textContent = 'Sending...';
+    var body = new URLSearchParams(new FormData(fvForm)).toString();
+    fetch('/waitlist', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body }).then(function (r) { return r.text(); }).then(function (htmlText) {
+      var doc = new DOMParser().parseFromString(htmlText, 'text/html');
+      var h1 = doc.querySelector('h1');
+      var hint = doc.querySelector('p.hint') || doc.querySelector('p');
+      var msg = '';
+      if (h1 && txt(h1)) { msg = txt(h1); }
+      if (hint && txt(hint) && txt(hint) !== msg) { msg = (msg ? msg + ' ' : '') + txt(hint); }
+      btn.disabled = false;
+      if (!doc.querySelector('form')) {
+        fvForm.hidden = true;
+        fvDone.hidden = false;
+        fvDoneText.textContent = msg || 'You are on the list. We will reach out when your spot opens.';
+      } else {
+        fvStatus.textContent = msg || 'That did not go through. Check the fields and try again.';
+      }
+    }).catch(function () {
+      btn.disabled = false;
+      fvStatus.textContent = 'Sending failed, so nothing was sent. Check your connection and try again.';
+    });
   });
   /* Floating help box: view size (bigger / normal / smaller), kept on this device */
   var helpFab = document.getElementById('help-fab');
@@ -1351,7 +1616,7 @@
   function openBehind(chunk, deep) {
     var tileHref = chunk.href === '/calls-and-messaging' ? '/phones' : chunk.href;
     var data = QUICK[tileHref];
-    if (!data) { window.location.href = chunk.href; return; }
+    if (!data) { routeHref(tileHref); return; }
     openQV(data, tileHref);
     if (deep && data.deep) { openDV(); }
   }
@@ -1409,7 +1674,7 @@
     var deep = false;
     if (rest.slice(-5) === '/info') { deep = true; rest = rest.slice(0, -5); }
     var data = QUICK[rest];
-    if (!data) { return; }
+    if (!data) { openPageDV(rest); return; }
     openQV(data, rest);
     if (deep && data.deep) { openDV(); }
   })();
