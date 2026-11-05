@@ -21,4 +21,7 @@ COPY robots.txt sitemap.xml llms.txt llms-full.txt /usr/share/nginx/html/
 # Styles, behaviour, icon sprite, self-hosted fonts and link preview cards.
 COPY assets/ /usr/share/nginx/html/assets/
 
+# The Pop boilerplate skeleton, served so it can be opened and copied.
+COPY boilerplate/ /usr/share/nginx/html/boilerplate/
+
 EXPOSE 80
