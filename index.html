@@ -351,7 +351,7 @@
   .chat.compact .chat-head { padding:10px 14px 8px; }
   .chat-head { display:flex; align-items:center; gap:10px; padding:16px 18px 12px; border-bottom:1px solid rgba(17,17,17,.08); }
   .chat-head h3 { font-size:19px; font-weight:900; }
-  /* While Flo is open, the phone bottom nav gets out of her way. */
+  /* While Betty is open, the phone bottom nav gets out of her way. */
   body.agent-open .bottomnav { display:none; }
   .chat-x { margin-left:auto; width:38px; height:38px; flex:0 0 auto; border:0; border-radius:50%; background:rgba(17,17,17,.06); color:#111; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; }
   .chat-x svg { width:16px; height:16px; }
@@ -596,18 +596,18 @@
   <p>She speaks in her own voice, made on our own system. If it cannot load, your device voice steps in.</p>
 </div>
 
-<button type="button" class="fab-agent" id="agent-fab" aria-label="Ask Flo a question" aria-expanded="false"><img src="assets/agent.jpg" alt="">Ask</button>
+<button type="button" class="fab-agent" id="agent-fab" aria-label="Ask Betty a question" aria-expanded="false"><img src="assets/agent.jpg" alt="">Ask</button>
 <div class="chat" id="chat" hidden role="dialog" aria-modal="false" aria-labelledby="chat-title">
   <div class="chat-head">
     <img class="chat-ava" src="assets/agent.jpg" alt="">
-    <div><h3 id="chat-title">Ask Flo</h3></div>
+    <div><h3 id="chat-title">Ask Betty</h3></div>
     <button type="button" class="chat-x" id="chat-x" aria-label="Close chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   </div>
   <div class="chat-msgs" id="chat-msgs"></div>
   <div class="chat-follow-cap" id="chat-follow-cap">Try asking</div>
   <div class="chat-chips" id="chat-chips"></div>
   <form class="chat-in" id="chat-form" autocomplete="off">
-    <input id="chat-input" type="text" autocomplete="off" data-lpignore="true" data-1p-ignore="true" placeholder="Ask Flo..." aria-label="Ask Flo a question" enterkeyhint="send">
+    <input id="chat-input" type="text" autocomplete="off" data-lpignore="true" data-1p-ignore="true" placeholder="Ask Betty..." aria-label="Ask Betty a question" enterkeyhint="send">
     <button type="submit">Send</button>
   </form>
 </div>
@@ -1517,7 +1517,7 @@
     fitChat();
     if (!chatGreeted) {
       chatGreeted = true;
-      addMsg('bot', 'Hi, I\'m Flo. Ask me anything about AlphaFlux: prices, plans, phones, booking, the products. I answer from this site\'s own pages, so what I tell you matches what the site says today.');
+      addMsg('bot', 'Hi! I\'m Betty. Ask me anything about our prices and plans, the technician PWA app, booking, company inventory, or any other question I can answer for you. I answer from this site\'s own pages, so what I tell you matches what the site says today.');
     }
     chatMsgs.scrollTop = 0;
     /* No auto-focus on open: the keyboard stays down until the
@@ -1735,18 +1735,18 @@
   function smallTalk(q) {
     var st = q.toLowerCase().replace(/[!?.,]+$/g, '').trim().replace(/ flo$/, '');
     if (/^(good morning|good afternoon|good evening)$/.test(st)) {
-      return 'Hi there, I am Flo. Ask me about pricing and plans, the AI phone answering, bookings, or the CRM, and I will pull the answer straight from the site. Or tap More info on any tile for the full story.';
+      return 'Well hello there, I\'m Betty. Ask me about prices and plans, the technician PWA app, booking, company inventory, or the CRM, and I will pull the answer straight from the site. Or tap More info on any tile for the full story.';
     }
     var g = st.replace(/ there$/, '');
     if (/^(hi|hello|hey|howdy|hiya|yo|sup|wassup|greetings|whats up|what's up)$/.test(g)) {
-      return 'Hi there, I am Flo. Ask me about pricing and plans, the AI phone answering, bookings, or the CRM, and I will pull the answer straight from the site. Or tap More info on any tile for the full story.';
+      return 'Well hello there, I\'m Betty. Ask me about prices and plans, the technician PWA app, booking, company inventory, or the CRM, and I will pull the answer straight from the site. Or tap More info on any tile for the full story.';
     }
     if (/^(how are you|how's it going|hows it going|how is it going|how do you feel)$/.test(st)) {
-      return 'Doing great, thank you. I am Flo. Ask me about pricing and plans, the AI phone answering, bookings, or the CRM, and I will pull the answer straight from the site.';
+      return 'Doing wonderful, thank you for asking. I\'m Betty. Ask me about prices and plans, the technician PWA app, booking, company inventory, or the CRM, and I will pull the answer straight from the site.';
     }
     var words = st.split(/\s+/);
     if (words.length <= 3 && /^(hi|hello|hey|sup|wassup|yo|howdy|hiya)$/.test(words[0])) {
-      return 'Hi there, I am Flo. Ask me about pricing and plans, the AI phone answering, bookings, or the CRM, and I will pull the answer straight from the site. Or tap More info on any tile for the full story.';
+      return 'Well hello there, I\'m Betty. Ask me about prices and plans, the technician PWA app, booking, company inventory, or the CRM, and I will pull the answer straight from the site. Or tap More info on any tile for the full story.';
     }
     if (st === 'help') {
       return 'Of course. Ask me about pricing and plans, the AI phone answering, bookings, or the CRM. You can also tap a tile, then More info, for the full story on any part of AlphaFlux.';
@@ -1758,7 +1758,7 @@
       return 'Bye for now. I am here around the clock if anything comes up.';
     }
     if (/^(who are you|what is your name|your name)$/.test(st)) {
-      return 'I am Flo, the AlphaFlux helper. I answer questions about the product straight from this site: pricing, phones, bookings, the CRM, and the rest. Ask me one and I will show you.';
+      return 'I\'m Betty, the AlphaFlux helper. I answer questions about the product straight from this site: prices and plans, phones, booking, company inventory, the technician app, and the rest. Ask me one and I will show you. I have been around long enough to know a good answer when I see one.';
     }
     return null;
   }
