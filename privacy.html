@@ -11,7 +11,7 @@
 <meta property="og:description" content="What AlphaFlux collects, why, who it is shared with, how long it is kept, and how to have it removed.">
 <link rel="canonical" href="https://alphaflux.net/privacy">
 <meta property="og:url" content="https://alphaflux.net/privacy">
-<meta property="og:image" content="https://alphaflux.net/assets/og-image.jpg">
+<meta property="og:image" content="https://alphaflux.net/assets/og-image.jpg"><meta property="og:image:alt" content="AlphaFlux: an illustrated sunny neighborhood of service businesses">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -141,7 +141,7 @@
 .afx-gear { position:fixed; left:18px; bottom:84px; z-index:80; width:54px; height:54px; border-radius:50%; border:2px solid rgba(17,17,17,.16); background:rgba(255,255,255,.85); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#111; cursor:pointer; box-shadow:0 8px 22px rgba(0,0,0,.22); display:inline-flex; align-items:center; justify-content:center; }
 .afx-gear svg { width:24px; height:24px; }
 @media (max-width:760px) { .afx-gear { left:12px; bottom:150px; } }
-.afx-scrim { position:fixed; inset:0; z-index:120; background:rgba(10,14,6,.55); display:flex; align-items:center; justify-content:center; padding:18px; }
+.afx-scrim { position:fixed; inset:0; z-index:120; background:rgba(10,14,6,.55); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; padding:18px; }
 .afx-scrim[hidden] { display:none; }
 .afx-card { position:relative; background:#fff; color:#141414; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.35); max-width:560px; width:100%; max-height:calc(100dvh - 36px); overflow-y:auto; padding:26px; font-family:inherit; }
 .afx-x { position:absolute; top:12px; right:12px; width:38px; height:38px; border-radius:50%; border:2px solid #141414; background:#fff; color:#141414; font-size:16px; font-weight:900; cursor:pointer; line-height:1; }
@@ -157,7 +157,7 @@ html.af-fs-lg { font-size:18px; }
 html.af-fs-xl { font-size:20px; }
 body.af-tiles-lg .tile { width:320px; }
 body.af-tiles-lg .tile .poster { height:180px; }
-.afx-promo-art { width:100%; height:auto; border-radius:16px; display:block; }
+.afx-promo-art { width:100%; height:auto; border-radius:16px; display:block; } .afx-price { margin-top:12px; background:#FFF3C4; border:2px solid rgba(17,17,17,.14); border-radius:14px; padding:10px 12px; display:flex; flex-direction:column; gap:2px; } .afx-price-lab { font-size:11px; font-weight:800; letter-spacing:.8px; text-transform:uppercase; } .afx-price-line s { color:#E10600; font-weight:800; } .afx-price-line b { font-size:20px; font-weight:900; } .afx-price-note { font-size:12.5px; font-weight:600; }
 .afx-flex { display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin:16px 0 6px; }
 .afx-codebox { border:2px dashed #E10600; border-radius:14px; padding:10px 18px; text-align:center; background:#FDECEA; }
 .afx-codebox small { display:block; font-size:10px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#555; }
@@ -169,7 +169,7 @@ body.af-tiles-lg .tile .poster { height:180px; }
 .afx-btn { display:inline-flex; align-items:center; justify-content:center; padding:13px 22px; border-radius:999px; border:2px solid #141414; background:#fff; color:#141414; font-weight:800; cursor:pointer; text-decoration:none; font-size:15px; }
 .afx-btn.primary { background:#111; border-color:#111; color:#fff; }
 </style>
-</head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "AlphaFlux", "url": "https://alphaflux.net/", "description": "AlphaFlux runs the front office for service businesses: phones answered, leads captured, jobs booked, invoices sent."}, {"@type": "WebSite", "name": "AlphaFlux", "url": "https://alphaflux.net/"}]}</script></head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="appbar">
@@ -465,10 +465,10 @@ body.af-tiles-lg .tile .poster { height:180px; }
 <div class="afx-scrim" id="afx-promo" hidden>
   <div class="afx-card" role="dialog" aria-modal="true" aria-label="Special message">
     <button type="button" class="afx-x" data-afx-close aria-label="Close">&#10005;</button>
-    <img class="afx-promo-art" src="assets/hero.jpg" alt="">
+    <img class="afx-promo-art" src="assets/hero.jpg" alt="Illustrated pastel neighborhood with a red service van under a sunny sky">
     <div class="afx-lab" id="afx-promo-lab">Special</div>
     <h3 id="afx-promo-title"></h3>
-    <p class="afx-note" id="afx-promo-text"></p>
+    <p class="afx-note" id="afx-promo-text"></p><div class="afx-price"><span class="afx-price-lab">The yearly deal, always on</span><span class="afx-price-line"><s>$19/mo</s> <b>$15/mo</b></span><span class="afx-price-note">Solo billed yearly. Start free, upgrade when it earns it.</span></div>
     <div class="afx-flex" id="afx-promo-flex" hidden>
       <div class="afx-codebox" id="afx-promo-codebox" hidden><small>Your code</small><b id="afx-promo-code"></b></div>
       <div class="afx-qr" id="afx-promo-qrbox" hidden><img id="afx-promo-qr" src="" alt="QR code: scan to open the offer"><small>SCAN ME</small></div>
