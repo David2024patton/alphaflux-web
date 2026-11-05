@@ -152,6 +152,10 @@
           border:2px solid rgba(17,17,17,.16); background:rgba(255,255,255,.88); color:var(--ink);
           box-shadow:0 8px 22px rgba(0,0,0,.22); display:inline-flex; align-items:center; justify-content:center; }
   .gear svg { width:24px; height:24px; }
+  .up { position:fixed; left:18px; bottom:150px; z-index:80; width:54px; height:54px; border-radius:50%;
+        border:2px solid rgba(17,17,17,.16); background:rgba(255,255,255,.88); color:var(--ink);
+        box-shadow:0 8px 22px rgba(0,0,0,.22); display:inline-flex; align-items:center; justify-content:center; }
+  .up svg { width:24px; height:24px; }
   .set-row { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0; border-bottom:1px solid #eee; font-family:Arial, sans-serif; font-weight:700; }
   .set-opts { display:flex; gap:8px; }
   .set-opts button { border:2px solid rgba(17,17,17,.16); background:#fff; border-radius:999px; padding:8px 14px; font-weight:800; }
@@ -315,6 +319,7 @@
 </div>
 
 <!-- ================= SETTINGS POPUP ================= -->
+<button class="up" id="up-btn" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button>
 <button class="gear" id="gear-btn" type="button" aria-label="Display settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
 <div class="pop" id="settings" hidden>
   <div class="pop-back" data-close></div>
@@ -328,9 +333,6 @@
           <button type="button" data-view-val="md">Normal</button>
           <button type="button" data-view-val="lg">Large</button>
         </span>
-      </div>
-      <div class="set-row"><span>Back to top</span>
-        <span class="set-opts"><button type="button" id="to-top">Top</button></span>
       </div>
       <p style="font-weight:400">Settings save on this device.</p>
     </div>
@@ -403,7 +405,7 @@
   }));
   paintView();
   document.getElementById('gear-btn').addEventListener('click', () => openPop('settings'));
-  document.getElementById('to-top').addEventListener('click', () => { closePops(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  document.getElementById('up-btn').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   /* Promo: show once per visitor after a delay. REPLACE the delay and the offer logic. */
   try {
