@@ -1732,33 +1732,61 @@
   /* People talk to her like a person, so greetings and small talk get a
      human answer, not the not-found line. Whole-message matches only, so a
      real question that starts with "hi" still gets a real answer. */
+  var bettyJoke = 0;
   function smallTalk(q) {
-    var st = q.toLowerCase().replace(/[!?.,]+$/g, '').trim().replace(/ flo$/, '');
+    var st = q.toLowerCase().replace(/[!?.,]+$/g, '').trim().replace(/ (flo|betty)$/, '');
     if (/^(good morning|good afternoon|good evening)$/.test(st)) {
-      return 'Well hello there, I\'m Betty. Ask me about prices and plans, the technician PWA app, booking, company inventory, or the CRM, and I will pull the answer straight from the site. Or tap More info on any tile for the full story.';
+      return 'Well hello there, I\'m Betty. Ask me about prices and plans, the technician PWA app, booking, company inventory, or the CRM, and I will pull the answer straight from the site. Fair warning: I give straight answers and I do not sugarcoat. Or tap More info on any tile for the full story.';
     }
     var g = st.replace(/ there$/, '');
     if (/^(hi|hello|hey|howdy|hiya|yo|sup|wassup|greetings|whats up|what's up)$/.test(g)) {
-      return 'Well hello there, I\'m Betty. Ask me about prices and plans, the technician PWA app, booking, company inventory, or the CRM, and I will pull the answer straight from the site. Or tap More info on any tile for the full story.';
+      return 'Well hello there, I\'m Betty. Ask me about prices and plans, the technician PWA app, booking, company inventory, or the CRM, and I will pull the answer straight from the site. Fair warning: I give straight answers and I do not sugarcoat. Or tap More info on any tile for the full story.';
     }
     if (/^(how are you|how's it going|hows it going|how is it going|how do you feel)$/.test(st)) {
-      return 'Doing wonderful, thank you for asking. I\'m Betty. Ask me about prices and plans, the technician PWA app, booking, company inventory, or the CRM, and I will pull the answer straight from the site.';
+      return 'Doing wonderful, thank you for asking. At my age, any day above ground is a good one, and I plan to enjoy every bit of it. Now, what can I do for you? Prices, plans, phones, booking, inventory: ask away.';
     }
     var words = st.split(/\s+/);
     if (words.length <= 3 && /^(hi|hello|hey|sup|wassup|yo|howdy|hiya)$/.test(words[0])) {
-      return 'Well hello there, I\'m Betty. Ask me about prices and plans, the technician PWA app, booking, company inventory, or the CRM, and I will pull the answer straight from the site. Or tap More info on any tile for the full story.';
+      return 'Well hello there, I\'m Betty. Ask me about prices and plans, the technician PWA app, booking, company inventory, or the CRM, and I will pull the answer straight from the site. Fair warning: I give straight answers and I do not sugarcoat. Or tap More info on any tile for the full story.';
     }
     if (st === 'help') {
-      return 'Of course. Ask me about pricing and plans, the AI phone answering, bookings, or the CRM. You can also tap a tile, then More info, for the full story on any part of AlphaFlux.';
+      return 'Of course, that is what I am here for. Ask me about pricing and plans, the AI phone answering, bookings, inventory, or the CRM. You can also tap a tile, then More info, for the full story on any part of AlphaFlux.';
     }
     if (/^(thanks|thank you|thx|ty)$/.test(st)) {
-      return 'You are welcome. If anything else comes up, I am right here around the clock.';
+      return 'You are very welcome. Manners and good software: both hard to find, and you have got both right here. If anything else comes up, I am right here around the clock.';
     }
     if (/^(bye|goodbye|see you|see ya|good night)$/.test(st)) {
-      return 'Bye for now. I am here around the clock if anything comes up.';
+      return 'Bye for now, and thank you for stopping by. I will be right here around the clock. Somebody has to keep an eye on this place.';
     }
     if (/^(who are you|what is your name|your name)$/.test(st)) {
-      return 'I\'m Betty, the AlphaFlux helper. I answer questions about the product straight from this site: prices and plans, phones, booking, company inventory, the technician app, and the rest. Ask me one and I will show you. I have been around long enough to know a good answer when I see one.';
+      return 'I\'m Betty, the AlphaFlux helper. Think of me as the lady at the front desk who has seen it all and still smiles. I answer questions straight from this site: prices and plans, phones, booking, company inventory, the technician app, and the rest. Ask me one and I will show you.';
+    }
+    if (/^(joke|a joke|tell me a joke|make me laugh|something funny|tell me something funny)$/.test(st)) {
+      var jokes = [
+        'Why did the plumber bring a ladder to work? Because the jobs kept going right over his head. Around here, AlphaFlux answers the phone so that never has to happen.',
+        'I asked the office phone why it never takes a day off. It said, have you met my owner? Good thing AlphaFlux answers it around the clock.',
+        'People ask me my secret for staying sharp. Good questions, plenty of sleep I never get, and a front office that runs itself. Two out of three is not bad.'
+      ];
+      var j = jokes[bettyJoke % jokes.length]; bettyJoke += 1;
+      return j;
+    }
+    if (/^(how old are you|your age|when were you born)$/.test(st)) {
+      return 'Old enough to know better, and young enough not to care. I stopped counting at fabulous, and I suggest you do the same.';
+    }
+    if (/^(do you )?(like|love) (dogs|cats|pets|animals)$/.test(st) || /^(i )?(love|like) (dogs|cats|pets|animals)$/.test(st)) {
+      return 'Like animals? I have adored them my whole life. If your four-legged customers could talk, I would happily take their calls too. For the two-legged kind, the AI phone answering lives over in the Phones tile.';
+    }
+    if (/^(you are|you're|your) (funny|great|the best|amazing|awesome|wonderful|cute|sweet)( one)?$/.test(st) || /^(i love you|love you|marry me)$/.test(st)) {
+      return 'Careful now, flattery will get you everywhere with me. But I am spoken for: I belong to this front desk. What can I help you with?';
+    }
+    if (/^(what is|what's) your (favorite|favourite) (food|drink)$/.test(st) || /^(vodka|hot dog|hot dogs)$/.test(st)) {
+      return 'A hot dog and a vodka, in that order, and I will not apologize for either. But enough about my dinner. What can I do for you?';
+    }
+    if (/^(are you|you are|you're) (real|a robot|an ai|a bot|human)$/.test(st) || st === 'are you real') {
+      return 'I am as real as the answers on this site: the words are mine, the facts are all AlphaFlux. Think of me as the most available front desk in the business.';
+    }
+    if (st.indexOf('easter egg') !== -1 || /^(999|420|69|1773|777|666)$/.test(st) || ((/(mean|meaning|stand for|stands for|tribute|reference|secret)/.test(st) || (/why/.test(st) && !/(plan|price|cost|include|month)/.test(st))) && /(999|420|1773|777|666)/.test(st) && words.length <= 12)) {
+      return 'Sharp eye. The numbers around here like to have a little fun: 1773 is a nod to the Boston Tea Party, 999 is a tribute to a young artist gone too soon, 777 keeps the other fellow away, and a couple of the rest are just for the grown-ups paying attention. That is all you are getting out of me. A lady keeps a few secrets.';
     }
     return null;
   }
@@ -1771,7 +1799,7 @@
     var chunk = answerFor(q);
     if (chunk) { var mAns = addMsg('bot', trimAnswer(chunk.t), chunk); renderFollow(chunk); maybeSpeak(mAns); }
     else {
-      addMsg('bot', 'I could not find that on the site yet. The big topics are pricing and plans, the AI phone answering, bookings, and the CRM. Try one of those words, or tap a tile and hit More info for the full story.');
+      addMsg('bot', 'Well, that one has me stumped, and I do not say that often. The big topics are pricing and plans, the AI phone answering, bookings, inventory, and the CRM. Try one of those words, or tap a tile and hit More info for the full story.');
       renderFollow(null);
     }
   }
