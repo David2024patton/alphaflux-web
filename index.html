@@ -141,6 +141,19 @@
   .qv-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; flex:0 0 auto; padding:14px 24px 22px; }
   .qv-go { display:inline-flex; align-items:center; background:#E10600; color:#fff; font-size:16px; font-weight:900; padding:13px 26px; border-radius:999px; box-shadow:0 4px 0 rgba(0,0,0,.25); min-height:44px; }
   .qv-close2 { background:none; border:0; font:inherit; font-size:15px; font-weight:800; color:#555; padding:12px 10px; cursor:pointer; min-height:44px; }
+  .qv-login label { display:block; font-size:13px; font-weight:800; margin:16px 0 6px; }
+  .qv-login input { width:100%; font:inherit; font-size:16px; padding:12px 14px; border:2px solid rgba(17,17,17,.35); border-radius:14px; background:#fff; color:#111; }
+  .qv-login input:focus { outline:3px solid rgba(225,6,0,.35); border-color:#111; }
+  .qv-login-note { margin-top:10px; }
+  .qv-login-msg { font-family:Arial, sans-serif; font-size:14.5px; line-height:1.5; margin-top:12px; font-weight:700; }
+  .qv-login-msg:empty { margin-top:0; }
+  .qv-login-msg.ok { color:#178a4c; }
+  .qv-login-msg.err { color:#E10600; }
+  .qv-login-btn { border:0; cursor:pointer; font:inherit; margin-top:16px; }
+  .qv-login-btn[disabled] { opacity:.6; cursor:default; }
+  .qv-login-link { background:none; border:0; font:inherit; font-size:15px; font-weight:800; color:#B00500; cursor:pointer; padding:6px 2px; text-decoration:underline; }
+  .qv-login-restart { display:block; margin-top:10px; padding-left:0; }
+  .qv-login-reg { margin-top:18px; }
 
   /* Bottom nav (phone only) */
   .bottomnav { display:none; }
@@ -493,8 +506,28 @@
         <h3 id="qv-title"></h3>
         <p id="qv-sum"></p>
         <ul class="qv-points" id="qv-points"></ul>
+        <div class="qv-login" id="qv-login" hidden>
+          <form id="qv-login-form" novalidate>
+            <div id="qv-login-step1">
+              <p class="qv-login-note">No passwords. We send a one-time code to your email or phone.</p>
+              <label for="qv-login-contact">Email or phone</label>
+              <input id="qv-login-contact" name="contact" autocomplete="username" placeholder="you@company.com" required data-1p-ignore data-lpignore="true">
+              <p class="qv-login-msg" id="qv-login-msg1" role="status"></p>
+              <button type="submit" class="qv-go qv-login-btn">Sign in</button>
+            </div>
+            <div id="qv-login-step2" hidden>
+              <p class="qv-login-note" id="qv-login-note"></p>
+              <label for="qv-login-code">Code</label>
+              <input id="qv-login-code" name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" data-1p-ignore data-lpignore="true">
+              <p class="qv-login-msg" id="qv-login-msg2" role="status"></p>
+              <button type="submit" class="qv-go qv-login-btn">Sign in</button>
+              <button type="button" class="qv-login-link qv-login-restart" id="qv-login-restart">Use a different email or phone</button>
+            </div>
+          </form>
+          <p class="qv-login-reg">New to AlphaFlux? <button type="button" class="qv-login-link" id="qv-login-register">Join the waitlist</button></p>
+        </div>
       </div>
-      <div class="qv-actions"><button type="button" class="qv-go" id="qv-go" hidden></button><button type="button" class="qv-more" id="qv-more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>More info</button><button type="button" class="qv-close2" data-close>Close</button></div>
+      <div class="qv-actions"><button type="button" class="qv-go" id="qv-go" hidden></button><button type="button" class="qv-more" id="qv-more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>More info</button></div>
     </div>
   </div>
 </div>
@@ -533,7 +566,7 @@
       <label for="fv-phone">Phone (optional)</label>
       <input id="fv-phone" name="phone" type="tel" autocomplete="tel">
       <p class="fv-status" id="fv-status" role="status"></p>
-      <div class="fv-actions"><button type="submit" class="qv-go fv-submit">Join the waitlist</button><button type="button" class="qv-close2" data-close-fv>Close</button></div>
+      <div class="fv-actions"><button type="submit" class="qv-go fv-submit">Join the waitlist</button></div>
     </form>
     <div class="fv-done" id="fv-done" hidden>
       <p id="fv-done-text"></p>
@@ -820,8 +853,8 @@
       "All on the same record"
     ],
     "sum": "Your front office is behind one door. Sign in to run your front office: calls, leads, bookings, invoices, and your crew, all on the same record.",
-    "deep": true,
-    "go": { "label": "Continue to sign in", "href": "/login" }
+    "deep": false,
+    "login": true
   },
   "/signup": {
     "title": "Get Started",
@@ -959,11 +992,19 @@
     window.visualViewport.addEventListener('resize', fitPopups);
     window.visualViewport.addEventListener('scroll', fitPopups);
   }
+  var qvLogin = document.getElementById('qv-login');
+  var qvActions = qv.querySelector('.qv-actions');
   function openQV(data, href) {
     qv.classList.toggle('over', chatVisible());
     qvImg.src = data.img;
     qvTitle.textContent = data.title;
     qvSum.textContent = data.sum;
+    var isLogin = !!data.login;
+    qvSum.style.display = isLogin ? 'none' : '';
+    qvPoints.style.display = isLogin ? 'none' : '';
+    qvLogin.hidden = !isLogin;
+    qvActions.style.display = isLogin ? 'none' : '';
+    if (isLogin) { resetLogin(); }
     qvPoints.innerHTML = '';
     (data.points || []).forEach(function (pt) {
       var li = document.createElement('li');
@@ -1046,6 +1087,98 @@
     if (path === '/' && a.closest('.bottomnav')) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
     routeHref(path, a);
   });
+
+  /* Sign in lives inside this box: the same email and code flow as
+     the /login page, driven against the same addresses, so nobody is
+     forwarded anywhere to sign in. New visitors register through the
+     waitlist popup instead. */
+  var loginForm = document.getElementById('qv-login-form');
+  var loginContact = document.getElementById('qv-login-contact');
+  var loginCode = document.getElementById('qv-login-code');
+  var loginStep1 = document.getElementById('qv-login-step1');
+  var loginStep2 = document.getElementById('qv-login-step2');
+  var loginMsg1 = document.getElementById('qv-login-msg1');
+  var loginMsg2 = document.getElementById('qv-login-msg2');
+  var loginNote = document.getElementById('qv-login-note');
+  var loginCSRF = '';
+  var loginTarget = '';
+  var loginBusy = false;
+  function loginMsg(el, text, kind) {
+    el.textContent = text || '';
+    el.className = 'qv-login-msg' + (kind ? ' ' + kind : '');
+  }
+  function grabCSRF(doc) { var i = doc.querySelector('input[name="csrf"]'); return i ? i.value : ''; }
+  function refreshLoginCSRF() {
+    return fetch('/login', { credentials: 'same-origin' }).then(function (r) {
+      if (r.redirected && r.url.indexOf('/console') !== -1) { window.location.assign('/console/index.html'); return ''; }
+      return r.text();
+    }).then(function (t) {
+      if (!t) { return; }
+      var doc = new DOMParser().parseFromString(t, 'text/html');
+      var c = grabCSRF(doc);
+      if (c) { loginCSRF = c; }
+    }).catch(function () {});
+  }
+  function resetLogin() {
+    loginStep1.hidden = false; loginStep2.hidden = true;
+    loginMsg(loginMsg1, ''); loginMsg(loginMsg2, '');
+    loginCode.value = '';
+    refreshLoginCSRF();
+  }
+  function handleLoginHTML(htmlText, step) {
+    var doc = new DOMParser().parseFromString(htmlText, 'text/html');
+    var c = grabCSRF(doc);
+    if (c) { loginCSRF = c; }
+    var errEl = doc.querySelector('.err');
+    var okEl = doc.querySelector('.ok');
+    var msg = errEl ? errEl.textContent.replace(/\s+/g, ' ').trim()
+            : (okEl ? okEl.textContent.replace(/\s+/g, ' ').trim() : '');
+    var kind = errEl ? 'err' : 'ok';
+    var codeForm = doc.querySelector('form[action="/login/code"]');
+    if (codeForm) {
+      var t = codeForm.querySelector('input[name="target"]');
+      if (t) { loginTarget = t.value; }
+      loginNote.textContent = 'Enter the 6 digit code sent to ' + loginTarget + '. It expires in 10 minutes.';
+      loginStep1.hidden = true; loginStep2.hidden = false;
+      loginMsg(loginMsg2, msg, msg ? kind : '');
+      return;
+    }
+    if (step === 2) {
+      loginMsg(loginMsg2, msg || 'That code did not work. Check it and try again.', errEl ? 'err' : 'ok');
+    } else {
+      loginMsg(loginMsg1, msg, kind);
+    }
+  }
+  loginForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (loginBusy) { return; }
+    var step = loginStep2.hidden ? 1 : 2;
+    var btn = (step === 1 ? loginStep1 : loginStep2).querySelector('.qv-login-btn');
+    function send() {
+      loginBusy = true; btn.disabled = true;
+      var url, params;
+      if (step === 1) {
+        url = '/login/send';
+        params = new URLSearchParams({ csrf: loginCSRF, contact: loginContact.value.trim() });
+      } else {
+        url = '/login/code';
+        params = new URLSearchParams({ csrf: loginCSRF, target: loginTarget, code: loginCode.value.trim() });
+      }
+      fetch(url, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() }).then(function (r) {
+        if (r.redirected && r.url.indexOf('/console') !== -1) { window.location.assign('/console/index.html'); return null; }
+        return r.text();
+      }).then(function (t) {
+        loginBusy = false; btn.disabled = false;
+        if (t) { handleLoginHTML(t, step); }
+      }).catch(function () {
+        loginBusy = false; btn.disabled = false;
+        loginMsg(step === 1 ? loginMsg1 : loginMsg2, 'Sending failed, so nothing was sent. Check your connection and try again.', 'err');
+      });
+    }
+    if (!loginCSRF) { refreshLoginCSRF().then(send); } else { send(); }
+  });
+  document.getElementById('qv-login-restart').addEventListener('click', function () { resetLogin(); });
+  document.getElementById('qv-login-register').addEventListener('click', function () { closeQV(); openFV(); });
 
   /* Deep view: the bigger window, filled live from the real page */
   var dv = document.getElementById('deepview');
