@@ -1651,6 +1651,13 @@ body.af-tiles-lg .tile .poster { height:180px; }
       try { localStorage.setItem('af-voice-auto', voiceAuto ? '1' : '0'); } catch (e) {}
       if (!voiceAuto) { stopSpeak(); }
       paintVoiceToggle();
+      if (voiceAuto) {
+        /* Turning talk on reads the newest message in the chat, so at
+           the start she reads her greeting. */
+        var bots = chatMsgs.querySelectorAll('.msg.bot');
+        var lastBot = bots[bots.length - 1];
+        if (lastBot) { speakText(lastBot._speakText || lastBot.textContent.trim(), null); }
+      }
     });
   }
 
