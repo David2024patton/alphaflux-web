@@ -1,0 +1,421 @@
+<!doctype html>
+<!--
+  POP BOILERPLATE (AlphaFlux build)
+  The starting skeleton for any Pop UI page. Copy this file, swap the palette
+  tokens for your product, and replace the blocks marked REPLACE.
+  The layout is a grid: rows and columns like a spreadsheet. Tiles and cards
+  drop into the grid and size themselves from it. Never hand-size a box.
+  Rules baked in come from the pop_ui skill; law numbers are noted per block.
+-->
+<html lang="en" data-view="md">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<!-- REPLACE: page title and description -->
+<title>Page Name | AlphaFlux</title>
+<meta name="description" content="One plain sentence about this page.">
+<link rel="canonical" href="https://alphaflux.net/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Page Name | AlphaFlux">
+<meta property="og:description" content="One plain sentence about this page.">
+<meta property="og:image" content="https://alphaflux.net/assets/og-image.jpg">
+<meta property="og:image:alt" content="AlphaFlux: an illustrated sunny neighborhood of service businesses">
+<!-- Law 29: structured data so search listings and AI search bots read the page right. -->
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"AlphaFlux","url":"https://alphaflux.net/","description":"AlphaFlux runs the front office for service businesses: phones answered, leads captured, jobs booked, invoices sent."},{"@type":"WebSite","name":"AlphaFlux","url":"https://alphaflux.net/"}]}</script>
+<style>
+  /* ============ TOKENS (swap these per product; the build never changes) ============ */
+  :root {
+    --ground:#FFD23F; --ground-2:#FFCE1F; --ink:#111111; --card:#FFFFFF;
+    --primary:#E10600; --teal:#0AA2B5; --soft:#FFF3C4;
+    --tile-w:262px; --radius:22px; --head-h:76px;
+  }
+  html[data-view="lg"] { font-size:18px; }
+  html[data-view="sm"] { font-size:15px; }
+  * { box-sizing:border-box; }
+  html { scroll-padding-top:calc(var(--head-h) + 14px); } /* Law 25: anchor jumps clear the sticky bar */
+  body { margin:0; background:linear-gradient(180deg, var(--ground), var(--ground-2)); color:var(--ink);
+         font-family:"Arial Black", Arial, sans-serif; }
+  img { max-width:100%; }
+  button { font:inherit; cursor:pointer; }
+
+  /* ============ THE GRID (Law 30) ============
+     The page is rows; each row is columns. Content drops into cells and the
+     grid sizes it. .tiles is the auto grid: add a tile, it takes its cell.
+     Tile size settings scale the cells, never the tiles one by one. */
+  .shell { max-width:1200px; margin:0 auto; padding:0 20px 40px; display:grid; gap:34px; }
+  .tiles { display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:18px; align-items:start; }
+  html[data-view="lg"] .tiles { grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); }
+  html[data-view="sm"] .tiles { grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); }
+  .rail-wrap { position:relative; min-width:0; }
+  .shell > * { min-width:0; }  /* grid cells shrink to the page; rails scroll inside their own box */
+  .rail { display:grid; grid-auto-flow:column; grid-auto-columns:var(--tile-w); gap:18px;
+          overflow-x:auto; padding:6px 2px 14px; scrollbar-width:none; align-items:start; }
+  html[data-view="lg"] .rail { grid-auto-columns:calc(var(--tile-w) * 1.18); }
+  html[data-view="sm"] .rail { grid-auto-columns:calc(var(--tile-w) * 0.82); }
+  .rail::-webkit-scrollbar { display:none; }
+
+  /* ============ HEADER (Law 24: one sticky bar, no phone button in it) ============ */
+  .topbar { position:sticky; top:0; z-index:60; display:flex; align-items:center; gap:16px;
+            padding:12px 20px; background:linear-gradient(180deg, rgba(255,210,63,.98), rgba(255,206,31,.96)); }
+  .brand { font-size:26px; font-weight:900; color:var(--ink); text-decoration:none; }
+  .brand b { color:var(--primary); }
+  .pills { display:flex; gap:10px; overflow-x:auto; scrollbar-width:none; margin-left:auto; }
+  .pills::-webkit-scrollbar { display:none; }
+  .pill { flex:0 0 auto; background:#fff; color:var(--ink); border:none; border-radius:999px;
+          padding:11px 18px; font-weight:800; font-size:15px; box-shadow:0 3px 8px rgba(0,0,0,.12); text-decoration:none; }
+  .signin { flex:0 0 auto; background:var(--ink); color:#fff; border:none; border-radius:999px; padding:12px 22px; font-weight:900; }
+
+  /* ============ HERO (Law 23: the card keeps its size, the whole picture fits inside it) ============
+     Card geometry is fixed by the clamp. The art is a background layer fitted
+     with object-fit:contain so the whole picture shows inside the card.
+     The words live in a glass panel anchored low. Never split this card. */
+  .hero { border-radius:28px; padding:40px 38px 44px; color:#fff; position:relative; overflow:hidden;
+          box-shadow:0 14px 30px rgba(0,0,0,.22); background:var(--teal); }
+  .hero-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:50% 48%; display:block; }
+  @media (min-width:761px) {
+    .hero { height:clamp(430px, calc(100svh - 148px), 620px); display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; }
+    .hero-bg { object-position:50% 45%; }
+  }
+  .hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.14) 34%, rgba(0,0,0,.42) 66%, rgba(0,0,0,.80) 100%); }
+  .kicker { display:inline-block; background:var(--ground); color:var(--ink); font-size:13px; font-weight:900;
+            letter-spacing:1.2px; padding:6px 14px; border-radius:999px; margin-bottom:18px; text-transform:uppercase; position:relative; z-index:1; }
+  .hero-panel { position:relative; z-index:1; border-radius:20px; padding:20px; max-width:640px; }
+  .hero-panel::before { content:""; position:absolute; inset:0; border-radius:inherit;
+    background:linear-gradient(180deg, rgba(12,10,24,.40), rgba(12,10,24,.30));
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); z-index:-1; }
+  .hero h1 { font-size:46px; line-height:1.05; font-weight:900; margin:0; }
+  .hero h1 .hl { color:var(--ground); }
+  .hero p { margin:16px 0 26px; font-size:18px; line-height:1.45; max-width:520px; font-family:Arial, sans-serif; }
+  .hero-actions { display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
+  .btn-primary { display:inline-flex; align-items:center; background:var(--primary); color:#fff; font-size:18px; font-weight:900;
+                 padding:16px 38px; border-radius:999px; box-shadow:0 6px 0 rgba(0,0,0,.35); text-decoration:none; min-height:44px; }
+  .btn-ghost { display:inline-flex; align-items:center; background:#fff; color:var(--ink); font-size:16px; font-weight:800;
+               padding:14px 26px; border-radius:999px; box-shadow:0 4px 0 rgba(0,0,0,.25); text-decoration:none; min-height:44px; }
+
+  /* ============ SECTIONS AND TILES (Laws 19, 21, 23) ============ */
+  .sec-head { display:flex; align-items:center; justify-content:space-between; gap:14px; }
+  .sec-head h2 { font-size:30px; font-weight:900; margin:0; }
+  .arrows { display:flex; gap:8px; }
+  .arrow { width:44px; height:44px; border-radius:50%; border:none; background:#fff; box-shadow:0 3px 8px rgba(0,0,0,.15);
+           display:inline-flex; align-items:center; justify-content:center; transition:opacity .2s; }
+  .arrow svg { width:20px; height:20px; }
+  .arrow.off { opacity:.32; }        /* arrows fade at the end of a row */
+  .arrow.gone { display:none; }      /* and vanish when the row fits */
+  .tile { display:block; text-decoration:none; color:#fff; border-radius:var(--radius); }
+  .tile .poster { display:block; border-radius:var(--radius); overflow:hidden; box-shadow:0 6px 14px rgba(0,0,0,.16); position:relative; }
+  .tile .poster img { width:100%; height:auto; display:block; }  /* whole picture, frame takes its ratio */
+  .tile .cap { position:absolute; left:0; right:0; bottom:0; display:flex; align-items:center; gap:8px;
+               padding:26px 14px 12px; font-weight:900; font-size:16px;
+               background:linear-gradient(180deg, transparent, rgba(0,0,0,.72)); }
+
+  /* ============ POPUPS (Laws 16, 17, 28) ============
+     The base page always stays. A popup leaves a blurred sliver of the page
+     around its edges at every size, and closes with an X, the scrim, or Escape. */
+  .pop { position:fixed; inset:0; z-index:90; display:flex; align-items:center; justify-content:center; padding:20px; }
+  .pop[hidden] { display:none; }
+  .pop-back { position:absolute; inset:0; background:rgba(12,9,24,.68); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
+  .pop-card { position:relative; background:#fff; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.35);
+              width:100%; max-width:560px; max-height:calc(100dvh - 40px); display:flex; flex-direction:column; overflow:hidden; }
+  .pop-x { position:absolute; top:12px; right:12px; z-index:3; width:44px; height:44px; border-radius:50%;
+           background:var(--ink); color:#fff; border:2px solid #fff; font-size:19px; font-weight:900; line-height:1; }
+  .pop-media img { width:100%; height:auto; display:block; }  /* Law 23: whole picture in popups too */
+  .pop-body { padding:20px 22px; overflow-y:auto; font-family:Arial, sans-serif; }
+  .pop-body h3 { font-family:"Arial Black", Arial, sans-serif; font-size:24px; margin:0 0 8px; }
+  .pop-row { display:flex; gap:10px; padding:14px 22px 20px; flex-wrap:nowrap; }
+  .pop-row .btn-primary { font-size:16px; padding:13px 24px; }
+  .btn-dark { display:inline-flex; align-items:center; background:var(--ink); color:#fff; font-weight:900;
+              padding:13px 24px; border-radius:999px; border:none; text-decoration:none; min-height:44px; }
+
+  /* ============ PROMO (Law 27: honest price, crossed out full price) ============ */
+  .price-strip { margin-top:12px; background:var(--soft); border:2px solid rgba(17,17,17,.14); border-radius:14px;
+                 padding:10px 12px; display:flex; flex-direction:column; gap:2px; font-family:Arial, sans-serif; }
+  .price-strip .lab { font-size:11px; font-weight:800; letter-spacing:.8px; text-transform:uppercase; }
+  .price-strip s { color:var(--primary); font-weight:800; }
+  .price-strip b { font-size:20px; font-weight:900; }
+  .price-strip .note { font-size:12.5px; font-weight:600; }
+  .codebox { border:2px dashed rgba(17,17,17,.35); border-radius:14px; padding:10px 14px; text-align:center; }
+  .codebox b { font-size:22px; letter-spacing:2px; }
+  .qrbox { text-align:center; } .qrbox small { display:block; font-weight:900; letter-spacing:2px; margin-top:4px; }
+
+  /* ============ PHOTO FRAMING (Law 31) ============
+     Framing is a setting, not a baked-in crop. A framed photo stores three
+     values: --fx and --fy (the visible window position, percent) and --fz
+     (zoom). A future settings UI writes them per photo after a drag or pinch.
+     Until then the default shows the middle at natural scale. The standard
+     tiles and heroes do NOT use this; they show the whole picture (Law 23). */
+  .framed { display:block; overflow:hidden; }
+  .framed img { width:100%; height:100%; object-fit:cover; object-position:var(--fx, 50%) var(--fy, 50%); transform:scale(var(--fz, 1)); }
+
+  /* ============ SETTINGS GEAR ============ */
+  .gear { position:fixed; left:18px; bottom:84px; z-index:80; width:54px; height:54px; border-radius:50%;
+          border:2px solid rgba(17,17,17,.16); background:rgba(255,255,255,.88); color:var(--ink);
+          box-shadow:0 8px 22px rgba(0,0,0,.22); display:inline-flex; align-items:center; justify-content:center; }
+  .gear svg { width:24px; height:24px; }
+  .set-row { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0; border-bottom:1px solid #eee; font-family:Arial, sans-serif; font-weight:700; }
+  .set-opts { display:flex; gap:8px; }
+  .set-opts button { border:2px solid rgba(17,17,17,.16); background:#fff; border-radius:999px; padding:8px 14px; font-weight:800; }
+  .set-opts button.on { background:var(--ink); color:#fff; }
+
+  /* ============ AGENT SLOT (chat panel shell; wire your own brain) ============ */
+  .fab { position:fixed; right:18px; bottom:18px; z-index:80; display:inline-flex; align-items:center; gap:9px;
+         background:var(--ink); color:#fff; border:none; border-radius:999px; padding:8px 18px 8px 8px; font-weight:900;
+         box-shadow:0 10px 26px rgba(0,0,0,.3); }
+  .fab img { width:38px; height:38px; border-radius:50%; }
+  .chat { position:fixed; right:14px; bottom:14px; z-index:95; width:min(410px, calc(100vw - 20px));
+          background:#fff; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.35); display:flex; flex-direction:column; overflow:hidden; }
+  .chat[hidden] { display:none; }
+  .chat-head { display:flex; align-items:center; gap:10px; padding:12px 14px; border-bottom:2px solid #f2f2f2; }
+  .chat-head img { width:40px; height:40px; border-radius:50%; }
+  .chat-head b { font-size:17px; }
+  .chat-signup { margin-left:auto; display:inline-flex; align-items:center; gap:7px; background:var(--primary); color:#fff;
+                 border:2px solid var(--ink); border-radius:999px; padding:8px 14px; font-weight:900; box-shadow:3px 3px 0 var(--ink); }
+  .chat-x { width:38px; height:38px; border-radius:50%; border:none; background:#f1f1f1; font-weight:900; }
+  .chat-msgs { padding:14px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; min-height:220px; max-height:52dvh; font-family:Arial, sans-serif; }
+  .chat-form { display:flex; gap:8px; padding:10px; border-top:2px solid #f2f2f2; }
+  .chat-form input { flex:1; min-width:0; border:2px solid rgba(17,17,17,.2); border-radius:999px; padding:12px 16px; font:inherit; }
+  .chat-send { background:var(--primary); color:#fff; border:none; border-radius:999px; padding:12px 20px; font-weight:900; }
+
+  /* ============ FOOTER (Law 22: one line) ============ */
+  footer { text-align:center; padding:26px 16px 34px; font-family:Arial, sans-serif; font-weight:600; font-size:13.5px; }
+
+  @media (max-width:760px) {
+    :root { --tile-w:210px; }
+    .shell { padding:0 14px 30px; }
+    .hero { padding:16px 15px 18px; border-radius:22px; }
+    .hero h1 { font-size:26px; }
+    .hero p { font-size:14.5px; }
+    .pop { padding:12px; }
+    .brand { font-size:21px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="topbar">
+  <!-- REPLACE: brand and pills -->
+  <a class="brand" href="/">AlphaFlux<b>.</b></a>
+  <nav class="pills" aria-label="Sections">
+    <a class="pill" href="#row-a">Row A</a>
+    <a class="pill" href="#row-b">Row B</a>
+    <a class="pill" href="#grid">Grid</a>
+  </nav>
+  <button class="signin" type="button">Sign In</button>
+</header>
+
+<main class="shell">
+
+  <!-- ================= HERO =================
+       REPLACE the picture sources and the words. Keep the card geometry. -->
+  <section class="hero">
+    <picture>
+      <source media="(min-width: 761px)" srcset="../assets/hero-wide.jpg">
+      <img class="hero-bg" src="../assets/hero.jpg" alt="" aria-hidden="true">
+    </picture>
+    <span class="kicker">For service businesses</span>
+    <div class="hero-panel">
+      <h1>Every call answered. <span class="hl">Every job booked.</span></h1>
+      <p>One plain paragraph about what the product does for the reader.</p>
+      <p><strong>You run the jobs. AlphaFlux runs the office.</strong></p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#grid">Get Started</a>
+        <a class="btn-ghost" href="#row-a">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RAIL ROW =================
+       Law 21: top 5 plus a View All tile. Law 23: whole pictures.
+       Law 29: every img carries a real alt. -->
+  <section id="row-a">
+    <div class="sec-head">
+      <h2>Row A</h2>
+      <div class="arrows">
+        <button class="arrow prev" type="button" aria-label="Scroll row back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 5 8 12 15 19"/></svg></button>
+        <button class="arrow next" type="button" aria-label="Scroll row forward"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 5 16 12 9 19"/></svg></button>
+      </div>
+    </div>
+    <div class="rail-wrap">
+      <div class="rail">
+        <!-- REPLACE: one tile per item; the whole tile is the tap target -->
+        <a class="tile" href="#" data-pop="qv"><span class="poster"><img src="../assets/phones.jpg" alt="AI Phone Answering" width="1200" height="800"><span class="cap">AI Phone Answering</span></span></a>
+        <a class="tile" href="#" data-pop="qv"><span class="poster"><img src="../assets/crm.jpg" alt="CRM and Leads" width="1200" height="800"><span class="cap">CRM and Leads</span></span></a>
+        <a class="tile" href="#" data-pop="qv"><span class="poster"><img src="../assets/bookings.jpg" alt="Bookings and Schedule" width="1200" height="800"><span class="cap">Bookings and Schedule</span></span></a>
+        <a class="tile" href="#" data-pop="qv"><span class="poster"><img src="../assets/invoices.jpg" alt="Invoices and Payments" width="1200" height="800"><span class="cap">Invoices and Payments</span></span></a>
+        <a class="tile" href="#" data-pop="qv"><span class="poster"><img src="../assets/inventory.jpg" alt="Inventory" width="1200" height="800"><span class="cap">Inventory</span></span></a>
+        <a class="tile" href="#grid"><span class="poster"><img src="../assets/setup.jpg" alt="View all" width="1200" height="800"><span class="cap">View All</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AUTO GRID =================
+       Law 30 in action: drop cards in, the grid sizes them. -->
+  <section id="grid">
+    <div class="sec-head"><h2>The Grid</h2></div>
+    <div class="tiles" style="margin-top:16px">
+      <a class="tile" href="#" data-pop="qv"><span class="poster"><img src="../assets/team-app.jpg" alt="Technician App" width="1200" height="800"><span class="cap">Technician App</span></span></a>
+      <a class="tile" href="#" data-pop="qv"><span class="poster"><img src="../assets/help.jpg" alt="Help Center" width="1200" height="800"><span class="cap">Help Center</span></span></a>
+      <a class="tile" href="#" data-pop="qv"><span class="poster"><img src="../assets/signin.jpg" alt="Sign In" width="1200" height="800"><span class="cap">Sign In</span></span></a>
+    </div>
+  </section>
+
+  <section id="row-b">
+    <div class="sec-head"><h2>Row B</h2></div>
+    <p style="font-family:Arial, sans-serif; max-width:640px">REPLACE: a short section. Keep surface copy short; depth belongs in popups.</p>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER (Law 22) ================= -->
+<footer>Copyright <span id="yr">2026</span> AlphaFlux. All rights reserved.</footer>
+
+<!-- ================= QUICK VIEW POPUP ================= -->
+<div class="pop" id="qv" hidden>
+  <div class="pop-back" data-close></div>
+  <div class="pop-card" role="dialog" aria-modal="true" aria-label="Quick view">
+    <button class="pop-x" type="button" data-close aria-label="Close">X</button>
+    <div class="pop-media"><img src="../assets/phones.jpg" alt="AI Phone Answering"></div>
+    <div class="pop-body">
+      <h3>AI Phone Answering</h3>
+      <p>REPLACE: one short paragraph. The full story opens in the More layer, which scrolls inside its own card.</p>
+      <p><strong>Every ring answered. Every customer kept.</strong></p>
+    </div>
+    <div class="pop-row">
+      <a class="btn-dark" href="#">More Info</a>
+      <a class="btn-primary" href="#">Try It Free</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PROMO POPUP (Law 27) ================= -->
+<div class="pop" id="promo" hidden>
+  <div class="pop-back" data-close></div>
+  <div class="pop-card" role="dialog" aria-modal="true" aria-label="Special offer">
+    <button class="pop-x" type="button" data-close aria-label="Close">X</button>
+    <div class="pop-media"><img src="../assets/hero.jpg" alt="Illustrated pastel neighborhood with a red service van under a sunny sky"></div>
+    <div class="pop-body">
+      <h3>Thank You, Veterans</h3>
+      <p>REPLACE: the offer in one or two plain sentences. Real offers only, never made-up discounts.</p>
+      <div class="price-strip">
+        <span class="lab">The yearly deal, always on</span>
+        <span><s>$19/mo</s> <b>$15/mo</b></span>
+        <span class="note">Solo billed yearly. Start free, upgrade when it earns it.</span>
+      </div>
+      <div style="display:flex; gap:12px; margin-top:14px; flex-wrap:wrap">
+        <div class="codebox"><small>Your code</small><br><b>SAVE25</b></div>
+        <div class="qrbox"><img src="../assets/qr-af-veterans.png" alt="QR code: scan to open the offer" width="110" height="110"><small>SCAN ME</small></div>
+      </div>
+    </div>
+    <div class="pop-row">
+      <a class="btn-primary" href="#">Book With This Deal</a>
+      <button class="btn-dark" type="button" data-close>Maybe Later</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SETTINGS POPUP ================= -->
+<button class="gear" id="gear-btn" type="button" aria-label="Display settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+<div class="pop" id="settings" hidden>
+  <div class="pop-back" data-close></div>
+  <div class="pop-card" role="dialog" aria-modal="true" aria-label="Display settings">
+    <button class="pop-x" type="button" data-close aria-label="Close">X</button>
+    <div class="pop-body">
+      <h3>Display Settings</h3>
+      <div class="set-row"><span>Text and tile size</span>
+        <span class="set-opts" id="view-opts">
+          <button type="button" data-view-val="sm">Compact</button>
+          <button type="button" data-view-val="md">Normal</button>
+          <button type="button" data-view-val="lg">Large</button>
+        </span>
+      </div>
+      <div class="set-row"><span>Back to top</span>
+        <span class="set-opts"><button type="button" id="to-top">Top</button></span>
+      </div>
+      <p style="font-weight:400">Settings save on this device.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= AGENT ================= -->
+<button class="fab" id="fab" type="button"><img src="../assets/agent.jpg" alt="Betty, the AlphaFlux helper">Ask</button>
+<section class="chat" id="chat" hidden aria-label="Chat">
+  <div class="chat-head">
+    <img src="../assets/agent.jpg" alt="Betty, the AlphaFlux helper">
+    <b>Ask Betty</b>
+    <button class="chat-signup" type="button">Try it free</button>
+    <button class="chat-x" id="chat-x" type="button" aria-label="Close chat">X</button>
+  </div>
+  <div class="chat-msgs" id="chat-msgs">
+    <p style="margin:0">REPLACE: wire the greeting and the brain. Answers come from the site index; the newest message stays in view; the panel is sized from the visual viewport so nothing runs off screen.</p>
+  </div>
+  <form class="chat-form" id="chat-form">
+    <input type="text" placeholder="Ask Betty..." autocomplete="off">
+    <button class="chat-send" type="submit">Send</button>
+    <!-- A voice toggle belongs here, after Send: one switch for auto-read, saved per device. -->
+  </form>
+</section>
+
+<script>
+  /* Footer year */
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* Popups: open, close, Escape peels one layer at a time (Laws 16, 17, 28) */
+  function openPop(id) { document.getElementById(id).hidden = false; }
+  function closePops() { document.querySelectorAll('.pop').forEach(p => { p.hidden = true; }); }
+  document.querySelectorAll('[data-pop]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openPop(a.dataset.pop); }));
+  document.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closePops));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePops(); });
+
+  /* Rail arrows: fade at the ends, hidden when the row fits */
+  document.querySelectorAll('.rail-wrap').forEach(wrap => {
+    const rail = wrap.querySelector('.rail');
+    const sec = wrap.closest('section');
+    const prev = sec.querySelector('.arrow.prev'), next = sec.querySelector('.arrow.next');
+    if (!rail || !prev || !next) return;
+    function paint() {
+      const fits = rail.scrollWidth <= rail.clientWidth + 2;
+      prev.classList.toggle('gone', fits); next.classList.toggle('gone', fits);
+      prev.classList.toggle('off', rail.scrollLeft <= 2);
+      next.classList.toggle('off', rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2);
+    }
+    prev.addEventListener('click', () => rail.scrollBy({ left: -rail.clientWidth * 0.8, behavior: 'smooth' }));
+    next.addEventListener('click', () => rail.scrollBy({ left: rail.clientWidth * 0.8, behavior: 'smooth' }));
+    rail.addEventListener('scroll', paint, { passive: true });
+    window.addEventListener('resize', paint);
+    paint();
+  });
+
+  /* Display settings: one switch scales text and tiles through the grid tokens */
+  const viewOpts = document.getElementById('view-opts');
+  function paintView() {
+    const v = document.documentElement.dataset.view || 'md';
+    viewOpts.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.viewVal === v));
+  }
+  try {
+    const saved = localStorage.getItem('pop-view');
+    if (saved) document.documentElement.dataset.view = saved;
+  } catch (e) {}
+  viewOpts.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+    document.documentElement.dataset.view = b.dataset.viewVal;
+    try { localStorage.setItem('pop-view', b.dataset.viewVal); } catch (e) {}
+    paintView();
+  }));
+  paintView();
+  document.getElementById('gear-btn').addEventListener('click', () => openPop('settings'));
+  document.getElementById('to-top').addEventListener('click', () => { closePops(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  /* Promo: show once per visitor after a delay. REPLACE the delay and the offer logic. */
+  try {
+    if (!localStorage.getItem('pop-promo-seen')) {
+      setTimeout(() => { openPop('promo'); localStorage.setItem('pop-promo-seen', '1'); }, 18000);
+    }
+  } catch (e) {}
+
+  /* Agent panel */
+  const chat = document.getElementById('chat');
+  document.getElementById('fab').addEventListener('click', () => { chat.hidden = false; });
+  document.getElementById('chat-x').addEventListener('click', () => { chat.hidden = true; });
+  document.getElementById('chat-form').addEventListener('submit', e => e.preventDefault());
+</script>
+</body>
+</html>
