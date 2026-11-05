@@ -19,6 +19,12 @@ RULES:
 
 Curated milestones from the git history of this repo, newest first. Git history is the raw record.
 
+## 2026-11-05: Display settings and holiday promo rotations on every page
+
+- Gear button (bottom left, above Help) opens display settings: text size (Normal, Large, Extra large) and tile size (Normal, Large), saved on the visitor's device, plus Back to top.
+- Promo popup on an 18 second timer, once per visitor per promo: holiday rotations baked in (Veterans Day, Thanksgiving, Christmas, New Year, Independence Day) with SCAN ME QR codes to the waitlist for the Veterans and Thanksgiving runs; when the console's super-admin promo endpoint (next.alphaflux.net/api/promos/active) is live, its promos take over.
+- Rail arrows already carried the requested behavior (fade at the ends, hidden when a row fits) and were verified, not changed.
+
 ## 2026-10-20: Repo standard complete, end goal recorded
 - TODO, IDEA, PLAN, ENDGOAL, README, and docs/RULES.md brought to the repo standard with stable TODO ids, PLAN cross-references, and instruction headers (commits 4844b61 to 54fb444)
 

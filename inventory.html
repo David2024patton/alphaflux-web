@@ -136,6 +136,38 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior:auto; }
   }
+
+/* ==== AFX extras: settings gear + promo popup (added 2026-11-05) ==== */
+.afx-gear { position:fixed; left:18px; bottom:84px; z-index:80; width:54px; height:54px; border-radius:50%; border:2px solid rgba(17,17,17,.16); background:rgba(255,255,255,.85); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#111; cursor:pointer; box-shadow:0 8px 22px rgba(0,0,0,.22); display:inline-flex; align-items:center; justify-content:center; }
+.afx-gear svg { width:24px; height:24px; }
+@media (max-width:760px) { .afx-gear { left:12px; bottom:150px; } }
+.afx-scrim { position:fixed; inset:0; z-index:120; background:rgba(10,14,6,.55); display:flex; align-items:center; justify-content:center; padding:18px; }
+.afx-scrim[hidden] { display:none; }
+.afx-card { position:relative; background:#fff; color:#141414; border-radius:24px; box-shadow:0 24px 60px rgba(0,0,0,.35); max-width:560px; width:100%; max-height:calc(100dvh - 36px); overflow-y:auto; padding:26px; font-family:inherit; }
+.afx-x { position:absolute; top:12px; right:12px; width:38px; height:38px; border-radius:50%; border:2px solid #141414; background:#fff; color:#141414; font-size:16px; font-weight:900; cursor:pointer; line-height:1; }
+.afx-lab { font-size:11px; font-weight:900; letter-spacing:.22em; text-transform:uppercase; color:#E10600; }
+.afx-card h3 { font-size:26px; font-weight:900; margin:6px 0 8px; }
+.afx-note { color:#555; }
+.afx-setrow { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px 0; border-bottom:1px solid #e7e2d4; flex-wrap:wrap; }
+.afx-setlab { font-weight:800; text-transform:uppercase; letter-spacing:.06em; font-size:12px; }
+.afx-seg { display:flex; gap:6px; flex-wrap:wrap; }
+.afx-seg button { padding:8px 13px; border-radius:999px; border:1.5px solid #141414; background:#fff; color:#141414; font-weight:700; cursor:pointer; font-size:13px; }
+.afx-seg button.on { background:#141414; color:#fff; }
+html.af-fs-lg { font-size:18px; }
+html.af-fs-xl { font-size:20px; }
+body.af-tiles-lg .tile { width:320px; }
+body.af-tiles-lg .tile .poster { height:180px; }
+.afx-promo-art { width:100%; height:auto; border-radius:16px; display:block; }
+.afx-flex { display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin:16px 0 6px; }
+.afx-codebox { border:2px dashed #E10600; border-radius:14px; padding:10px 18px; text-align:center; background:#FDECEA; }
+.afx-codebox small { display:block; font-size:10px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#555; }
+.afx-codebox b { font-size:24px; letter-spacing:.08em; }
+.afx-qr { text-align:center; }
+.afx-qr img { width:128px; height:128px; display:block; }
+.afx-qr small { display:block; margin-top:5px; font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#555; max-width:140px; }
+.afx-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+.afx-btn { display:inline-flex; align-items:center; justify-content:center; padding:13px 22px; border-radius:999px; border:2px solid #141414; background:#fff; color:#141414; font-weight:800; cursor:pointer; text-decoration:none; font-size:15px; }
+.afx-btn.primary { background:#111; border-color:#111; color:#fff; }
 </style>
 </head>
 <body>
@@ -471,5 +503,145 @@
   <a href="/signin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Sign In</a>
 </nav>
 
+
+<button type="button" class="afx-gear" id="afx-gear" aria-label="Display settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+
+<div class="afx-scrim" id="afx-settings" hidden>
+  <div class="afx-card" role="dialog" aria-modal="true" aria-label="Display settings">
+    <button type="button" class="afx-x" data-afx-close aria-label="Close">&#10005;</button>
+    <div class="afx-lab">Settings</div>
+    <h3>Make it yours</h3>
+    <div class="afx-setrow"><span class="afx-setlab">Text size</span><div class="afx-seg" id="afx-set-text"><button type="button" data-fs="">Normal</button><button type="button" data-fs="lg">Large</button><button type="button" data-fs="xl">Extra large</button></div></div>
+    <div class="afx-setrow"><span class="afx-setlab">Tile size</span><div class="afx-seg" id="afx-set-tiles"><button type="button" data-ts="">Normal</button><button type="button" data-ts="lg">Large</button></div></div>
+    <div class="afx-setrow"><span class="afx-setlab">Jump</span><button type="button" class="afx-btn" id="afx-top">Back to top</button></div>
+    <p class="afx-note">Settings stay on this device.</p>
+  </div>
+</div>
+
+<div class="afx-scrim" id="afx-promo" hidden>
+  <div class="afx-card" role="dialog" aria-modal="true" aria-label="Special message">
+    <button type="button" class="afx-x" data-afx-close aria-label="Close">&#10005;</button>
+    <img class="afx-promo-art" src="assets/hero.jpg" alt="">
+    <div class="afx-lab" id="afx-promo-lab">Special</div>
+    <h3 id="afx-promo-title"></h3>
+    <p class="afx-note" id="afx-promo-text"></p>
+    <div class="afx-flex" id="afx-promo-flex" hidden>
+      <div class="afx-codebox" id="afx-promo-codebox" hidden><small>Your code</small><b id="afx-promo-code"></b></div>
+      <div class="afx-qr" id="afx-promo-qrbox" hidden><img id="afx-promo-qr" src="" alt="QR code: scan to open the offer"><small>SCAN ME</small></div>
+    </div>
+    <div class="afx-row"><a class="afx-btn primary" id="afx-promo-cta" href="/waitlist">Join the Waitlist</a><button type="button" class="afx-btn" data-afx-close>Maybe Later</button></div>
+  </div>
+</div>
+
+<script>
+/* AFX extras: display settings + promo rotations (2026-11-05).
+   Promos: super-admin promos from the console endpoint win when present;
+   otherwise the baked holiday rotations below run. Once per visitor each. */
+(function () {
+  "use strict";
+  function openEl(el) { if (el) { el.hidden = false; var x = el.querySelector(".afx-x"); if (x) x.focus({ preventScroll: true }); } }
+  function closeEl(el) { if (el) el.hidden = true; }
+  var settingsEl = document.getElementById("afx-settings");
+  var promoEl = document.getElementById("afx-promo");
+  document.querySelectorAll("[data-afx-close]").forEach(function (b) {
+    b.addEventListener("click", function () { closeEl(b.closest(".afx-scrim")); });
+  });
+  [settingsEl, promoEl].forEach(function (scrim) {
+    if (scrim) scrim.addEventListener("click", function (e) { if (e.target === scrim) closeEl(scrim); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    if (promoEl && !promoEl.hidden) closeEl(promoEl);
+    else if (settingsEl && !settingsEl.hidden) closeEl(settingsEl);
+  });
+
+  /* --- Settings --- */
+  var gear = document.getElementById("afx-gear");
+  if (gear && settingsEl) gear.addEventListener("click", function () { openEl(settingsEl); });
+  var st = { fs: "", ts: "" };
+  try { st = JSON.parse(window.localStorage.getItem("af-settings") || "{}"); } catch (e) { st = {}; }
+  if (typeof st.fs !== "string") st.fs = "";
+  if (typeof st.ts !== "string") st.ts = "";
+  function applySettings() {
+    document.documentElement.classList.toggle("af-fs-lg", st.fs === "lg");
+    document.documentElement.classList.toggle("af-fs-xl", st.fs === "xl");
+    document.body.classList.toggle("af-tiles-lg", st.ts === "lg");
+    document.querySelectorAll("#afx-set-text button").forEach(function (b) { b.classList.toggle("on", b.getAttribute("data-fs") === st.fs); });
+    document.querySelectorAll("#afx-set-tiles button").forEach(function (b) { b.classList.toggle("on", b.getAttribute("data-ts") === st.ts); });
+  }
+  document.querySelectorAll("#afx-set-text button").forEach(function (b) {
+    b.addEventListener("click", function () { st.fs = b.getAttribute("data-fs"); try { window.localStorage.setItem("af-settings", JSON.stringify(st)); } catch (e) {} applySettings(); });
+  });
+  document.querySelectorAll("#afx-set-tiles button").forEach(function (b) {
+    b.addEventListener("click", function () { st.ts = b.getAttribute("data-ts"); try { window.localStorage.setItem("af-settings", JSON.stringify(st)); } catch (e) {} applySettings(); });
+  });
+  var topBtn = document.getElementById("afx-top");
+  if (topBtn) topBtn.addEventListener("click", function () { closeEl(settingsEl); window.scrollTo({ top: 0, behavior: "smooth" }); });
+  applySettings();
+
+  /* --- Promos --- */
+  if (/privacy|terms|404/.test(window.location.pathname)) return;
+  function win(m1, d1, m2, d2, yearOffset) {
+    var now = new Date();
+    var y = now.getFullYear() + (yearOffset || 0);
+    var toYear = m2 < m1 ? y + 1 : y;
+    return { from: new Date(y, m1 - 1, d1, 0, 0, 0), to: new Date(toYear, m2 - 1, d2, 23, 59, 59) };
+  }
+  function yearly(list) {
+    var out = [];
+    [-1, 0, 1].forEach(function (off) { list.forEach(function (p) { var w = win(p.w[0], p.w[1], p.w[2], p.w[3], off); out.push({ id: p.id, lab: p.lab, title: p.title, text: p.text, code: p.code || null, qr: p.qr || null, cta_label: p.cta_label || "Join the Waitlist", cta_href: p.cta_href || "/waitlist", from: w.from, to: w.to }); }); });
+    return out;
+  }
+  var BAKED = yearly([
+    { id: "veterans", w: [11, 5, 11, 11], lab: "Veterans Day", title: "Happy Veterans Day", text: "To everyone who served, thank you. AlphaFlux is built by a veteran, for the people who keep this country running. Our waitlist is open.", qr: "assets/qr-af-veterans.png" },
+    { id: "thanksgiving", w: [11, 20, 11, 27], lab: "Thanksgiving", title: "Thankful for the trades", text: "However you run your crew, we are thankful for the people who answer the phone, turn the wrench, and keep homes safe. Join the waitlist and build the new year with us.", qr: "assets/qr-af-thanks.png" },
+    { id: "christmas", w: [12, 18, 12, 26], lab: "Christmas", title: "Merry Christmas", text: "From our crew to yours, Merry Christmas. AlphaFlux keeps the phones answered and the schedule straight while you take the day with family." },
+    { id: "newyear", w: [12, 27, 1, 2], lab: "New Year", title: "Make next year the organized one", text: "One system for the phones, the field, the money, and the marketing. Start the year on the waitlist and make it the year nothing slips." },
+    { id: "july4", w: [6, 27, 7, 4], lab: "Independence Day", title: "Happy Independence Day", text: "Built in America, for American service businesses. Have a safe and happy Fourth." }
+  ]);
+  function inWindow(p) { var n = new Date(); return n >= p.from && n <= p.to; }
+  function pick(promos) { for (var i = 0; i < promos.length; i++) if (inWindow(promos[i])) return promos[i]; return null; }
+  function show(p) {
+    if (!p || !promoEl) return;
+    var seenKey = "af-promo-seen-" + p.id;
+    try { if (window.localStorage.getItem(seenKey)) return; } catch (e) {}
+    document.getElementById("afx-promo-lab").textContent = p.lab || "Special";
+    document.getElementById("afx-promo-title").textContent = p.title || "";
+    document.getElementById("afx-promo-text").textContent = p.text || "";
+    var flex = document.getElementById("afx-promo-flex");
+    var codebox = document.getElementById("afx-promo-codebox");
+    var qrbox = document.getElementById("afx-promo-qrbox");
+    if (p.code) { document.getElementById("afx-promo-code").textContent = p.code; codebox.hidden = false; } else codebox.hidden = true;
+    if (p.qr) { document.getElementById("afx-promo-qr").setAttribute("src", p.qr); qrbox.hidden = false; } else qrbox.hidden = true;
+    flex.hidden = !(p.code || p.qr);
+    var cta = document.getElementById("afx-promo-cta");
+    cta.textContent = p.cta_label || "Join the Waitlist";
+    cta.setAttribute("href", p.cta_href || "/waitlist");
+    setTimeout(function () {
+      if (document.body.classList.contains("agent-open")) return;
+      openEl(promoEl);
+      try { window.localStorage.setItem(seenKey, "1"); } catch (e) {}
+    }, 18000);
+  }
+  var bakedPick = pick(BAKED);
+  var settled = false;
+  try {
+    var ctl = new AbortController();
+    var to = setTimeout(function () { ctl.abort(); }, 2500);
+    fetch("https://next.alphaflux.net/api/promos/active", { signal: ctl.signal, mode: "cors" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        clearTimeout(to);
+        if (settled) return; settled = true;
+        var admin = null;
+        if (data && data.promos && data.promos.length) {
+          admin = data.promos.map(function (p) { return { id: p.id, lab: p.lab, title: p.title, text: p.text, code: p.code || null, qr: p.qr || null, cta_label: p.cta_label, cta_href: p.cta_href, from: new Date(p.from), to: new Date(p.to) }; });
+        }
+        show(pick(admin || []) || bakedPick);
+      })
+      .catch(function () { clearTimeout(to); if (!settled) { settled = true; show(bakedPick); } });
+  } catch (e) { show(bakedPick); }
+})();
+</script>
 </body>
 </html>

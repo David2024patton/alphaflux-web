@@ -21,13 +21,14 @@ RULES:
 -->
 # STATUS: AlphaFlux Web (alphaflux.net)
 
-## As of 2026-10-28
+## As of 2026-11-05
 
 ## Proven state
 - Static generator shipped: go run ./build renders content/*.json into committed HTML plus sitemap.xml, robots.txt, llms.txt, and llms-full.txt (proof: README.md, build/; TODO T-0.1)
 - Honest status ledger shipped: content/_status.json feeds BUILD-MANIFEST.md, so site copy and build status cannot drift (proof: BUILD-MANIFEST.md; TODO T-0.2)
 - Deploy on push live: GitHub webhook to Dokploy, swarm service updated, Traefik serves alphaflux.net (proof: README.md deploy section; the production site is live; TODO T-0.3)
 - Public sitemap and llms files published from this repo (proof: sitemap.xml, llms.txt in the tree; TODO T-0.4)
+- Display settings and promo rotations shipped on every page (2026-11-05, David's order): a gear button opens text size and tile size settings saved per device; a timed promo popup runs holiday rotations (Veterans Day, Thanksgiving, Christmas, New Year, Independence Day) and prefers super-admin promos from the console endpoint https://next.alphaflux.net/api/promos/active when it exists, falling back to the baked rotations. Both live in a uniform AFX extras block appended to every page (proof: the afx-gear / afx-promo markup in every *.html; live walk on alphaflux.net)
 - Self-hosted fonts and icon sprite, no third party font or icon calls (proof: assets/fonts.css, assets/fonts/, assets/icons.svg; TODO T-0.5)
 - Page truth today, from BUILD-MANIFEST.md: 5 pages LIVE, 10 PARTIAL, 4 PLANNED, 5 N/A (proof: BUILD-MANIFEST.md)
 - Repo standard files complete in this repo, with instruction headers (proof: commits 4844b61 to 54fb444, 2026-10-20)
