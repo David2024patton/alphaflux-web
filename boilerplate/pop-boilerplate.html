@@ -89,9 +89,9 @@
   .hero p { margin:16px 0 26px; font-size:18px; line-height:1.45; max-width:520px; font-family:Arial, sans-serif; }
   .hero-actions { display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
   .btn-primary { display:inline-flex; align-items:center; background:var(--primary); color:#fff; font-size:18px; font-weight:900;
-                 padding:16px 38px; border-radius:999px; box-shadow:0 6px 0 rgba(0,0,0,.35); text-decoration:none; min-height:44px; }
+                 padding:16px 38px; border-radius:999px; box-shadow:3px 3px 0 var(--ink); text-decoration:none; min-height:44px; border:2px solid var(--ink); transition:transform .08s ease, box-shadow .08s ease; }
   .btn-ghost { display:inline-flex; align-items:center; background:#fff; color:var(--ink); font-size:16px; font-weight:800;
-               padding:14px 26px; border-radius:999px; box-shadow:0 4px 0 rgba(0,0,0,.25); text-decoration:none; min-height:44px; }
+               padding:14px 26px; border-radius:999px; box-shadow:3px 3px 0 var(--ink); text-decoration:none; min-height:44px; border:2px solid var(--ink); transition:transform .08s ease, box-shadow .08s ease; }
 
   /* ============ SECTIONS AND TILES (Laws 19, 21, 23) ============ */
   .sec-head { display:flex; align-items:center; justify-content:space-between; gap:14px; }
@@ -125,7 +125,8 @@
   .pop-row { display:flex; gap:10px; padding:14px 22px 20px; flex-wrap:nowrap; }
   .pop-row .btn-primary { font-size:16px; padding:13px 24px; }
   .btn-dark { display:inline-flex; align-items:center; background:var(--ink); color:#fff; font-weight:900;
-              padding:13px 24px; border-radius:999px; border:none; text-decoration:none; min-height:44px; }
+              padding:13px 24px; border-radius:999px; border:2px solid var(--ink); text-decoration:none; min-height:44px; box-shadow:3px 3px 0 var(--ink); transition:transform .08s ease, box-shadow .08s ease; }
+  .btn-primary:active, .btn-ghost:active, .btn-dark:active { transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink); }
 
   /* ============ PROMO (Law 27: honest price, crossed out full price) ============ */
   .price-strip { margin-top:12px; background:var(--soft); border:2px solid rgba(17,17,17,.14); border-radius:14px;
