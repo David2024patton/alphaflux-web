@@ -19,6 +19,11 @@ RULES:
 
 Curated milestones from the git history of this repo, newest first. Git history is the raw record.
 
+## 2026-11-07: SMS clauses on the legal pages, canonical legal URLs live
+
+- Privacy policy gained a Text Messaging / SMS section: what mobile and opt-in data is collected, that it is used only to send the messages agreed to, and the promise that mobile information and text-message opt-in data is never shared or sold to third parties for marketing. Terms of use gained a Text Messaging / SMS Program section: the AlphaFlux program, account and service notifications and two way conversations, frequency varies, rates may apply, STOP and HELP, support at (502) 385-0241, and calls-and-texts consent with "Consent is not a condition of purchase." Mirrored into content/privacy.json and content/terms.json; every existing word on both pages kept.
+- default.conf now serves /privacy-policy and /terms-of-use (the exact paths carrier A2P registration asks for) from the same privacy.html and terms.html files; /privacy.html, /terms.html, /privacy and /terms keep working.
+
 ## 2026-11-05: Display settings and holiday promo rotations on every page
 
 - Gear button (bottom left, above Help) opens display settings: text size (Normal, Large, Extra large) and tile size (Normal, Large), saved on the visitor's device, plus Back to top.

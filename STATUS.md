@@ -21,7 +21,7 @@ RULES:
 -->
 # STATUS: AlphaFlux Web (alphaflux.net)
 
-## As of 2026-11-05
+## As of 2026-11-07
 
 ## Proven state
 - Static generator shipped: go run ./build renders content/*.json into committed HTML plus sitemap.xml, robots.txt, llms.txt, and llms-full.txt (proof: README.md, build/; TODO T-0.1)
@@ -30,6 +30,7 @@ RULES:
 - Public sitemap and llms files published from this repo (proof: sitemap.xml, llms.txt in the tree; TODO T-0.4)
 - Display settings and promo rotations shipped on every page (2026-11-05, David's order): a gear button opens text size and tile size settings saved per device; a timed promo popup runs holiday rotations (Veterans Day, Thanksgiving, Christmas, New Year, Independence Day) and prefers super-admin promos from the console endpoint https://next.alphaflux.net/api/promos/active when it exists, falling back to the baked rotations. Both live in a uniform AFX extras block appended to every page (proof: the afx-gear / afx-promo markup in every *.html; live walk on alphaflux.net)
 - Self-hosted fonts and icon sprite, no third party font or icon calls (proof: assets/fonts.css, assets/fonts/, assets/icons.svg; TODO T-0.5)
+- Legal pages carry the A2P texting clauses (2026-11-07, David's order): privacy has a Text Messaging / SMS section with the no-share/no-sell promise for mobile and opt-in data, terms has a Text Messaging / SMS Program section (AlphaFlux program, STOP/HELP, support (502) 385-0241, consent not a condition of purchase), mirrored in content/privacy.json and content/terms.json; default.conf serves /privacy-policy and /terms-of-use from the same files (proof: live fetches of /privacy-policy and /terms-of-use returning the new sections)
 - Page truth today, from BUILD-MANIFEST.md: 5 pages LIVE, 10 PARTIAL, 4 PLANNED, 5 N/A (proof: BUILD-MANIFEST.md)
 - Repo standard files complete in this repo, with instruction headers (proof: commits 4844b61 to 54fb444, 2026-10-20)
 - Home page is a hand-built coming soon sneak peek (2026-10-28, David's order), modeled on the AlphaFlux poster: coming soon banner, module tile grid, four ways in, free plan box. Deliberate exception to the generator: content/index.json is unchanged and stays the relaunch source; the previous generated index is backed up at backup/index.full-2026-10-28.html (proof: index.html commit cb1ace8; backup commit 722d063)

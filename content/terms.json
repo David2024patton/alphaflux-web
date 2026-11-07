@@ -46,6 +46,15 @@
     },
     {
       "kind": "prose",
+      "title": "Text Messaging / SMS Program",
+      "body": [
+        "AlphaFlux runs a text messaging program under the name AlphaFlux. If you give us your mobile number and agree to hear from us by text, we may send you account and service notifications about your AlphaFlux account, and we may hold two way conversations with you by text when you write to us or ask us to follow up.",
+        "Message frequency varies. Message and data rates may apply, depending on your carrier and your plan. Reply STOP at any time to opt out, and we will stop texting that number. Reply HELP for help, or reach us by phone at (502) 385-0241, by email at admin@alphaflux.net, or through the Contact page on this site.",
+        "Consent for calls and texts: when you provide a phone number and agree to be contacted, you consent to receive calls and text messages from AlphaFlux at that number about your account, your service and your requests. Consent is not a condition of purchase, and you can use AlphaFlux without agreeing to receive them. Withdrawing consent is as simple as replying STOP to a text or telling us on a call."
+      ]
+    },
+    {
+      "kind": "prose",
       "title": "Your data and what you own",
       "body": [
         "Your business data is yours. Customer records, jobs, invoices, messages, notes and everything else you put into the platform belong to you, not to us. We claim no ownership over it and no right to use it for our own purposes.",

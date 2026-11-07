@@ -54,6 +54,15 @@
     },
     {
       "kind": "prose",
+      "title": "Text Messaging / SMS",
+      "body": [
+        "When you agree to receive text messages from us, or from a business using AlphaFlux on its own behalf, we collect your mobile phone number and a record of that agreement: when you gave it, how you gave it, and what you agreed to receive. The carriers who deliver the messages also produce delivery records and opt-out records, which we keep as part of the message record described above.",
+        "That information is used only to send the messages you agreed to receive, to honor an opt out the moment you send one, and to keep the records a carrier requires us to keep. It is not used to build an advertising profile of you, and it is not added to any marketing list you did not ask to join.",
+        "We will not share or sell your mobile information or text-message opt-in data to third parties for marketing or promotional purposes."
+      ]
+    },
+    {
+      "kind": "prose",
       "title": "Cookies and tracking",
       "body": [
         "There is no third party analytics on this site. No advertising network, no tag manager and no cross site tracking pixel runs here, and the only script the public pages load is our own. That is why this page can make the claim at all: there is nothing to disclose.",
